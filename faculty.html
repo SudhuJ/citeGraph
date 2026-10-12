@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.13.4">
+<title>Faculty | citeGraph · Group 19</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_import/style.83b595f5.css">
+<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_import/style.83b595f5.css">
+<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="modulepreload" href="./_observablehq/client.ce6ccea5.js">
+<link rel="modulepreload" href="./_observablehq/runtime.fa9f71c0.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.c4209144.js">
+<link rel="modulepreload" href="./_npm/d3@7.9.0/080cf928.js">
+<link rel="modulepreload" href="./_npm/htl@1.0.0/11521f02.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.0cc910eb.js">
+<link rel="modulepreload" href="./_npm/@observablehq/plot@0.6.17/93ce672e.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/097745a2.js">
+<link rel="modulepreload" href="./_npm/isoformat@0.2.1/604cb63b.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/b8e751b6.js">
+<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/c662ea05.js">
+<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/d162d8c6.js">
+<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/5cedd0be.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/65d51007.js">
+<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/c576a91a.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/8b43826d.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/3fb06f14.js">
+<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/20b76948.js">
+<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/8683b012.js">
+<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/5c319046.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/33924f3e.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.2/8d67a1ae.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/8037bd0b.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/a9ba0229.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/e0a47f97.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/f9e9e0ab.js">
+<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/2da8eb3b.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/09002e01.js">
+<link rel="modulepreload" href="./_npm/d3-random@3.0.1/5108797c.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/c9f2571b.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/f3c78e0d.js">
+<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/28717d05.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/7c6e2a50.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/3d1d57c6.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/643581a8.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/e99232db.js">
+<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/bd07fd9a.js">
+<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/d09f7cc9.js">
+<link rel="modulepreload" href="./_npm/interval-tree-1d@1.0.4/f53f17b2.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/af036d7e.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.1.0/7b06abe7.js">
+<link rel="modulepreload" href="./_npm/binary-search-bounds@2.0.5/5f640032.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.3/b42f30a7.js">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Ccircle%20cx=%2230%22%20cy=%2270%22%20r=%2216%22%20fill=%22%25232a78d6%22/%3E%3Ccircle%20cx=%2272%22%20cy=%2232%22%20r=%2216%22%20fill=%22%2523eb6834%22/%3E%3Cline%20x1=%2230%22%20y1=%2270%22%20x2=%2272%22%20y2=%2232%22%20stroke=%22%2523898781%22%20stroke-width=%226%22/%3E%3C/svg%3E">
+<script type="module">
+
+import {define} from "./_observablehq/client.ce6ccea5.js";
+import {registerFile} from "./_observablehq/stdlib.c4209144.js";
+
+registerFile("./data/faculty.csv", {"name":"./data/faculty.csv","mimeType":"text/csv","path":"./_file/data/faculty.ff837a18.csv","lastModified":1791787419553,"size":58983});
+
+define({id: "0a68d6b4", inputs: ["FileAttachment"], outputs: ["faculty","INST","instColor"], body: (FileAttachment) => {
+const faculty = FileAttachment("./data/faculty.csv").csv({typed: true});
+const INST = ["IISER Pune", "IISER Kolkata"];
+const instColor = {domain: INST, range: ["var(--pune)", "var(--kolkata)"], legend: true};
+return {faculty,INST,instColor};
+}});
+
+define({id: "691b6321", inputs: ["view","Inputs","INST"], outputs: ["pick"], body: (view,Inputs,INST) => {
+const pick = view(Inputs.radio(["Both", ...INST], {value: "Both", label: "Institute"}));
+return {pick};
+}});
+
+define({id: "e8656773", inputs: ["faculty","pick","view","Inputs"], outputs: ["depts","dept"], body: (faculty,pick,view,Inputs) => {
+const depts = [...new Set(faculty.filter((d) => pick === "Both" || d.institution === pick).map((d) => d.department))].sort();
+const dept = view(Inputs.select(["All departments", ...depts], {label: "Department"}));
+return {depts,dept};
+}});
+
+define({id: "19c391c7", inputs: ["faculty","pick","dept","view","Inputs"], outputs: ["F","q"], body: (faculty,pick,dept,view,Inputs) => {
+const F = faculty.filter((d) => (pick === "Both" || d.institution === pick) && (dept === "All departments" || d.department === dept));
+const q = view(Inputs.search(F, {placeholder: "Search faculty…"}));
+return {F,q};
+}});
+
+define({id: "046b08b6", inputs: ["display","Inputs","q","d3","html"], body: (display,Inputs,q,d3,html) => {
+display(Inputs.table(q, {
+  columns: ["name", "institution", "department", "designation", "papers", "citations", "h_index", "h_index_lifetime", "q1_share", "top_journal", "hyper_papers"],
+  header: {name: "Name", institution: "Institute", department: "Department", designation: "Designation", papers: "Papers",
+           citations: "Citations", h_index: "h-index (2016–26)", h_index_lifetime: "h-index (lifetime)", q1_share: "Q1 share",
+           top_journal: "Top journal", hyper_papers: "≥100-author papers"},
+  format: {q1_share: (x) => (x == null ? "—" : d3.format(".0%")(x)), name: (x, i, data) => html`<a href=${data[i].profile_url} target="_blank">${x}</a>`},
+  width: {name: 190, department: 170, designation: 180, top_journal: 220},
+  sort: "papers", reverse: true, rows: 18, layout: "auto"
+}));
+}});
+
+define({id: "d74e48fc", inputs: ["display","resize","Plot","instColor","F"], body: (display,resize,Plot,instColor,F) => {
+display(resize((width) => Plot.plot({
+  width, height: 300, x: {label: "h-index (2016–2026 window)"}, y: {grid: true, label: "faculty"},
+  color: instColor, fy: {label: null},
+  marks: [
+    Plot.rectY(F, Plot.binX({y: "count"}, {x: "h_index", fill: "institution", fy: "institution", interval: 2, inset: 1, tip: true})),
+    Plot.ruleY([0])
+  ]
+})));
+}});
+
+define({id: "b3096c5f", inputs: ["display","resize","Plot","instColor","F"], body: (display,resize,Plot,instColor,F) => {
+display(resize((width) => Plot.plot({
+  width, height: 300, x: {type: "log", label: "papers (log)", grid: true}, y: {type: "log", label: "citations (log)", grid: true},
+  color: instColor,
+  marks: [
+    Plot.dot(F.filter((d) => d.papers > 0 && d.citations > 0), {x: "papers", y: "citations", fill: "institution", r: 4,
+      stroke: "var(--theme-background)", tip: true, title: (d) => `${d.name}\n${d.department}\n${d.papers} papers · ${d.citations} citations · h=${d.h_index}`})
+  ]
+})));
+}});
+
+define({id: "5c124086", inputs: ["d3","F","display","Inputs"], outputs: ["deptRows"], body: (d3,F,display,Inputs) => {
+const deptRows = d3.flatRollup(F, (v) => ({
+  faculty: v.length, papers: d3.sum(v, (d) => d.papers), citations: d3.sum(v, (d) => d.citations),
+  median_h: d3.median(v, (d) => d.h_index), papers_per_faculty: d3.sum(v, (d) => d.papers) / v.length
+}), (d) => d.institution, (d) => d.department).map(([institution, department, m]) => ({institution, department, ...m}));
+display(Inputs.table(deptRows, {sort: "papers", reverse: true, format: {papers_per_faculty: d3.format(".1f")},
+  header: {papers_per_faculty: "papers / faculty", median_h: "median h"}}));
+return {deptRows};
+}});
+
+</script>
+</head>
+<body>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link"><a href="./">citeGraph · Group 19</a></li>
+  </ol>
+  <div id="observablehq-search"><input type="search" placeholder="Search"></div>
+  <div id="observablehq-search-results"></div>
+  <script>{const o=document.querySelector("#observablehq-search");o.setAttribute("data-shortcut",`${/Mac|iPhone/.test(navigator.platform)?"\u2318":"Alt-"}K`);const t=o.querySelector("input"),r=()=>import("./_observablehq/search.fdd1983e.js");t.addEventListener("focus",r,{once:!0}),t.addEventListener("keydown",r,{once:!0});const c=document.querySelector("#observablehq-sidebar-toggle");addEventListener("keydown",e=>{(e.code==="KeyK"&&e.metaKey&&!e.altKey&&!e.ctrlKey||e.key==="/"&&!e.metaKey&&!e.altKey&&!e.ctrlKey&&e.target===document.body)&&(c.checked?t.focus():(c.click(),t.focus(),c.click()),t.select(),e.preventDefault())});}</script>
+  <ol>
+    <li class="observablehq-link"><a href="./">Overview</a></li>
+    <li class="observablehq-link observablehq-link-active"><a href="./faculty">Faculty</a></li>
+    <li class="observablehq-link"><a href="./papers">Papers &amp; venues</a></li>
+    <li class="observablehq-link"><a href="./citation-network">Citation network</a></li>
+    <li class="observablehq-link"><a href="./authorship-network">Authorship network</a></li>
+    <li class="observablehq-link"><a href="./connectivity">Indian connectivity</a></li>
+    <li class="observablehq-link"><a href="./methods">Methods &amp; data</a></li>
+  </ol>
+</nav>
+<script>{const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<div id="observablehq-center">
+<aside id="observablehq-toc" data-selector="h1:not(:first-of-type)[id], h2:first-child[id], :not(h1) + h2[id]">
+<nav>
+<div>Contents</div>
+<ol>
+<li class="observablehq-secondary-link"><a href="#faculty-performance">Faculty performance</a></li>
+<li class="observablehq-secondary-link"><a href="#h-index-distribution">h-index distribution</a></li>
+<li class="observablehq-secondary-link"><a href="#papers-vs-citations-per-faculty">Papers vs citations per faculty</a></li>
+<li class="observablehq-secondary-link"><a href="#department-summary">Department summary</a></li>
+</ol>
+</nav>
+</aside>
+<main id="observablehq-main" class="observablehq">
+<h1 id="faculty" tabindex="-1"><a class="observablehq-header-anchor" href="#faculty">Faculty</a></h1>
+<div class="observablehq observablehq--block"><!--:0a68d6b4:--></div>
+<div class="observablehq observablehq--block"><!--:691b6321:--></div>
+<div class="observablehq observablehq--block"><!--:e8656773:--></div>
+<div class="observablehq observablehq--block"><!--:19c391c7:--></div>
+<h2 id="faculty-performance" tabindex="-1"><a class="observablehq-header-anchor" href="#faculty-performance">Faculty performance</a></h2>
+<p class="muted">Click a column header to sort. <b>h-index (2016–26)</b> is computed from the papers in this dataset; <b>lifetime</b> is OpenAlex's career h-index. Two IISER Pune physicists (CMS collaboration) have ~750 papers with hundreds of authors each, so check the "≥100-author papers" column before comparing counts.</p>
+<div class="observablehq observablehq--block"><!--:046b08b6:--></div>
+<div class="grid grid-cols-2">
+<div class="card">
+<h2 id="h-index-distribution" tabindex="-1"><a class="observablehq-header-anchor" href="#h-index-distribution">h-index distribution</a></h2>
+<div class="observablehq observablehq--block"><!--:d74e48fc:--></div>
+</div>
+<div class="card">
+<h2 id="papers-vs-citations-per-faculty" tabindex="-1"><a class="observablehq-header-anchor" href="#papers-vs-citations-per-faculty">Papers vs citations per faculty</a></h2>
+<div class="observablehq observablehq--block"><!--:b3096c5f:--></div>
+</div>
+</div>
+<h2 id="department-summary" tabindex="-1"><a class="observablehq-header-anchor" href="#department-summary">Department summary</a></h2>
+<div class="observablehq observablehq--block"><!--:5c124086:--></div>
+</main>
+<footer id="observablehq-footer">
+<nav><a rel="prev" href="./"><span>citeGraph · Group 19</span></a><a rel="next" href="./papers"><span>Papers &amp; venues</span></a></nav>
+<div>DPCN 2026 · Group 19 · IISER Pune &amp; IISER Kolkata · data: OpenAlex (CC0), SCImago</div>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.13.4">
+<title>Authorship network | citeGraph · Group 19</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_import/style.83b595f5.css">
+<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_import/style.83b595f5.css">
+<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="modulepreload" href="./_observablehq/client.ce6ccea5.js">
+<link rel="modulepreload" href="./_observablehq/runtime.fa9f71c0.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.c4209144.js">
+<link rel="modulepreload" href="./_import/components/graph.e8ae4cb7.js">
+<link rel="modulepreload" href="./_npm/d3@7.9.0/080cf928.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.0cc910eb.js">
+<link rel="modulepreload" href="./_npm/@observablehq/plot@0.6.17/93ce672e.js">
+<link rel="modulepreload" href="./_import/components/vendor/graph-libs.48181f08.js">
+<link rel="modulepreload" href="./_npm/htl@1.0.0/11521f02.js">
+<link rel="modulepreload" href="./_npm/isoformat@0.2.1/604cb63b.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/b8e751b6.js">
+<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/c662ea05.js">
+<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/d162d8c6.js">
+<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/5cedd0be.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/65d51007.js">
+<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/c576a91a.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/8b43826d.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/3fb06f14.js">
+<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/20b76948.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/097745a2.js">
+<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/8683b012.js">
+<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/5c319046.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/33924f3e.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.2/8d67a1ae.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/8037bd0b.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/a9ba0229.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/e0a47f97.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/f9e9e0ab.js">
+<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/2da8eb3b.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/09002e01.js">
+<link rel="modulepreload" href="./_npm/d3-random@3.0.1/5108797c.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/c9f2571b.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/f3c78e0d.js">
+<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/28717d05.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/7c6e2a50.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/3d1d57c6.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/643581a8.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/e99232db.js">
+<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/bd07fd9a.js">
+<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/d09f7cc9.js">
+<link rel="modulepreload" href="./_npm/interval-tree-1d@1.0.4/f53f17b2.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/af036d7e.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.1.0/7b06abe7.js">
+<link rel="modulepreload" href="./_npm/binary-search-bounds@2.0.5/5f640032.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.3/b42f30a7.js">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Ccircle%20cx=%2230%22%20cy=%2270%22%20r=%2216%22%20fill=%22%25232a78d6%22/%3E%3Ccircle%20cx=%2272%22%20cy=%2232%22%20r=%2216%22%20fill=%22%2523eb6834%22/%3E%3Cline%20x1=%2230%22%20y1=%2270%22%20x2=%2272%22%20y2=%2232%22%20stroke=%22%2523898781%22%20stroke-width=%226%22/%3E%3C/svg%3E">
+<script type="module">
+
+import {define} from "./_observablehq/client.ce6ccea5.js";
+import {registerFile} from "./_observablehq/stdlib.c4209144.js";
+
+registerFile("./data/fac_graph.json", {"name":"./data/fac_graph.json","mimeType":"application/json","path":"./_file/data/fac_graph.ece5a8eb.json","lastModified":1791787410750,"size":50220});
+registerFile("./data/ind_graph.json", {"name":"./data/ind_graph.json","mimeType":"application/json","path":"./_file/data/ind_graph.71d86f32.json","lastModified":1791787416913,"size":992672});
+registerFile("./data/network_metrics.json", {"name":"./data/network_metrics.json","mimeType":"application/json","path":"./_file/data/network_metrics.1a70771c.json","lastModified":1791787417817,"size":111825});
+
+define({id: "9f21ae3d", outputs: ["graphView","legend"], body: async () => {
+const {graphView, legend} = await import("./_import/components/graph.e8ae4cb7.js");
+
+return {graphView,legend};
+}});
+
+define({id: "c694e229", inputs: ["FileAttachment"], outputs: ["M","GF","GI","INST","instColor"], body: (FileAttachment) => {
+const M = FileAttachment("./data/network_metrics.json").json();
+const GF = FileAttachment("./data/fac_graph.json").json();
+const GI = FileAttachment("./data/ind_graph.json").json();
+const INST = ["IISER Pune", "IISER Kolkata"];
+const instColor = {domain: INST, range: ["var(--pune)", "var(--kolkata)"], legend: true};
+return {M,GF,GI,INST,instColor};
+}});
+
+define({id: "90ac2089", inputs: ["view","Inputs"], outputs: ["which"], body: (view,Inputs) => {
+const which = view(Inputs.radio(["G_fac — faculty only", "G_ind — faculty + Indian co-authors"], {value: "G_fac — faculty only", label: "Graph"}));
+return {which};
+}});
+
+define({id: "c0378e9d", inputs: ["which","GF","GI","M","d3"], outputs: ["key","G","S","commSizes"], body: (which,GF,GI,M,d3) => {
+const key = which.startsWith("G_fac") ? "G_fac" : "G_ind";
+const G = key === "G_fac" ? GF : GI;
+const S = M.coauthorship[key].summary;
+// communities ranked by size (faculty members) for the highlight selector
+const commSizes = d3.rollups(G.nodes.filter((n) => n.faculty), (v) => v.length, (n) => n.community)
+  .filter(([, n]) => n >= 3).sort((a, b) => b[1] - a[1]);
+return {key,G,S,commSizes};
+}});
+
+define({id: "a5753a33", mode: "inline", inputs: ["S","display"], body: async (S,display) => {
+display(await(
+S.nodes.toLocaleString()
+))
+}});
+
+define({id: "2191b0dc", mode: "inline", inputs: ["S","display"], body: async (S,display) => {
+display(await(
+S.edges.toLocaleString()
+))
+}});
+
+define({id: "8ffab1e3", mode: "inline", inputs: ["S","display"], body: async (S,display) => {
+display(await(
+S.isolates
+))
+}});
+
+define({id: "48c1ea72", mode: "inline", inputs: ["S","display"], body: async (S,display) => {
+display(await(
+S.mean_degree
+))
+}});
+
+define({id: "f6d587c2", mode: "inline", inputs: ["d3","S","display"], body: async (d3,S,display) => {
+display(await(
+d3.format(".0%")(S.giant_share)
+))
+}});
+
+define({id: "d4deb40d", mode: "inline", inputs: ["S","display"], body: async (S,display) => {
+display(await(
+S.components
+))
+}});
+
+define({id: "c509f072", mode: "inline", inputs: ["S","display"], body: async (S,display) => {
+display(await(
+S.avg_path_gcc
+))
+}});
+
+define({id: "cfcdb6bc", mode: "inline", inputs: ["S","display"], body: async (S,display) => {
+display(await(
+S.diameter_gcc
+))
+}});
+
+define({id: "bb946ef4", mode: "inline", inputs: ["S","display"], body: async (S,display) => {
+display(await(
+S.communities_leiden
+))
+}});
+
+define({id: "9ea5201e", mode: "inline", inputs: ["S","display"], body: async (S,display) => {
+display(await(
+S.modularity_leiden
+))
+}});
+
+define({id: "d44931ad", mode: "inline", inputs: ["S","display"], body: async (S,display) => {
+display(await(
+S.modularity_louvain
+))
+}});
+
+define({id: "84d8efa9", mode: "inline", inputs: ["S","display"], body: async (S,display) => {
+display(await(
+S.nmi_leiden_louvain
+))
+}});
+
+define({id: "bef491b0", mode: "inline", inputs: ["S","display"], body: async (S,display) => {
+display(await(
+S.transitivity
+))
+}});
+
+define({id: "33e13081", mode: "inline", inputs: ["S","display"], body: async (S,display) => {
+display(await(
+S.avg_clustering
+))
+}});
+
+define({id: "362bae0b", mode: "inline", inputs: ["S","display"], body: async (S,display) => {
+display(await(
+S.assortativity_degree
+))
+}});
+
+define({id: "0c309f62", inputs: ["view","Inputs"], outputs: ["mode"], body: (view,Inputs) => {
+const mode = view(Inputs.radio(["Institute", "Highlight a community"], {value: "Institute", label: "Colour"}));
+return {mode};
+}});
+
+define({id: "de35f05b", inputs: ["mode","view","Inputs","commSizes","G","d3"], outputs: ["comm"], body: (mode,view,Inputs,commSizes,G,d3) => {
+const comm = mode === "Institute" ? null : view(Inputs.select(commSizes.map(([c]) => c), {
+  label: "Community", format: (c) => {
+    const mem = G.nodes.filter((n) => n.faculty && n.community === c);
+    const top = d3.rollups(mem, (v) => v.length, (n) => n.dept).sort((a, b) => b[1] - a[1])[0];
+    return `#${c} · ${mem.length} faculty · mostly ${top[0]}`;
+  }
+}));
+return {comm};
+}});
+
+define({id: "b36fb676", inputs: ["graphView","G","key","comm","invalidation","display","legend"], outputs: ["facColor","gv"], body: (graphView,G,key,comm,invalidation,display,legend) => {
+const facColor = (n) => (n.inst === "IISER Pune" ? "pune" : "kolkata");
+const gv = graphView({
+  nodes: G.nodes, edges: G.edges, height: 640,
+  color: (n) => (n.faculty ? facColor(n) : "context"),
+  size: key === "G_fac" ? (n) => 3 + 1.6 * Math.sqrt(n.degree) : (n) => (n.faculty ? 3.5 + 0.55 * Math.sqrt(n.degree) : 2.8 + 0.35 * Math.sqrt(n.degree)),
+  label: (n) => (n.faculty ? n.label : ""),
+  labelThreshold: key === "G_fac" ? 4 : 7,
+  edgeSize: (e) => 0.5 + Math.log2(1 + e[3]) * 0.45,
+  focus: comm == null ? null : (n) => n.community === comm,
+  tooltip: (n, deg) => `<b>${n.label}</b>${n.faculty ? `${n.dept} · ${n.inst}` : `co-author · ${n.inst}`}<br>degree ${deg} · betweenness ${n.betweenness.toExponential(2)}<br>Leiden community #${n.community}`
+});
+invalidation.then(() => gv.kill());
+display(legend([["IISER Pune faculty", "var(--pune)"], ["IISER Kolkata faculty", "var(--kolkata)"],
+  ...(key === "G_ind" ? [["Indian co-author (other institute)", "var(--context)"]] : [])]));
+display(gv);
+return {facColor,gv};
+}});
+
+define({id: "5179512a", inputs: ["M","view","Inputs"], outputs: ["fc","qf"], body: (M,view,Inputs) => {
+const fc = M.faculty_comparison;
+const qf = view(Inputs.search(fc, {placeholder: "Search faculty…", columns: ["name", "dept", "inst"]}));
+return {fc,qf};
+}});
+
+define({id: "d80036c0", inputs: ["display","Inputs","qf","d3"], body: (display,Inputs,qf,d3) => {
+display(Inputs.table(qf, {
+  columns: ["name", "inst", "dept", "deg_fac", "btw_fac", "comm_fac", "deg_ind", "btw_ind", "partner_insts_ind"],
+  header: {name: "Faculty", inst: "Institute", dept: "Department", deg_fac: "Degree G_fac", btw_fac: "Betweenness G_fac",
+           comm_fac: "Community G_fac", deg_ind: "Degree G_ind", btw_ind: "Betweenness G_ind", partner_insts_ind: "Partner institutes"},
+  format: {btw_fac: d3.format(".4f"), btw_ind: d3.format(".4f")}, sort: "btw_ind", reverse: true, rows: 14, layout: "auto"
+}));
+}});
+
+define({id: "fa371f59", inputs: ["M"], outputs: ["keys","cmp"], body: (M) => {
+const keys = [["nodes", "Nodes"], ["edges", "Edges"], ["density", "Density"], ["components", "Components"], ["giant_share", "Giant component share"],
+  ["isolates", "Isolated nodes"], ["mean_degree", "Mean degree"], ["transitivity", "Transitivity"], ["avg_clustering", "Avg local clustering"],
+  ["assortativity_degree", "Degree assortativity"], ["avg_path_gcc", "Avg path length (giant)"], ["diameter_gcc", "Diameter (giant)"],
+  ["modularity_leiden", "Modularity (Leiden)"], ["communities_leiden", "Communities (Leiden)"],
+  ["nmi_community_department", "NMI communities ↔ departments"], ["nmi_community_institute", "NMI communities ↔ institute"]];
+const cmp = keys.map(([k, label]) => ({metric: label, G_fac: M.coauthorship.G_fac.summary[k], G_ind: M.coauthorship.G_ind.summary[k]}));
+return {keys,cmp};
+}});
+
+define({id: "1866e7be", inputs: ["display","Inputs","cmp"], body: (display,Inputs,cmp) => {
+display(Inputs.table(cmp, {rows: 16, sort: null, layout: "auto", select: false}));
+}});
+
+define({id: "3e55acc0", mode: "inline", inputs: ["M","display"], body: async (M,display) => {
+display(await(
+M.spearman_fac_vs_ind.degree
+))
+}});
+
+define({id: "085c4b41", mode: "inline", inputs: ["M","display"], body: async (M,display) => {
+display(await(
+M.spearman_fac_vs_ind.betweenness
+))
+}});
+
+define({id: "86c540de", inputs: ["display","resize","Plot","instColor","fc"], body: (display,resize,Plot,instColor,fc) => {
+display(resize((width) => Plot.plot({
+  width, height: 280, x: {type: "symlog", label: "degree in G_fac", grid: true}, y: {type: "symlog", label: "degree in G_ind", grid: true},
+  color: instColor,
+  marks: [Plot.dot(fc, {x: "deg_fac", y: "deg_ind", fill: "inst", r: 4, stroke: "var(--theme-background)", tip: true,
+    title: (d) => `${d.name} (${d.dept})\nG_fac degree ${d.deg_fac} · G_ind degree ${d.deg_ind}`})]
+})));
+}});
+
+define({id: "47b9289e", inputs: ["M","display","resize","Plot"], outputs: ["cc"], body: (M,display,resize,Plot) => {
+const cc = ["G_fac", "G_ind"].flatMap((g) => M.coauthorship[g].degree_ccdf.map((d) => ({...d, graph: g})));
+display(resize((width) => Plot.plot({
+  width, height: 280, x: {type: "log", label: "degree k", grid: true}, y: {type: "log", label: "P(K ≥ k)", grid: true},
+  color: {domain: ["G_fac", "G_ind"], range: ["var(--pune)", "var(--context)"], legend: true},
+  marks: [Plot.line(cc, {x: "k", y: "p", stroke: "graph", strokeWidth: 2}), Plot.dot(cc, {x: "k", y: "p", fill: "graph", r: 2.5, tip: true})]
+})));
+return {cc};
+}});
+
+define({id: "b0e4926e", mode: "inline", inputs: ["M","display"], body: async (M,display) => {
+display(await(
+M.coauthorship.G_fac.summary.powerlaw_degree?.alpha
+))
+}});
+
+define({id: "54784271", mode: "inline", inputs: ["M","display"], body: async (M,display) => {
+display(await(
+M.coauthorship.G_fac.summary.powerlaw_degree?.xmin
+))
+}});
+
+define({id: "69bc4e90", mode: "inline", inputs: ["M","display"], body: async (M,display) => {
+display(await(
+M.coauthorship.G_fac.summary.powerlaw_degree?.n_tail
+))
+}});
+
+define({id: "2b95efe2", mode: "inline", inputs: ["M","display"], body: async (M,display) => {
+display(await(
+M.coauthorship.G_ind.summary.powerlaw_degree?.alpha
+))
+}});
+
+define({id: "89688ff9", mode: "inline", inputs: ["M","display"], body: async (M,display) => {
+display(await(
+M.coauthorship.G_ind.summary.powerlaw_degree?.xmin
+))
+}});
+
+define({id: "f6e6c57e", mode: "inline", inputs: ["M","display"], body: async (M,display) => {
+display(await(
+M.coauthorship.G_ind.summary.powerlaw_degree?.n_tail
+))
+}});
+
+define({id: "cebe5194", inputs: ["display","resize","Plot","M","d3"], body: (display,resize,Plot,M,d3) => {
+display(resize((width) => Plot.plot({
+  width, height: 280, x: {tickFormat: "d", label: null}, y: {grid: true, label: "giant-component share", percent: true, domain: [0, 100]},
+  color: {domain: ["G_fac", "G_ind"], range: ["var(--pune)", "var(--context)"], legend: true},
+  marks: [Plot.line(M.snapshots, {x: "year", y: "giant_share", stroke: "graph", strokeWidth: 2}),
+          Plot.dot(M.snapshots, {x: "year", y: "giant_share", fill: "graph", r: 3, tip: true,
+            title: (d) => `${d.graph} ≤ ${d.year}\n${d.nodes} nodes · ${d.edges} edges\ngiant ${d3.format(".0%")(d.giant_share)} · mean degree ${d.mean_degree}`})]
+})));
+}});
+
+define({id: "3fa62fee", inputs: ["M"], outputs: ["H"], body: (M) => {
+const H = M.hyperauthorship;
+return {H};
+}});
+
+define({id: "b1ea7c99", mode: "inline", inputs: ["H","display"], body: async (H,display) => {
+display(await(
+H.hyper_papers
+))
+}});
+
+define({id: "c2df80bf", mode: "inline", inputs: ["H","display"], body: async (H,display) => {
+display(await(
+H.hyper_faculty_pairs
+))
+}});
+
+define({id: "cff55f1a", inputs: ["display","Inputs","H"], body: (display,Inputs,H) => {
+display(Inputs.table(H.top_strength_with, {header: {name: "Faculty", papers: "co-authored papers with other faculty, hyper papers included"}, select: false}));
+}});
+
+define({id: "4d33e906", mode: "inline", inputs: ["H","display"], body: async (H,display) => {
+display(await(
+H.rho_strength_papers
+))
+}});
+
+define({id: "c95f10c2", mode: "inline", inputs: ["H","display"], body: async (H,display) => {
+display(await(
+H.without.mean_degree
+))
+}});
+
+define({id: "e30bff1f", mode: "inline", inputs: ["H","display"], body: async (H,display) => {
+display(await(
+H.with.mean_degree
+))
+}});
+
+define({id: "5b90096d", inputs: ["display","Inputs","M","d3"], body: (display,Inputs,M,d3) => {
+display(Inputs.table(M.hubs, {columns: ["name", "inst", "faculty", "institutes_bridged", "degree", "betweenness"],
+  header: {name: "Author", inst: "Institute", faculty: "Our faculty?", institutes_bridged: "Institutes in neighbourhood", degree: "Degree", betweenness: "Betweenness"},
+  format: {betweenness: d3.format(".4f"), faculty: (x) => (x ? "yes" : "—")}, rows: 12, layout: "auto"}));
+}});
+
+</script>
+</head>
+<body>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link"><a href="./">citeGraph · Group 19</a></li>
+  </ol>
+  <div id="observablehq-search"><input type="search" placeholder="Search"></div>
+  <div id="observablehq-search-results"></div>
+  <script>{const o=document.querySelector("#observablehq-search");o.setAttribute("data-shortcut",`${/Mac|iPhone/.test(navigator.platform)?"\u2318":"Alt-"}K`);const t=o.querySelector("input"),r=()=>import("./_observablehq/search.fdd1983e.js");t.addEventListener("focus",r,{once:!0}),t.addEventListener("keydown",r,{once:!0});const c=document.querySelector("#observablehq-sidebar-toggle");addEventListener("keydown",e=>{(e.code==="KeyK"&&e.metaKey&&!e.altKey&&!e.ctrlKey||e.key==="/"&&!e.metaKey&&!e.altKey&&!e.ctrlKey&&e.target===document.body)&&(c.checked?t.focus():(c.click(),t.focus(),c.click()),t.select(),e.preventDefault())});}</script>
+  <ol>
+    <li class="observablehq-link"><a href="./">Overview</a></li>
+    <li class="observablehq-link"><a href="./faculty">Faculty</a></li>
+    <li class="observablehq-link"><a href="./papers">Papers &amp; venues</a></li>
+    <li class="observablehq-link"><a href="./citation-network">Citation network</a></li>
+    <li class="observablehq-link observablehq-link-active"><a href="./authorship-network">Authorship network</a></li>
+    <li class="observablehq-link"><a href="./connectivity">Indian connectivity</a></li>
+    <li class="observablehq-link"><a href="./methods">Methods &amp; data</a></li>
+  </ol>
+</nav>
+<script>{const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<div id="observablehq-center">
+<aside id="observablehq-toc" data-selector="h1:not(:first-of-type)[id], h2:first-child[id], :not(h1) + h2[id]">
+<nav>
+<div>Contents</div>
+<ol>
+<li class="observablehq-secondary-link"><a href="#faculty-centrality">Faculty centrality</a></li>
+<li class="observablehq-secondary-link"><a href="#g-fac-vs-g-ind">G_fac vs G_ind</a></li>
+<li class="observablehq-secondary-link"><a href="#degree-distribution">Degree distribution</a></li>
+<li class="observablehq-secondary-link"><a href="#growth-2016-2026">Growth 2016 → 2026</a></li>
+<li class="observablehq-secondary-link"><a href="#hyperauthorship-sensitivity">Hyperauthorship sensitivity</a></li>
+<li class="observablehq-secondary-link"><a href="#hub-authors-bridging-multiple-institutes-g-ind">Hub authors bridging multiple institutes (G_ind)</a></li>
+</ol>
+</nav>
+</aside>
+<main id="observablehq-main" class="observablehq">
+<h1 id="authorship-network" tabindex="-1"><a class="observablehq-header-anchor" href="#authorship-network">Authorship network</a></h1>
+<p class="muted">Undirected co-authorship graphs. The instruction note defines nodes as "faculty members" (§6b) while the slides say "authors", so we build <b>both</b> and compare them. <b>G_fac</b>: our publishing faculty only, linked when two of them co-author. <b>G_ind</b>: faculty plus their Indian co-authors at other institutions. Edge weight = Newman's collaboration strength Σ 1/(n−1) over shared papers. Papers with ≥100 authors are left out of both graphs (see sensitivity below).</p>
+<div class="observablehq observablehq--block"><!--:9f21ae3d:--></div>
+<div class="observablehq observablehq--block"><!--:c694e229:--></div>
+<div class="observablehq observablehq--block"><!--:90ac2089:--></div>
+<div class="observablehq observablehq--block"><!--:c0378e9d:--></div>
+<div class="grid grid-cols-4">
+  <div class="card"><h2>Nodes · edges</h2><div class="big"><observablehq-loading></observablehq-loading><!--:a5753a33:--> · <observablehq-loading></observablehq-loading><!--:2191b0dc:--></div><div class="muted"><observablehq-loading></observablehq-loading><!--:8ffab1e3:--> isolated · mean degree <observablehq-loading></observablehq-loading><!--:48c1ea72:--></div></div>
+  <div class="card"><h2>Giant component</h2><div class="big"><observablehq-loading></observablehq-loading><!--:f6d587c2:--></div><div class="muted"><observablehq-loading></observablehq-loading><!--:d4deb40d:--> components · avg path <observablehq-loading></observablehq-loading><!--:c509f072:--> · diameter <observablehq-loading></observablehq-loading><!--:cfcdb6bc:--></div></div>
+  <div class="card"><h2>Leiden communities</h2><div class="big"><observablehq-loading></observablehq-loading><!--:bb946ef4:--></div><div class="muted">modularity Q = <observablehq-loading></observablehq-loading><!--:9ea5201e:--> (Louvain <observablehq-loading></observablehq-loading><!--:d44931ad:-->, NMI <observablehq-loading></observablehq-loading><!--:84d8efa9:-->)</div></div>
+  <div class="card"><h2>Clustering</h2><div class="big"><observablehq-loading></observablehq-loading><!--:bef491b0:--></div><div class="muted">transitivity · avg local <observablehq-loading></observablehq-loading><!--:33e13081:--> · assortativity <observablehq-loading></observablehq-loading><!--:362bae0b:--></div></div>
+</div>
+<div class="observablehq observablehq--block"><!--:0c309f62:--></div>
+<div class="observablehq observablehq--block"><!--:de35f05b:--></div>
+<div class="observablehq observablehq--block"><!--:b36fb676:--></div>
+<h2 id="faculty-centrality" tabindex="-1"><a class="observablehq-header-anchor" href="#faculty-centrality">Faculty centrality</a></h2>
+<p class="muted">Degree centrality = most collaborative; betweenness (shortest paths with distance 1/strength) = brokers between groups. Both shown for the two graphs: a faculty member can be peripheral among IISER colleagues yet central in the wider Indian network.</p>
+<div class="observablehq observablehq--block"><!--:5179512a:--></div>
+<div class="observablehq observablehq--block"><!--:d80036c0:--></div>
+<h2 id="g-fac-vs-g-ind" tabindex="-1"><a class="observablehq-header-anchor" href="#g-fac-vs-g-ind">G_fac vs G_ind</a></h2>
+<div class="observablehq observablehq--block"><!--:fa371f59:--></div>
+<div class="grid grid-cols-2">
+<div class="card">
+<div class="observablehq observablehq--block"><!--:1866e7be:--></div>
+</div>
+<div class="card">
+<h3 id="do-the-two-graphs-rank-faculty-the-same-way" tabindex="-1"><a class="observablehq-header-anchor" href="#do-the-two-graphs-rank-faculty-the-same-way">Do the two graphs rank faculty the same way?</a></h3>
+<p>Spearman ρ between faculty rankings in G_fac and G_ind: <strong>degree <observablehq-loading></observablehq-loading><!--:3e55acc0:--></strong>, <strong>betweenness <observablehq-loading></observablehq-loading><!--:085c4b41:--></strong>.</p>
+<div class="observablehq observablehq--block"><!--:86c540de:--></div>
+</div>
+</div>
+<div class="grid grid-cols-2">
+<div class="card">
+<h2 id="degree-distribution" tabindex="-1"><a class="observablehq-header-anchor" href="#degree-distribution">Degree distribution</a></h2>
+<div class="observablehq observablehq--block"><!--:47b9289e:--></div>
+<p class="muted">Power-law tail (discrete MLE): G_fac α = <observablehq-loading></observablehq-loading><!--:b0e4926e:--> (k<sub>min</sub> <observablehq-loading></observablehq-loading><!--:54784271:-->, n<sub>tail</sub> <observablehq-loading></observablehq-loading><!--:69bc4e90:-->); G_ind α = <observablehq-loading></observablehq-loading><!--:2b95efe2:--> (k<sub>min</sub> <observablehq-loading></observablehq-loading><!--:89688ff9:-->, n<sub>tail</sub> <observablehq-loading></observablehq-loading><!--:f6e6c57e:-->). G_fac's tail has too few points for a credible fit.</p>
+</div>
+<div class="card">
+<h2 id="growth-2016-2026" tabindex="-1"><a class="observablehq-header-anchor" href="#growth-2016-2026">Growth 2016 → 2026</a></h2>
+<div class="observablehq observablehq--block"><!--:cebe5194:--></div>
+<p class="muted">Cumulative snapshots: all co-authorships up to each year. Nodes without edges are not counted.</p>
+</div>
+</div>
+<h2 id="hyperauthorship-sensitivity" tabindex="-1"><a class="observablehq-header-anchor" href="#hyperauthorship-sensitivity">Hyperauthorship sensitivity</a></h2>
+<div class="observablehq observablehq--block"><!--:3fa62fee:--></div>
+<div class="card">
+<p><observablehq-loading></observablehq-loading><!--:b1ea7c99:--> papers have ≥100 authors (OpenAlex truncates such author lists at 100). Between them they connect only <strong><observablehq-loading></observablehq-loading><!--:c2df80bf:--> pairs</strong> of our faculty, but with hundreds of shared papers each. Counting edges by plain paper counts (no 1/(n−1) weighting), they would dominate collaboration strength:</p>
+<div class="observablehq observablehq--block"><!--:cff55f1a:--></div>
+<p class="muted">Spearman ρ of faculty collaboration strength with vs without these papers: <observablehq-loading></observablehq-loading><!--:4d33e906:-->. The structure barely moves (mean degree <observablehq-loading></observablehq-loading><!--:c95f10c2:--> → <observablehq-loading></observablehq-loading><!--:e30bff1f:-->), but strength and "most collaborative" rankings would be distorted. Hence they are excluded from the graphs and kept in the CSVs, flagged <code>hyperauthored</code>.</p>
+</div>
+<h2 id="hub-authors-bridging-multiple-institutes-g-ind" tabindex="-1"><a class="observablehq-header-anchor" href="#hub-authors-bridging-multiple-institutes-g-ind">Hub authors bridging multiple institutes (G_ind)</a></h2>
+<div class="observablehq observablehq--block"><!--:5b90096d:--></div>
+</main>
+<footer id="observablehq-footer">
+<nav><a rel="prev" href="./citation-network"><span>Citation network</span></a><a rel="next" href="./connectivity"><span>Indian connectivity</span></a></nav>
+<div>DPCN 2026 · Group 19 · IISER Pune &amp; IISER Kolkata · data: OpenAlex (CC0), SCImago</div>
+</footer>
+</div>
+</body>
+</html>

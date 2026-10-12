@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.13.4">
+<title>Overview | citeGraph · Group 19</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_import/style.83b595f5.css">
+<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_import/style.83b595f5.css">
+<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="modulepreload" href="./_observablehq/client.ce6ccea5.js">
+<link rel="modulepreload" href="./_observablehq/runtime.fa9f71c0.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.c4209144.js">
+<link rel="modulepreload" href="./_npm/d3@7.9.0/080cf928.js">
+<link rel="modulepreload" href="./_npm/htl@1.0.0/11521f02.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.0cc910eb.js">
+<link rel="modulepreload" href="./_npm/@observablehq/plot@0.6.17/93ce672e.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/097745a2.js">
+<link rel="modulepreload" href="./_npm/isoformat@0.2.1/604cb63b.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/b8e751b6.js">
+<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/c662ea05.js">
+<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/d162d8c6.js">
+<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/5cedd0be.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/65d51007.js">
+<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/c576a91a.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/8b43826d.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/3fb06f14.js">
+<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/20b76948.js">
+<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/8683b012.js">
+<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/5c319046.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/33924f3e.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.2/8d67a1ae.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/8037bd0b.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/a9ba0229.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/e0a47f97.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/f9e9e0ab.js">
+<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/2da8eb3b.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/09002e01.js">
+<link rel="modulepreload" href="./_npm/d3-random@3.0.1/5108797c.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/c9f2571b.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/f3c78e0d.js">
+<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/28717d05.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/7c6e2a50.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/3d1d57c6.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/643581a8.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/e99232db.js">
+<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/bd07fd9a.js">
+<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/d09f7cc9.js">
+<link rel="modulepreload" href="./_npm/interval-tree-1d@1.0.4/f53f17b2.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/af036d7e.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.1.0/7b06abe7.js">
+<link rel="modulepreload" href="./_npm/binary-search-bounds@2.0.5/5f640032.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.3/b42f30a7.js">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Ccircle%20cx=%2230%22%20cy=%2270%22%20r=%2216%22%20fill=%22%25232a78d6%22/%3E%3Ccircle%20cx=%2272%22%20cy=%2232%22%20r=%2216%22%20fill=%22%2523eb6834%22/%3E%3Cline%20x1=%2230%22%20y1=%2270%22%20x2=%2272%22%20y2=%2232%22%20stroke=%22%2523898781%22%20stroke-width=%226%22/%3E%3C/svg%3E">
+<script type="module">
+
+import {define} from "./_observablehq/client.ce6ccea5.js";
+import {registerFile} from "./_observablehq/stdlib.c4209144.js";
+
+registerFile("./data/faculty.csv", {"name":"./data/faculty.csv","mimeType":"text/csv","path":"./_file/data/faculty.ff837a18.csv","lastModified":1791787419553,"size":58983});
+registerFile("./data/papers.csv", {"name":"./data/papers.csv","mimeType":"text/csv","path":"./_file/data/papers.38e58a5d.csv","lastModified":1791787419638,"size":2137689});
+
+define({id: "818b13fc", inputs: ["FileAttachment"], outputs: ["papers","faculty","INST","instColor"], body: (FileAttachment) => {
+const papers = FileAttachment("./data/papers.csv").csv({typed: true});
+const faculty = FileAttachment("./data/faculty.csv").csv({typed: true});
+const INST = ["IISER Pune", "IISER Kolkata"];
+const instColor = {domain: INST, range: ["var(--pune)", "var(--kolkata)"], legend: true};
+return {papers,faculty,INST,instColor};
+}});
+
+define({id: "958e68df", inputs: ["view","Inputs","INST"], outputs: ["pick","noHyper"], body: (view,Inputs,INST) => {
+const pick = view(Inputs.radio(["Both", ...INST], {value: "Both", label: "Institute"}));
+const noHyper = view(Inputs.toggle({label: "Exclude ≥100-author collaboration papers", value: false}));
+return {pick,noHyper};
+}});
+
+define({id: "e5a0b6e5", inputs: ["papers","pick","noHyper","faculty","INST"], outputs: ["P","F","shown","ranked"], body: (papers,pick,noHyper,faculty,INST) => {
+const P = papers.filter((d) => (pick === "Both" || d.institution === pick) && !(noHyper && d.hyperauthored));
+const F = faculty.filter((d) => pick === "Both" || d.institution === pick);
+const shown = pick === "Both" ? INST : [pick];
+const ranked = P.filter((d) => /^Q[1-4]$/.test(d.quartile ?? ""));
+return {P,F,shown,ranked};
+}});
+
+define({id: "e9ca7dd3", mode: "inline", inputs: ["shown","P","F","html","d3","display"], body: async (shown,P,F,html,d3,display) => {
+display(await(
+shown.map((inst) => {
+    const p = P.filter((d) => d.institution === inst), f = F.filter((d) => d.institution === inst);
+    const q = p.filter((d) => /^Q[1-4]$/.test(d.quartile ?? ""));
+    return html`<div class="card"><h2><span class="swatch" style="background:var(${inst === "IISER Pune" ? "--pune" : "--kolkata"})"></span>${inst}</h2>
+      <div class="big">${p.length.toLocaleString()}</div><div class="muted">papers · ${d3.sum(p, (d) => d.citations).toLocaleString()} citations</div>
+      <div class="muted">${f.filter((d) => d.papers > 0).length} of ${f.length} faculty with papers · median h-index ${d3.median(f, (d) => d.h_index)}</div>
+      <div class="muted">Q1 share: ${q.length ? d3.format(".0%")(q.filter((d) => d.quartile === "Q1").length / q.length) : "— (add SCImago files)"}</div></div>`;
+  })
+))
+}});
+
+define({id: "1a7153b5", inputs: ["d3","P","display","resize","Plot","instColor"], outputs: ["trend"], body: (d3,P,display,resize,Plot,instColor) => {
+const trend = d3.flatRollup(P, (v) => v.length, (d) => d.institution, (d) => d.year)
+  .map(([institution, year, papers]) => ({institution, year, papers}));
+display(resize((width) => Plot.plot({width,
+  height: 300, marginLeft: 44, x: {label: null, tickFormat: "d", ticks: 11}, y: {grid: true, label: "papers"},
+  color: instColor,
+  marks: [
+    Plot.ruleY([0], {stroke: "var(--theme-foreground-faint)"}),
+    Plot.line(trend, {x: "year", y: "papers", stroke: "institution", strokeWidth: 2}),
+    Plot.dot(trend, {x: "year", y: "papers", fill: "institution", r: 4, stroke: "var(--theme-background)", strokeWidth: 2}),
+    Plot.ruleX(trend, Plot.pointerX({x: "year", stroke: "var(--theme-foreground-faint)"})),
+    Plot.tip(trend, Plot.pointer({x: "year", y: "papers", title: (d) => `${d.institution}\n${d.year}: ${d.papers} papers`}))
+  ]
+})));
+return {trend};
+}});
+
+define({id: "0cf43f64", inputs: ["d3","P","display","ranked","html","resize","Plot"], outputs: ["qOrder","qRows"], body: (d3,P,display,ranked,html,resize,Plot) => {
+const qOrder = ["Q1", "Q2", "Q3", "Q4", "unranked"];
+const qRows = d3.flatRollup(P.filter((d) => d.type === "journal"), (v) => v.length, (d) => d.institution,
+  (d) => (/^Q[1-4]$/.test(d.quartile ?? "") ? d.quartile : "unranked"))
+  .map(([institution, quartile, n]) => ({institution, quartile, n}));
+display(ranked.length === 0
+  ? html`<p class="muted">No SCImago files in <code>ref/scimago/</code> yet, so quartiles are empty. Re-run <code>make data</code> after adding them.</p>`
+  : resize((width) => Plot.plot({width,
+      height: 160, marginLeft: 100, x: {percent: true, label: "share of journal papers (%)"}, y: {label: null},
+      color: {domain: qOrder, range: ["var(--q1)", "var(--q2)", "var(--q3)", "var(--q4)", "var(--qna)"], legend: true},
+      marks: [
+        Plot.barX(qRows, Plot.stackX({offset: "normalize", order: qOrder, x: "n", y: "institution", fill: "quartile",
+          inset: 1, tip: {format: {x: false}}, title: (d) => `${d.institution} · ${d.quartile}: ${d.n} papers`}))
+      ]
+    })));
+return {qOrder,qRows};
+}});
+
+define({id: "0d7a34b7", inputs: ["d3","P","display","resize","Plot","shown","instColor"], outputs: ["fieldRows","topFields"], body: (d3,P,display,resize,Plot,shown,instColor) => {
+const fieldRows = d3.flatRollup(P, (v) => v.length, (d) => d.institution, (d) => d.field ?? "Unclassified")
+  .map(([institution, field, n]) => ({institution, field, n,
+    share: n / P.filter((p) => p.institution === institution).length}));
+const topFields = d3.groupSort(fieldRows, (v) => -d3.sum(v, (d) => d.n), (d) => d.field).slice(0, 12);
+display(resize((width) => Plot.plot({width,
+  height: 420, marginLeft: 210, x: {percent: true, grid: true, label: "share of the institute's papers (%)"},
+  fy: {domain: topFields, label: null}, y: {domain: shown, axis: null}, color: instColor,
+  marks: [
+    Plot.barX(fieldRows.filter((d) => topFields.includes(d.field)), {x: "share", y: "institution", fy: "field",
+      fill: "institution", tip: true, title: (d) => `${d.institution}\n${d.field}: ${d.n} papers (${d3.format(".1%")(d.share)})`}),
+    Plot.ruleX([0])
+  ]
+})));
+return {fieldRows,topFields};
+}});
+
+define({id: "4d6fdb1e", inputs: ["shown","d3","P","display","resize","Plot","instColor"], outputs: ["topJ"], body: (shown,d3,P,display,resize,Plot,instColor) => {
+const topJ = shown.flatMap((inst) =>
+  d3.rollups(P.filter((d) => d.institution === inst && d.journal_name), (v) => v.length, (d) => d.journal_name)
+    .sort((a, b) => b[1] - a[1]).slice(0, 5).map(([journal, n], i) => ({institution: inst, rank: i + 1, journal, n})));
+display(resize((width) => Plot.plot({width,
+  height: 60 + 34 * topJ.length, marginLeft: 270, x: {grid: true, label: "papers"},
+  y: {domain: topJ.map((d) => `${d.institution === "IISER Pune" ? "Pune" : "Kolkata"} · ${d.journal}`), label: null},
+  color: instColor,
+  marks: [
+    Plot.barX(topJ, {y: (d) => `${d.institution === "IISER Pune" ? "Pune" : "Kolkata"} · ${d.journal}`, x: "n",
+      fill: "institution", tip: true}),
+    Plot.text(topJ, {y: (d) => `${d.institution === "IISER Pune" ? "Pune" : "Kolkata"} · ${d.journal}`, x: "n",
+      text: "n", dx: 4, textAnchor: "start", fill: "var(--theme-foreground-muted)"}),
+    Plot.ruleX([0])
+  ]
+})));
+return {topJ};
+}});
+
+</script>
+</head>
+<body>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link observablehq-link-active"><a href="./">citeGraph · Group 19</a></li>
+  </ol>
+  <div id="observablehq-search"><input type="search" placeholder="Search"></div>
+  <div id="observablehq-search-results"></div>
+  <script>{const o=document.querySelector("#observablehq-search");o.setAttribute("data-shortcut",`${/Mac|iPhone/.test(navigator.platform)?"\u2318":"Alt-"}K`);const t=o.querySelector("input"),r=()=>import("./_observablehq/search.fdd1983e.js");t.addEventListener("focus",r,{once:!0}),t.addEventListener("keydown",r,{once:!0});const c=document.querySelector("#observablehq-sidebar-toggle");addEventListener("keydown",e=>{(e.code==="KeyK"&&e.metaKey&&!e.altKey&&!e.ctrlKey||e.key==="/"&&!e.metaKey&&!e.altKey&&!e.ctrlKey&&e.target===document.body)&&(c.checked?t.focus():(c.click(),t.focus(),c.click()),t.select(),e.preventDefault())});}</script>
+  <ol>
+    <li class="observablehq-link observablehq-link-active"><a href="./">Overview</a></li>
+    <li class="observablehq-link"><a href="./faculty">Faculty</a></li>
+    <li class="observablehq-link"><a href="./papers">Papers &amp; venues</a></li>
+    <li class="observablehq-link"><a href="./citation-network">Citation network</a></li>
+    <li class="observablehq-link"><a href="./authorship-network">Authorship network</a></li>
+    <li class="observablehq-link"><a href="./connectivity">Indian connectivity</a></li>
+    <li class="observablehq-link"><a href="./methods">Methods &amp; data</a></li>
+  </ol>
+</nav>
+<script>{const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<h1 id="iiser-pune-and-iiser-kolkata-2016-2026" tabindex="-1"><a class="observablehq-header-anchor" href="#iiser-pune-and-iiser-kolkata-2016-2026">IISER Pune &amp; IISER Kolkata, 2016–2026</a></h1>
+<p class="muted">DPCN 2026 · Group 19. Every paper by a current regular faculty member, written while they were affiliated with the institute (OpenAlex). Pick an institute to filter every panel on this page.</p>
+<div class="observablehq observablehq--block"><!--:818b13fc:--></div>
+<div class="observablehq observablehq--block"><!--:958e68df:--></div>
+<div class="observablehq observablehq--block"><!--:e5a0b6e5:--></div>
+<div class="grid grid-cols-4">
+  <observablehq-loading></observablehq-loading><!--:e9ca7dd3:-->
+</div>
+<div class="grid grid-cols-2">
+<div class="card">
+<h2 id="publication-trend" tabindex="-1"><a class="observablehq-header-anchor" href="#publication-trend">Publication trend</a></h2>
+<div class="observablehq observablehq--block"><!--:1a7153b5:--></div>
+<p class="muted">2026 is a partial year (data collected Oct 2026).</p>
+</div>
+<div class="card">
+<h2 id="journal-quartile-distribution" tabindex="-1"><a class="observablehq-header-anchor" href="#journal-quartile-distribution">Journal quartile distribution</a></h2>
+<div class="observablehq observablehq--block"><!--:0cf43f64:--></div>
+</div>
+</div>
+<div class="grid grid-cols-2">
+<div class="card">
+<h2 id="research-area-breakdown" tabindex="-1"><a class="observablehq-header-anchor" href="#research-area-breakdown">Research area breakdown</a></h2>
+<div class="observablehq observablehq--block"><!--:0d7a34b7:--></div>
+<p class="muted">OpenAlex field of each paper's primary topic; top 12 fields.</p>
+</div>
+<div class="card">
+<h2 id="top-journals" tabindex="-1"><a class="observablehq-header-anchor" href="#top-journals">Top journals</a></h2>
+<div class="observablehq observablehq--block"><!--:4d6fdb1e:--></div>
+</div>
+</div>
+</main>
+<footer id="observablehq-footer">
+<nav><a rel="next" href="./faculty"><span>Faculty</span></a></nav>
+<div>DPCN 2026 · Group 19 · IISER Pune &amp; IISER Kolkata · data: OpenAlex (CC0), SCImago</div>
+</footer>
+</div>
+</body>
+</html>
