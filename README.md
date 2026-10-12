@@ -1,6 +1,8 @@
 # citeGraph
 Citation-Network for DPCN, Monsoon 26 · **Group 19: IISER Pune & IISER Kolkata**, 2016–2026.
 
+**Live dashboard: https://sudhuj.github.io/citeGraph/**
+
 Maps every paper by the current regular faculty of both institutes and builds the
 citation and co-authorship networks, the Indian connectivity analysis, an interactive
 dashboard and a short statistics report. Data source: [OpenAlex](https://openalex.org) (CC0).
@@ -29,7 +31,8 @@ Rebuilding from scratch needs a free OpenAlex API key in `.env` (`OPENALEX_API_K
 make roster match   # scrape rosters, match to OpenAlex → review data/faculty_review.csv
 make data           # fetch → stage → institutions → topics → build → networks → export → check
 make report         # report/report.pdf
-make site           # static dashboard in dashboard/dist/ (deploy anywhere, e.g. GitHub Pages)
+make site           # static dashboard in dashboard/dist/
+make deploy         # build + publish to https://sudhuj.github.io/citeGraph/
 ```
 
 All API responses are cached in `data/cache/`, so re-runs cost nothing. A full fetch uses roughly 3k of the 10k daily credits.

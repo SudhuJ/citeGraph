@@ -1,7 +1,7 @@
 # citeGraph — DPCN 2026 Group 19 pipeline. Every OpenAlex response is cached in data/cache,
 # so re-running any step costs no API credits. Needs OPENALEX_API_KEY in .env for fresh fetches.
 PY := uv run
-.PHONY: setup roster match fetch stage institutions topics build networks export report data check dash site clean
+.PHONY: setup roster match fetch stage institutions topics build networks export report data check dash site deploy clean
 
 setup:                       ## install Python + dashboard dependencies
 	uv sync
@@ -37,6 +37,9 @@ dash:                        ## live dashboard at http://localhost:3000
 	npm --prefix dashboard run dev
 site:                        ## static dashboard -> dashboard/dist/
 	npm --prefix dashboard run build
+
+deploy: site                 ## publish to GitHub Pages (gh-pages branch)
+	dashboard/deploy.sh
 
 clean:                       ## remove derived files (keeps the API cache and raw data)
 	rm -rf data/stage data/out data/citegraph.duckdb dashboard/dist report/report.pdf report/data.json
