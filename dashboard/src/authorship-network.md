@@ -16,7 +16,6 @@ const GF = FileAttachment("data/fac_graph.json").json();
 const GI = FileAttachment("data/ind_graph.json").json();
 const INST = ["IISER Pune", "IISER Kolkata"];
 const instColor = {domain: INST, range: ["var(--pune)", "var(--kolkata)"], legend: true};
-const cssv = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 ```
 
 ```js
@@ -54,20 +53,20 @@ const comm = mode === "Institute" ? null : view(Inputs.select(commSizes.map(([c]
 ```
 
 ```js
-const facColor = (n) => (n.inst === "IISER Pune" ? cssv("--pune") : cssv("--kolkata"));
+const facColor = (n) => (n.inst === "IISER Pune" ? "pune" : "kolkata");
 const gv = graphView({
   nodes: G.nodes, edges: G.edges, height: 640,
-  color: (n) => (n.faculty ? facColor(n) : cssv("--context")),
-  size: key === "G_fac" ? (n) => 3 + 1.6 * Math.sqrt(n.degree) : (n) => (n.faculty ? 3 + 0.5 * Math.sqrt(n.degree) : 1.5 + 0.25 * Math.sqrt(n.degree)),
+  color: (n) => (n.faculty ? facColor(n) : "context"),
+  size: key === "G_fac" ? (n) => 3 + 1.6 * Math.sqrt(n.degree) : (n) => (n.faculty ? 3.5 + 0.55 * Math.sqrt(n.degree) : 2.8 + 0.35 * Math.sqrt(n.degree)),
   label: (n) => (n.faculty ? n.label : ""),
-  labelThreshold: key === "G_fac" ? 4 : 10,
-  edgeSize: (e) => Math.min(0.5 + e[3] * 0.25, 4),
+  labelThreshold: key === "G_fac" ? 4 : 7,
+  edgeSize: (e) => 0.5 + Math.log2(1 + e[3]) * 0.45,
   focus: comm == null ? null : (n) => n.community === comm,
   tooltip: (n, deg) => `<b>${n.label}</b>${n.faculty ? `${n.dept} · ${n.inst}` : `co-author · ${n.inst}`}<br>degree ${deg} · betweenness ${n.betweenness.toExponential(2)}<br>Leiden community #${n.community}`
 });
 invalidation.then(() => gv.kill());
-display(legend([["IISER Pune faculty", cssv("--pune")], ["IISER Kolkata faculty", cssv("--kolkata")],
-  ...(key === "G_ind" ? [["Indian co-author (other institute)", cssv("--context")]] : [])]));
+display(legend([["IISER Pune faculty", "var(--pune)"], ["IISER Kolkata faculty", "var(--kolkata)"],
+  ...(key === "G_ind" ? [["Indian co-author (other institute)", "var(--context)"]] : [])]));
 display(gv);
 ```
 

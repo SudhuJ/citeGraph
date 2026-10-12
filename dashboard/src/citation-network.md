@@ -15,7 +15,6 @@ const M = FileAttachment("data/network_metrics.json").json();
 const G = FileAttachment("data/cit_graph.json").json();
 const INST = ["IISER Pune", "IISER Kolkata"];
 const instColor = {domain: INST, range: ["var(--pune)", "var(--kolkata)"], legend: true};
-const cssv = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 ```
 
 ```js
@@ -35,7 +34,8 @@ const sizeBy = view(Inputs.radio(["PageRank", "In-degree", "Total citations"], {
 ```
 
 ```js
-const yearRamp = d3.scaleSequential([2016, 2026], d3.interpolateRgb("#cde2fb", "#0d366b"));
+// sequential year ramp: light→dark on a light surface, dark→light on a dark one (tokens in style.css)
+const yearColor = (y, t) => d3.interpolateRgb(t.rampLo, t.rampHi)((y - 2016) / 10);
 const sizeFn = {
   "PageRank": (n) => 1.5 + 220 * Math.sqrt(n.pr),
   "In-degree": (n) => 1.5 + 2.2 * Math.sqrt(n.indeg),
@@ -44,16 +44,16 @@ const sizeFn = {
 const view_ = graphView({
   nodes: G.nodes, edges: G.edges, directed: true, height: 640,
   color: colorBy === "Institute"
-    ? (n) => (n.inst.includes(";") ? cssv("--context") : n.inst === "IISER Pune" ? cssv("--pune") : cssv("--kolkata"))
-    : (n) => yearRamp(n.year),
+    ? (n) => (n.inst.includes(";") ? "context" : n.inst === "IISER Pune" ? "pune" : "kolkata")
+    : (n, t) => yearColor(n.year, t),
   size: sizeFn, label: (n) => (n.title.length > 60 ? n.title.slice(0, 57) + "…" : n.title),
   labelThreshold: 12,
   tooltip: (n) => `<b>${n.title}</b>${n.venue ?? ""} · ${n.year}<br>${n.inst}<br>in-degree (corpus) ${n.indeg} · out ${n.outdeg}<br>PageRank ${n.pr.toExponential(2)} · ${n.cites} citations total`
 });
 invalidation.then(() => view_.kill());
 display(colorBy === "Institute"
-  ? legend([["IISER Pune", cssv("--pune")], ["IISER Kolkata", cssv("--kolkata")], ["joint Pune–Kolkata paper", cssv("--context")]])
-  : legend([["2016", yearRamp(2016)], ["2021", yearRamp(2021)], ["2026", yearRamp(2026)]]));
+  ? legend([["IISER Pune", "var(--pune)"], ["IISER Kolkata", "var(--kolkata)"], ["joint Pune–Kolkata paper", "var(--context)"]])
+  : legend([["2016", "var(--ramp-lo)"], ["2021", "color-mix(in oklab, var(--ramp-lo), var(--ramp-hi))"], ["2026", "var(--ramp-hi)"]]));
 display(view_);
 ```
 <p class="muted">Shows the largest weakly-connected component (${d3.format(".0%")(C.visual_component_share)} of papers). Layout: igraph DrL, precomputed.</p>
