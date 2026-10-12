@@ -1,0 +1,19 @@
+.env
+.venv/
+__pycache__/
+data/raw/
+data/cache/
+dashboard/node_modules/
+dashboard/dist/
+dashboard/src/.observablehq/cache/
+report/*.pdf
+dashboard/src/downloads/
+data/stage/
+data/citegraph.duckdb*
+report/data.json
+
+# third-party / course materials, not redistributed
+ref/scimago/
+*.docx
+*.pptx
+.claude/

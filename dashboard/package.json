@@ -1,0 +1,22 @@
+{
+  "name": "citegraph-dashboard",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "observable preview",
+    "build": "observable build",
+    "clean": "rimraf src/.observablehq/cache",
+    "vendor": "esbuild vendor/graph-libs.js --bundle --format=esm --minify --target=es2022 --outfile=src/components/vendor/graph-libs.js"
+  },
+  "dependencies": {
+    "@observablehq/framework": "1.13.4"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "events": "3.3.0",
+    "graphology": "0.26.0",
+    "sigma": "4.0.0"
+  }
+}

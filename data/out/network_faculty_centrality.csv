@@ -1,0 +1,268 @@
+fac_id,name,inst,dept,deg_fac,btw_fac,comm_fac,strength_fac,deg_ind,btw_ind,comm_ind,partner_insts_ind,deg_fac_hyper,deg_fac_hyper_unweighted,strength_fac_hyper_unweighted
+"KOL001","Sunil Kumar Khare","IISER Kolkata","Biological Sciences",0,0.0,0,0.0,26,3.3334263780016516e-05,60,6,0,0,0
+"KOL002","Amirul Islam Mallick","IISER Kolkata","Biological Sciences",13,0.023833167825223437,1,4.4,57,0.07047191042144783,15,15,13,13,25
+"KOL003","Amit Kumar Mandal","IISER Kolkata","Biological Sciences",0,0.0,2,0.0,14,0.005629768792090071,40,8,0,0,0
+"KOL004","Anindita Bhadra","IISER Kolkata","Biological Sciences",2,0.0,3,0.286,29,0.011675811339394182,49,12,2,2,2
+"KOL005","Annagiri Sumana","IISER Kolkata","Biological Sciences",1,0.0,4,0.25,7,0.0017357280603706171,35,3,1,1,1
+"KOL006","Anuradha Bhat","IISER Kolkata","Biological Sciences",1,0.0,1,0.333,19,0.022053194445961478,14,9,1,1,1
+"KOL007","Arnab Gupta","IISER Kolkata","Biological Sciences",8,0.045027663498368564,1,3.607,20,0.07487162869837387,20,9,8,8,18
+"KOL008","Babu Sudhamalla","IISER Kolkata","Biological Sciences",1,0.0,1,0.367,10,0.0030349148095153143,20,6,1,1,2
+"KOL009","Bidisha Sinha","IISER Kolkata","Biological Sciences",5,0.0,3,1.079,28,0.005980992187888739,20,7,5,5,7
+"KOL010","Dipjyoti Das","IISER Kolkata","Biological Sciences",5,0.006156901688182721,1,1.442,8,0.04056520995124864,15,2,5,5,7
+"KOL011","Jayasri Das Sarma","IISER Kolkata","Biological Sciences",4,0.010242587601078167,3,3.169,40,0.015926536784400536,52,8,4,4,15
+"KOL012","Malancha Ta","IISER Kolkata","Biological Sciences",2,0.003830330543339481,5,0.678,2,0.000313600986435301,5,0,2,2,4
+"KOL013","Mohit Prasad","IISER Kolkata","Biological Sciences",3,0.001560505036175344,1,1.233,7,0.008506790844890089,20,2,3,3,4
+"KOL014","Neelanjana Sengupta","IISER Kolkata","Biological Sciences",7,0.03765073060008512,6,2.352,31,0.047877974749295185,38,14,7,7,8
+"KOL015","Partha Pratim Datta","IISER Kolkata","Biological Sciences",0,0.0,7,0.0,4,0.0013018567265833877,20,3,0,0,0
+"KOL016","Punyasloke Bhadury","IISER Kolkata","Biological Sciences",4,0.02406015037593985,1,3.06,95,0.19448289211956157,1,31,4,4,11
+"KOL017","Radhika Venkatesan","IISER Kolkata","Biological Sciences",0,0.0,8,0.0,19,1.5595095494170347e-05,26,3,0,0,0
+"KOL018","Rahul Das","IISER Kolkata","Biological Sciences",11,0.007603915448999858,1,3.258,23,0.0172129197781006,20,4,11,11,20
+"KOL019","Rituparna Sinha Roy","IISER Kolkata","Biological Sciences",1,0.0,9,0.143,9,0.0024162082194041823,38,5,1,1,1
+"KOL020","Robert John Chandran","IISER Kolkata","Biological Sciences",0,0.0,10,0.0,9,1.0558547143912998e-05,77,4,0,0,0
+"KOL021","Rupak Datta","IISER Kolkata","Biological Sciences",7,0.009419775854731168,1,3.406,12,0.012967230881444506,20,4,7,7,14
+"KOL022","Sreeramaiah Gangappa","IISER Kolkata","Biological Sciences",2,0.0,1,0.45,4,0.012697199072304202,53,1,2,2,2
+"KOL023","Sumit Sen Santara","IISER Kolkata","Biological Sciences",0,0.0,11,0.0,0,0.0,97,0,0,0,0
+"KOL024","Supratim Datta","IISER Kolkata","Biological Sciences",7,0.0006242020144701376,1,1.479,14,0.0027974081800826965,20,5,7,7,8
+"KOL025","Sankar Maiti","IISER Kolkata","Biological Sciences",6,0.017307419492126542,1,3.383,23,0.12843554290148065,20,8,6,6,13
+"KOL026","Subrata Pramanik","IISER Kolkata","Biological Sciences",0,0.0,12,0.0,4,0.0,93,2,0,0,0
+"KOL027","Alakesh Bisai","IISER Kolkata","Chemical Sciences",1,0.0,1,0.667,48,0.02126139443212614,32,16,1,1,3
+"KOL028","Amlan Kusum Roy","IISER Kolkata","Chemical Sciences",0,0.0,13,0.0,6,1.577713941044471e-06,0,4,0,0,0
+"KOL029","Arindam Mukherjee","IISER Kolkata","Chemical Sciences",7,0.04882962122286849,1,5.518,26,0.08715152243327179,20,5,7,7,30
+"KOL030","Ashwani Kumar Tiwari","IISER Kolkata","Chemical Sciences",4,0.011065399347425167,6,2.483,9,0.014175031584619474,38,4,4,4,6
+"KOL031","Balaram Mukhopadhyay","IISER Kolkata","Chemical Sciences",5,0.0,1,0.851,11,0.0026016502887823323,20,5,5,5,5
+"KOL032","Biplab Maji","IISER Kolkata","Chemical Sciences",4,0.007348560079443893,1,1.033,34,0.030276067576319884,27,12,4,4,4
+"KOL033","Debabrata Mukherjee","IISER Kolkata","Chemical Sciences",0,0.0,14,0.0,13,0.010551953108723505,27,6,0,0,0
+"KOL034","Debansu Chaudhuri","IISER Kolkata","Chemical Sciences",4,0.010497942970634132,1,1.137,14,0.016476976905908783,25,5,4,4,6
+"KOL035","Debasis Koley","IISER Kolkata","Chemical Sciences",2,0.00019860973187686197,15,0.583,40,0.01065876140040829,42,13,2,2,2
+"KOL036","Debasish Haldar","IISER Kolkata","Chemical Sciences",7,0.021109377216626472,3,4.017,12,0.01961159110023702,8,2,7,7,17
+"KOL037","Sureshkumar Devarajulu","IISER Kolkata","Chemical Sciences",1,0.0,3,0.25,5,0.0017356066977597675,8,4,1,1,1
+"KOL038","Dibyendu Das","IISER Kolkata","Chemical Sciences",2,0.0,1,0.375,19,0.025826327676622043,10,9,2,2,2
+"KOL039","Mousumi Das","IISER Kolkata","Chemical Sciences",6,0.003943821818697688,1,1.327,9,0.0009593714387658879,25,2,6,6,6
+"KOL040","Pradip Kumar Ghorai","IISER Kolkata","Chemical Sciences",4,0.0,3,1.286,6,0.0,20,1,4,4,6
+"KOL041","Pradip Kumar Tarafdar","IISER Kolkata","Chemical Sciences",4,0.004624769470846928,1,1.843,20,0.009578968830440656,15,10,4,4,8
+"KOL042","Pradipta Purkayastha","IISER Kolkata","Chemical Sciences",3,0.0,1,0.867,38,0.012506052960216122,25,16,3,3,4
+"KOL043","Prasun Kumar Mandal","IISER Kolkata","Chemical Sciences",4,0.0,5,0.68,18,0.0014494336613764705,5,7,4,4,6
+"KOL044","Priyadarshi De","IISER Kolkata","Chemical Sciences",19,0.0880124840402894,1,11.452,79,0.2855368495318033,20,23,19,19,47
+"KOL045","Rahul Banerjee","IISER Kolkata","Chemical Sciences",11,0.0013618953042984821,1,1.994,78,0.04946204000030745,9,17,11,11,16
+"KOL046","Raja Shunmugam","IISER Kolkata","Chemical Sciences",11,0.02471272520924954,3,5.82,59,0.03166202859222203,52,16,11,11,31
+"KOL047","Ratheesh K Vijayaraghavan","IISER Kolkata","Chemical Sciences",7,0.003915448999858136,1,1.451,23,0.004773919660378869,25,8,7,7,9
+"KOL048","Sangita Sen","IISER Kolkata","Chemical Sciences",3,0.0,6,0.75,11,0.0026020143766148814,38,4,3,3,3
+"KOL049","Sanjio S. Zade","IISER Kolkata","Chemical Sciences",3,0.0,15,0.6,57,0.019853446556558418,25,19,3,3,4
+"KOL050","Sayam Sen Gupta","IISER Kolkata","Chemical Sciences",5,0.0,1,1.03,68,0.02175526946342758,16,13,5,5,7
+"KOL051","Sayan Bhattacharyya","IISER Kolkata","Chemical Sciences",10,0.012001702369130373,15,3.237,75,0.1576090918395376,5,21,10,10,19
+"KOL052","Soumyajit Roy","IISER Kolkata","Chemical Sciences",6,0.0821393105405022,3,2.255,32,0.04751158102714032,8,12,6,6,13
+"KOL053","Subhajit Bandyopadhyay","IISER Kolkata","Chemical Sciences",3,0.011490991630018443,16,0.541,28,0.02119345159715217,27,8,3,3,3
+"KOL054","Suman De Sarkar","IISER Kolkata","Chemical Sciences",3,2.8372818839551708e-05,1,0.484,14,0.005542387712278377,27,7,3,3,3
+"KOL055","Sumit Khanra","IISER Kolkata","Chemical Sciences",0,0.0,17,0.0,24,0.005562109136541433,41,5,0,0,0
+"KOL056","Supratim Banerjee","IISER Kolkata","Chemical Sciences",2,0.0,1,0.583,6,0.001255253484017151,10,1,2,2,2
+"KOL057","Susmita Roy","IISER Kolkata","Chemical Sciences",3,0.0,3,0.9,13,0.002644612653023082,7,4,3,3,4
+"KOL058","Swadhin Mandal","IISER Kolkata","Chemical Sciences",1,0.0,6,0.45,39,0.0316715151029701,27,17,1,1,2
+"KOL059","Venkataramanan Mahalingam","IISER Kolkata","Chemical Sciences",7,0.008171371825790892,15,2.592,59,0.024991534957893243,30,20,7,7,14
+"KOL061","Subila K.B","IISER Kolkata","Chemical Sciences",0,0.0,18,0.0,3,0.0,83,1,0,0,0
+"KOL062","Dwaipayan Roy","IISER Kolkata","Computational and Data Sciences",1,0.0,19,0.979,29,0.007792450517429491,39,10,1,1,4
+"KOL063","Kripabandhu Ghosh","IISER Kolkata","Computational and Data Sciences",2,0.0038870761810185844,19,1.812,43,0.025776093669281228,39,14,2,2,6
+"KOL064","Monidipa Das","IISER Kolkata","Computational and Data Sciences",0,0.0,20,0.0,7,2.0631643844427695e-06,76,3,0,0,0
+"KOL067","Debananda Roy","IISER Kolkata","Earth Sciences",0,0.0,21,0.0,1,0.0,65,1,0,0,0
+"KOL068","Gaurav Shukla","IISER Kolkata","Earth Sciences",3,0.003830330543339481,15,1.1,3,0.011358812199855094,5,0,3,3,4
+"KOL069","Gopala Krishna Darbha","IISER Kolkata","Earth Sciences",3,0.007717406724358065,19,1.143,46,0.04000481809565073,1,18,3,3,4
+"KOL070","Kajaljyoti Borah","IISER Kolkata","Earth Sciences",1,0.0,22,0.333,18,0.006929805079510715,46,6,1,1,1
+"KOL071","Kathakali Bhattacharyya","IISER Kolkata","Earth Sciences",0,0.0,23,0.0,12,0.0008681067554070077,48,9,0,0,0
+"KOL072","Manoj Kumar Jaiswal","IISER Kolkata","Earth Sciences",3,0.007745779543197617,24,2.007,86,0.029243194895003138,19,31,3,3,12
+"KOL073","Prasanta Sanyal","IISER Kolkata","Earth Sciences",3,0.015292949354518371,24,2.873,113,0.15169468929351185,19,29,3,3,14
+"KOL074","Sanjay Kumar Mandal","IISER Kolkata","Earth Sciences",1,0.0,24,0.2,2,0.0,19,1,1,1,1
+"KOL075","Subhronil Mondal","IISER Kolkata","Earth Sciences",0,0.0,25,0.0,29,0.010811719663696116,6,9,1,1,1
+"KOL076","Sujata Ray","IISER Kolkata","Earth Sciences",0,0.0,26,0.0,1,0.0,82,1,0,0,0
+"KOL077","Supriyo Mitra","IISER Kolkata","Earth Sciences",2,2.8372818839551708e-05,22,0.833,12,0.01165906329909694,46,5,2,2,2
+"KOL078","Swastika Chatterjee","IISER Kolkata","Earth Sciences",4,0.00019860973187686197,15,1.167,34,0.020560403991858996,12,9,4,4,4
+"KOL079","Tapabrato Sarkar","IISER Kolkata","Earth Sciences",1,0.0,22,0.5,9,0.014215566696643232,46,5,1,1,1
+"KOL080","Tarun Kumar Dalai","IISER Kolkata","Earth Sciences",0,0.0,27,0.0,12,0.0026020143766148814,19,7,0,0,0
+"KOL081","Tushar Kanti Nandi","IISER Kolkata","Humanities and Social Sciences",0,0.0,28,0.0,5,8.495382759470228e-07,78,5,0,0,0
+"KOL082","Anirban Banerjee","IISER Kolkata","Mathematics and Statistics",0,0.0,29,0.0,1,0.0,92,1,0,0,0
+"KOL083","Anirvan Chakraborty","IISER Kolkata","Mathematics and Statistics",0,0.0,30,0.0,12,3.519515714637666e-06,34,2,0,0,0
+"KOL084","Arjun Paul","IISER Kolkata","Mathematics and Statistics",0,0.0,31,0.0,1,0.0,58,1,0,0,0
+"KOL086","Koel Das","IISER Kolkata","Mathematics and Statistics",2,0.007717406724358065,16,2.25,3,0.015226274519798489,14,0,2,2,6
+"KOL087","Md. Ali Zinna","IISER Kolkata","Mathematics and Statistics",0,0.0,32,0.0,0,0.0,98,0,0,0,0
+"KOL088","Rajib Dutta","IISER Kolkata","Mathematics and Statistics",1,0.0,33,2.333,3,4.854504433982988e-07,79,2,1,1,5
+"KOL089","Satyaki Mazumder","IISER Kolkata","Mathematics and Statistics",2,0.0038870761810185844,16,2.25,4,0.014450524711248008,14,2,2,2,6
+"KOL090","Saugata Bandyopadhyay","IISER Kolkata","Mathematics and Statistics",0,0.0,34,0.0,0,0.0,99,0,0,0,0
+"KOL091","Sayan Bagchi","IISER Kolkata","Mathematics and Statistics",0,0.0,35,0.0,5,7.281756650974481e-07,43,3,0,0,0
+"KOL092","Shibananda Biswas","IISER Kolkata","Mathematics and Statistics",2,0.0,36,1.0,3,2.427252216991494e-07,95,1,2,2,3
+"KOL093","Shirshendu Chowdhury","IISER Kolkata","Mathematics and Statistics",1,0.0,33,2.333,4,8.495382759470228e-07,79,2,1,1,5
+"KOL094","Somnath Basu","IISER Kolkata","Mathematics and Statistics",0,0.0,37,0.0,5,4.854504433982988e-07,64,2,0,0,0
+"KOL095","Soumya Bhattacharya","IISER Kolkata","Mathematics and Statistics",0,0.0,38,0.0,0,0.0,100,0,0,0,0
+"KOL096","Subrata Shyam Roy","IISER Kolkata","Mathematics and Statistics",2,0.0,36,1.0,3,0.0,95,1,2,2,3
+"KOL097","Sushil Gorai","IISER Kolkata","Mathematics and Statistics",0,0.0,39,0.0,4,1.8204391627436203e-06,61,3,0,0,0
+"KOL098","Swarnendu Datta","IISER Kolkata","Mathematics and Statistics",2,0.0,36,0.667,2,0.0,95,0,2,2,2
+"KOL099","Soumalya Joardar","IISER Kolkata","Mathematics and Statistics",0,0.0,40,0.0,6,1.577713941044471e-06,73,3,0,0,0
+"KOL101","Amit Ghosal","IISER Kolkata","Physical Sciences",0,0.0,41,0.0,8,0.0014420305421146463,29,4,0,0,0
+"KOL102","Ananda Dasgupta","IISER Kolkata","Physical Sciences",0,0.0,42,0.0,7,0.0017351212473163693,2,5,0,0,0
+"KOL103","Anandamohan Ghosh","IISER Kolkata","Physical Sciences",1,0.0,43,1.0,6,0.0049343610319220075,7,3,1,1,2
+"KOL104","Arindam Kundagrami","IISER Kolkata","Physical Sciences",0,0.0,44,0.0,2,0.0,86,1,0,0,0
+"KOL105","Ayan Banerjee","IISER Kolkata","Physical Sciences",11,0.10966094481486735,3,9.733,35,0.08498224667274287,8,9,11,11,46
+"KOL106","Bhavtosh Bansal","IISER Kolkata","Physical Sciences",4,0.0033196198042275502,15,1.75,26,0.01419869729373514,30,8,4,4,7
+"KOL107","Bheemalingam Chittari","IISER Kolkata","Physical Sciences",0,0.0,45,0.0,50,0.014849433499559677,21,20,0,0,0
+"KOL108","Bipul Pal","IISER Kolkata","Physical Sciences",0,0.0,46,0.0,8,0.0,12,4,0,0,0
+"KOL109","Chiranjib Mitra","IISER Kolkata","Physical Sciences",4,0.0041140587317349975,15,0.944,20,0.00590950961009834,30,6,4,4,6
+"KOL110","Dhananjay Nandi","IISER Kolkata","Physical Sciences",1,0.0,1,0.333,2,0.00043411405900892864,25,1,1,1,1
+"KOL111","Dibyendu Nandi","IISER Kolkata","Physical Sciences",0,0.0,47,0.0,0,0.0,101,0,0,0,0
+"KOL112","Golam Mortuza Hossain","IISER Kolkata","Physical Sciences",0,0.0,48,0.0,1,0.0,89,1,0,0,0
+"KOL113","Goutam Dev Mukherjee","IISER Kolkata","Physical Sciences",11,0.008540218470705064,15,3.129,49,0.026059048573766827,5,16,11,11,21
+"KOL114","Kamaraju Natarajan","IISER Kolkata","Physical Sciences",5,0.0024116896013618955,15,1.408,23,0.008072373379354035,30,6,5,5,9
+"KOL115","Koushik Dutta","IISER Kolkata","Physical Sciences",0,0.0,49,0.0,23,0.009515890613451589,2,11,0,0,0
+"KOL116","Nirmalya Ghosh","IISER Kolkata","Physical Sciences",12,0.08438076322882679,3,10.193,64,0.06387077551921959,8,18,12,12,49
+"KOL117","Partha Mitra","IISER Kolkata","Physical Sciences",5,0.007149950347567031,3,1.795,5,0.0038446461491036766,8,0,5,5,10
+"KOL118","Pradeep Kumar Mohanty","IISER Kolkata","Physical Sciences",0,0.0,50,0.0,7,0.00043411405900892864,12,5,0,0,0
+"KOL119","Rajesh Kumble Nayak","IISER Kolkata","Physical Sciences",3,2.8372818839551708e-05,15,0.733,7,0.0017716513931820912,30,4,4,4,10
+"KOL120","Rangeet Bhattacharyya","IISER Kolkata","Physical Sciences",3,0.005192225847637963,3,2.002,7,0.01707881409311182,52,3,3,3,10
+"KOL121","Ritesh Kumar Singh","IISER Kolkata","Physical Sciences",0,0.0,51,0.0,20,0.007361673930218926,2,9,0,0,0
+"KOL122","Rumi De","IISER Kolkata","Physical Sciences",2,0.0,1,0.6,3,0.0,20,1,2,2,3
+"KOL123","Satyabrata Raj","IISER Kolkata","Physical Sciences",6,0.00944814867357072,15,1.493,14,0.00702531745424933,30,6,6,6,10
+"KOL124","Siddhartha Lal","IISER Kolkata","Physical Sciences",2,0.0,15,0.236,22,0.002286168181878863,12,9,2,2,2
+"KOL125","Sourin Das","IISER Kolkata","Physical Sciences",2,0.034331110795857565,43,0.887,29,0.021872151771226624,29,11,2,2,5
+"KOL126","Subhasis Sinha","IISER Kolkata","Physical Sciences",2,0.0038870761810185844,43,1.2,8,0.0038537483449173947,7,6,2,2,3
+"KOL127","Sudip Kumar Garain","IISER Kolkata","Physical Sciences",0,0.0,52,0.0,4,4.854504433982988e-07,85,3,0,0,0
+"KOL128","Supratim Sengupta","IISER Kolkata","Physical Sciences",2,0.0038870761810185844,4,0.5,7,0.004765060189786851,35,5,2,2,2
+"KOL129","Suman Mandal","IISER Kolkata","Physical Sciences",2,0.0,3,0.7,7,6.068130542478735e-08,8,1,2,2,4
+"KOL130","Chandan Datta","IISER Kolkata","Physical Sciences",0,0.0,53,0.0,2,0.0,91,2,0,0,0
+"PUN001","Ajay Kumar","IISER Pune","Earth and Climate Science",0,0.0,54,0.0,8,0.0021681430428276516,11,3,0,0,0
+"PUN002","Aloke Das","IISER Pune","Chemistry",3,0.009490707901830047,9,0.917,21,0.03903418200000501,42,8,3,3,4
+"PUN003","Amit Hogadi","IISER Pune","Mathematics",1,0.0,55,1.0,4,9.709008867965976e-07,67,3,1,1,1
+"PUN004","Amit Apte","IISER Pune","Data Science",0,0.0,56,0.0,5,7.281756650974481e-07,87,1,0,0,0
+"PUN005","Amrita Hazra","IISER Pune","Chemistry",3,0.0,57,0.273,8,0.0008676213049636094,10,2,3,3,3
+"PUN006","Angshuman Nag","IISER Pune","Chemistry",6,0.05413533834586466,4,4.575,61,0.08611931320089435,5,16,6,6,23
+"PUN007","Anindya Goswami","IISER Pune","Mathematics",0,0.0,58,0.0,3,2.0631643844427695e-06,18,3,0,0,0
+"PUN008","Anirban Hazra","IISER Pune","Chemistry",5,0.004369414101290963,57,1.083,14,0.006896147182101766,10,3,5,5,5
+"PUN009","Anisa Chorwadwala","IISER Pune","Mathematics",0,0.0,59,0.0,3,2.427252216991494e-07,50,2,0,0,0
+"PUN010","Anjan Banerjee","IISER Pune","Biology",0,0.0,60,0.0,18,0.0054906265587510335,53,8,0,0,0
+"PUN011","Anup Biswas","IISER Pune","Mathematics",1,0.0,61,1.333,3,3.519515714637666e-06,18,2,1,1,3
+"PUN012","Anupam Kumar Singh","IISER Pune","Mathematics",1,0.0,62,1.333,9,8.009932316071928e-06,69,6,1,1,2
+"PUN013","Aparna Deshpande","IISER Pune","Physics",6,0.0009079302028656547,4,1.21,46,0.02786791985698627,31,13,6,6,8
+"PUN014","Apratim Chatterji","IISER Pune","Physics",1,0.0,4,0.1,9,0.0008682887993232821,16,6,1,1,1
+"PUN015","Argha Banerjee","IISER Pune","Earth and Climate Science",1,0.0,24,0.1,40,0.009692139465057882,19,17,1,1,1
+"PUN016","Arijit Bhattacharyay","IISER Pune","Physics",0,0.0,63,0.0,1,0.0,94,1,0,0,0
+"PUN017","Arjun Datta","IISER Pune","Earth and Climate Science",0,0.0,64,0.0,1,0.0,90,1,0,0,0
+"PUN018","Arka Banerjee","IISER Pune","Physics",2,8.511845651865513e-05,65,1.251,26,0.029511260629847682,2,13,2,2,6
+"PUN019","Arnab Mukherjee","IISER Pune","Chemistry",12,0.017534402042842956,9,4.232,27,0.012119371454947571,10,8,12,12,20
+"PUN020","Arun M. Thalapillil","IISER Pune","Physics",3,0.00014186409419775854,65,2.333,9,0.012511392915093504,2,4,3,3,6
+"PUN021","Arun Venkatnathan","IISER Pune","Chemistry",0,0.0,66,0.0,4,0.0008681067554070077,11,2,0,0,0
+"PUN022","Ashish Arora","IISER Pune","Physics",2,0.0,4,0.268,3,0.0,12,1,2,2,2
+"PUN023","Ashna Bajpai","IISER Pune","Physics",5,8.511845651865513e-05,4,1.143,13,0.0014036799570861808,21,5,5,5,7
+"PUN024","Asif Ali","IISER Pune","Biology",0,0.0,67,0.0,0,0.0,102,0,0,0,0
+"PUN025","Atikur Rahman","IISER Pune","Physics",9,0.02204568023833168,4,3.745,44,0.027681294502152367,12,17,9,9,25
+"PUN026","Aurnab Ghose","IISER Pune","Biology",4,0.0,1,0.513,75,0.02123900303042439,4,15,4,4,5
+"PUN027","Ayan Mahalanobis","IISER Pune","Mathematics",2,2.8372818839551708e-05,62,2.333,5,4.490416601434263e-06,69,3,2,2,4
+"PUN028","Baskar Balasubramanyam","IISER Pune","Mathematics",1,0.0,68,1.0,5,2.9127026603897923e-06,55,2,1,1,1
+"PUN030","Bejoy K. Thomas","IISER Pune","Humanities and Social Sciences",0,0.0,69,0.0,7,6.310855764177884e-06,77,4,0,0,0
+"PUN031","Bhas Bapat","IISER Pune","Physics",0,0.0,70,0.0,53,0.00015961030387788143,37,9,0,0,0
+"PUN032","Bijay Kumar Agarwalla","IISER Pune","Physics",3,0.0038870761810185844,43,2.333,27,0.014064106158302964,36,10,3,3,5
+"PUN033","Boopathy Gnanaprakasam","IISER Pune","Chemistry",2,0.003688466449141722,57,0.617,6,0.022500992139343694,21,1,2,2,3
+"PUN034","Buddhadeb Chattopadhyay","IISER Pune","Chemistry",0,0.0,71,0.0,7,1.8204391627436203e-06,71,2,0,0,0
+"PUN035","Chaitanya Athale","IISER Pune","Biology",3,0.015378067811037026,43,0.95,10,0.04406136336329776,3,4,3,3,3
+"PUN036","Chaitra Redkar","IISER Pune","Humanities and Social Sciences",0,0.0,72,0.0,0,0.0,103,0,0,0,0
+"PUN037","Chandrakala Meena","IISER Pune","Physics",0,0.0,73,0.0,5,8.495382759470228e-07,62,3,0,0,0
+"PUN038","Chandrasheel Bhagwat","IISER Pune","Mathematics",0,0.0,74,0.0,1,0.0,84,1,0,0,0
+"PUN040","Collins Assisi","IISER Pune","Biology",0,0.0,75,0.0,0,0.0,104,0,0,0,0
+"PUN041","Debangsu Sil","IISER Pune","Chemistry",0,0.0,76,0.0,8,5.865859524396109e-07,57,1,0,0,0
+"PUN042","Debargha Banerjee","IISER Pune","Mathematics",0,0.0,77,0.0,6,1.577713941044471e-06,81,6,0,0,0
+"PUN044","Deepak Barua","IISER Pune","Biology",1,0.0,57,0.5,19,0.01440849279369044,54,12,1,1,1
+"PUN045","Devapriya Chattopadhyay","IISER Pune","Earth and Climate Science",1,0.0,16,0.25,12,0.014166536201860003,14,8,2,2,2
+"PUN046","Diganta Borah","IISER Pune","Mathematics",0,0.0,78,0.0,5,4.854504433982988e-07,63,3,0,0,0
+"PUN047","Diptimoy Ghosh","IISER Pune","Physics",1,0.0,65,1.167,3,3.519515714637666e-06,2,2,1,1,3
+"PUN048","Divyang Bhimani","IISER Pune","Mathematics",0,0.0,79,0.0,6,1.577713941044471e-06,72,5,0,0,0
+"PUN049","Gayathri Pananghat","IISER Pune","Biology",1,0.0,57,0.067,63,0.016228203780769185,17,13,1,1,1
+"PUN050","Girish Ratnaparkhi","IISER Pune","Biology",2,0.0,57,2.033,33,0.025779825569564846,3,11,2,2,9
+"PUN051","Gyana Ranjan Tripathy","IISER Pune","Earth and Climate Science",1,0.0,4,0.333,48,0.028448933242877738,19,20,1,1,1
+"PUN052","Harinath Chakrapani","IISER Pune","Chemistry",6,0.010554688608313236,57,1.714,46,0.03203329704591269,56,9,6,6,13
+"PUN053","Haripada Sau","IISER Pune","Mathematics",0,0.0,80,0.0,5,3.0947465766641545e-06,61,2,0,0,0
+"PUN054","Hosahudya N. Gopi","IISER Pune","Chemistry",1,0.0,4,0.143,17,0.013047148160688951,56,8,1,1,1
+"PUN055","Jeetender Chugh","IISER Pune","Chemistry",8,0.022400340473826073,4,2.886,63,0.06263622447390355,10,12,8,8,12
+"PUN056","Joy Merwin Monteiro","IISER Pune","Earth and Climate Science",4,0.0038870761810185844,57,0.74,34,0.00934783373807764,54,10,4,4,5
+"PUN057","Kalika Prasad","IISER Pune","Biology",0,0.0,81,0.0,29,0.005795974887648563,53,5,0,0,0
+"PUN058","Kaneenika Sinha","IISER Pune","Mathematics",1,0.0,68,1.0,5,2.9127026603897923e-06,55,3,1,1,1
+"PUN059","Krishanpal Karmodiya","IISER Pune","Biology",6,0.018669314796425026,57,1.56,150,0.0732438888001786,4,32,6,6,10
+"PUN060","Krishna Kaipa","IISER Pune","Mathematics",0,0.0,82,0.0,2,1.213626108495747e-07,59,2,0,0,0
+"PUN061","Kundan Sengupta","IISER Pune","Biology",2,0.008511845651865513,57,1.0,41,0.033815567667544115,7,6,2,2,3
+"PUN062","L. S. Shashidhara","IISER Pune","Biology",3,0.007660661086678962,57,0.336,52,0.009341199248684531,4,10,4,4,7
+"PUN063","Leelavati Narlikar","IISER Pune","Data Science",0,0.0,83,0.0,17,0.0033528848499412,3,11,0,0,0
+"PUN064","M. Jayakannan","IISER Pune","Chemistry",2,0.0038870761810185844,57,0.667,2,0.004330217955112825,7,0,2,2,3
+"PUN065","M. S. Madhusudhan","IISER Pune","Biology",7,0.02061285288693432,57,1.769,37,0.04033280055147171,3,7,7,7,10
+"PUN066","M.S. Santhanam","IISER Pune","Physics",4,0.013647325861824372,43,1.736,13,0.010363153340445182,36,7,4,4,7
+"PUN067","Mainak Poddar","IISER Pune","Mathematics",0,0.0,84,0.0,5,1.0315821922213848e-06,45,5,0,0,0
+"PUN068","Manish Mishra","IISER Pune","Mathematics",0,0.0,85,0.0,0,0.0,105,0,0,0,0
+"PUN069","Mayurika Lahiri","IISER Pune","Biology",4,0.0006242020144701376,9,3.57,24,0.0056825615278096354,10,10,5,5,21
+"PUN070","Mohammad Ismaiel","IISER Pune","Earth and Climate Science",0,0.0,86,0.0,1,0.0,96,0,0,0,0
+"PUN071","Mohindar Murugesh Karunakaran","IISER Pune","Biology",0,0.0,87,0.0,0,0.0,106,0,0,0,0
+"PUN072","Moumanti Podder","IISER Pune","Mathematics",0,0.0,88,0.0,3,2.427252216991494e-07,33,2,0,0,0
+"PUN073","Moumita Majumdar","IISER Pune","Chemistry",0,0.0,89,0.0,8,0.00045972156989818893,10,2,0,0,0
+"PUN074","Mousomi Bhakta","IISER Pune","Mathematics",1,0.0,61,1.333,5,3.034065271239367e-06,18,3,1,1,3
+"PUN075","Mridula Nambiar","IISER Pune","Biology",0,0.0,90,0.0,20,0.002817554373483726,13,4,0,0,0
+"PUN076","Muhammed Musthafa","IISER Pune","Chemistry",0,0.0,91,0.0,2,0.0,11,1,0,0,0
+"PUN077","Mukul Kabir","IISER Pune","Physics",9,0.0008086253369272237,4,1.666,66,0.021436156591749526,12,14,9,9,13
+"PUN078","Nagaraj Balasubramanian","IISER Pune","Biology",4,0.008455100014186409,57,1.028,24,0.013515243750735761,7,5,4,4,5
+"PUN079","Neena Joseph Mani","IISER Pune","Earth and Climate Science",1,0.0,92,2.0,1,0.0,70,0,1,1,4
+"PUN080","Nirmalya Ballav","IISER Pune","Chemistry",5,0.008767201021421478,4,1.452,47,0.03960244035937896,9,9,5,5,8
+"PUN081","Nishad Matange","IISER Pune","Biology",0,0.0,93,0.0,2,1.213626108495747e-07,44,2,0,0,0
+"PUN082","Nixon M. Abraham","IISER Pune","Biology",1,0.0,57,0.167,10,0.003901322488370428,7,2,1,1,1
+"PUN083","Pankaj Mandal","IISER Pune","Chemistry",10,0.029422613136615122,4,4.028,28,0.020140671402235744,5,7,10,10,23
+"PUN084","Partha Hazra","IISER Pune","Chemistry",5,0.002638672152078309,9,1.936,30,0.005389531503913338,10,10,5,5,12
+"PUN085","Pavan Kumar G. V.","IISER Pune","Physics",6,0.00431266846361186,4,3.063,40,0.011462577232131479,12,11,6,6,19
+"PUN086","Pinaki Talukdar","IISER Pune","Chemistry",8,0.017122996169669457,9,5.611,39,0.05312824817374084,10,11,8,8,26
+"PUN087","Pooja Sancheti","IISER Pune","Humanities and Social Sciences",0,0.0,94,0.0,0,0.0,107,0,0,0,0
+"PUN088","Prafullkumar Tale","IISER Pune","Mathematics",0,0.0,95,0.0,5,9.102195813718102e-07,75,4,0,0,0
+"PUN089","Pramod Pillai","IISER Pune","Chemistry",6,0.0002553553695559654,9,0.802,24,0.0032261013758070117,27,9,6,6,6
+"PUN090","Pranay Goel","IISER Pune","Biology",0,0.0,96,0.0,53,0.016392108032141674,23,15,0,0,0
+"PUN091","Prasad Subramanian","IISER Pune","Physics",0,0.0,97,0.0,64,0.0004924697145050382,51,9,0,0,0
+"PUN092","Prasenjit Ghosh","IISER Pune","Physics",10,0.08506171088097603,4,4.336,44,0.06264877539057523,12,15,10,10,20
+"PUN093","Pushkar Sohoni","IISER Pune","Humanities and Social Sciences",0,0.0,98,0.0,0,0.0,108,0,0,0,0
+"PUN094","R. Boomi Shankar","IISER Pune","Chemistry",7,0.02173357923109661,4,1.689,96,0.07660022468264688,11,23,7,7,10
+"PUN095","Rabeya Basu","IISER Pune","Mathematics",0,0.0,99,0.0,0,0.0,109,0,0,0,0
+"PUN096","Raghav Rajan","IISER Pune","Biology",0,0.0,100,0.0,16,0.003088820035834357,16,4,0,0,0
+"PUN097","Rahul Dehiya","IISER Pune","Earth and Climate Science",1,0.0,101,0.333,3,2.427252216991494e-07,88,2,1,1,1
+"PUN098","Rajesh Gokhale","IISER Pune","Biology",1,0.0,57,0.46,44,0.003960365398548745,3,7,1,1,5
+"PUN099","Rama Mishra","IISER Pune","Mathematics",0,0.0,102,0.0,0,0.0,110,0,0,0,0
+"PUN100","Ramakrishna G. Bhat","IISER Pune","Chemistry",0,0.0,103,0.0,6,0.0006621544047952795,42,2,0,0,0
+"PUN101","Ramana Athreya","IISER Pune","Physics",1,0.0,104,6.265,22,0.020311732002228217,14,14,1,1,14
+"PUN102","Ramana Athreya","IISER Pune","Biology",1,0.0,104,6.265,22,0.020311732002228217,14,14,1,1,14
+"PUN103","Rejish Nath","IISER Pune","Physics",3,0.007717406724358065,43,1.033,20,0.006816755807504336,36,5,3,3,3
+"PUN104","Richa Rikhy","IISER Pune","Biology",0,0.0,105,0.0,7,5.663588506313486e-07,16,1,0,0,0
+"PUN105","S. Sandanaraj Britto","IISER Pune","Chemistry",0,0.0,106,0.0,5,9.709008867965976e-07,68,3,0,0,0
+"PUN106","S. G. Srivatsan","IISER Pune","Chemistry",1,0.0,107,0.25,20,0.010809342979233643,17,5,1,1,1
+"PUN107","Sachin Jain","IISER Pune","Physics",1,0.0,43,1.0,19,0.017449334144035576,36,9,1,1,2
+"PUN108","Sagar Pandit","IISER Pune","Biology",1,0.0,4,0.111,27,0.00987133135997728,28,12,1,1,1
+"PUN109","Saikrishnan Kayarat","IISER Pune","Biology",1,0.0,107,0.25,6,0.002067533438433354,17,3,1,1,1
+"PUN111","Seema Sharma","IISER Pune","Physics",0,0.0,108,0.0,0,0.0,111,0,1,1,451
+"PUN112","Shabana Khan","IISER Pune","Chemistry",4,0.0,9,0.685,30,0.0404079442346894,42,6,4,4,4
+"PUN113","Shalini Sharma","IISER Pune","Humanities and Social Sciences",0,0.0,109,0.0,1,0.0,47,1,0,0,0
+"PUN114","Shivprasad Patil","IISER Pune","Physics",8,0.011164704213363597,4,1.044,43,0.02910192477055384,16,11,8,8,8
+"PUN115","Shouvik Datta","IISER Pune","Physics",3,0.0,4,1.119,12,0.002663545220315616,12,5,3,3,4
+"PUN116","Shreyas Managave","IISER Pune","Earth and Climate Science",1,0.0,24,0.583,16,0.021443863117538476,46,8,1,1,2
+"PUN117","Siddhesh S. Kamat","IISER Pune","Biology",8,0.03589161583203291,57,4.267,178,0.09760421710800181,3,32,8,8,28
+"PUN118","Soumen Maity","IISER Pune","Mathematics",0,0.0,110,0.0,4,3.6408783254872403e-07,66,2,0,0,0
+"PUN119","Sourabh Dube","IISER Pune","Physics",1,0.0,65,0.5,2,0.00043411405900892864,2,1,2,2,452
+"PUN120","Srabanti Chaudhury","IISER Pune","Chemistry",0,0.0,111,0.0,0,0.0,112,0,0,0,0
+"PUN121","Sreejith G. J.","IISER Pune","Physics",3,0.031834302737977015,43,1.244,14,0.011684549447375351,29,6,3,3,6
+"PUN122","Srinivas Hotha","IISER Pune","Chemistry",3,0.0015746914455951199,4,0.81,32,0.011320613318090188,31,11,3,3,4
+"PUN123","Steven Spallone","IISER Pune","Mathematics",0,0.0,112,0.0,3,2.427252216991494e-07,24,3,0,0,0
+"PUN124","Sudarshan Ananth","IISER Pune","Physics",0,0.0,113,0.0,1,0.0,80,1,0,0,0
+"PUN125","Sudha Rajamani","IISER Pune","Biology",3,0.011547737267697545,4,1.583,14,0.026565304614085104,10,6,3,3,5
+"PUN126","Sudipta Sarkar","IISER Pune","Earth and Climate Science",1,0.0,101,0.333,2,0.0,88,1,1,1,1
+"PUN127","Sugat Dabholkar","IISER Pune","Science Education",0,0.0,114,0.0,0,0.0,113,0,0,0,0
+"PUN128","Suhas Ettammal","IISER Pune","Earth and Climate Science",1,0.0,92,2.0,8,2.305889606141919e-06,70,2,1,1,4
+"PUN129","Suhita Nadkarni","IISER Pune","Biology",0,0.0,115,0.0,7,0.0,7,2,0,0,0
+"PUN130","Sujit K. Ghosh","IISER Pune","Chemistry",3,0.0,4,0.386,51,0.024900148911923513,9,13,3,3,3
+"PUN131","Suneeta Vardarajan","IISER Pune","Physics",0,0.0,116,0.0,0,0.0,114,0,0,0,0
+"PUN132","Sunil S. Bhagwat","IISER Pune","Chemistry",0,0.0,117,0.0,8,0.0010849817409951978,31,2,0,0,0
+"PUN133","Sunil Nair","IISER Pune","Physics",5,0.0031777557100297915,4,1.345,50,0.026804607410158283,21,16,5,5,9
+"PUN134","Sunish Kumar Radhakrishnan","IISER Pune","Biology",1,0.0,9,0.25,6,0.0016211617557286187,17,2,1,1,1
+"PUN135","Supriya Pisolkar","IISER Pune","Mathematics",1,0.0,55,1.0,2,4.854504433982988e-07,67,1,1,1,1
+"PUN136","Surjeet Singh","IISER Pune","Physics",1,0.0,4,0.333,10,0.0028545699697928462,32,4,1,1,1
+"PUN137","Susmita Adhikari","IISER Pune","Physics",1,0.0,65,0.584,20,0.0021673541858571294,2,12,1,1,4
+"PUN138","Sutirth Dey","IISER Pune","Biology",0,0.0,118,0.0,9,3.398153103788091e-06,22,4,0,0,0
+"PUN139","T. S. Mahesh","IISER Pune","Physics",4,0.03033054333948078,43,2.417,12,0.013792496635221613,36,5,4,4,6
+"PUN140","Tejas Kalelkar","IISER Pune","Mathematics",0,0.0,119,0.0,0,0.0,115,0,0,0,0
+"PUN141","Thomas Pucadyil","IISER Pune","Biology",2,0.0,57,0.222,20,0.005588202097874091,3,6,2,2,2
+"PUN142","Umakant D. Rapol","IISER Pune","Physics",3,0.014697120158887786,43,1.652,5,0.011984072370952102,36,1,4,4,13
+"PUN143","V. G. Anand","IISER Pune","Chemistry",0,0.0,120,0.0,14,0.004291685326168085,10,5,0,0,0
+"PUN144","Venketeswara R. Pai","IISER Pune","Humanities and Social Sciences",0,0.0,121,0.0,11,5.036548350257349e-06,74,7,0,0,0
+"PUN145","Vijayakumar Chikkadi","IISER Pune","Physics",1,0.0,4,0.2,5,0.0017356066977597675,12,3,1,1,1
+"PUN146","Vivek Mohan Mallick","IISER Pune","Mathematics",1,0.0,62,1.0,3,1.4563513301948961e-06,69,2,1,1,2

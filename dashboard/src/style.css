@@ -1,0 +1,47 @@
+@import url("observablehq:default.css");
+@import url("observablehq:theme-air.css") (prefers-color-scheme: light);
+@import url("observablehq:theme-near-midnight.css") (prefers-color-scheme: dark);
+
+/* Palette roles (dataviz reference palette). Institutions are fixed slots:
+   IISER Pune = slot 1 (blue), IISER Kolkata = slot 2 (orange). Grey = context/external. */
+:root {
+  --pune: #2a78d6;
+  --kolkata: #eb6834;
+  --context: #898781;
+  --q1: #0d366b; --q2: #1c5cab; --q3: #3987e5; --q4: #86b6ef; --qna: #e1e0d9;
+  --grid: #e1e0d9;
+  --edge: rgba(82, 81, 78, 0.18);
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    --pune: #3987e5;
+    --kolkata: #d95926;
+    --q1: #cde2fb; --q2: #86b6ef; --q3: #3987e5; --q4: #184f95; --qna: #383835;
+    --grid: #2c2c2a;
+    --edge: rgba(195, 194, 183, 0.16);
+  }
+}
+:root[data-theme="dark"] {
+  --pune: #3987e5;
+  --kolkata: #d95926;
+  --q1: #cde2fb; --q2: #86b6ef; --q3: #3987e5; --q4: #184f95; --qna: #383835;
+  --grid: #2c2c2a;
+  --edge: rgba(195, 194, 183, 0.16);
+}
+
+.swatch { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; vertical-align: baseline; }
+.legend-row { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--theme-foreground-muted); margin: 4px 0 8px; }
+
+.graph-wrap { position: relative; border: 1px solid var(--theme-foreground-faintest); border-radius: 8px; overflow: hidden; background: var(--theme-background); }
+.graph-tip {
+  position: absolute; pointer-events: none; z-index: 5; max-width: 320px; padding: 8px 10px;
+  background: var(--theme-background-alt); color: var(--theme-foreground);
+  border: 1px solid var(--theme-foreground-faintest); border-radius: 6px; font-size: 12px; line-height: 1.4;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+.graph-tip b { display: block; margin-bottom: 2px; }
+.graph-hint { position: absolute; right: 10px; bottom: 8px; font-size: 11px; color: var(--theme-foreground-muted); pointer-events: none; }
+
+.big { font-size: 2rem; font-weight: 600; line-height: 1.1; }
+.card h2 { font-size: 14px; }
+.muted { font-size: 13px; color: var(--theme-foreground-muted); }

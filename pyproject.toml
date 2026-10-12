@@ -1,0 +1,21 @@
+[project]
+name = "citegraph"
+version = "0.1.0"
+description = "DPCN 2026 — Group 19 research mapping: IISER Pune & IISER Kolkata"
+requires-python = ">=3.14"
+dependencies = [
+    "duckdb>=1.4",
+    "httpx>=0.28",
+    "python-igraph>=0.11",
+    "selectolax>=0.3",
+    "typst>=0.13",
+]
+
+[dependency-groups]
+dev = ["ruff>=0.14"]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 100

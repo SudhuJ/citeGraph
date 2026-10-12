@@ -1,0 +1,3 @@
+fac_name,institution,add_ids,remove_ids,note
+R. Boomi Shankar,IISER Pune,A5002327318;A5045983164,A5017581498;A5102438093,OpenAlex spells the name 'Boomishankar'; auto-match picked namesakes
+Bheemalingam Chittari,IISER Kolkata,A5030882860,,OpenAlex splits the name as 'Bheema Lingam'
