@@ -75,4 +75,4 @@ pipeline/report.py         report/data.json → report/report.pdf
 ## Pending inputs
 
 - **SCImago quartiles:** download the yearly CSVs from scimagojr.com (blocked for scripts) with type **All types** into `ref/scimago/scimago_<year>.csv`, then run `make build networks export report`. The build keeps journals, conferences & proceedings, and book series, and drops trade journals.
-- **CORE ranks (optional):** CORE portal export → `ref/core.csv`. IISER output is almost all journals, so this changes little.
+- **CORE ranks (optional, ICORE2026 export included):** CORE portal export → `ref/core.csv` (no header row; rank in the 5th column). IISER output is almost all journals, so this changes little.

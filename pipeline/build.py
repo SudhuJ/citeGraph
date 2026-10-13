@@ -92,7 +92,7 @@ def main() -> None:
     core_f = ROOT / "ref" / "core.csv"
     if core_f.exists():
         sql(f"""CREATE OR REPLACE TABLE core AS
-                SELECT lower(column1) AS title, lower(column2) AS acronym, column4 AS rank
+                SELECT lower(trim(column1)) AS title, lower(trim(column2)) AS acronym, column4 AS rank
                 FROM read_csv('{core_f}', header=false, all_varchar=true)
                 WHERE column4 IN ('A*','A','B','C')""")
     else:
