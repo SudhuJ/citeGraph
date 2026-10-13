@@ -55,7 +55,7 @@ const comm = mode === "Institute" ? null : view(Inputs.select(commSizes.map(([c]
 ```js
 const facColor = (n) => (n.inst === "IISER Pune" ? "pune" : "kolkata");
 const gv = graphView({
-  nodes: G.nodes, edges: G.edges, height: 640,
+  nodes: G.nodes, edges: G.edges, height: 860,
   color: (n) => (n.faculty ? facColor(n) : "context"),
   size: key === "G_fac" ? (n) => 3 + 1.6 * Math.sqrt(n.degree) : (n) => (n.faculty ? 3.5 + 0.55 * Math.sqrt(n.degree) : 2.8 + 0.35 * Math.sqrt(n.degree)),
   label: (n) => (n.faculty ? n.label : ""),
