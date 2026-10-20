@@ -5,7 +5,7 @@
   authorship_network.csv    undirected co-author pairs, faculty + Indian co-authors (§6b, §7c)
   indian_connections.csv    your_inst × partner_inst aggregates (§7b, §7c)
 
-  citation_origin           who cites our papers / whom we cite, in six categories (analysis)
+  citation_origin           who cites our papers / whom we cite, in five categories (analysis)
 
 Optional reference data, picked up when present:
   ref/scimago/*<year>*.csv         SCImago rankings (All types) -> quartile Q1–Q4, SJR, cites/doc (2y)
@@ -440,6 +440,10 @@ def main() -> None:
       SELECT 'out', r.work_id, r.ref_id FROM 'data/stage/work_refs.parquet' r
       WHERE r.ref_id IN (SELECT link_id FROM 'data/stage/link_works.parquet' WHERE kind = 'cited')
         AND r.ref_id <> r.work_id
+      UNION   -- citations between two of our papers, from either side's lists (as in cit_edges)
+      SELECT 'in', target_id, source_id FROM cit_edges WHERE edge_kind = 'internal'
+      UNION
+      SELECT 'out', source_id, target_id FROM cit_edges WHERE edge_kind = 'internal'
     ), cat AS (
       SELECT t.institution, t.work_id, t.year, l.direction,
              CASE WHEN EXISTS (SELECT 1 FROM node_authors a JOIN node_authors b USING (author_id)
@@ -448,15 +452,17 @@ def main() -> None:
                                WHERE li.link_id = l.other_id AND li.inst_id = t.inst_id) THEN 'own institute'
                   WHEN p.has_abroad OR p.n_auth >= {HYPER} THEN 'India + abroad'
                   ELSE 'other Indian only' END AS category,
-             coalesce(p.n_in / nullif(p.n_known, 0), 1.0) AS india_frac
+             coalesce(p.n_in / nullif(p.n_known, 0), 1.0) AS india_frac,
+             -- the other paper is itself one of ours (any of our faculty on it)
+             l.other_id IN (SELECT work_id FROM corpus) AS from_ours
       FROM links l JOIN t USING (work_id) LEFT JOIN link_profile p ON p.link_id = l.other_id
     ), indian AS (
-      SELECT institution, work_id, year, direction, category, count(*) AS n, sum(india_frac) AS india_frac
+      SELECT institution, work_id, year, direction, category, from_ours, count(*) AS n, sum(india_frac) AS india_frac
       FROM cat GROUP BY ALL
     ), indian_tot AS (
       SELECT institution, work_id, direction, sum(n) AS n FROM indian GROUP BY ALL
     ), rest AS (
-      SELECT t.institution, t.work_id, t.year, d.direction, 'abroad or unknown' AS category,
+      SELECT t.institution, t.work_id, t.year, d.direction, 'abroad or unknown' AS category, false AS from_ours,
              greatest(CASE d.direction WHEN 'in' THEN t.cited_by_count ELSE t.n_refs END
                       - coalesce(i.n, 0), 0) AS n,
              0.0 AS india_frac
@@ -464,7 +470,7 @@ def main() -> None:
       LEFT JOIN indian_tot i ON i.institution = t.institution AND i.work_id = t.work_id AND i.direction = d.direction
     )
     SELECT * FROM indian UNION ALL SELECT * FROM rest WHERE n > 0
-    ORDER BY institution, work_id, direction, category;
+    ORDER BY institution, work_id, direction, category, from_ours;
     COPY citation_origin TO 'data/out/citation_origin.csv';
     """)
 

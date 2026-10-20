@@ -208,6 +208,19 @@ def main() -> None:
                 for i in sorted(range(len(nodes)), key=lambda i: -scores[i])[:10]]
     cit_top = top10(pr, indeg_ns)
     cit_top_self = top10(pr_self, indeg)
+    # in-degree first: with so few non-self edges, a plain count is the clearest ranking;
+    # PageRank is reported beside it, with how far the two agree
+    pr_rank = {i: r + 1 for r, i in enumerate(sorted(range(len(nodes)), key=lambda i: -pr[i]))}
+    top_in = sorted(range(len(nodes)), key=lambda i: (-indeg_ns[i], -pr[i]))[:10]
+    cit_top_indeg = [{"title": nodes[i][3], "inst": nodes[i][1], "year": nodes[i][2], "doi": nodes[i][4],
+                      "indeg": indeg_ns[i], "pagerank": round(pr[i], 6), "pr_rank": pr_rank[i], "cites_total": nodes[i][5]}
+                     for i in top_in]
+    cited_ns = [i for i in range(len(nodes)) if indeg_ns[i] > 0]
+    pr_vs_indeg = {"cited_papers": len(cited_ns),
+                   "spearman": round(spearman([indeg_ns[i] for i in cited_ns], [pr[i] for i in cited_ns]), 3),
+                   "top10_overlap": len(set(top_in) & set(sorted(range(len(nodes)), key=lambda i: -pr[i])[:10]))}
+    bins = [(0, 0, "0"), (1, 1, "1"), (2, 2, "2"), (3, 5, "3–5"), (6, 10, "6–10"), (11, 10**9, "11+")]
+    hist = lambda deg: [{"bin": lab, "papers": sum(lo <= d <= hi for d in deg)} for lo, hi, lab in bins]
     with (ROOT / "data/out/network_citation_nodes.csv").open("w") as f:
         f.write("work_id,institution,year,in_degree,in_degree_excl_self,out_degree,pagerank_excl_self,pagerank\n")
         for i, w in enumerate(nodes):
@@ -384,7 +397,9 @@ def main() -> None:
         "citation": {"summary": cit_sum, "summary_excl_self": cit_sum_ns,
                      "indegree_ccdf": ccdf(indeg), "indegree_ccdf_excl_self": ccdf(indeg_ns),
                      "powerlaw_indegree": powerlaw(indeg),
+                     "indegree_hist": hist(indeg), "indegree_hist_excl_self": hist(indeg_ns),
                      "top_pagerank": cit_top, "top_pagerank_with_self": cit_top_self,
+                     "top_indegree": cit_top_indeg, "pagerank_vs_indegree": pr_vs_indeg,
                      "flow_year": flow_year, "flow_total": flow_tot,
                      "top_citing_institutes": top_citing, "top_citing_papers": top_citing_papers,
                      "visual_component_share": round(len(keep) / len(nodes), 3)},

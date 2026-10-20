@@ -85,6 +85,8 @@ h1 + p, h2 + p { margin-top: 0.4rem; }
 /* Question-led sections: question as heading, the answer in a callout, method folded away */
 .answer { border-left: 3px solid var(--theme-foreground-focus); padding: 0.5rem 0.9rem; margin: 0.5rem 0 0.8rem;
   background: var(--theme-background-alt); border-radius: 0 6px 6px 0; max-width: 960px; line-height: 1.5; }
+.measure { max-width: 960px; margin: 0.3rem 0 0.4rem; line-height: 1.5; }
+.measure::before { content: "What we measure. "; font-weight: 600; }
 .caveat { font-size: 13px; color: var(--theme-foreground-muted); max-width: 960px; }
 .caveat::before { content: "Caveat. "; font-weight: 600; }
 details.how { font-size: 13px; color: var(--theme-foreground-muted); max-width: 960px; margin: 0.3rem 0 1.2rem; }
@@ -94,3 +96,13 @@ details.how p, details.how li { margin: 0.35rem 0; }
 .cellbar span { display: block; height: 100%; border-radius: 4px; }
 .findings { padding-left: 1.2rem; max-width: 960px; }
 .findings li { margin: 0.55rem 0; line-height: 1.5; }
+
+/* "Two terms" box: definitions that are easy to confuse, with the 2×2 split of citations */
+.terms { border: 1px solid var(--theme-foreground-faintest); border-radius: 8px; padding: 0.7rem 1rem; margin: 0.6rem 0 1rem;
+  max-width: 960px; line-height: 1.5; }
+.terms h3 { margin: 0 0 0.3rem; font-size: 15px; }
+.terms dl { margin: 0.3rem 0; } .terms dt { font-weight: 600; } .terms dd { margin: 0 0 0.4rem 1rem; }
+.xtab { border-collapse: collapse; font-size: 13px; margin: 0.4rem 0; font-variant-numeric: tabular-nums; }
+.xtab th, .xtab td { padding: 0.3rem 0.6rem; border-bottom: 1px solid var(--theme-foreground-faintest); text-align: right; }
+.xtab th:first-child, .xtab td:first-child { text-align: left; }
+.xtab td.hi { font-weight: 600; }

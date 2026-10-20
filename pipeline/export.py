@@ -5,7 +5,7 @@
                    hyper_* columns leaves out papers with >=100 authors.
   departments.csv  one row per (institute, department), same rule
   papers.csv       one row per (institution, paper)
-  origin.csv       citation origin by institute, direction, category, publication year
+  origin.csv       citation origin by institute, direction, category, from_ours, publication year
   connections.csv  copy of indian_connections.csv
 """
 
@@ -100,7 +100,7 @@ def main() -> None:
     ) TO '{OUT / "departments.csv"}';
 
     COPY (
-      SELECT institution, direction, category, year, sum(n)::BIGINT AS n, round(sum(india_frac), 2) AS india_frac
+      SELECT institution, direction, category, from_ours, year, sum(n)::BIGINT AS n, round(sum(india_frac), 2) AS india_frac
       FROM citation_origin GROUP BY ALL ORDER BY ALL
     ) TO '{OUT / "origin.csv"}';
 

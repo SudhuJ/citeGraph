@@ -23,6 +23,15 @@ def main() -> None:
     con.execute("CREATE TEMP TABLE h AS SELECT institution, count(*) AS hyper FROM pall WHERE hyperauthored GROUP BY 1")
     con.execute(f"CREATE TEMP TABLE f AS SELECT * FROM read_csv('{ROOT / 'data/out/faculty_stats.csv'}')")
     net = json.loads((ROOT / "dashboard/src/data/network_metrics.json").read_text())
+
+    def fac_pairs() -> dict:
+        """Share of faculty co-author links (G_fac edges) within one institute / one department."""
+        g = json.loads((ROOT / "dashboard/src/data/fac_graph.json").read_text())
+        nd, ed = g["nodes"], g["edges"]
+        inst = sum(nd[s]["inst"] == nd[t]["inst"] for s, t, *_ in ed)
+        dept = sum(nd[s]["inst"] == nd[t]["inst"] and nd[s]["dept"] == nd[t]["dept"] for s, t, *_ in ed)
+        return {"links": len(ed), "same_inst": inst / len(ed), "same_dept": dept / len(ed)}
+
     data = {
         "kpi": rows(con, """
             SELECT institution, count(*) AS papers, sum(citations)::BIGINT AS citations,
@@ -32,9 +41,10 @@ def main() -> None:
                    count(*) FILTER (quartile LIKE 'Q_') / count(*) FILTER (type = 'journal')::DOUBLE AS q_coverage
             FROM p LEFT JOIN h USING (institution) GROUP BY 1 ORDER BY 1 DESC"""),
         "depts": rows(con, f"SELECT * FROM read_csv('{ROOT / 'dashboard/src/data/departments.csv'}') WHERE papers > 0 ORDER BY institution DESC, papers DESC"),
-        "origin": rows(con, f"""SELECT institution, direction, category, sum(n)::BIGINT AS n
+        "origin": rows(con, f"""SELECT institution, direction, category, from_ours, sum(n)::BIGINT AS n
                                 FROM read_csv('{ROOT / 'dashboard/src/data/origin.csv'}') GROUP BY ALL ORDER BY ALL"""),
         "faccit": json.loads((ROOT / "dashboard/src/data/faccit_graph.json").read_text())["summary"],
+        "facpairs": fac_pairs(),
         "faculty": rows(con, """SELECT institution, count(*) AS n, count(*) FILTER (papers > 0) AS active,
                                        median(h_index) AS med_h, max(h_index) AS max_h, median(h_index_lifetime) AS med_h_life
                                 FROM f GROUP BY 1 ORDER BY 1 DESC"""),

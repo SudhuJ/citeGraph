@@ -35,8 +35,35 @@ export const instName = (name) => (UMBRELLA.has(name) ? `${name} (an umbrella bo
 
 // one sentence that answers the section's question
 export const answer = (content) => html`<div class="answer">${content}</div>`;
+// what we measured to answer it (shown before the answer)
+export const measure = (content) => html`<p class="measure">${content}</p>`;
 
 // inline bar for table cells: share of a 0–1 value
 export const shareBar = (x, color = "var(--q2)") => x == null
   ? html`<span class="muted">—</span>`
   : html`<span class="cellbar"><span style="width:${Math.round(x * 100)}%;background:${color}"></span></span> ${pct(x)}`;
+
+// "Our papers" (any of our faculty on it) and "self-citation" (the same person on both papers)
+// are independent: this box defines both and splits one institute's incoming citations 2×2.
+export function citationTerms(origin) {
+  const rows = origin.filter((d) => d.direction === "in");
+  const cell = (inst, ours, self) => d3.sum(rows.filter((d) => d.institution === inst && d.from_ours === ours
+    && (d.category === "self") === self), (d) => d.n);
+  const tab = (inst) => {
+    const tot = d3.sum(rows.filter((d) => d.institution === inst), (d) => d.n);
+    const c = (ours, self) => html`<td class=${ours && !self ? "hi" : ""}>${num(cell(inst, ours, self))} <span class="muted">(${pct(cell(inst, ours, self) / tot, 1)})</span></td>`;
+    return html`<table class="xtab">
+      <tr><th>${inst}: the citing paper…</th><th>shares an author</th><th>shares no author</th></tr>
+      <tr><td>is one of our papers</td>${c(true, true)}${c(true, false)}</tr>
+      <tr><td>is not one of our papers</td>${c(false, true)}${c(false, false)}</tr>
+      <tr><td class="muted">all ${num(tot)} citations received</td><td></td><td></td></tr></table>`;
+  };
+  return html`<div class="terms"><h3>Two terms that are easy to confuse</h3>
+    <dl><dt>Our papers</dt><dd>Papers with at least one IISER Pune or IISER Kolkata faculty member among the authors.</dd>
+    <dt>Self-citation</dt><dd>The citing and the cited paper share at least one author: the same person is on both.</dd></dl>
+    <p>The two are independent. A Pune chemist citing a Kolkata physicist is one of our papers citing another, but not a self-citation.
+    A former student, now at another university, citing a paper they wrote with their IISER advisor is a self-citation, but not from one of our papers.
+    The tables split every citation our papers receive both ways. The bold cell (one of our papers, no shared author) is faculty building on colleagues' work.
+    Self-citations can only be detected when the citing paper has an Indian author, because we fetched author lists only for those, so the bottom-left cell is a lower bound.</p>
+    <div class="grid grid-cols-2">${INST.map(tab)}</div></div>`;
+}

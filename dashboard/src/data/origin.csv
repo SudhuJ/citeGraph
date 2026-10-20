@@ -1,220 +1,380 @@
-institution,direction,category,year,n,india_frac
-IISER Kolkata,in,India + abroad,2016,167,103.88
-IISER Kolkata,in,India + abroad,2017,217,135.08
-IISER Kolkata,in,India + abroad,2018,362,213.11
-IISER Kolkata,in,India + abroad,2019,309,192.32
-IISER Kolkata,in,India + abroad,2020,329,192.92
-IISER Kolkata,in,India + abroad,2021,321,184.4
-IISER Kolkata,in,India + abroad,2022,204,120.75
-IISER Kolkata,in,India + abroad,2023,177,100.98
-IISER Kolkata,in,India + abroad,2024,124,68.87
-IISER Kolkata,in,India + abroad,2025,59,35.95
-IISER Kolkata,in,India + abroad,2026,6,3.81
-IISER Kolkata,in,abroad or unknown,2016,3032,0.0
-IISER Kolkata,in,abroad or unknown,2017,3430,0.0
-IISER Kolkata,in,abroad or unknown,2018,6575,0.0
-IISER Kolkata,in,abroad or unknown,2019,5421,0.0
-IISER Kolkata,in,abroad or unknown,2020,5542,0.0
-IISER Kolkata,in,abroad or unknown,2021,5140,0.0
-IISER Kolkata,in,abroad or unknown,2022,3436,0.0
-IISER Kolkata,in,abroad or unknown,2023,3211,0.0
-IISER Kolkata,in,abroad or unknown,2024,2420,0.0
-IISER Kolkata,in,abroad or unknown,2025,1290,0.0
-IISER Kolkata,in,abroad or unknown,2026,69,0.0
-IISER Kolkata,in,other Indian only,2016,582,582.0
-IISER Kolkata,in,other Indian only,2017,777,777.0
-IISER Kolkata,in,other Indian only,2018,1092,1092.0
-IISER Kolkata,in,other Indian only,2019,852,852.0
-IISER Kolkata,in,other Indian only,2020,984,984.0
-IISER Kolkata,in,other Indian only,2021,964,964.0
-IISER Kolkata,in,other Indian only,2022,666,666.0
-IISER Kolkata,in,other Indian only,2023,518,518.0
-IISER Kolkata,in,other Indian only,2024,406,406.0
-IISER Kolkata,in,other Indian only,2025,175,175.0
-IISER Kolkata,in,other Indian only,2026,16,16.0
-IISER Kolkata,in,own institute,2016,45,43.82
-IISER Kolkata,in,own institute,2017,45,41.48
-IISER Kolkata,in,own institute,2018,43,41.54
-IISER Kolkata,in,own institute,2019,46,39.8
-IISER Kolkata,in,own institute,2020,87,76.93
-IISER Kolkata,in,own institute,2021,54,48.76
-IISER Kolkata,in,own institute,2022,30,28.3
-IISER Kolkata,in,own institute,2023,35,32.06
-IISER Kolkata,in,own institute,2024,31,29.57
-IISER Kolkata,in,own institute,2025,35,33.08
-IISER Kolkata,in,own institute,2026,1,0.75
-IISER Kolkata,in,self,2016,991,917.88
-IISER Kolkata,in,self,2017,1118,1039.17
-IISER Kolkata,in,self,2018,1106,1003.8
-IISER Kolkata,in,self,2019,1296,1198.25
-IISER Kolkata,in,self,2020,1643,1524.65
-IISER Kolkata,in,self,2021,1391,1300.7
-IISER Kolkata,in,self,2022,976,909.08
-IISER Kolkata,in,self,2023,1025,949.67
-IISER Kolkata,in,self,2024,756,698.5
-IISER Kolkata,in,self,2025,332,307.23
-IISER Kolkata,in,self,2026,58,51.31
-IISER Kolkata,out,India + abroad,2016,181,97.84
-IISER Kolkata,out,India + abroad,2017,196,105.27
-IISER Kolkata,out,India + abroad,2018,240,136.2
-IISER Kolkata,out,India + abroad,2019,274,129.22
-IISER Kolkata,out,India + abroad,2020,396,195.47
-IISER Kolkata,out,India + abroad,2021,416,212.64
-IISER Kolkata,out,India + abroad,2022,591,283.16
-IISER Kolkata,out,India + abroad,2023,509,223.51
-IISER Kolkata,out,India + abroad,2024,625,310.26
-IISER Kolkata,out,India + abroad,2025,595,291.43
-IISER Kolkata,out,India + abroad,2026,453,227.03
-IISER Kolkata,out,abroad or unknown,2016,8197,0.0
-IISER Kolkata,out,abroad or unknown,2017,8950,0.0
-IISER Kolkata,out,abroad or unknown,2018,10092,0.0
-IISER Kolkata,out,abroad or unknown,2019,11917,0.0
-IISER Kolkata,out,abroad or unknown,2020,17075,0.0
-IISER Kolkata,out,abroad or unknown,2021,20303,0.0
-IISER Kolkata,out,abroad or unknown,2022,18523,0.0
-IISER Kolkata,out,abroad or unknown,2023,18683,0.0
-IISER Kolkata,out,abroad or unknown,2024,21826,0.0
-IISER Kolkata,out,abroad or unknown,2025,23886,0.0
-IISER Kolkata,out,abroad or unknown,2026,15155,0.0
-IISER Kolkata,out,other Indian only,2016,370,370.0
-IISER Kolkata,out,other Indian only,2017,441,441.0
-IISER Kolkata,out,other Indian only,2018,512,512.0
-IISER Kolkata,out,other Indian only,2019,635,635.0
-IISER Kolkata,out,other Indian only,2020,802,802.0
-IISER Kolkata,out,other Indian only,2021,1012,1012.0
-IISER Kolkata,out,other Indian only,2022,1007,1007.0
-IISER Kolkata,out,other Indian only,2023,871,871.0
-IISER Kolkata,out,other Indian only,2024,1176,1176.0
-IISER Kolkata,out,other Indian only,2025,1218,1218.0
-IISER Kolkata,out,other Indian only,2026,952,952.0
-IISER Kolkata,out,own institute,2016,22,17.4
-IISER Kolkata,out,own institute,2017,32,28.69
-IISER Kolkata,out,own institute,2018,32,27.59
-IISER Kolkata,out,own institute,2019,47,44.97
-IISER Kolkata,out,own institute,2020,51,45.94
-IISER Kolkata,out,own institute,2021,67,59.47
-IISER Kolkata,out,own institute,2022,58,54.18
-IISER Kolkata,out,own institute,2023,69,64.76
-IISER Kolkata,out,own institute,2024,90,78.14
-IISER Kolkata,out,own institute,2025,79,69.84
-IISER Kolkata,out,own institute,2026,66,61.77
-IISER Kolkata,out,self,2016,616,562.96
-IISER Kolkata,out,self,2017,669,612.19
-IISER Kolkata,out,self,2018,829,760.69
-IISER Kolkata,out,self,2019,881,811.93
-IISER Kolkata,out,self,2020,1277,1173.15
-IISER Kolkata,out,self,2021,1582,1459.52
-IISER Kolkata,out,self,2022,1492,1393.97
-IISER Kolkata,out,self,2023,1676,1544.25
-IISER Kolkata,out,self,2024,2016,1869.83
-IISER Kolkata,out,self,2025,1946,1798.34
-IISER Kolkata,out,self,2026,1234,1140.06
-IISER Pune,in,India + abroad,2016,206,116.45
-IISER Pune,in,India + abroad,2017,384,227.93
-IISER Pune,in,India + abroad,2018,240,141.62
-IISER Pune,in,India + abroad,2019,297,178.47
-IISER Pune,in,India + abroad,2020,211,118.32
-IISER Pune,in,India + abroad,2021,198,114.8
-IISER Pune,in,India + abroad,2022,166,91.0
-IISER Pune,in,India + abroad,2023,176,105.74
-IISER Pune,in,India + abroad,2024,84,46.23
-IISER Pune,in,India + abroad,2025,39,23.53
-IISER Pune,in,India + abroad,2026,12,6.45
-IISER Pune,in,abroad or unknown,2016,5236,0.0
-IISER Pune,in,abroad or unknown,2017,8621,0.0
-IISER Pune,in,abroad or unknown,2018,5449,0.0
-IISER Pune,in,abroad or unknown,2019,4867,0.0
-IISER Pune,in,abroad or unknown,2020,5263,0.0
-IISER Pune,in,abroad or unknown,2021,5212,0.0
-IISER Pune,in,abroad or unknown,2022,3498,0.0
-IISER Pune,in,abroad or unknown,2023,2764,0.0
-IISER Pune,in,abroad or unknown,2024,1998,0.0
-IISER Pune,in,abroad or unknown,2025,674,0.0
-IISER Pune,in,abroad or unknown,2026,136,0.0
-IISER Pune,in,other Indian only,2016,706,706.0
-IISER Pune,in,other Indian only,2017,1112,1112.0
-IISER Pune,in,other Indian only,2018,741,741.0
-IISER Pune,in,other Indian only,2019,775,775.0
-IISER Pune,in,other Indian only,2020,625,625.0
-IISER Pune,in,other Indian only,2021,652,652.0
-IISER Pune,in,other Indian only,2022,488,488.0
-IISER Pune,in,other Indian only,2023,391,391.0
-IISER Pune,in,other Indian only,2024,249,249.0
-IISER Pune,in,other Indian only,2025,109,109.0
-IISER Pune,in,other Indian only,2026,7,7.0
-IISER Pune,in,own institute,2016,33,29.75
-IISER Pune,in,own institute,2017,40,38.02
-IISER Pune,in,own institute,2018,69,62.78
-IISER Pune,in,own institute,2019,35,31.27
-IISER Pune,in,own institute,2020,31,27.5
-IISER Pune,in,own institute,2021,38,33.72
-IISER Pune,in,own institute,2022,27,25.51
-IISER Pune,in,own institute,2023,38,36.25
-IISER Pune,in,own institute,2024,17,14.48
-IISER Pune,in,own institute,2025,5,4.5
-IISER Pune,in,self,2016,876,807.51
-IISER Pune,in,self,2017,1038,940.94
-IISER Pune,in,self,2018,996,902.31
-IISER Pune,in,self,2019,955,876.09
-IISER Pune,in,self,2020,889,802.21
-IISER Pune,in,self,2021,977,892.99
-IISER Pune,in,self,2022,771,693.58
-IISER Pune,in,self,2023,553,503.98
-IISER Pune,in,self,2024,439,389.0
-IISER Pune,in,self,2025,218,199.6
-IISER Pune,in,self,2026,41,36.25
-IISER Pune,out,India + abroad,2016,112,53.88
-IISER Pune,out,India + abroad,2017,126,56.34
-IISER Pune,out,India + abroad,2018,157,69.94
-IISER Pune,out,India + abroad,2019,189,88.88
-IISER Pune,out,India + abroad,2020,167,63.69
-IISER Pune,out,India + abroad,2021,296,137.3
-IISER Pune,out,India + abroad,2022,371,157.19
-IISER Pune,out,India + abroad,2023,335,156.87
-IISER Pune,out,India + abroad,2024,416,172.74
-IISER Pune,out,India + abroad,2025,435,205.51
-IISER Pune,out,India + abroad,2026,295,125.34
-IISER Pune,out,abroad or unknown,2016,7243,0.0
-IISER Pune,out,abroad or unknown,2017,10080,0.0
-IISER Pune,out,abroad or unknown,2018,10861,0.0
-IISER Pune,out,abroad or unknown,2019,10892,0.0
-IISER Pune,out,abroad or unknown,2020,12266,0.0
-IISER Pune,out,abroad or unknown,2021,16973,0.0
-IISER Pune,out,abroad or unknown,2022,16478,0.0
-IISER Pune,out,abroad or unknown,2023,15559,0.0
-IISER Pune,out,abroad or unknown,2024,17787,0.0
-IISER Pune,out,abroad or unknown,2025,17670,0.0
-IISER Pune,out,abroad or unknown,2026,11001,0.0
-IISER Pune,out,other Indian only,2016,233,233.0
-IISER Pune,out,other Indian only,2017,265,265.0
-IISER Pune,out,other Indian only,2018,367,367.0
-IISER Pune,out,other Indian only,2019,406,406.0
-IISER Pune,out,other Indian only,2020,399,399.0
-IISER Pune,out,other Indian only,2021,599,599.0
-IISER Pune,out,other Indian only,2022,580,580.0
-IISER Pune,out,other Indian only,2023,537,537.0
-IISER Pune,out,other Indian only,2024,560,560.0
-IISER Pune,out,other Indian only,2025,631,631.0
-IISER Pune,out,other Indian only,2026,356,356.0
-IISER Pune,out,own institute,2016,22,19.0
-IISER Pune,out,own institute,2017,15,8.71
-IISER Pune,out,own institute,2018,32,23.08
-IISER Pune,out,own institute,2019,23,17.35
-IISER Pune,out,own institute,2020,36,27.71
-IISER Pune,out,own institute,2021,60,50.92
-IISER Pune,out,own institute,2022,53,44.66
-IISER Pune,out,own institute,2023,62,52.99
-IISER Pune,out,own institute,2024,58,45.96
-IISER Pune,out,own institute,2025,47,39.91
-IISER Pune,out,own institute,2026,38,35.73
-IISER Pune,out,self,2016,512,468.12
-IISER Pune,out,self,2017,618,560.71
-IISER Pune,out,self,2018,621,561.54
-IISER Pune,out,self,2019,713,642.36
-IISER Pune,out,self,2020,689,616.1
-IISER Pune,out,self,2021,1013,907.97
-IISER Pune,out,self,2022,1106,985.26
-IISER Pune,out,self,2023,1131,985.74
-IISER Pune,out,self,2024,1359,1189.12
-IISER Pune,out,self,2025,1301,1141.9
-IISER Pune,out,self,2026,803,699.44
+institution,direction,category,from_ours,year,n,india_frac
+IISER Kolkata,in,India + abroad,false,2016,166,103.38
+IISER Kolkata,in,India + abroad,false,2017,217,135.08
+IISER Kolkata,in,India + abroad,false,2018,361,212.61
+IISER Kolkata,in,India + abroad,false,2019,306,191.44
+IISER Kolkata,in,India + abroad,false,2020,326,191.71
+IISER Kolkata,in,India + abroad,false,2021,317,181.97
+IISER Kolkata,in,India + abroad,false,2022,203,120.25
+IISER Kolkata,in,India + abroad,false,2023,175,99.48
+IISER Kolkata,in,India + abroad,false,2024,124,68.87
+IISER Kolkata,in,India + abroad,false,2025,59,35.95
+IISER Kolkata,in,India + abroad,false,2026,6,3.81
+IISER Kolkata,in,India + abroad,true,2016,1,0.5
+IISER Kolkata,in,India + abroad,true,2018,1,0.5
+IISER Kolkata,in,India + abroad,true,2019,3,0.89
+IISER Kolkata,in,India + abroad,true,2020,3,1.22
+IISER Kolkata,in,India + abroad,true,2021,4,2.43
+IISER Kolkata,in,India + abroad,true,2022,1,0.5
+IISER Kolkata,in,India + abroad,true,2023,2,1.5
+IISER Kolkata,in,abroad or unknown,false,2016,3031,0.0
+IISER Kolkata,in,abroad or unknown,false,2017,3426,0.0
+IISER Kolkata,in,abroad or unknown,false,2018,6572,0.0
+IISER Kolkata,in,abroad or unknown,false,2019,5416,0.0
+IISER Kolkata,in,abroad or unknown,false,2020,5534,0.0
+IISER Kolkata,in,abroad or unknown,false,2021,5134,0.0
+IISER Kolkata,in,abroad or unknown,false,2022,3433,0.0
+IISER Kolkata,in,abroad or unknown,false,2023,3207,0.0
+IISER Kolkata,in,abroad or unknown,false,2024,2418,0.0
+IISER Kolkata,in,abroad or unknown,false,2025,1286,0.0
+IISER Kolkata,in,abroad or unknown,false,2026,68,0.0
+IISER Kolkata,in,other Indian only,false,2016,571,571.0
+IISER Kolkata,in,other Indian only,false,2017,773,773.0
+IISER Kolkata,in,other Indian only,false,2018,1075,1075.0
+IISER Kolkata,in,other Indian only,false,2019,840,840.0
+IISER Kolkata,in,other Indian only,false,2020,965,965.0
+IISER Kolkata,in,other Indian only,false,2021,954,954.0
+IISER Kolkata,in,other Indian only,false,2022,660,660.0
+IISER Kolkata,in,other Indian only,false,2023,516,516.0
+IISER Kolkata,in,other Indian only,false,2024,404,404.0
+IISER Kolkata,in,other Indian only,false,2025,174,174.0
+IISER Kolkata,in,other Indian only,false,2026,16,16.0
+IISER Kolkata,in,other Indian only,true,2016,11,11.0
+IISER Kolkata,in,other Indian only,true,2017,4,4.0
+IISER Kolkata,in,other Indian only,true,2018,17,17.0
+IISER Kolkata,in,other Indian only,true,2019,13,13.0
+IISER Kolkata,in,other Indian only,true,2020,19,19.0
+IISER Kolkata,in,other Indian only,true,2021,10,10.0
+IISER Kolkata,in,other Indian only,true,2022,6,6.0
+IISER Kolkata,in,other Indian only,true,2023,3,3.0
+IISER Kolkata,in,other Indian only,true,2024,2,2.0
+IISER Kolkata,in,other Indian only,true,2025,1,1.0
+IISER Kolkata,in,own institute,false,2016,16,15.86
+IISER Kolkata,in,own institute,false,2017,18,15.39
+IISER Kolkata,in,own institute,false,2018,22,20.54
+IISER Kolkata,in,own institute,false,2019,21,16.24
+IISER Kolkata,in,own institute,false,2020,47,38.97
+IISER Kolkata,in,own institute,false,2021,21,16.43
+IISER Kolkata,in,own institute,false,2022,11,9.55
+IISER Kolkata,in,own institute,false,2023,22,19.06
+IISER Kolkata,in,own institute,false,2024,16,15.0
+IISER Kolkata,in,own institute,false,2025,21,19.75
+IISER Kolkata,in,own institute,false,2026,1,0.75
+IISER Kolkata,in,own institute,true,2016,29,27.96
+IISER Kolkata,in,own institute,true,2017,27,26.08
+IISER Kolkata,in,own institute,true,2018,21,21.0
+IISER Kolkata,in,own institute,true,2019,25,23.56
+IISER Kolkata,in,own institute,true,2020,40,37.96
+IISER Kolkata,in,own institute,true,2021,33,32.33
+IISER Kolkata,in,own institute,true,2022,19,18.75
+IISER Kolkata,in,own institute,true,2023,13,13.0
+IISER Kolkata,in,own institute,true,2024,15,14.57
+IISER Kolkata,in,own institute,true,2025,14,13.33
+IISER Kolkata,in,self,false,2016,222,197.51
+IISER Kolkata,in,self,false,2017,332,298.49
+IISER Kolkata,in,self,false,2018,237,204.36
+IISER Kolkata,in,self,false,2019,347,306.79
+IISER Kolkata,in,self,false,2020,443,381.16
+IISER Kolkata,in,self,false,2021,306,280.04
+IISER Kolkata,in,self,false,2022,209,183.55
+IISER Kolkata,in,self,false,2023,254,221.25
+IISER Kolkata,in,self,false,2024,185,163.17
+IISER Kolkata,in,self,false,2025,81,74.77
+IISER Kolkata,in,self,false,2026,10,8.61
+IISER Kolkata,in,self,true,2016,770,721.37
+IISER Kolkata,in,self,true,2017,790,744.69
+IISER Kolkata,in,self,true,2018,872,802.44
+IISER Kolkata,in,self,true,2019,953,895.46
+IISER Kolkata,in,self,true,2020,1208,1151.49
+IISER Kolkata,in,self,true,2021,1091,1026.66
+IISER Kolkata,in,self,true,2022,770,728.53
+IISER Kolkata,in,self,true,2023,774,731.42
+IISER Kolkata,in,self,true,2024,573,537.33
+IISER Kolkata,in,self,true,2025,255,236.46
+IISER Kolkata,in,self,true,2026,49,43.7
+IISER Kolkata,out,India + abroad,false,2016,181,97.84
+IISER Kolkata,out,India + abroad,false,2017,195,104.44
+IISER Kolkata,out,India + abroad,false,2018,240,136.2
+IISER Kolkata,out,India + abroad,false,2019,270,127.55
+IISER Kolkata,out,India + abroad,false,2020,388,194.59
+IISER Kolkata,out,India + abroad,false,2021,415,211.77
+IISER Kolkata,out,India + abroad,false,2022,580,282.58
+IISER Kolkata,out,India + abroad,false,2023,485,219.95
+IISER Kolkata,out,India + abroad,false,2024,613,305.61
+IISER Kolkata,out,India + abroad,false,2025,586,288.62
+IISER Kolkata,out,India + abroad,false,2026,438,226.06
+IISER Kolkata,out,India + abroad,true,2017,1,0.83
+IISER Kolkata,out,India + abroad,true,2019,4,1.67
+IISER Kolkata,out,India + abroad,true,2020,8,0.88
+IISER Kolkata,out,India + abroad,true,2021,1,0.88
+IISER Kolkata,out,India + abroad,true,2022,11,0.59
+IISER Kolkata,out,India + abroad,true,2023,24,3.56
+IISER Kolkata,out,India + abroad,true,2024,12,4.64
+IISER Kolkata,out,India + abroad,true,2025,9,2.81
+IISER Kolkata,out,India + abroad,true,2026,15,0.97
+IISER Kolkata,out,abroad or unknown,false,2016,8196,0.0
+IISER Kolkata,out,abroad or unknown,false,2017,8949,0.0
+IISER Kolkata,out,abroad or unknown,false,2018,10090,0.0
+IISER Kolkata,out,abroad or unknown,false,2019,11914,0.0
+IISER Kolkata,out,abroad or unknown,false,2020,17071,0.0
+IISER Kolkata,out,abroad or unknown,false,2021,20297,0.0
+IISER Kolkata,out,abroad or unknown,false,2022,18520,0.0
+IISER Kolkata,out,abroad or unknown,false,2023,18676,0.0
+IISER Kolkata,out,abroad or unknown,false,2024,21817,0.0
+IISER Kolkata,out,abroad or unknown,false,2025,23882,0.0
+IISER Kolkata,out,abroad or unknown,false,2026,15143,0.0
+IISER Kolkata,out,other Indian only,false,2016,370,370.0
+IISER Kolkata,out,other Indian only,false,2017,438,438.0
+IISER Kolkata,out,other Indian only,false,2018,504,504.0
+IISER Kolkata,out,other Indian only,false,2019,628,628.0
+IISER Kolkata,out,other Indian only,false,2020,795,795.0
+IISER Kolkata,out,other Indian only,false,2021,1003,1003.0
+IISER Kolkata,out,other Indian only,false,2022,992,992.0
+IISER Kolkata,out,other Indian only,false,2023,846,846.0
+IISER Kolkata,out,other Indian only,false,2024,1149,1149.0
+IISER Kolkata,out,other Indian only,false,2025,1184,1184.0
+IISER Kolkata,out,other Indian only,false,2026,941,941.0
+IISER Kolkata,out,other Indian only,true,2016,1,1.0
+IISER Kolkata,out,other Indian only,true,2017,3,3.0
+IISER Kolkata,out,other Indian only,true,2018,8,8.0
+IISER Kolkata,out,other Indian only,true,2019,8,8.0
+IISER Kolkata,out,other Indian only,true,2020,9,9.0
+IISER Kolkata,out,other Indian only,true,2021,10,10.0
+IISER Kolkata,out,other Indian only,true,2022,15,15.0
+IISER Kolkata,out,other Indian only,true,2023,27,27.0
+IISER Kolkata,out,other Indian only,true,2024,29,29.0
+IISER Kolkata,out,other Indian only,true,2025,34,34.0
+IISER Kolkata,out,other Indian only,true,2026,13,13.0
+IISER Kolkata,out,own institute,false,2016,22,17.4
+IISER Kolkata,out,own institute,false,2017,26,22.69
+IISER Kolkata,out,own institute,false,2018,23,19.79
+IISER Kolkata,out,own institute,false,2019,32,29.97
+IISER Kolkata,out,own institute,false,2020,34,29.21
+IISER Kolkata,out,own institute,false,2021,40,34.67
+IISER Kolkata,out,own institute,false,2022,37,34.01
+IISER Kolkata,out,own institute,false,2023,44,41.43
+IISER Kolkata,out,own institute,false,2024,51,42.3
+IISER Kolkata,out,own institute,false,2025,39,33.79
+IISER Kolkata,out,own institute,false,2026,27,23.89
+IISER Kolkata,out,own institute,true,2017,6,6.0
+IISER Kolkata,out,own institute,true,2018,9,7.8
+IISER Kolkata,out,own institute,true,2019,15,15.0
+IISER Kolkata,out,own institute,true,2020,17,16.73
+IISER Kolkata,out,own institute,true,2021,27,24.8
+IISER Kolkata,out,own institute,true,2022,21,20.17
+IISER Kolkata,out,own institute,true,2023,25,23.33
+IISER Kolkata,out,own institute,true,2024,39,35.83
+IISER Kolkata,out,own institute,true,2025,40,36.05
+IISER Kolkata,out,own institute,true,2026,39,37.88
+IISER Kolkata,out,self,false,2016,577,525.16
+IISER Kolkata,out,self,false,2017,510,457.5
+IISER Kolkata,out,self,false,2018,509,457.28
+IISER Kolkata,out,self,false,2019,495,439.33
+IISER Kolkata,out,self,false,2020,670,603.14
+IISER Kolkata,out,self,false,2021,647,578.27
+IISER Kolkata,out,self,false,2022,544,491.43
+IISER Kolkata,out,self,false,2023,573,499.67
+IISER Kolkata,out,self,false,2024,700,625.63
+IISER Kolkata,out,self,false,2025,589,521.96
+IISER Kolkata,out,self,false,2026,337,299.39
+IISER Kolkata,out,self,true,2016,39,37.8
+IISER Kolkata,out,self,true,2017,160,155.69
+IISER Kolkata,out,self,true,2018,322,305.41
+IISER Kolkata,out,self,true,2019,388,374.6
+IISER Kolkata,out,self,true,2020,609,572.01
+IISER Kolkata,out,self,true,2021,940,886.26
+IISER Kolkata,out,self,true,2022,951,905.55
+IISER Kolkata,out,self,true,2023,1108,1049.58
+IISER Kolkata,out,self,true,2024,1323,1250.53
+IISER Kolkata,out,self,true,2025,1361,1280.37
+IISER Kolkata,out,self,true,2026,907,849.93
+IISER Pune,in,India + abroad,false,2016,206,116.45
+IISER Pune,in,India + abroad,false,2017,380,225.75
+IISER Pune,in,India + abroad,false,2018,234,140.27
+IISER Pune,in,India + abroad,false,2019,292,174.46
+IISER Pune,in,India + abroad,false,2020,209,118.3
+IISER Pune,in,India + abroad,false,2021,196,113.47
+IISER Pune,in,India + abroad,false,2022,165,90.34
+IISER Pune,in,India + abroad,false,2023,172,102.56
+IISER Pune,in,India + abroad,false,2024,83,46.17
+IISER Pune,in,India + abroad,false,2025,38,22.78
+IISER Pune,in,India + abroad,false,2026,10,4.95
+IISER Pune,in,India + abroad,true,2017,4,2.18
+IISER Pune,in,India + abroad,true,2018,6,1.35
+IISER Pune,in,India + abroad,true,2019,5,4.01
+IISER Pune,in,India + abroad,true,2020,2,0.02
+IISER Pune,in,India + abroad,true,2021,2,1.33
+IISER Pune,in,India + abroad,true,2022,1,0.67
+IISER Pune,in,India + abroad,true,2023,4,3.18
+IISER Pune,in,India + abroad,true,2024,1,0.06
+IISER Pune,in,India + abroad,true,2025,1,0.75
+IISER Pune,in,India + abroad,true,2026,2,1.5
+IISER Pune,in,abroad or unknown,false,2016,5225,0.0
+IISER Pune,in,abroad or unknown,false,2017,8611,0.0
+IISER Pune,in,abroad or unknown,false,2018,5440,0.0
+IISER Pune,in,abroad or unknown,false,2019,4865,0.0
+IISER Pune,in,abroad or unknown,false,2020,5251,0.0
+IISER Pune,in,abroad or unknown,false,2021,5197,0.0
+IISER Pune,in,abroad or unknown,false,2022,3476,0.0
+IISER Pune,in,abroad or unknown,false,2023,2751,0.0
+IISER Pune,in,abroad or unknown,false,2024,1981,0.0
+IISER Pune,in,abroad or unknown,false,2025,659,0.0
+IISER Pune,in,abroad or unknown,false,2026,130,0.0
+IISER Pune,in,other Indian only,false,2016,679,679.0
+IISER Pune,in,other Indian only,false,2017,1092,1092.0
+IISER Pune,in,other Indian only,false,2018,728,728.0
+IISER Pune,in,other Indian only,false,2019,764,764.0
+IISER Pune,in,other Indian only,false,2020,599,599.0
+IISER Pune,in,other Indian only,false,2021,627,627.0
+IISER Pune,in,other Indian only,false,2022,479,479.0
+IISER Pune,in,other Indian only,false,2023,378,378.0
+IISER Pune,in,other Indian only,false,2024,236,236.0
+IISER Pune,in,other Indian only,false,2025,106,106.0
+IISER Pune,in,other Indian only,false,2026,7,7.0
+IISER Pune,in,other Indian only,true,2016,28,28.0
+IISER Pune,in,other Indian only,true,2017,20,20.0
+IISER Pune,in,other Indian only,true,2018,13,13.0
+IISER Pune,in,other Indian only,true,2019,11,11.0
+IISER Pune,in,other Indian only,true,2020,26,26.0
+IISER Pune,in,other Indian only,true,2021,25,25.0
+IISER Pune,in,other Indian only,true,2022,9,9.0
+IISER Pune,in,other Indian only,true,2023,13,13.0
+IISER Pune,in,other Indian only,true,2024,15,15.0
+IISER Pune,in,other Indian only,true,2025,4,4.0
+IISER Pune,in,own institute,false,2016,23,19.75
+IISER Pune,in,own institute,false,2017,25,23.02
+IISER Pune,in,own institute,false,2018,60,54.28
+IISER Pune,in,own institute,false,2019,21,18.11
+IISER Pune,in,own institute,false,2020,15,13.17
+IISER Pune,in,own institute,false,2021,25,22.05
+IISER Pune,in,own institute,false,2022,14,12.51
+IISER Pune,in,own institute,false,2023,25,24.29
+IISER Pune,in,own institute,false,2024,12,11.38
+IISER Pune,in,own institute,false,2025,4,3.5
+IISER Pune,in,own institute,true,2016,10,10.0
+IISER Pune,in,own institute,true,2017,15,15.0
+IISER Pune,in,own institute,true,2018,9,8.5
+IISER Pune,in,own institute,true,2019,14,13.17
+IISER Pune,in,own institute,true,2020,16,14.33
+IISER Pune,in,own institute,true,2021,13,11.67
+IISER Pune,in,own institute,true,2022,13,13.0
+IISER Pune,in,own institute,true,2023,13,11.96
+IISER Pune,in,own institute,true,2024,5,3.1
+IISER Pune,in,own institute,true,2025,1,1.0
+IISER Pune,in,self,false,2016,214,183.24
+IISER Pune,in,self,false,2017,341,308.74
+IISER Pune,in,self,false,2018,319,283.86
+IISER Pune,in,self,false,2019,299,265.73
+IISER Pune,in,self,false,2020,287,250.47
+IISER Pune,in,self,false,2021,345,308.9
+IISER Pune,in,self,false,2022,211,189.82
+IISER Pune,in,self,false,2023,158,142.98
+IISER Pune,in,self,false,2024,138,115.35
+IISER Pune,in,self,false,2025,72,65.87
+IISER Pune,in,self,false,2026,18,14.72
+IISER Pune,in,self,true,2016,672,634.26
+IISER Pune,in,self,true,2017,707,642.2
+IISER Pune,in,self,true,2018,686,627.45
+IISER Pune,in,self,true,2019,658,612.35
+IISER Pune,in,self,true,2020,614,563.74
+IISER Pune,in,self,true,2021,647,599.09
+IISER Pune,in,self,true,2022,582,525.76
+IISER Pune,in,self,true,2023,408,374.0
+IISER Pune,in,self,true,2024,316,288.65
+IISER Pune,in,self,true,2025,160,147.72
+IISER Pune,in,self,true,2026,29,27.53
+IISER Pune,out,India + abroad,false,2016,112,53.88
+IISER Pune,out,India + abroad,false,2017,125,56.34
+IISER Pune,out,India + abroad,false,2018,157,69.94
+IISER Pune,out,India + abroad,false,2019,187,88.55
+IISER Pune,out,India + abroad,false,2020,165,63.65
+IISER Pune,out,India + abroad,false,2021,286,133.19
+IISER Pune,out,India + abroad,false,2022,364,154.15
+IISER Pune,out,India + abroad,false,2023,331,154.95
+IISER Pune,out,India + abroad,false,2024,400,168.87
+IISER Pune,out,India + abroad,false,2025,432,204.44
+IISER Pune,out,India + abroad,false,2026,288,122.54
+IISER Pune,out,India + abroad,true,2017,1,0.0
+IISER Pune,out,India + abroad,true,2019,2,0.33
+IISER Pune,out,India + abroad,true,2020,2,0.04
+IISER Pune,out,India + abroad,true,2021,10,4.11
+IISER Pune,out,India + abroad,true,2022,7,3.04
+IISER Pune,out,India + abroad,true,2023,4,1.92
+IISER Pune,out,India + abroad,true,2024,16,3.88
+IISER Pune,out,India + abroad,true,2025,3,1.07
+IISER Pune,out,India + abroad,true,2026,7,2.8
+IISER Pune,out,abroad or unknown,false,2016,7241,0.0
+IISER Pune,out,abroad or unknown,false,2017,10075,0.0
+IISER Pune,out,abroad or unknown,false,2018,10858,0.0
+IISER Pune,out,abroad or unknown,false,2019,10888,0.0
+IISER Pune,out,abroad or unknown,false,2020,12264,0.0
+IISER Pune,out,abroad or unknown,false,2021,16968,0.0
+IISER Pune,out,abroad or unknown,false,2022,16472,0.0
+IISER Pune,out,abroad or unknown,false,2023,15555,0.0
+IISER Pune,out,abroad or unknown,false,2024,17773,0.0
+IISER Pune,out,abroad or unknown,false,2025,17650,0.0
+IISER Pune,out,abroad or unknown,false,2026,10985,0.0
+IISER Pune,out,other Indian only,false,2016,233,233.0
+IISER Pune,out,other Indian only,false,2017,264,264.0
+IISER Pune,out,other Indian only,false,2018,366,366.0
+IISER Pune,out,other Indian only,false,2019,401,401.0
+IISER Pune,out,other Indian only,false,2020,396,396.0
+IISER Pune,out,other Indian only,false,2021,586,586.0
+IISER Pune,out,other Indian only,false,2022,571,571.0
+IISER Pune,out,other Indian only,false,2023,528,528.0
+IISER Pune,out,other Indian only,false,2024,549,549.0
+IISER Pune,out,other Indian only,false,2025,621,621.0
+IISER Pune,out,other Indian only,false,2026,351,351.0
+IISER Pune,out,other Indian only,true,2017,1,1.0
+IISER Pune,out,other Indian only,true,2018,1,1.0
+IISER Pune,out,other Indian only,true,2019,5,5.0
+IISER Pune,out,other Indian only,true,2020,3,3.0
+IISER Pune,out,other Indian only,true,2021,13,13.0
+IISER Pune,out,other Indian only,true,2022,10,10.0
+IISER Pune,out,other Indian only,true,2023,9,9.0
+IISER Pune,out,other Indian only,true,2024,11,11.0
+IISER Pune,out,other Indian only,true,2025,10,10.0
+IISER Pune,out,other Indian only,true,2026,6,6.0
+IISER Pune,out,own institute,false,2016,20,17.0
+IISER Pune,out,own institute,false,2017,15,8.71
+IISER Pune,out,own institute,false,2018,29,20.08
+IISER Pune,out,own institute,false,2019,22,16.85
+IISER Pune,out,own institute,false,2020,26,18.21
+IISER Pune,out,own institute,false,2021,45,36.67
+IISER Pune,out,own institute,false,2022,40,32.72
+IISER Pune,out,own institute,false,2023,45,37.27
+IISER Pune,out,own institute,false,2024,37,29.02
+IISER Pune,out,own institute,false,2025,29,23.07
+IISER Pune,out,own institute,false,2026,27,24.73
+IISER Pune,out,own institute,true,2016,2,2.0
+IISER Pune,out,own institute,true,2018,3,3.0
+IISER Pune,out,own institute,true,2019,1,0.5
+IISER Pune,out,own institute,true,2020,10,9.5
+IISER Pune,out,own institute,true,2021,15,14.25
+IISER Pune,out,own institute,true,2022,13,11.94
+IISER Pune,out,own institute,true,2023,17,15.71
+IISER Pune,out,own institute,true,2024,21,16.94
+IISER Pune,out,own institute,true,2025,18,16.85
+IISER Pune,out,own institute,true,2026,11,11.0
+IISER Pune,out,self,false,2016,474,431.6
+IISER Pune,out,self,false,2017,464,418.15
+IISER Pune,out,self,false,2018,384,346.65
+IISER Pune,out,self,false,2019,367,327.12
+IISER Pune,out,self,false,2020,284,245.97
+IISER Pune,out,self,false,2021,429,380.35
+IISER Pune,out,self,false,2022,416,354.11
+IISER Pune,out,self,false,2023,386,310.62
+IISER Pune,out,self,false,2024,475,387.53
+IISER Pune,out,self,false,2025,486,410.25
+IISER Pune,out,self,false,2026,286,249.26
+IISER Pune,out,self,true,2016,40,38.52
+IISER Pune,out,self,true,2017,159,147.55
+IISER Pune,out,self,true,2018,240,217.89
+IISER Pune,out,self,true,2019,350,319.25
+IISER Pune,out,self,true,2020,407,372.13
+IISER Pune,out,self,true,2021,589,532.61
+IISER Pune,out,self,true,2022,695,636.16
+IISER Pune,out,self,true,2023,749,679.12
+IISER Pune,out,self,true,2024,898,815.58
+IISER Pune,out,self,true,2025,835,751.39
+IISER Pune,out,self,true,2026,532,465.18

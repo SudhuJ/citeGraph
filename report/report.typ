@@ -129,15 +129,19 @@ The dataset covers every paper by a *current regular faculty member* written whi
 #let S = C.summary
 Directed graph: node = corpus paper, edge A→B = A cites B, both endpoints in the corpus. *#num(S.nodes) nodes, #num(S.edges) edges*, density #S.density, mean degree #S.mean_degree. The largest weakly-connected component holds #pct(S.giant_share) of the papers; #num(S.isolates) papers cite and are cited by no other corpus paper. Transitivity #S.transitivity, average shortest path in the giant component #S.avg_path_gcc (diameter #S.diameter_gcc), degree assortativity #S.assortativity_degree. In-degree is heavy-tailed (a discrete power-law fit gives α = #C.powerlaw_indegree.alpha for $k >= #C.powerlaw_indegree.xmin$; without a goodness-of-fit test we do not claim a power law).
 
-*Most of this network is self-citation.* #pct(S.self_share) of the citations link two papers that share an author; only #num(C.summary_excl_self.edges) link papers by different people. Aggregated to faculty, #d.faccit.faculty_citing_colleagues of #d.faccit.faculty publishing faculty cite a colleague they never co-authored with, and #pct(1 - d.faccit.same_institute_share) of those citations cross between Pune and Kolkata, although only a handful of faculty pairs co-author across the two.
+#let oin = d.origin.filter(o => o.direction == "in")
+#let recv = oin.map(o => o.n).sum()
+#let ours = oin.filter(o => o.from_ours).map(o => o.n).sum()
+*Most of this network is self-citation.* Two terms are easy to confuse here: _our papers_ have at least one of our faculty as an author, and a _self-citation_ is one where the citing and cited papers share an author. Citations from our own papers are only #pct(ours / recv) of all the citations our papers receive. Within this network, #pct(S.self_share) of the citations link two papers that share an author; only #num(C.summary_excl_self.edges) link papers by different people. Aggregated to faculty, #d.faccit.faculty_citing_colleagues of #d.faccit.faculty publishing faculty cite a colleague's paper that they are not an author of, and #pct(1 - d.faccit.same_institute_share) of those citations cross between Pune and Kolkata, although only a handful of faculty pairs co-author across the two.
 
 #grid(columns: (1.45fr, 1fr), gutter: 12pt,
   [
-    == PageRank top 10 (damping 0.85, self-citations removed)
-    #table(columns: (1fr, auto, auto, auto), align: (left, left, right, right),
-      table.header[Paper][Inst.][Year][In-deg.],
-      ..C.top_pagerank.map(p => (trunc(p.title, 62), p.inst.replace("IISER ", ""), str(p.year), str(p.indeg))).flatten())
-    #text(7.5pt, fill: grey)[In-deg. = citations from papers by other people. Without self-citations the graph is sparse, so these ranks rest on few citations; with them, PageRank mostly rewards a lab's chains of self-citation.]
+    == Most cited by other groups (self-citations removed)
+    #let R = C.pagerank_vs_indegree
+    #table(columns: (1fr, auto, auto, auto, auto), align: (left, left, right, right, right),
+      table.header[Paper][Inst.][Year][In-deg.][PR rank],
+      ..C.top_indegree.map(p => (trunc(p.title, 56), p.inst.replace("IISER ", ""), str(p.year), str(p.indeg), str(p.pr_rank))).flatten())
+    #text(7.5pt, fill: grey)[In-deg. = citations from our papers by other people. PR rank = rank by PageRank (damping 0.85) on the same graph. Over the #R.cited_papers papers cited at least once, Spearman ρ between the two is #R.spearman, and #R.top10_overlap papers are in both top-10 lists: with so few links, PageRank mostly reshuffles small counts.]
   ],
   [
     == Cross-institute citation flow (India)
@@ -192,7 +196,7 @@ The brief defines nodes as "faculty members" (instruction note §6b) but the sli
   ]
 )
 
-*Reading.* Within-institute collaboration is sparse: #F.isolates of #F.nodes faculty have no co-authored paper with another IISER Pune/Kolkata faculty member, and G#sub[fac] fragments into #F.components components. Communities follow departments (NMI #F.nmi_community_department) far more than institutes. Adding the Indian co-authors joins #pct(I.giant_share) of nodes into one component and gives very high modularity (#I.modularity_leiden): collaboration is organised in lab-centred clusters that connect through a few brokers. *Hyperauthorship sensitivity:* #d.net.hyperauthorship.hyper_papers papers with ≥100 authors connect only #d.net.hyperauthorship.hyper_faculty_pairs faculty pairs, but with hundreds of shared papers each. Counted naively, they would dominate collaboration strength, which is why they are excluded.
+*Reading.* Within-institute collaboration is sparse: #F.isolates of #F.nodes faculty have no co-authored paper with another IISER Pune/Kolkata faculty member, and G#sub[fac] fragments into #F.components components. Co-authorship stays inside each institute: #pct(d.facpairs.same_inst) of the #d.facpairs.links faculty–faculty links join two people at the same institute, while only #pct(d.facpairs.same_dept) join two people in the same department, so the communities are institute-bound but often span departments. (NMI ranks departments above institutes, #F.nmi_community_department vs #F.nmi_community_institute, largely because institute has just two values.) Adding the Indian co-authors joins #pct(I.giant_share) of nodes into one component and gives very high modularity (#I.modularity_leiden): collaboration is organised in lab-centred clusters that connect through a few brokers. *Hyperauthorship sensitivity:* #d.net.hyperauthorship.hyper_papers papers with ≥100 authors connect only #d.net.hyperauthorship.hyper_faculty_pairs faculty pairs, but with hundreds of shared papers each. Counted naively, they would dominate collaboration strength, which is why they are excluded.
 
 = 4 · Indian connectivity
 
@@ -211,7 +215,7 @@ The brief defines nodes as "faculty members" (instruction note §6b) but the sli
   table.header[Institute][Direction][Self][Same IISER][Other Indian][India + abroad][No Indian author / unknown],
   ..("IISER Pune", "IISER Kolkata").map(i => ("in", "out").map(dir => (i.replace("IISER ", ""), if dir == "in" [cited by] else [citing], ..cats.map(c => osh(i, dir, c)))).flatten()).flatten())
 
-Nearby institutions rank high: CSIR-NCL and Savitribai Phule Pune University for Pune, IIT Kharagpur for Kolkata. The other strong partners are premier science institutes (TIFR, IISc, IISER Bhopal). HBNI and AcSIR are umbrella bodies that overlap with the DAE and CSIR labs they cover. Two-thirds or more of our citations come from papers with no Indian author, and other Indian institutes give about as many as the authors' own self-citations. Topic Jaccard is computed over the OpenAlex subfields that each make up ≥ 0.5% of an institution's 2016–26 output.
+Nearby institutions rank high: CSIR-NCL and Savitribai Phule Pune University for Pune, IIT Kharagpur for Kolkata. The other strong partners are premier science institutes (TIFR, IISc, IISER Bhopal). HBNI and AcSIR are umbrella bodies that overlap with the DAE and CSIR labs they cover. Two-thirds or more of our citations come from papers with no Indian author or unknown affiliations. Self-citations here count any citing paper that shares an author with ours, from inside our corpus or outside it, which is why their share of all citations (#osh("IISER Pune", "in", "self") for Pune, #osh("IISER Kolkata", "in", "self") for Kolkata) is far below the 96% inside the citation network. Topic Jaccard is computed over the OpenAlex subfields that each make up ≥ 0.5% of an institution's 2016–26 output.
 
 #v(4pt)
 #text(7.5pt, fill: grey)[*Method notes.* Kept work types: article, review, letter, conference paper (preprints, datasets, errata dropped). Duplicate records (same DOI or normalised title + year) merged. Quartile = SCImago best quartile, nearest year not after publication. h-index (2016–26) is computed from this corpus; lifetime h-index is OpenAlex's. Indian links come from OpenAlex `cites:`/`cited_by:` queries restricted to works with an Indian affiliation; "other institute" excludes the paper's own institute. Full pipeline and decisions: dashboard → Methods & data.]

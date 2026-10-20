@@ -7,7 +7,7 @@ title: India & the world
 <p class="muted">Who cites our papers, whose work our papers cite, and which Indian institutions our faculty write with. Papers with 100 or more authors are left out.</p>
 
 ```js
-import {INST, instColor, instVar, shortInst, pct, num, answer, ORIGIN, originLabel, originColor, instName} from "./components/defs.js";
+import {INST, instColor, instVar, shortInst, pct, num, answer, ORIGIN, originLabel, originColor, instName, citationTerms, measure} from "./components/defs.js";
 const origin = FileAttachment("data/origin.csv").csv({typed: true});
 const conn = FileAttachment("data/connections.csv").csv({typed: true});
 const M = FileAttachment("data/network_metrics.json").json();
@@ -32,13 +32,19 @@ const originChart = (rows) => resize((width) => Plot.plot({width,
 
 ## Who cites our work?
 
-${answer(html`Mostly researchers abroad. ${INST.map((i) => `${pct(share(IN, i, ["abroad or unknown"]))} of ${shortInst(i)}'s citations come from papers with no Indian author or no affiliation data`).join(", and ")}. Other Indian institutes give ${INST.map((i) => `${pct(share(IN, i, OTHER))} (${shortInst(i)})`).join(" and ")}, about as much as the authors' own self-citations (${INST.map((i) => `${pct(share(IN, i, ["self"]))}`).join(" and ")}). Colleagues at the same IISER who are not co-authors give only ${INST.map((i) => pct(share(IN, i, ["own institute"]), 1)).join(" and ")}.`)}
+${citationTerms(origin)}
+
+${measure(html`Every citation our papers receive, sorted by who wrote the citing paper, using the five categories under the chart. Citing papers with an Indian author were fetched one by one; everything else is OpenAlex's citation total minus those.`)}
+
+${answer(html`Mostly researchers abroad. ${INST.map((i) => `${pct(share(IN, i, ["abroad or unknown"]))} of ${shortInst(i)}'s citations come from papers with no Indian author or no affiliation data`).join(", and ")}. Other Indian institutes give ${INST.map((i) => `${pct(share(IN, i, OTHER))} (${shortInst(i)})`).join(" and ")}. Self-citations make up ${INST.map((i) => `${pct(share(IN, i, ["self"]))} (${shortInst(i)})`).join(" and ")} of all citations received, and most of them come from our own papers (left column of the tables above). Colleagues at the same IISER who are not co-authors give only ${INST.map((i) => pct(share(IN, i, ["own institute"]), 1)).join(" and ")}.`)}
 
 ```js
 display(originChart(IN));
 ```
 
 ## Whose work do we cite?
+
+${measure(html`Every reference in our papers, sorted the same way by who wrote the cited paper.`)}
 
 ${answer(html`Overwhelmingly foreign work. ${INST.map((i) => `${pct(share(OUT, i, ["abroad or unknown"]))} of ${shortInst(i)}'s references point to papers with no Indian author or no affiliation data`).join(", and ")}. References to other Indian institutes make up ${INST.map((i) => `${pct(share(OUT, i, OTHER))} (${shortInst(i)})`).join(" and ")}.`)}
 
@@ -50,10 +56,10 @@ display(originChart(OUT));
 <details class="how"><summary>How it's computed</summary>
 <p>Every citation link goes into the first category that fits:</p>
 <ol>
-<li><b>Self-citation:</b> the two papers share an author.</li>
+<li><b>Self-citation:</b> the two papers share an author, whether or not the citing paper is one of ours.</li>
 <li><b>Same IISER:</b> the other paper has an author at the same institute, but no shared author.</li>
 <li><b>Indian and foreign authors:</b> the other paper has both. Papers with 100+ authors also go here, since their author lists are truncated.</li>
-<li><b>Other Indian institutes only:</b> all of the other paper's authors are in India.</li>
+<li><b>Other Indian institutes only:</b> all of the other paper's authors are in India. For Pune this includes IISER Kolkata, and the other way round.</li>
 <li><b>No Indian author, or unknown:</b> everything else. OpenAlex gives the total, and we subtract the Indian links.</li>
 </ol>
 <p>Fractional counting is a check on the categories. If each citing paper is split by the share of its authors who are in India, India accounts for ${INST.map((i) => `${pct(fracIndia(IN, i, ORIGIN))} of ${shortInst(i)}'s citations`).join(" and ")}, self-citations included.</p>
@@ -68,6 +74,8 @@ const byYear = d3.flatRollup(origin.filter((d) => d.direction === "in" && d.year
 const first = (i) => byYear.find((d) => d.institution === i && d.year === 2016)?.share;
 const last = (i) => byYear.find((d) => d.institution === i && d.year === 2025)?.share;
 ```
+
+${measure(html`For our papers published in each year, the share of their citations that come from other Indian institutes (with or without foreign co-authors), self-citations included in the total.`)}
 
 ${answer(html`${INST.every((i) => Math.abs(last(i) - first(i)) < 0.05) ? "Not much." : "Somewhat."} For papers published in 2016, other Indian institutes gave ${INST.map((i) => `${pct(first(i))} of the citations (${shortInst(i)})`).join(" and ")}. For papers published in 2025 the figure is ${INST.map((i) => `${pct(last(i))} (${shortInst(i)})`).join(" and ")}. Recent papers have few citations so far, so the last points are noisy.`)}
 
@@ -97,6 +105,8 @@ const byCluster = d3.rollups(partners, (v) => d3.sum(v, (d) => d.shared_papers),
   .map(([cluster, papers]) => ({cluster, papers})).sort((a, b) => b.papers - a.papers);
 const crossShare = d3.sum(partners.filter((d) => d.cross_cluster), (d) => d.shared_papers) / d3.sum(partners, (d) => d.shared_papers);
 ```
+
+${measure(html`For each Indian institution, the number of our papers with at least one co-author there. Institutions are also grouped into clusters such as IITs, CSIR labs, universities, and the IISc · TIFR · IISER group.`)}
 
 ${answer(html`${shortInst(pick)} faculty co-authored with ${partners.length} Indian institutions. The strongest partners are ${top.slice(0, 3).map((d) => `${instName(d.partner_inst)} (${d.shared_papers} papers)`).join(", ")}, so nearby institutions rank high. ${pct(crossShare)} of joint papers are with institutions outside the IISc · TIFR · IISER cluster.`)}
 
@@ -139,6 +149,8 @@ display(resize((width) => Plot.plot({
 const tc = M.citation.top_citing_institutes.filter((d) => d.institution === pick);
 ```
 
+${measure(html`For each Indian institution, how many citation links to our papers come from papers with an author there, leaving self-citations out.`)}
+
 ${answer(html`${instName(tc[0]?.partner)} cites ${shortInst(pick)}'s work most often (${num(tc[0]?.citations)} citation links, self-citations excluded), followed by ${tc.slice(1, 3).map((d) => instName(d.partner)).join(" and ")}.`)}
 
 ```js
@@ -168,6 +180,8 @@ const rho = (() => {
   return d3.sum(a, (x, i) => (x - ma) * (b[i] - mb)) / Math.sqrt(d3.sum(a, (x) => (x - ma) ** 2) * d3.sum(b, (y) => (y - mb) ** 2));
 })();
 ```
+
+${measure(html`For each partner, the overlap of research topics (the Jaccard similarity of the subfields each institution publishes in), set against the number of joint papers.`)}
 
 ${rho == null
   ? answer(html`Topic profiles are not loaded yet (run <code>make topics</code>), so this question is open.`)

@@ -5,7 +5,7 @@ title: Output & venues
 # Output & venues
 
 ```js
-import {INST, instColor, shortInst, pct, num, answer, isTopJournal, TOP_JOURNAL_RULE, hasQuartiles} from "./components/defs.js";
+import {INST, instColor, shortInst, pct, num, answer, isTopJournal, TOP_JOURNAL_RULE, hasQuartiles, measure} from "./components/defs.js";
 const papers = FileAttachment("data/papers.csv").csv({typed: true});
 const faculty = FileAttachment("data/faculty.csv").csv({typed: true});
 ```
@@ -34,6 +34,8 @@ const rise = (inst, key) => {
   return r(2025) / r(2016) - 1;
 };
 ```
+
+${measure(html`Papers per year at each institute, and the same divided by the number of current faculty who had published here by that year.`)}
 
 ${answer(html`Yes. From 2016 to 2025 yearly output grew ${shown.map((i) => `${pct(rise(i, "papers"))} at ${shortInst(i)}`).join(" and ")}. Per active faculty member the change is ${shown.map((i) => `${pct(rise(i, "per_faculty"))} at ${shortInst(i)}`).join(" and ")}, so most of the growth comes from more people publishing rather than each person publishing more.`)}
 
@@ -94,6 +96,8 @@ const share = (inst, f) => {
   return r.length ? r.filter(f).length / r.length : null;
 };
 ```
+
+${measure(html`For journal papers, the SCImago quartile of the venue: Q1 means the journal is in the top quarter of its subject category by SJR, a citation-based prestige score. The stricter bar also needs an impact-factor proxy above 5.`)}
 
 ${quartilesLoaded
   ? answer(html`${shown.map((i) => `${pct(share(i, (d) => d.quartile === "Q1"))} of ${shortInst(i)}'s ranked journal papers are in Q1 venues`).join(", and ")}. Using the stricter bar of Q1 with an impact-factor proxy above 5, the share is ${shown.map((i) => `${pct(share(i, isTopJournal))} (${shortInst(i)})`).join(" and ")}.`)
@@ -173,6 +177,8 @@ const tableOpts = {
 const byCites = top30(P);
 const byVenue = top30(P.filter(isTopJournal));
 ```
+
+${measure(html`Each paper's total citation count in OpenAlex at the time of collection (October 2026).`)}
 
 ${answer(html`The 30 most-cited papers are ${pct(byCites.filter((d) => d.year <= 2019).length / byCites.length)} from 2016–2019. Citation counts favour older papers, which have had longer to be cited.`)}
 

@@ -46,7 +46,7 @@ All API responses are cached in `data/cache/`, so re-runs cost nothing. A full f
 | `citation_network.csv` | `source_doi, target_doi, source_inst, target_inst, year` + `edge_kind` (internal / in / out), `self_citation`, `involves_hyper` |
 | `authorship_network.csv` | `author_a, author_b, paper_doi, inst_a, inst_b, year` + node IDs, faculty flags, cross-institution/cluster flags |
 | `indian_connections.csv` | `your_inst, partner_inst, shared_papers, total_citations` + `cites_in, cites_out, partner_cluster, cross_cluster, jaccard_topics`, `shared_papers_incl_hyper` (counts leave out 100+ author papers and self-citations) |
-| `citation_origin.csv` | per paper and direction (cited by / citing): links in each origin category (self, own institute, other Indian only, India + abroad, abroad or unknown) |
+| `citation_origin.csv` | per paper and direction (cited by / citing): links in each origin category (self, own institute, other Indian only, India + abroad, abroad or unknown); `from_ours` marks links whose other paper is also one of ours |
 | `faculty_stats.csv`, `network_*.csv` | faculty metrics, paper-level PageRank, faculty centralities |
 
 `make check` validates these against the instruction note.

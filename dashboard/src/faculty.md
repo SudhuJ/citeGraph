@@ -7,7 +7,7 @@ title: Faculty & departments
 <p class="muted">Every number here leaves out papers with 100 or more authors (see <a href="./collaborations">Big collaborations</a>). Papers with 11–99 authors stay in and are counted in the "&gt;10 authors" column.</p>
 
 ```js
-import {INST, instColor, shortInst, pct, num, answer, shareBar} from "./components/defs.js";
+import {INST, instColor, shortInst, pct, num, answer, measure, shareBar} from "./components/defs.js";
 const faculty = FileAttachment("data/faculty.csv").csv({typed: true});
 const depts = FileAttachment("data/departments.csv").csv({typed: true});
 ```
@@ -21,13 +21,18 @@ const F = faculty.filter((d) => pick === "Both" || d.institution === pick);
 const D = depts.filter((d) => (pick === "Both" || d.institution === pick) && d.papers > 0)
   .map((d) => ({...d, papers_per_faculty: d.papers / d.faculty_with_papers}));
 const qLoaded = depts.some((d) => d.q1_share != null);
-const best = (key) => D.filter((d) => d.journal_papers >= 50 && d[key] != null).toSorted((a, b) => b[key] - a[key])[0];
+const ranked50 = (key) => D.filter((d) => d.journal_papers >= 50 && d[key] != null).toSorted((a, b) => b[key] - a[key]);
+const best = (key) => ranked50(key)[0];
+const worst = (key) => ranked50(key).at(-1);
+const dn = (d) => `${shortInst(d.institution)} ${d.department}`;
 ```
 
 ## How do departments compare?
 
+${measure(html`For each department: papers, citations, the median h-index of its faculty, and the two bars the course asked for: the share of ranked journal papers in Q1 venues, and the share in Q1 venues whose impact-factor proxy is above 5.`)}
+
 ${qLoaded
-  ? answer(html`Among departments with at least 50 journal papers, the highest Q1 share is ${shortInst(best("q1_share").institution)} ${best("q1_share").department} (${pct(best("q1_share").q1_share)}). The highest share in Q1 journals with an impact-factor proxy above 5 is ${shortInst(best("q1_if5_share").institution)} ${best("q1_if5_share").department} (${pct(best("q1_if5_share").q1_if5_share)}).`)
+  ? answer(html`On Q1 alone, departments are fairly close: among those with at least 50 journal papers, the Q1 share runs from ${pct(worst("q1_share").q1_share)} (${dn(worst("q1_share"))}) to ${pct(best("q1_share").q1_share)} (${dn(best("q1_share"))}). The stricter Q1 & IF>5 bar spreads them out, from ${pct(worst("q1_if5_share").q1_if5_share)} (${dn(worst("q1_if5_share"))}) to ${pct(best("q1_if5_share").q1_if5_share)} (${dn(best("q1_if5_share"))}). Much of that spread follows how often each field cites: even the leading mathematics journals have an impact-factor proxy below 5.`)
   : answer(html`Quartile shares need the SCImago files, which are not loaded yet. Output per faculty member is highest in ${shortInst(D.toSorted((a, b) => b.papers_per_faculty - a.papers_per_faculty)[0].institution)} ${D.toSorted((a, b) => b.papers_per_faculty - a.papers_per_faculty)[0].department}.`)}
 
 ```js
@@ -83,6 +88,8 @@ const top10share = (inst) => {
   return d3.sum(c.slice(0, Math.ceil(c.length / 10))) / d3.sum(c);
 };
 ```
+
+${measure(html`The share of each institute's citations held by its top 10% of faculty, and each faculty member's h-index: the largest h such that h of their 2016–26 papers have at least h citations each.`)}
 
 ${answer(html`Impact is concentrated. The top 10% of faculty by citations account for ${(pick === "Both" ? INST : [pick]).map((i) => `${pct(top10share(i))} of ${shortInst(i)}'s citations`).join(" and ")}. The median 2016–26 h-index is ${d3.median(hs, (d) => d.h_index)}.`)}
 
