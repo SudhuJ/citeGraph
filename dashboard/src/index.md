@@ -5,125 +5,52 @@ toc: false
 
 # IISER Pune & IISER Kolkata, 2016–2026
 
-<p class="muted">DPCN 2026 · Group 19. Every paper by a current regular faculty member, written while they were affiliated with the institute (OpenAlex). Pick an institute to filter every panel on this page.</p>
+<p class="muted">DPCN 2026 · Group 19. Every paper by a current regular faculty member, written while they were at the institute (source: OpenAlex). Papers with 100 or more authors, mostly from the CMS experiment, are counted separately on the <a href="./collaborations">Big collaborations</a> page and left out of everything else.</p>
 
 ```js
+import {INST, instVar, pct, num, ORIGIN} from "./components/defs.js";
 const papers = FileAttachment("data/papers.csv").csv({typed: true});
 const faculty = FileAttachment("data/faculty.csv").csv({typed: true});
-const INST = ["IISER Pune", "IISER Kolkata"];
-const instColor = {domain: INST, range: ["var(--pune)", "var(--kolkata)"], legend: true};
+const origin = FileAttachment("data/origin.csv").csv({typed: true});
+const conn = FileAttachment("data/connections.csv").csv({typed: true});
+const M = FileAttachment("data/network_metrics.json").json();
+const FC = FileAttachment("data/faccit_graph.json").json();
 ```
 
 ```js
-const pick = view(Inputs.radio(["Both", ...INST], {value: "Both", label: "Institute"}));
-const noHyper = view(Inputs.toggle({label: "Exclude ≥100-author collaboration papers", value: false}));
-```
-
-```js
-const P = papers.filter((d) => (pick === "Both" || d.institution === pick) && !(noHyper && d.hyperauthored));
-const F = faculty.filter((d) => pick === "Both" || d.institution === pick);
-const shown = pick === "Both" ? INST : [pick];
+const P = papers.filter((d) => !d.hyperauthored);
+const byInst = (inst) => P.filter((d) => d.institution === inst);
+const growth = (inst) => {
+  const n = (y) => byInst(inst).filter((d) => d.year === y).length;
+  return n(2025) / n(2016) - 1;
+};
 const ranked = P.filter((d) => /^Q[1-4]$/.test(d.quartile ?? ""));
+const q1 = ranked.length ? ranked.filter((d) => d.quartile === "Q1").length / ranked.length : null;
+const originShare = (inst, dir, cats) => {
+  const rows = origin.filter((d) => d.institution === inst && d.direction === dir);
+  return d3.sum(rows.filter((d) => cats.includes(d.category)), (d) => d.n) / d3.sum(rows, (d) => d.n);
+};
+const GF = M.coauthorship.G_fac.summary;
+const topPartners = (inst) => conn.filter((d) => d.your_inst === inst).toSorted((a, b) => b.shared_papers - a.shared_papers)
+  .slice(0, 3).map((d) => d.partner_inst).join(", ");
 ```
 
 <div class="grid grid-cols-4">
-  ${shown.map((inst) => {
-    const p = P.filter((d) => d.institution === inst), f = F.filter((d) => d.institution === inst);
-    const q = p.filter((d) => /^Q[1-4]$/.test(d.quartile ?? ""));
-    return html`<div class="card"><h2><span class="swatch" style="background:var(${inst === "IISER Pune" ? "--pune" : "--kolkata"})"></span>${inst}</h2>
-      <div class="big">${p.length.toLocaleString()}</div><div class="muted">papers · ${d3.sum(p, (d) => d.citations).toLocaleString()} citations</div>
-      <div class="muted">${f.filter((d) => d.papers > 0).length} of ${f.length} faculty with papers · median h-index ${d3.median(f, (d) => d.h_index)}</div>
-      <div class="muted">Q1 share: ${q.length ? d3.format(".0%")(q.filter((d) => d.quartile === "Q1").length / q.length) : "— (add SCImago files)"}</div></div>`;
+  ${INST.map((inst) => {
+    const p = byInst(inst), f = faculty.filter((d) => d.institution === inst);
+    return html`<div class="card"><h2><span class="swatch" style="background:${instVar(inst)}"></span>${inst}</h2>
+      <div class="big">${num(p.length)}</div><div class="muted">papers · ${num(d3.sum(p, (d) => d.citations))} citations</div>
+      <div class="muted">${f.filter((d) => d.papers > 0).length} of ${f.length} faculty with papers · median h-index ${d3.median(f, (d) => d.h_index)}</div></div>`;
   })}
 </div>
 
-<div class="grid grid-cols-2">
-<div class="card">
+## What we found
 
-## Publication trend
-
-```js
-const trend = d3.flatRollup(P, (v) => v.length, (d) => d.institution, (d) => d.year)
-  .map(([institution, year, papers]) => ({institution, year, papers}));
-display(resize((width) => Plot.plot({width,
-  height: 300, marginLeft: 44, x: {label: null, tickFormat: "d", ticks: 11}, y: {grid: true, label: "papers"},
-  color: instColor,
-  marks: [
-    Plot.ruleY([0], {stroke: "var(--theme-foreground-faint)"}),
-    Plot.line(trend, {x: "year", y: "papers", stroke: "institution", strokeWidth: 2}),
-    Plot.dot(trend, {x: "year", y: "papers", fill: "institution", r: 4, stroke: "var(--theme-background)", strokeWidth: 2}),
-    Plot.ruleX(trend, Plot.pointerX({x: "year", stroke: "var(--theme-foreground-faint)"})),
-    Plot.tip(trend, Plot.pointer({x: "year", y: "papers", title: (d) => `${d.institution}\n${d.year}: ${d.papers} papers`}))
-  ]
-})));
-```
-<p class="muted">2026 is a partial year (data collected Oct 2026).</p>
-</div>
-<div class="card">
-
-## Journal quartile distribution
-
-```js
-const qOrder = ["Q1", "Q2", "Q3", "Q4", "unranked"];
-const qRows = d3.flatRollup(P.filter((d) => d.type === "journal"), (v) => v.length, (d) => d.institution,
-  (d) => (/^Q[1-4]$/.test(d.quartile ?? "") ? d.quartile : "unranked"))
-  .map(([institution, quartile, n]) => ({institution, quartile, n}));
-display(ranked.length === 0
-  ? html`<p class="muted">No SCImago files in <code>ref/scimago/</code> yet, so quartiles are empty. Re-run <code>make data</code> after adding them.</p>`
-  : resize((width) => Plot.plot({width,
-      height: 160, marginLeft: 100, x: {percent: true, label: "share of journal papers (%)"}, y: {label: null},
-      color: {domain: qOrder, range: ["var(--q1)", "var(--q2)", "var(--q3)", "var(--q4)", "var(--qna)"], legend: true},
-      marks: [
-        Plot.barX(qRows, Plot.stackX({offset: "normalize", order: qOrder, x: "n", y: "institution", fill: "quartile",
-          inset: 1, tip: {format: {x: false}}, title: (d) => `${d.institution} · ${d.quartile}: ${d.n} papers`}))
-      ]
-    })));
-```
-</div>
-</div>
-
-<div class="grid grid-cols-2">
-<div class="card">
-
-## Research area breakdown
-
-```js
-const fieldRows = d3.flatRollup(P, (v) => v.length, (d) => d.institution, (d) => d.field ?? "Unclassified")
-  .map(([institution, field, n]) => ({institution, field, n,
-    share: n / P.filter((p) => p.institution === institution).length}));
-const topFields = d3.groupSort(fieldRows, (v) => -d3.sum(v, (d) => d.n), (d) => d.field).slice(0, 12);
-display(resize((width) => Plot.plot({width,
-  height: 420, marginLeft: 210, x: {percent: true, grid: true, label: "share of the institute's papers (%)"},
-  fy: {domain: topFields, label: null}, y: {domain: shown, axis: null}, color: instColor,
-  marks: [
-    Plot.barX(fieldRows.filter((d) => topFields.includes(d.field)), {x: "share", y: "institution", fy: "field",
-      fill: "institution", tip: true, title: (d) => `${d.institution}\n${d.field}: ${d.n} papers (${d3.format(".1%")(d.share)})`}),
-    Plot.ruleX([0])
-  ]
-})));
-```
-<p class="muted">OpenAlex field of each paper's primary topic; top 12 fields.</p>
-</div>
-<div class="card">
-
-## Top journals
-
-```js
-const topJ = shown.flatMap((inst) =>
-  d3.rollups(P.filter((d) => d.institution === inst && d.journal_name), (v) => v.length, (d) => d.journal_name)
-    .sort((a, b) => b[1] - a[1]).slice(0, 5).map(([journal, n], i) => ({institution: inst, rank: i + 1, journal, n})));
-display(resize((width) => Plot.plot({width,
-  height: 60 + 34 * topJ.length, marginLeft: 270, x: {grid: true, label: "papers"},
-  y: {domain: topJ.map((d) => `${d.institution === "IISER Pune" ? "Pune" : "Kolkata"} · ${d.journal}`), label: null},
-  color: instColor,
-  marks: [
-    Plot.barX(topJ, {y: (d) => `${d.institution === "IISER Pune" ? "Pune" : "Kolkata"} · ${d.journal}`, x: "n",
-      fill: "institution", tip: true}),
-    Plot.text(topJ, {y: (d) => `${d.institution === "IISER Pune" ? "Pune" : "Kolkata"} · ${d.journal}`, x: "n",
-      text: "n", dx: 4, textAnchor: "start", fill: "var(--theme-foreground-muted)"}),
-    Plot.ruleX([0])
-  ]
-})));
-```
-</div>
-</div>
+<ol class="findings">
+  <li><b>Output has grown steadily.</b> Between 2016 and 2025, yearly output rose ${pct(growth("IISER Kolkata"))} at Kolkata and ${pct(growth("IISER Pune"))} at Pune. Part of this growth is new faculty joining, so the per-faculty view matters. <a href="./output">Output & venues →</a></li>
+  <li><b>Most papers appear in top-quartile journals.</b> ${q1 == null ? "Quartiles are not loaded yet." : html`${pct(q1)} of papers in ranked journals are in a Q1 venue. This uses SCImago's best quartile across subject categories, so it is an upper bound.`} <a href="./faculty">Faculty & departments →</a></li>
+  <li><b>Faculty rarely co-author with each other.</b> ${GF.isolates} of ${GF.nodes} publishing faculty have no paper with another faculty member of either institute. The co-author groups that do exist follow departments, not institutes. <a href="./authorship-network">Collaboration →</a></li>
+  <li><b>Inside the institutes, almost all citations are self-citations.</b> ${pct(M.citation.summary.self_share)} of citations between our own papers share an author. Only ${num(FC.summary.citation_links)} citation links go from one faculty member's work to a colleague they never co-authored with. <a href="./citation-network">Knowledge flow →</a></li>
+  <li><b>Our papers are cited mostly from abroad.</b> About ${pct(originShare("IISER Pune", "in", ["abroad or unknown"]))} (Pune) and ${pct(originShare("IISER Kolkata", "in", ["abroad or unknown"]))} (Kolkata) of citations come from papers with no Indian author. Other Indian institutes give ${pct(originShare("IISER Pune", "in", ["other Indian only", "India + abroad"]))} and ${pct(originShare("IISER Kolkata", "in", ["other Indian only", "India + abroad"]))}. <a href="./connectivity">India & the world →</a></li>
+  <li><b>Neighbours are among the strongest Indian partners.</b> About ${pct(P.filter((d) => d.institution === "IISER Pune" && d.coauthor_institutes).length / byInst("IISER Pune").length)} of Pune's papers and ${pct(P.filter((d) => d.institution === "IISER Kolkata" && d.coauthor_institutes).length / byInst("IISER Kolkata").length)} of Kolkata's have a co-author at another Indian institution. Pune's top partners are ${topPartners("IISER Pune")}. Kolkata's are ${topPartners("IISER Kolkata")}. <a href="./connectivity">India & the world →</a></li>
+</ol>

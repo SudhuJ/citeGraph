@@ -1,10 +1,12 @@
 """Network analysis (igraph) → dashboard/src/data/*.json and data/out/network_*.csv
 
-G_cit  directed citation graph on the corpus (internal edges only, §6a "within")
-G_fac  faculty-only co-authorship graph (strict §6b)
-G_ind  faculty + Indian co-authors (connectivity, §7b)
-Hyperauthored papers (>=100 authors, truncated lists) are excluded from the co-authorship
-graphs; G_fac_hyper re-adds them to show how much they would distort the picture.
+G_cit     directed citation graph on the corpus (internal edges only, §6a "within")
+G_cit_ns  the same without author self-citations (the two papers share an author)
+G_faccit  faculty -> faculty citations between different people (knowledge flow between groups)
+G_fac     faculty-only co-authorship graph (strict §6b)
+G_ind     faculty + Indian co-authors (connectivity, §7b)
+Hyperauthored papers (>=100 authors, truncated lists) are excluded from every graph;
+G_fac_hyper re-adds them to show how much they would distort the picture.
 """
 
 import json
@@ -82,7 +84,7 @@ def summary(g: ig.Graph, weights=None) -> dict:
 
 
 def layout(g: ig.Graph, weights=None):
-    und = g.as_undirected() if g.is_directed() else g
+    und = g.as_undirected(combine_edges="sum") if g.is_directed() else g
     lay = und.layout_drl(weights=weights) if g.vcount() > 1500 else und.layout_fruchterman_reingold(weights=weights, niter=1500)
     xs, ys = zip(*lay.coords) if g.vcount() else ((), ())
     mx, my = (min(xs), max(xs)), (min(ys), max(ys))
@@ -109,6 +111,11 @@ def coauthor_graph(rows, node_info):
     return g
 
 
+def n_groups(membership, min_size=2):
+    """Communities with at least min_size members (isolated nodes are singleton communities)."""
+    return sum(n >= min_size for n in Counter(membership).values())
+
+
 def communities(g: ig.Graph):
     leiden = g.community_leiden(objective_function="modularity", weights="weight", n_iterations=-1, resolution=1.0)
     louvain = g.community_multilevel(weights="weight")
@@ -123,30 +130,41 @@ def main() -> None:
     # =============================== citation network ===================================
     nodes = q("""SELECT w.work_id, wi.our_insts, w.year, w.title, w.doi, w.cited_by_count, w.field,
                         w.source_name, w.n_authors
-                 FROM corpus w JOIN work_inst wi USING (work_id) ORDER BY 1""")
+                 FROM corpus w JOIN work_inst wi USING (work_id) WHERE w.n_authors < 100 ORDER BY 1""")
     idx = {r[0]: i for i, r in enumerate(nodes)}
-    edges = [(idx[s], idx[t]) for s, t in q("SELECT source_id, target_id FROM int_edges")]
+    int_rows = q("""SELECT DISTINCT source_id, target_id, self_citation FROM cit_edges
+                    WHERE edge_kind = 'internal' AND NOT involves_hyper""")
+    edges = [(idx[s], idx[t]) for s, t, _ in int_rows]
+    is_self = [bool(x) for _, _, x in int_rows]
     gc = ig.Graph(n=len(nodes), edges=edges, directed=True)
-    gc.simplify()
+    gc.es["self"] = is_self
     indeg = gc.indegree()
     outdeg = gc.outdegree()
-    pr = gc.pagerank(directed=True, damping=0.85)
+    pr_self = gc.pagerank(directed=True, damping=0.85)
     cit_sum = summary(gc)
     cit_sum["reciprocal_share"] = round(gc.reciprocity(), 4)
+    cit_sum["self_share"] = round(sum(is_self) / max(len(is_self), 1), 3)
+    # without self-citations: what is left is one group building on another group's work
+    gc_ns = ig.Graph(n=len(nodes), edges=[e for e, x in zip(edges, is_self) if not x], directed=True)
+    indeg_ns = gc_ns.indegree()
+    pr = gc_ns.pagerank(directed=True, damping=0.85)
+    cit_sum_ns = summary(gc_ns)
 
-    # cross-institute flow (institution level), year-wise
+    # cross-institute flow (institution level), year-wise: Indian citations from / to other
+    # institutes, author self-citations excluded (full breakdown: citation_origin in export.py)
     flow_year = [dict(zip(["institution", "year", "direction", "citations"], r)) for r in q("""
         SELECT fw.institution, lw.year, 'in', count(DISTINCT (e.source_id, e.target_id))
-        FROM in_edges e JOIN (SELECT DISTINCT work_id, institution, inst_id FROM fac_work) fw ON fw.work_id = e.target_id
+        FROM cit_edges e JOIN (SELECT DISTINCT work_id, institution, inst_id FROM fac_work) fw ON fw.work_id = e.target_id
         JOIN 'data/stage/link_works.parquet' lw ON lw.link_id = e.source_id AND lw.kind = 'citing'
-        WHERE EXISTS (SELECT 1 FROM link_inst li WHERE li.link_id = e.source_id AND li.inst_id <> fw.inst_id)
+        WHERE e.edge_kind = 'in' AND NOT e.self_citation AND NOT e.involves_hyper
+          AND EXISTS (SELECT 1 FROM link_inst li WHERE li.link_id = e.source_id AND li.inst_id <> fw.inst_id)
           AND lw.year BETWEEN 2016 AND 2026
         GROUP BY ALL
         UNION ALL
         SELECT fw.institution, w.year, 'out', count(DISTINCT (e.source_id, e.target_id))
-        FROM out_edges e JOIN (SELECT DISTINCT work_id, institution, inst_id FROM fac_work) fw ON fw.work_id = e.source_id
+        FROM cit_edges e JOIN (SELECT DISTINCT work_id, institution, inst_id FROM fac_work) fw ON fw.work_id = e.source_id
         JOIN corpus w ON w.work_id = e.source_id
-        WHERE EXISTS (SELECT 1 FROM link_inst li WHERE li.link_id = e.target_id AND li.inst_id <> fw.inst_id)
+        WHERE e.edge_kind = 'out' AND NOT e.self_citation AND NOT e.involves_hyper AND EXISTS (SELECT 1 FROM link_inst li WHERE li.link_id = e.target_id AND li.inst_id <> fw.inst_id)
         GROUP BY ALL ORDER BY 1, 2, 3""")]
     flow_tot = {}
     for r in flow_year:
@@ -162,9 +180,10 @@ def main() -> None:
     top_citing_papers = [dict(zip(["institution", "title", "year", "doi", "corpus_papers_cited", "insts"], r)) for r in q("""
         SELECT fw.institution, any_value(lw.title), any_value(lw.year), any_value(lw.doi),
                count(DISTINCT e.target_id) AS n, any_value(nm.insts)
-        FROM in_edges e JOIN (SELECT DISTINCT work_id, institution FROM fac_work) fw ON fw.work_id = e.target_id
+        FROM cit_edges e JOIN (SELECT DISTINCT work_id, institution FROM fac_work) fw ON fw.work_id = e.target_id
         JOIN 'data/stage/link_works.parquet' lw ON lw.link_id = e.source_id AND lw.kind = 'citing'
         LEFT JOIN node_meta nm ON nm.id = e.source_id
+        WHERE e.edge_kind = 'in' AND NOT e.self_citation AND NOT e.involves_hyper
         GROUP BY fw.institution, e.source_id
         QUALIFY row_number() OVER (PARTITION BY fw.institution ORDER BY n DESC) <= 10
         ORDER BY 1, n DESC""")]
@@ -180,26 +199,19 @@ def main() -> None:
         w = nodes[i]
         cit_nodes.append({"id": w[0], "x": round(pos[j][0], 1), "y": round(pos[j][1], 1), "inst": w[1],
                           "year": w[2], "title": w[3], "doi": w[4], "cites": w[5], "field": w[6],
-                          "venue": w[7], "indeg": indeg[i], "outdeg": outdeg[i], "pr": pr[i]})
-    cit_graph = {"nodes": cit_nodes, "edges": [[sub.vs[e.source].index, sub.vs[e.target].index] for e in sub.es]}
-    def top10(scores, pool):
+                          "venue": w[7], "indeg": indeg[i], "indeg_ns": indeg_ns[i], "outdeg": outdeg[i], "pr": pr[i]})
+    cit_graph = {"nodes": cit_nodes,
+                 "edges": [[sub.vs[e.source].index, sub.vs[e.target].index, int(e["self"])] for e in sub.es]}
+    def top10(scores, deg):
         return [{"title": nodes[i][3], "inst": nodes[i][1], "year": nodes[i][2], "doi": nodes[i][4],
-                 "pagerank": round(scores[i], 6), "indeg": indeg[i], "cites_total": nodes[i][5],
-                 "hyperauthored": nodes[i][8] >= 100}
-                for i in sorted(pool, key=lambda i: -scores[i])[:10]]
-    cit_top = top10(pr, range(len(nodes)))
-    # big-collaboration papers cite each other densely and dominate PageRank; recompute without them
-    small = [i for i in range(len(nodes)) if nodes[i][8] < 100]
-    g_small = gc.subgraph(small)
-    pr_small_sub = g_small.pagerank(directed=True, damping=0.85)
-    pr_small = [0.0] * len(nodes)
-    for j, i in enumerate(small):
-        pr_small[i] = pr_small_sub[j]
-    cit_top_small = top10(pr_small, small)
+                 "pagerank": round(scores[i], 6), "indeg": deg[i], "cites_total": nodes[i][5]}
+                for i in sorted(range(len(nodes)), key=lambda i: -scores[i])[:10]]
+    cit_top = top10(pr, indeg_ns)
+    cit_top_self = top10(pr_self, indeg)
     with (ROOT / "data/out/network_citation_nodes.csv").open("w") as f:
-        f.write("work_id,institution,year,in_degree,out_degree,pagerank\n")
+        f.write("work_id,institution,year,in_degree,in_degree_excl_self,out_degree,pagerank_excl_self,pagerank\n")
         for i, w in enumerate(nodes):
-            f.write(f"{w[0]},{w[1]},{w[2]},{indeg[i]},{outdeg[i]},{pr[i]:.8f}\n")
+            f.write(f"{w[0]},{w[1]},{w[2]},{indeg[i]},{indeg_ns[i]},{outdeg[i]},{pr[i]:.8f},{pr_self[i]:.8f}\n")
 
     # =============================== co-authorship networks =============================
     fac_info = {r[0]: {"label": r[1], "inst": r[2], "dept": r[3], "faculty": True} for r in q(
@@ -235,8 +247,9 @@ def main() -> None:
         s = summary(g)
         s.update({"modularity_leiden": round(g.modularity(leiden, weights="weight"), 3),
                   "modularity_louvain": round(g.modularity(louvain, weights="weight"), 3),
-                  "communities_leiden": len(set(leiden.membership)),
-                  "communities_louvain": len(set(louvain.membership)),
+                  "communities_leiden": n_groups(leiden.membership),
+                  "communities_louvain": n_groups(louvain.membership),
+                  "communities_leiden_3plus": n_groups(leiden.membership, 3),
                   "nmi_leiden_louvain": round(ig.compare_communities(leiden, louvain, method="nmi"), 3),
                   "powerlaw_degree": powerlaw(g.degree())})
         fac_idx = [v.index for v in g.vs if v["faculty"]]
@@ -273,7 +286,8 @@ def main() -> None:
     }
     # hyperauthorship sensitivity on G_fac (unweighted paper counts make the distortion visible)
     hyper = {
-        "hyper_papers": len({r[3] for r in hyper_rows}),
+        "hyper_papers": q("SELECT count(*) FROM corpus WHERE n_authors >= 100")[0][0],
+        "hyper_papers_multi_faculty": len({r[3] for r in hyper_rows}),
         "hyper_faculty_pairs": len({(r[0], r[1]) for r in hyper_rows}),
         "without": summary(g_fac), "with": summary(hyper_unweighted),
         "rho_strength_papers": round(spearman([r["strength_fac"] for r in comp_rows],
@@ -306,6 +320,50 @@ def main() -> None:
                          "betweenness": round(v["betweenness"], 5)})
     hubs.sort(key=lambda d: (-d["betweenness"], -d["institutes_bridged"]))
 
+    # =============================== faculty citation graph =============================
+    # A -> B when a paper of faculty A cites a paper of faculty B and the two papers share no
+    # author. Weight = number of such citation links.
+    fc_rows = q("""SELECT a.fac_id, b.fac_id, count(DISTINCT (e.source_id, e.target_id))
+                   FROM cit_edges e JOIN fac_work a ON a.work_id = e.source_id
+                   JOIN fac_work b ON b.work_id = e.target_id
+                   WHERE e.edge_kind = 'internal' AND NOT e.self_citation AND NOT e.involves_hyper
+                     AND a.fac_id <> b.fac_id
+                   GROUP BY 1, 2""")
+    fac_names = sorted(fac_info)
+    fidx = {f: i for i, f in enumerate(fac_names)}
+    g_fc = ig.Graph(n=len(fac_names), edges=[(fidx[a], fidx[b]) for a, b, _ in fc_rows], directed=True)
+    g_fc.es["weight"] = [n for _, _, n in fc_rows]
+    g_fc.vs["name"] = fac_names
+    for k in ("label", "inst", "dept"):
+        g_fc.vs[k] = [fac_info[f][k] for f in fac_names]
+    fc_pr = g_fc.pagerank(weights="weight", directed=True)
+    fc_in, fc_out = g_fc.strength(mode="in", weights="weight"), g_fc.strength(mode="out", weights="weight")
+    links = sum(g_fc.es["weight"])
+    same = lambda key: sum(e["weight"] for e in g_fc.es if g_fc.vs[e.source][key] == g_fc.vs[e.target][key])
+    fc_sum = {"faculty": g_fc.vcount(), "faculty_pairs": g_fc.ecount(), "citation_links": links,
+              "faculty_citing_colleagues": sum(d > 0 for d in fc_out),
+              "faculty_cited_by_colleagues": sum(d > 0 for d in fc_in),
+              "same_department_share": round(same("dept") / max(links, 1), 3),
+              "same_institute_share": round(same("inst") / max(links, 1), 3),
+              "reciprocity": round(g_fc.reciprocity(), 3)}
+    dept_flow = Counter()
+    for e in g_fc.es:
+        a, b = g_fc.vs[e.source], g_fc.vs[e.target]
+        dept_flow[(a["inst"], a["dept"], b["inst"], b["dept"])] += e["weight"]
+    fc_keep = [v.index for v in g_fc.vs if g_fc.degree(v.index) > 0]
+    fc_sub = g_fc.subgraph(fc_keep)
+    fc_pos = layout(fc_sub, weights="weight")
+    fac_cit_graph = {
+        "nodes": [{"id": v["name"], "label": v["label"], "inst": v["inst"], "dept": v["dept"],
+                   "cited_by_colleagues": fc_in[i], "cites_colleagues": fc_out[i], "pagerank": round(fc_pr[i], 5),
+                   "x": round(fc_pos[j][0], 1), "y": round(fc_pos[j][1], 1)}
+                  for j, (i, v) in enumerate((i, g_fc.vs[i]) for i in fc_keep)],
+        "edges": [[e.source, e.target, e["weight"]] for e in fc_sub.es],
+        "summary": fc_sum,
+        "dept_flow": [{"from_inst": k[0], "from_dept": k[1], "to_inst": k[2], "to_dept": k[3], "links": n}
+                      for k, n in dept_flow.most_common()],
+    }
+
     def export_graph(g: ig.Graph, min_degree=0):
         keep = [v.index for v in g.vs if v.degree() >= min_degree]
         sub = g.subgraph(keep)
@@ -321,9 +379,13 @@ def main() -> None:
     (OUT / "cit_graph.json").write_text(json.dumps(cit_graph, separators=(",", ":")))
     (OUT / "fac_graph.json").write_text(json.dumps(export_graph(g_fac), separators=(",", ":")))
     (OUT / "ind_graph.json").write_text(json.dumps(export_graph(g_ind), separators=(",", ":")))
+    (OUT / "faccit_graph.json").write_text(json.dumps(fac_cit_graph, separators=(",", ":")))
     metrics = {
-        "citation": {"summary": cit_sum, "indegree_ccdf": ccdf(indeg), "powerlaw_indegree": powerlaw(indeg),
-                     "top_pagerank": cit_top, "top_pagerank_excl_hyper": cit_top_small, "flow_year": flow_year, "flow_total": flow_tot,
+        "citation": {"summary": cit_sum, "summary_excl_self": cit_sum_ns,
+                     "indegree_ccdf": ccdf(indeg), "indegree_ccdf_excl_self": ccdf(indeg_ns),
+                     "powerlaw_indegree": powerlaw(indeg),
+                     "top_pagerank": cit_top, "top_pagerank_with_self": cit_top_self,
+                     "flow_year": flow_year, "flow_total": flow_tot,
                      "top_citing_institutes": top_citing, "top_citing_papers": top_citing_papers,
                      "visual_component_share": round(len(keep) / len(nodes), 3)},
         "coauthorship": results, "faculty_comparison": comp_rows, "spearman_fac_vs_ind": rho,
@@ -337,6 +399,8 @@ def main() -> None:
             f.write(",".join(f'"{r[c]}"' if isinstance(r[c], str) else f"{r[c]}" for c in cols) + "\n")
 
     print("G_cit", cit_sum)
+    print("G_cit without self-citations", cit_sum_ns)
+    print("faculty citation graph", fc_sum)
     for k, v in results.items():
         print(k, v["summary"])
     print("spearman", rho, "| hyper", {k: hyper[k] for k in ("hyper_papers", "hyper_faculty_pairs", "rho_strength_papers")})

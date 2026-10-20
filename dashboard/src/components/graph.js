@@ -35,7 +35,9 @@ const resolve = (c, theme) => theme[c] ?? c;
 export function graphView({
   nodes, edges, directed = false, height = 620,
   color, size, label = () => "", tooltip = () => "", edgeSize = () => 0.6,
-  labelThreshold = 9, focus = null
+  labelThreshold = 9, focus = null,
+  // optional: emphasise(edge) -> true draws the edge in the strong edge colour; hideEdge(edge) drops it
+  emphasise = null, hideEdge = null
 }) {
   const wrap = document.createElement("div");
   wrap.className = "graph-wrap";
@@ -49,14 +51,17 @@ export function graphView({
   let theme = graphTheme();
   // ~1 at <=1.5k edges, falling to 0.3 for very dense graphs
   const density = Math.max(0.3, Math.min(1, Math.sqrt(1500 / Math.max(edges.length, 1))));
-  const edgeColor = () => withAlpha(theme.edge, density);
+  const edgeColor = (e) => (emphasise?.(e) ? withAlpha(theme.edgeHi, 0.7) : withAlpha(theme.edge, density));
   const g = new Graph({type: directed ? "directed" : "undirected", allowSelfLoops: false});
   nodes.forEach((n, i) => g.addNode(String(i), {
     x: n.x, y: -n.y, size: size(n), color: resolve(color(n, theme), theme), label: label(n), raw: n
   }));
   edges.forEach((e) => {
     const [s, t] = e;
-    if (s !== t) g.mergeEdge(String(s), String(t), {size: Math.min(edgeSize(e), 2.5), color: edgeColor()});
+    if (s !== t && !hideEdge?.(e)) {
+      g.mergeEdge(String(s), String(t), {size: Math.min(edgeSize(e) * (emphasise?.(e) ? 1.6 : 1), 2.5),
+                                         color: edgeColor(e), raw: e});
+    }
   });
 
   let hovered = null, pinned = null, neighbours = new Set();
@@ -130,7 +135,7 @@ export function graphView({
   const onScheme = () => {
     theme = graphTheme();
     g.updateEachNodeAttributes((k, attr) => ({...attr, color: resolve(color(attr.raw, theme), theme)}));
-    g.updateEachEdgeAttributes((k, attr) => ({...attr, color: edgeColor()}));
+    g.updateEachEdgeAttributes((k, attr) => ({...attr, color: edgeColor(attr.raw)}));
     renderer?.refresh();
   };
   darkQuery.addEventListener("change", onScheme);

@@ -1,0 +1,16 @@
+institution,department,faculty,faculty_with_papers,median_h,papers,citations,journal_papers,q1_share,q1_if5_share,large_team_share
+IISER Kolkata,Chemical Sciences,35,34,14.0,1778,39911,1772,0.763,0.366,0.033
+IISER Kolkata,Biological Sciences,26,26,9.0,646,9010,639,0.75,0.226,0.059
+IISER Kolkata,Physical Sciences,30,30,7.0,641,5927,605,0.689,0.134,0.023
+IISER Kolkata,Earth Sciences,14,14,6.5,345,6087,333,0.75,0.265,0.055
+IISER Kolkata,Mathematics and Statistics,19,17,2.0,96,537,94,0.545,0.023,0.01
+IISER Kolkata,Computational and Data Sciences,5,3,2.0,79,729,34,0.857,0.786,0.013
+IISER Kolkata,Humanities and Social Sciences,1,1,3.0,4,48,4,0.333,0.333,0.0
+IISER Pune,Chemistry,31,30,13.0,1110,37442,1096,0.838,0.431,0.026
+IISER Pune,Physics,33,33,10.0,757,11207,729,0.751,0.225,0.069
+IISER Pune,Biology,33,32,9.0,638,11117,636,0.79,0.34,0.127
+IISER Pune,Mathematics,26,26,3.0,297,1179,273,0.583,0.004,0.0
+IISER Pune,Earth and Climate Science,12,12,5.0,160,1935,143,0.829,0.143,0.075
+IISER Pune,Humanities and Social Sciences,6,6,2.0,47,129,47,0.125,0.025,0.0
+IISER Pune,Data Science,3,2,2.0,12,69,12,0.5,0.0,0.083
+IISER Pune,Science Education,2,1,0.5,7,3,1,1.0,1.0,0.143

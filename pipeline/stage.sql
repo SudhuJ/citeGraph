@@ -65,6 +65,17 @@ COPY (
   FROM a, LATERAL (SELECT unnest(au.institutions) AS i)
 ) TO 'data/stage/link_insts.parquet';
 
+-- authors of link works with their countries (self-citation and India / abroad split);
+-- n_auth = 100 means OpenAlex truncated the author list
+COPY (
+  WITH a AS (
+    SELECT sid(id) AS link_id, len(authorships) AS n_auth, unnest(authorships) AS au FROM raw('citing')
+    UNION ALL
+    SELECT sid(id), len(authorships), unnest(authorships) FROM raw('cited')
+  )
+  SELECT DISTINCT link_id, n_auth, sid(au.author.id) AS author_id, au.countries AS countries FROM a
+) TO 'data/stage/link_authors.parquet';
+
 -- citing works' references into the corpus -> in-flow edges (citing -> corpus)
 COPY (
   WITH corpus AS (SELECT sid(id) AS work_id FROM raw('works'))

@@ -5,11 +5,12 @@ export default {
   style: "style.css",
   pages: [
     {name: "Overview", path: "/"},
-    {name: "Faculty", path: "/faculty"},
-    {name: "Papers & venues", path: "/papers"},
-    {name: "Citation network", path: "/citation-network"},
-    {name: "Authorship network", path: "/authorship-network"},
-    {name: "Indian connectivity", path: "/connectivity"},
+    {name: "Output & venues", path: "/output"},
+    {name: "Faculty & departments", path: "/faculty"},
+    {name: "Collaboration", path: "/authorship-network"},
+    {name: "Knowledge flow", path: "/citation-network"},
+    {name: "India & the world", path: "/connectivity"},
+    {name: "Big collaborations", path: "/collaborations"},
     {name: "Methods & data", path: "/methods"}
   ],
   head: '<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2230%22 cy=%2270%22 r=%2216%22 fill=%22%232a78d6%22/><circle cx=%2272%22 cy=%2232%22 r=%2216%22 fill=%22%23eb6834%22/><line x1=%2230%22 y1=%2270%22 x2=%2272%22 y2=%2232%22 stroke=%22%23898781%22 stroke-width=%226%22/></svg>">',

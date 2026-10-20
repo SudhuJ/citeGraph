@@ -16,7 +16,8 @@ const files = [
   [FileAttachment("downloads/group19_data.csv"), "faculty × paper rows, all §5 columns plus extras"],
   [FileAttachment("downloads/citation_network.csv"), "directed edges (edge_kind: internal / in / out)"],
   [FileAttachment("downloads/authorship_network.csv"), "co-author pairs (faculty + Indian co-authors)"],
-  [FileAttachment("downloads/indian_connections.csv"), "your_inst × partner_inst aggregates"]
+  [FileAttachment("downloads/indian_connections.csv"), "your_inst × partner_inst aggregates"],
+  [FileAttachment("downloads/citation_origin.csv"), "per paper: citations in and references out, by origin category"]
 ];
 display(html`<ul>${files.map(([f, d]) => html`<li><a href=${f.href} download=${f.name}>${f.name}</a>: ${d}</li>`)}</ul>`);
 ```
@@ -40,10 +41,13 @@ display(html`<ul>${files.map(([f, d]) => html`<li><a href=${f.href} download=${f
 3. **Kept types:** article, review, letter and conference-paper in journals, conferences or book series. Preprints, datasets, errata and peer reviews are dropped, and so are meeting-abstract venues that OpenAlex files as journals (APS/AGU/EGU/Goldschmidt/JpGU abstracts, ChemInform).
 4. **Quartile** = SCImago "best quartile" for the closest SCImago year not after publication. SCImago ranks journals, conference proceedings and book series, and all three are used; trade journals are excluded. CORE ranks are used for conference papers when `ref/core.csv` is present.
 5. **h-index:** the dataset (2016–2026) window is the primary measure; the OpenAlex lifetime value is shown for reference.
-6. **Hyperauthorship:** OpenAlex truncates author lists at 100. Those ${M.hyperauthorship.hyper_papers} papers stay in the CSVs (`hyperauthored = true`) but are left out of the co-authorship graphs. The sensitivity analysis is on the authorship page.
+6. **Papers with 100+ authors:** OpenAlex truncates author lists at 100. Those ${M.hyperauthorship.hyper_papers} papers stay in the CSVs (`hyperauthored = true`) and are left out of every statistic and graph. They are described on the Big collaborations page. Papers with 11–99 authors stay in and are flagged `large_team`.
 7. **Two authorship graphs** (G_fac, G_ind), because the brief says both "faculty members" and "authors". Students and postdocs at our own institutes are in neither graph.
 8. **Indian flags** (`cites_indian_inst`, `cited_by_indian_inst`, `coauthor_institutes`) refer to Indian institutions *other than the row's own institute*. IISER Pune ↔ IISER Kolkata counts as cross-institute.
-9. **`total_citations`** in `indian_connections.csv` = citation links in both directions between the two institutions (`cites_in` + `cites_out` are given separately).
+9. **`total_citations`** in `indian_connections.csv` = citation links in both directions between the two institutions (`cites_in` + `cites_out` are given separately). Author self-citations and 100+ author papers are left out; `shared_papers_incl_hyper` gives the joint-paper count with them.
+10. **Self-citation** = the citing and cited papers share at least one author (any author, not only faculty). Every edge in `citation_network.csv` carries a `self_citation` flag.
+11. **Citation origin:** each citation link goes into the first category that fits: self-citation, same IISER, Indian and foreign authors, other Indian institutes only, and finally no Indian author or unknown. The last one is a remainder (OpenAlex total minus the Indian links we fetched).
+12. **Impact factor:** Clarivate's impact factor is not open data. The `if_proxy` column is SCImago's citations per document over two years, matched to the publication year like the quartile.
 
 ## Coverage
 

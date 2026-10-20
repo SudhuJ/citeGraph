@@ -42,9 +42,11 @@ All API responses are cached in `data/cache/`, so re-runs cost nothing. A full f
 | File | Content |
 |---|---|
 | `group19_data.csv` | faculty × paper rows with every §5 column, plus `fac_id, department, openalex_id, field, subfield, n_authors, hyperauthored, affiliation_check` |
-| `citation_network.csv` | `source_doi, target_doi, source_inst, target_inst, year` + `edge_kind` (internal / in / out) |
+| `group19_data.csv` (extra columns) | also `large_team` (>10 authors), `sjr`, `if_proxy` (SCImago cites/doc over 2 years, an open stand-in for the impact factor) |
+| `citation_network.csv` | `source_doi, target_doi, source_inst, target_inst, year` + `edge_kind` (internal / in / out), `self_citation`, `involves_hyper` |
 | `authorship_network.csv` | `author_a, author_b, paper_doi, inst_a, inst_b, year` + node IDs, faculty flags, cross-institution/cluster flags |
-| `indian_connections.csv` | `your_inst, partner_inst, shared_papers, total_citations` + `cites_in, cites_out, partner_cluster, cross_cluster, jaccard_topics` |
+| `indian_connections.csv` | `your_inst, partner_inst, shared_papers, total_citations` + `cites_in, cites_out, partner_cluster, cross_cluster, jaccard_topics`, `shared_papers_incl_hyper` (counts leave out 100+ author papers and self-citations) |
+| `citation_origin.csv` | per paper and direction (cited by / citing): links in each origin category (self, own institute, other Indian only, India + abroad, abroad or unknown) |
 | `faculty_stats.csv`, `network_*.csv` | faculty metrics, paper-level PageRank, faculty centralities |
 
 `make check` validates these against the instruction note.
@@ -68,11 +70,15 @@ pipeline/report.py         report/data.json → report/report.pdf
 
 - **Faculty** = regular faculty on the institute websites (no visiting/adjunct/emeritus). A paper counts only if it lists the faculty member with their IISER affiliation. Manual matching fixes go in `ref/author_overrides.csv`.
 - **Two authorship graphs**, because the brief says both "faculty members" and "authors": G_fac (faculty only) and G_ind (faculty + Indian co-authors). They are compared on the dashboard and in the report.
-- **Hyperauthorship:** OpenAlex truncates author lists at 100. Those papers (CMS etc.) stay in the CSVs, flagged, but are excluded from the co-authorship graphs and from the default PageRank ranking. Sensitivity results are shown.
+- **Papers with 100+ authors:** OpenAlex truncates author lists at 100. Those papers (almost all CMS) stay in the CSVs, flagged `hyperauthored`, and are left out of every statistic and graph; the dashboard's *Big collaborations* page describes them. Papers with 11–99 authors stay in, flagged `large_team`.
+- **Self-citation** = the two papers share an author. 96% of citations between our own papers are self-citations, so the knowledge-flow analysis works on the rest, aggregated to faculty.
+- **Citation origin:** every citation link goes into the first matching category: self, same IISER, India + abroad, other Indian only, then a remainder (no Indian author or unknown) from OpenAlex totals.
 - **Quartile** = SCImago best quartile for the nearest year not after publication; CORE rank for conference papers.
 - See the dashboard's *Methods & data* page for the full list.
 
-## Pending inputs
+## Inputs not in the repo
 
-- **SCImago quartiles:** download the yearly CSVs from scimagojr.com (blocked for scripts) with type **All types** into `ref/scimago/scimago_<year>.csv`, then run `make build networks export report`. The build keeps journals, conferences & proceedings, and book series, and drops trade journals.
+- **Raw OpenAlex data** (`data/raw/`, ~1 GB) and the API cache are gitignored. `make stage` onwards needs `data/raw/`.
+- **SCImago rankings:** download the yearly CSVs from scimagojr.com (blocked for scripts) with type **All types** into `ref/scimago/scimago_<year>.csv`, then run `make build networks export report`. They give the quartile, SJR and the impact-factor proxy. The build keeps journals, conferences & proceedings, and book series, and drops trade journals.
+- **Topic profiles** (`data/stage/inst_subfields.parquet`, from `make topics`) need an OpenAlex API key. Without them the topic Jaccard columns stay empty.
 - **CORE ranks (optional, ICORE2026 export included):** CORE portal export → `ref/core.csv` (no header row; rank in the 5th column). IISER output is almost all journals, so this changes little.

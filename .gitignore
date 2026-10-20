@@ -17,3 +17,5 @@ ref/scimago/
 *.docx
 *.pptx
 .claude/
+data/raw.zip
+scimago.zip

@@ -5,9 +5,12 @@
   authorship_network.csv    undirected co-author pairs, faculty + Indian co-authors (§6b, §7c)
   indian_connections.csv    your_inst × partner_inst aggregates (§7b, §7c)
 
+  citation_origin           who cites our papers / whom we cite, in six categories (analysis)
+
 Optional reference data, picked up when present:
-  ref/scimago/*<year>*.csv         SCImago rankings (All types) -> quartile Q1–Q4
+  ref/scimago/*<year>*.csv         SCImago rankings (All types) -> quartile Q1–Q4, SJR, cites/doc (2y)
   ref/core.csv                     CORE conference ranks     -> A*/A/B/C
+  data/stage/inst_subfields.parquet  topic profiles (topics.py) -> topic Jaccard
 """
 
 import csv
@@ -21,6 +24,7 @@ from oa import ROOT
 GROUP = 19
 OURS = {"I181996519": "IISER Pune", "I127439422": "IISER Kolkata"}
 HYPER = 100  # authorship lists are truncated at 100 -> treat as hyperauthored
+LARGE_TEAM = 10  # course feedback: flag papers with more than 10 authors
 KEEP_TYPES = ("article", "review", "letter", "conference-paper")
 SCIMAGO_TYPES = ("journal", "conference and proceedings", "book series")
 # venues OpenAlex labels as journals that only carry meeting abstracts / abstract digests
@@ -31,25 +35,29 @@ ABSTRACT_VENUES = (r"(?i)(bulletin of the american physical society|^APS$|^AGUFM
 def scimago_clean(files: list[str]) -> Path:
     """SCImago exports contain unescaped quotes inside quoted fields (e.g. publisher names),
     which strict CSV readers reject. Python's csv reader tolerates them; rows whose field
-    count still disagrees with the header are skipped. Writes (sc_year, sc_type, issn, quartile)."""
+    count still disagrees with the header are skipped.
+    Writes (sc_year, sc_type, issn, quartile, sjr, cites2y); SCImago uses decimal commas."""
     out = ROOT / "data" / "stage" / "scimago_clean.csv"
     skipped = 0
     with out.open("w", newline="") as fo:
         w = csv.writer(fo)
-        w.writerow(["sc_year", "sc_type", "issn", "quartile"])
+        w.writerow(["sc_year", "sc_type", "issn", "quartile", "sjr", "cites2y"])
         for f in files:
             year = re.search(r"((?:19|20)\d{2})", f.rsplit("/", 1)[-1]).group(1)
             with open(f, newline="", encoding="utf-8-sig", errors="replace") as fi:
                 rd = csv.reader(fi, delimiter=";")
                 hdr = next(rd)
                 ti, ii, qi = hdr.index("Type") if "Type" in hdr else None, hdr.index("Issn"), hdr.index("SJR Best Quartile")
+                # the 2-year column was "Cites / Doc. (2years)" in older exports
+                si, ci = hdr.index("SJR"), next(i for i, h in enumerate(hdr) if h.endswith("/ Doc. (2years)"))
+                num = lambda x: x.strip().replace(",", ".") or None
                 for row in rd:
                     if len(row) != len(hdr):
                         skipped += row != []
                         continue
                     sc_type = row[ti].strip().lower() if ti is not None else "journal"
                     for issn in row[ii].replace(" ", "").split(","):
-                        w.writerow([year, sc_type, issn, row[qi].strip()])
+                        w.writerow([year, sc_type, issn, row[qi].strip(), num(row[si]), num(row[ci])])
     if skipped:
         print(f"SCImago: skipped {skipped} malformed row(s)")
     return out
@@ -79,7 +87,8 @@ def main() -> None:
         # files downloaded with "All types": keep the venue types our corpus contains
         # (journal / conference / book series sources); trade journals are not scholarly venues
         sql(f"""CREATE OR REPLACE TABLE scimago AS
-                SELECT DISTINCT sc_year::INT AS sc_year, upper(issn) AS issn, quartile FROM scimago_raw
+                SELECT DISTINCT sc_year::INT AS sc_year, upper(issn) AS issn, quartile,
+                       sjr::DOUBLE AS sjr, cites2y::DOUBLE AS cites2y FROM scimago_raw
                 WHERE sc_type IN {SCIMAGO_TYPES}
                   AND quartile IN ('Q1','Q2','Q3','Q4') AND length(issn) = 8""")
         kept = con.execute(f"""SELECT sc_type, count(*), sc_type IN {SCIMAGO_TYPES} FROM scimago_raw
@@ -87,7 +96,7 @@ def main() -> None:
         print(f"SCImago: {len(sc_files)} year file(s); rows by type: "
               + ", ".join(f"{t} {n:,}{'' if k else ' (dropped)'}" for t, n, k in kept))
     else:
-        sql("CREATE OR REPLACE TABLE scimago (sc_year INT, issn VARCHAR, quartile VARCHAR)")
+        sql("CREATE OR REPLACE TABLE scimago (sc_year INT, issn VARCHAR, quartile VARCHAR, sjr DOUBLE, cites2y DOUBLE)")
         print("SCImago: no files in ref/scimago/ -> quartile column left empty")
     core_f = ROOT / "ref" / "core.csv"
     if core_f.exists():
@@ -153,12 +162,12 @@ def main() -> None:
       SELECT w.work_id, w.year, upper(replace(unnest(list_distinct(list_append(coalesce(w.issns, []), w.issn_l))), '-', '')) AS issn
       FROM corpus w WHERE w.issn_l IS NOT NULL
     ), m AS (
-      SELECT iss.work_id, s.quartile,
+      SELECT iss.work_id, s.quartile, s.sjr, s.cites2y,
              -- prefer the SCImago year closest to (and not after) the publication year
              row_number() OVER (PARTITION BY iss.work_id ORDER BY (s.sc_year > iss.year), abs(s.sc_year - iss.year), s.quartile) AS rk
       FROM iss JOIN scimago s USING (issn)
     )
-    SELECT work_id, quartile FROM m WHERE rk = 1;
+    SELECT work_id, quartile, sjr, cites2y FROM m WHERE rk = 1;
 
     CREATE OR REPLACE TABLE work_core AS
     SELECT w.work_id, max_by(c.rank, jaro_winkler_similarity(lower(w.source_name), c.title)) AS core_rank
@@ -190,6 +199,17 @@ def main() -> None:
     WHERE r.work_id IN (SELECT work_id FROM corpus)
       AND r.ref_id IN (SELECT link_id FROM 'data/stage/link_works.parquet' WHERE kind = 'cited')
       AND r.ref_id NOT IN (SELECT work_id FROM corpus);
+    -- authors of every paper on a citation edge: corpus papers (listed authors plus every
+    -- OpenAlex profile of their faculty, since OpenAlex splits people) and Indian link works
+    CREATE OR REPLACE TABLE node_authors AS
+    SELECT DISTINCT work_id AS id, author_id FROM 'data/stage/authorships.parquet'
+    WHERE work_id IN (SELECT work_id FROM corpus) AND author_id IS NOT NULL
+    UNION
+    SELECT fw.work_id, p.author_id FROM fac_work_raw fw JOIN fac_profiles p USING (fac_id)
+    WHERE fw.work_id IN (SELECT work_id FROM corpus)
+    UNION
+    SELECT link_id, author_id FROM 'data/stage/link_authors.parquet' WHERE author_id IS NOT NULL;
+
     CREATE OR REPLACE TABLE int_edges AS
     SELECT DISTINCT r.work_id AS source_id, r.ref_id AS target_id
     FROM 'data/stage/work_refs.parquet' r
@@ -229,7 +249,11 @@ def main() -> None:
            -- extras beyond §5
            fw.fac_id, f.department, 'https://openalex.org/' || w.work_id AS openalex_id,
            w.field, w.subfield, w.n_authors, w.n_authors >= {HYPER} AS hyperauthored,
-           fw.affiliation_check
+           fw.affiliation_check,
+           w.n_authors > {LARGE_TEAM} AS large_team,
+           -- SCImago venue indicators (same year match as the quartile); cites2y is the
+           -- open stand-in for the journal impact factor
+           q.sjr, q.cites2y AS if_proxy
     FROM fac_work fw JOIN faculty f USING (fac_id) JOIN corpus w USING (work_id)
     LEFT JOIN work_quartile q USING (work_id) LEFT JOIN work_core wc USING (work_id)
     LEFT JOIN co USING (fac_id, work_id) LEFT JOIN cites USING (fac_id, work_id)
@@ -239,7 +263,7 @@ def main() -> None:
     """)
 
     # ---- deliverable 2: citation_network.csv ------------------------------------------------
-    sql("""
+    sql(f"""
     CREATE OR REPLACE TABLE node_meta AS   -- doi / inst / year for every paper on an edge
     SELECT w.work_id AS id, w.doi, wi.our_insts AS insts, w.year FROM corpus w JOIN work_inst wi USING (work_id)
     UNION ALL
@@ -257,7 +281,13 @@ def main() -> None:
     SELECT coalesce('https://doi.org/' || s.doi, 'https://openalex.org/' || e.source_id) AS source_doi,
            coalesce('https://doi.org/' || t.doi, 'https://openalex.org/' || e.target_id) AS target_doi,
            s.insts AS source_inst, t.insts AS target_inst, s.year,
-           e.source_id, e.target_id, e.edge_kind
+           e.source_id, e.target_id, e.edge_kind,
+           -- author self-citation: the two papers share at least one author
+           EXISTS (SELECT 1 FROM node_authors a JOIN node_authors b USING (author_id)
+                   WHERE a.id = e.source_id AND b.id = e.target_id) AS self_citation,
+           -- an endpoint is one of our >=100-author papers (excluded from the analysis)
+           e.source_id IN (SELECT work_id FROM corpus WHERE n_authors >= {HYPER})
+             OR e.target_id IN (SELECT work_id FROM corpus WHERE n_authors >= {HYPER}) AS involves_hyper
     FROM e JOIN node_meta s ON s.id = e.source_id JOIN node_meta t ON t.id = e.target_id;
     COPY cit_edges TO 'data/out/citation_network.csv';
     """)
@@ -296,18 +326,25 @@ def main() -> None:
            ia.cluster IS DISTINCT FROM ib.cluster AS cross_cluster
     FROM paper_people a JOIN paper_people b ON a.work_id = b.work_id AND a.node_id < b.node_id
     JOIN corpus w ON w.work_id = a.work_id
-    LEFT JOIN (SELECT DISTINCT short_name, cluster FROM insts) ia ON ia.short_name = a.inst
-    LEFT JOIN (SELECT DISTINCT short_name, cluster FROM insts) ib ON ib.short_name = b.inst;
+    -- a few generic short names ("Government Medical College and Hospital") belong to
+    -- several institutions in different clusters; take one so edges are not duplicated
+    LEFT JOIN (SELECT short_name, min(cluster) AS cluster FROM insts GROUP BY 1) ia ON ia.short_name = a.inst
+    LEFT JOIN (SELECT short_name, min(cluster) AS cluster FROM insts GROUP BY 1) ib ON ib.short_name = b.inst;
     COPY auth_edges TO 'data/out/authorship_network.csv';
     """)
 
     # ---- deliverable 4: indian_connections.csv ----------------------------------------------
     # topic similarity: subfields carrying >= 0.5% of an institution's 2016–2026 output
+    if not (ROOT / "data/stage/inst_subfields.parquet").exists():
+        print("topics: data/stage/inst_subfields.parquet missing (run `make topics`) -> Jaccard left empty")
+        sql("CREATE OR REPLACE TABLE inst_subfields (inst_id VARCHAR, subfield VARCHAR, subfield_id VARCHAR, n BIGINT)")
+    else:
+        sql("CREATE OR REPLACE TABLE inst_subfields AS SELECT * FROM 'data/stage/inst_subfields.parquet'")
     sql("""
     CREATE OR REPLACE TABLE jaccard AS
     WITH s AS (
       SELECT inst_id, subfield, n / sum(n) OVER (PARTITION BY inst_id) AS share
-      FROM 'data/stage/inst_subfields.parquet'
+      FROM inst_subfields
     ), sets AS (SELECT * FROM s WHERE share >= 0.005),
     pairs AS (
       SELECT o.inst_id AS our_id, p.inst_id AS partner_id
@@ -325,40 +362,110 @@ def main() -> None:
            sum(least(coalesce(so,0), coalesce(sp,0))) / sum(greatest(coalesce(so,0), coalesce(sp,0))) AS weighted_jaccard
     FROM u GROUP BY ALL;
     """)
-    sql("""
+    # >=100-author papers are left out (they would make CMS institutes our top partners), and
+    # citation counts leave out author self-citations
+    sql(f"""
     CREATE OR REPLACE TABLE connections AS
-    WITH shared AS (
+    WITH fw_main AS (
+      SELECT DISTINCT fw.work_id, fw.institution, fw.inst_id FROM fac_work fw JOIN corpus w USING (work_id)
+      WHERE w.n_authors < {HYPER}
+    ), shared AS (
       SELECT fw.institution AS your_inst, fw.inst_id AS our_id, ci.inst_id AS partner_id,
-             any_value(ci.short_name) AS partner_inst, any_value(ci.cluster) AS partner_cluster,
              count(DISTINCT fw.work_id) AS shared_papers
+      FROM fw_main fw JOIN corpus_inst ci ON ci.work_id = fw.work_id AND ci.inst_id <> fw.inst_id
+      GROUP BY ALL
+    ), shared_all AS (
+      SELECT fw.inst_id AS our_id, ci.inst_id AS partner_id, count(DISTINCT fw.work_id) AS shared_papers_incl_hyper
       FROM fac_work fw JOIN corpus_inst ci ON ci.work_id = fw.work_id AND ci.inst_id <> fw.inst_id
       GROUP BY ALL
-    ), cin AS (   -- citations received from partner (citing works with a partner author)
+    ), ce AS (SELECT source_id, target_id, edge_kind FROM cit_edges WHERE NOT self_citation),
+    cin AS (   -- citations received from partner (citing works with a partner author)
       SELECT fw.inst_id AS our_id, li.inst_id AS partner_id, count(DISTINCT (e.source_id, e.target_id)) AS cites_in
-      FROM in_edges e JOIN (SELECT DISTINCT work_id, inst_id FROM fac_work) fw ON fw.work_id = e.target_id
+      FROM ce e JOIN fw_main fw ON fw.work_id = e.target_id
       JOIN link_inst li ON li.link_id = e.source_id AND li.inst_id <> fw.inst_id
+      WHERE e.edge_kind = 'in'
       GROUP BY ALL
     ), cout AS (  -- citations given to partner
       SELECT fw.inst_id AS our_id, li.inst_id AS partner_id, count(DISTINCT (e.source_id, e.target_id)) AS cites_out
-      FROM out_edges e JOIN (SELECT DISTINCT work_id, inst_id FROM fac_work) fw ON fw.work_id = e.source_id
+      FROM ce e JOIN fw_main fw ON fw.work_id = e.source_id
       JOIN link_inst li ON li.link_id = e.target_id AND li.inst_id <> fw.inst_id
+      WHERE e.edge_kind = 'out'
       GROUP BY ALL
     ), keys AS (
-      SELECT our_id, partner_id FROM shared UNION SELECT our_id, partner_id FROM cin
+      SELECT our_id, partner_id FROM shared UNION SELECT our_id, partner_id FROM shared_all
+      UNION SELECT our_id, partner_id FROM cin
       UNION SELECT our_id, partner_id FROM cout
     )
     SELECT o.institution AS your_inst, i.short_name AS partner_inst,
            coalesce(s.shared_papers, 0) AS shared_papers,
+           coalesce(sa.shared_papers_incl_hyper, 0) AS shared_papers_incl_hyper,
            coalesce(cin.cites_in, 0) + coalesce(cout.cites_out, 0) AS total_citations,
            coalesce(cin.cites_in, 0) AS cites_in, coalesce(cout.cites_out, 0) AS cites_out,
            i.cluster AS partner_cluster, i.name AS partner_full_name, k.partner_id,
            i.cluster <> 'IISc · TIFR · IISER' AS cross_cluster,
            j.jaccard_topics, j.weighted_jaccard
     FROM keys k JOIN ours o ON o.inst_id = k.our_id JOIN insts i ON i.inst_id = k.partner_id
-    LEFT JOIN shared s USING (our_id, partner_id) LEFT JOIN cin USING (our_id, partner_id)
+    LEFT JOIN shared s USING (our_id, partner_id) LEFT JOIN shared_all sa USING (our_id, partner_id)
+    LEFT JOIN cin USING (our_id, partner_id)
     LEFT JOIN cout USING (our_id, partner_id) LEFT JOIN jaccard j USING (our_id, partner_id)
     ORDER BY your_inst, shared_papers DESC, total_citations DESC;
     COPY connections TO 'data/out/indian_connections.csv';
+    """)
+
+    # ---- citation origin: who cites our papers, whom do our papers cite ---------------------
+    # Every citation link is put in the first category that fits:
+    #   self               the two papers share an author
+    #   own institute      the other paper has an author at the same IISER
+    #   India + abroad     Indian and foreign authors (or a truncated >=100-author list)
+    #   other Indian only  only Indian authors, none of the above
+    #   abroad or unknown  no Indian affiliation; we only know their number:
+    #                      cited_by_count (in) or the reference count (out) minus the Indian links
+    # india_frac = share of the other paper's authors with an Indian address (fractional counting).
+    sql(f"""
+    CREATE OR REPLACE TABLE link_profile AS
+    SELECT link_id, any_value(n_auth) AS n_auth,
+           count(*) FILTER (len(countries) > 0) AS n_known,
+           count(*) FILTER (list_contains(countries, 'IN')) AS n_in,
+           bool_or(len(list_filter(countries, c -> c <> 'IN')) > 0) AS has_abroad
+    FROM 'data/stage/link_authors.parquet' GROUP BY 1;
+
+    CREATE OR REPLACE TABLE citation_origin AS
+    WITH t AS (   -- our papers, per institute, without >=100-author papers
+      SELECT DISTINCT fw.work_id, fw.institution, fw.inst_id, w.year, w.cited_by_count, w.n_refs
+      FROM fac_work fw JOIN corpus w USING (work_id) WHERE w.n_authors < {HYPER}
+    ), links AS (
+      SELECT 'in' AS direction, e.target_id AS work_id, e.source_id AS other_id
+      FROM 'data/stage/in_edges.parquet' e WHERE e.source_id <> e.target_id
+      UNION
+      SELECT 'out', r.work_id, r.ref_id FROM 'data/stage/work_refs.parquet' r
+      WHERE r.ref_id IN (SELECT link_id FROM 'data/stage/link_works.parquet' WHERE kind = 'cited')
+        AND r.ref_id <> r.work_id
+    ), cat AS (
+      SELECT t.institution, t.work_id, t.year, l.direction,
+             CASE WHEN EXISTS (SELECT 1 FROM node_authors a JOIN node_authors b USING (author_id)
+                               WHERE a.id = l.other_id AND b.id = l.work_id) THEN 'self'
+                  WHEN EXISTS (SELECT 1 FROM 'data/stage/link_insts.parquet' li
+                               WHERE li.link_id = l.other_id AND li.inst_id = t.inst_id) THEN 'own institute'
+                  WHEN p.has_abroad OR p.n_auth >= {HYPER} THEN 'India + abroad'
+                  ELSE 'other Indian only' END AS category,
+             coalesce(p.n_in / nullif(p.n_known, 0), 1.0) AS india_frac
+      FROM links l JOIN t USING (work_id) LEFT JOIN link_profile p ON p.link_id = l.other_id
+    ), indian AS (
+      SELECT institution, work_id, year, direction, category, count(*) AS n, sum(india_frac) AS india_frac
+      FROM cat GROUP BY ALL
+    ), indian_tot AS (
+      SELECT institution, work_id, direction, sum(n) AS n FROM indian GROUP BY ALL
+    ), rest AS (
+      SELECT t.institution, t.work_id, t.year, d.direction, 'abroad or unknown' AS category,
+             greatest(CASE d.direction WHEN 'in' THEN t.cited_by_count ELSE t.n_refs END
+                      - coalesce(i.n, 0), 0) AS n,
+             0.0 AS india_frac
+      FROM t CROSS JOIN (VALUES ('in'), ('out')) d(direction)
+      LEFT JOIN indian_tot i ON i.institution = t.institution AND i.work_id = t.work_id AND i.direction = d.direction
+    )
+    SELECT * FROM indian UNION ALL SELECT * FROM rest WHERE n > 0
+    ORDER BY institution, work_id, direction, category;
+    COPY citation_origin TO 'data/out/citation_origin.csv';
     """)
 
     # ---- summary --------------------------------------------------------------------------
@@ -371,6 +478,8 @@ def main() -> None:
         ("citation edges", "SELECT edge_kind, count(*) FROM cit_edges GROUP BY 1"),
         ("authorship edges", "SELECT count(*), count(*) FILTER (a_faculty AND b_faculty), count(*) FILTER (cross_institution) FROM auth_edges"),
         ("connections", "SELECT your_inst, count(*), sum(shared_papers), sum(total_citations) FROM connections GROUP BY 1"),
+        ("self-citation share of internal edges", "SELECT avg(self_citation::INT) FROM cit_edges WHERE edge_kind = 'internal' AND NOT involves_hyper"),
+        ("citation origin", "SELECT institution, direction, category, sum(n)::BIGINT FROM citation_origin GROUP BY ALL ORDER BY ALL"),
     ]:
         print(f"-- {name}:", con.sql(q).fetchall())
 
