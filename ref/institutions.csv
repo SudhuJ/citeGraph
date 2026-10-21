@@ -73,9 +73,9 @@ I3016035982,Ahmedabad Civil Hospital,https://ror.org/00k8adf88,healthcare,Health
 I4405266460,"All India Institute of Medical Sciences, Patna",https://ror.org/033ax5g32,healthcare,Healthcare,"All India Institute of Medical Sciences, Patna",False
 I1282879092,Amrita Institute of Medical Sciences and Research Centre,https://ror.org/05ahcwz21,healthcare,Healthcare,Amrita Institute of Medical Sciences and Research Centre,False
 I2801225794,Apollo Gleneagles Hospitals,https://ror.org/02gj58768,healthcare,Healthcare,Apollo Gleneagles Hospitals,False
-I4210159024,Apollo Hospitals,https://ror.org/05ccyns11,healthcare,Healthcare,Apollo Hospitals,False
 I1327930874,Apollo Hospitals,https://ror.org/02ew45630,healthcare,Healthcare,Apollo Hospitals,False
 I4210130696,Apollo Hospitals,https://ror.org/035fmf715,healthcare,Healthcare,Apollo Hospitals,False
+I4210159024,Apollo Hospitals,https://ror.org/05ccyns11,healthcare,Healthcare,Apollo Hospitals,False
 I4210118361,Apollo Institute of Medical Sciences & Research,https://ror.org/02f65mn87,healthcare,Healthcare,Apollo Institute of Medical Sciences & Research,False
 I4210165779,Army Hospital Research and Referral,https://ror.org/04zh7mt66,healthcare,Healthcare,Army Hospital Research and Referral,False
 I4210165151,Artemis Hospitals,https://ror.org/05ez4ar64,healthcare,Healthcare,Artemis Hospitals,False
@@ -118,11 +118,11 @@ I49124879,Dr. V. M. Government Medical College,https://ror.org/01k22c722,healthc
 I4210105251,ESI - Post Graduate Institute of Medical Science and Research,https://ror.org/01eskr961,healthcare,Healthcare,ESI - Post Graduate Institute of Medical Science and Research,False
 I4210159729,ESIC Hospital,https://ror.org/05k8rth88,healthcare,Healthcare,ESIC Hospital,False
 I4210107565,Era's Lucknow Medical College and Hospital,https://ror.org/01df9ep43,healthcare,Healthcare,Era's Lucknow Medical College and Hospital,False
-I4210110697,Fortis Escorts Hospital,https://ror.org/01xngwb59,healthcare,Healthcare,Fortis Escorts Hospital,False
 I4210130647,Fortis Escorts Hospital,https://ror.org/03v4ccn82,healthcare,Healthcare,Fortis Escorts Hospital,False
+I4210110697,Fortis Escorts Hospital,https://ror.org/01xngwb59,healthcare,Healthcare,Fortis Escorts Hospital,False
 I4210125089,Fortis Flt. Lt. Rajan Dhall Hospital,https://ror.org/03jcj5d12,healthcare,Healthcare,Fortis Flt. Lt. Rajan Dhall Hospital,False
-I4210143252,Fortis Hospital,https://ror.org/056t5qz59,healthcare,Healthcare,Fortis Hospital,False
 I4210153334,Fortis Hospital,https://ror.org/04g9pp561,healthcare,Healthcare,Fortis Hospital,False
+I4210143252,Fortis Hospital,https://ror.org/056t5qz59,healthcare,Healthcare,Fortis Hospital,False
 I4210108369,Fortis Memorial Research Institute,https://ror.org/01h7phh70,healthcare,Healthcare,Fortis Memorial Research Institute,False
 I4210094756,GD Hospital & Diabetes Institute,https://ror.org/006shyb38,healthcare,Healthcare,GD Hospital & Diabetes Institute,False
 I4210151372,Gandhi Medical College,https://ror.org/04npss011,healthcare,Healthcare,Gandhi Medical College,False
@@ -175,8 +175,8 @@ I307255591,Max Healthcare,https://ror.org/02vdjrg05,healthcare,Healthcare,Max He
 I2802464703,Max Super Speciality Hospital,https://ror.org/00e7r7m66,healthcare,Healthcare,Max Super Speciality Hospital,False
 I4210145498,MaxCure Hospitals,https://ror.org/055cmzr24,healthcare,Healthcare,MaxCure Hospitals,False
 I4210102983,Mazumdar Shaw Medical Centre,https://ror.org/018vx9t46,healthcare,Healthcare,Mazumdar Shaw Medical Centre,False
-I1291450037,Medanta The Medicity,https://ror.org/047dyfk64,healthcare,Healthcare,Medanta The Medicity,False
 I4210115207,Medanta The Medicity,https://ror.org/023vqza20,healthcare,Healthcare,Medanta The Medicity,False
+I1291450037,Medanta The Medicity,https://ror.org/047dyfk64,healthcare,Healthcare,Medanta The Medicity,False
 I2801496111,Medical Trust Hospital,https://ror.org/058q6m856,healthcare,Healthcare,Medical Trust Hospital,False
 I4210113550,Meenakshi Mission Hospital and Research Centre,https://ror.org/01xrsrd14,healthcare,Healthcare,Meenakshi Mission Hospital and Research Centre,False
 I4210099933,NKP Salve Institute of Medical Sciences and Lata Mangeshkar Hospital,https://ror.org/012m33j29,healthcare,Healthcare,NKP Salve Institute of Medical Sciences and Lata Mangeshkar Hospital,False
@@ -311,6 +311,7 @@ I4210128598,Daiichi Sankyo (India),https://ror.org/03346b772,company,Industry,Da
 I4210137866,Danish Hydraulic Institute (India),https://ror.org/04eqe6790,company,Industry,Danish Hydraulic Institute (India),False
 I4210117495,Dr. Reddy's Laboratories (India),https://ror.org/01rkxa860,company,Industry,Dr. Reddy's Laboratories (India),False
 I4210114640,Eli Lilly (India),https://ror.org/02156y972,company,Industry,Eli Lilly (India),False
+I4210096895,Emami (India),https://ror.org/00tnh9n90,company,Industry,Emami (India),False
 I4210144227,Evalueserve (India),https://ror.org/04bxq2s19,company,Industry,Evalueserve (India),False
 I333900126,GAIL (India),https://ror.org/041jtyq26,company,Industry,GAIL (India),False
 I4210091129,GVK (India),https://ror.org/00eqbn006,company,Industry,GVK (India),False
@@ -427,7 +428,6 @@ I4210145585,Patanjali Research Foundation,https://ror.org/04f68cb23,other,Other,
 I2799306724,Ramakrishna Mission Vidyamandira,https://ror.org/019wbnq12,other,Other,Ramakrishna Mission Vidyamandira,False
 I1287339526,Reserve Bank of India,https://ror.org/04w0b7z78,other,Other,Reserve Bank of India,False
 I4210113893,Salim Ali Center for Ornithology and Natural History,https://ror.org/026d1sx92,other,Other,Salim Ali Center for Ornithology and Natural History,False
-I4405252911,"Shri Lal Bahadur Shastri Degree College, Gonda",https://ror.org/003sddv93,other,Other,"Shri Lal Bahadur Shastri Degree College, Gonda",False
 I4210138833,Society For Development Alternatives,https://ror.org/04sxpzn67,other,Other,Society For Development Alternatives,False
 I4210159890,TCG Crest,https://ror.org/05h2r8y34,other,Other,TCG Crest,False
 I4210089010,Tata Medical Center,https://ror.org/006vzad83,funder,Other,Tata Medical Center,False
@@ -449,6 +449,7 @@ I4396570500,"All India Institute of Medical Sciences, Deoghar",https://ror.org/0
 I4401200305,"All India Institute of Medical Sciences, Nagpur",https://ror.org/01w4gn737,government,Other research institute,"All India Institute of Medical Sciences, Nagpur",False
 I4405254203,"All India Institute of Medical Sciences, Rajkot",https://ror.org/01hw1ck36,government,Other research institute,"All India Institute of Medical Sciences, Rajkot",False
 I4210146099,Alzheimer's and Related Disorders Society of India,https://ror.org/03fyqbt98,nonprofit,Other research institute,Alzheimer's and Related Disorders Society of India,False
+I4210126787,Andhra Pradesh Forest Department,https://ror.org/02xr5ws27,government,Other research institute,Andhra Pradesh Forest Department,False
 I1335376613,Anthropological Survey of India,https://ror.org/04na1dr63,government,Other research institute,Anthropological Survey of India,False
 I4405273104,Apollo Hospitals Educational and Research Foundation,https://ror.org/059eq7t29,nonprofit,Other research institute,Apollo Hospitals Educational and Research Foundation,False
 I4405266383,Archaeological Survey of India,https://ror.org/02ktq2f22,government,Other research institute,Archaeological Survey of India,False
@@ -547,12 +548,10 @@ I4405282151,Chest Research Foundation,https://ror.org/05d5w5z02,nonprofit,Other 
 I4210148999,Chhattisgarh Council of Science and Technology,https://ror.org/04bz8f123,government,Other research institute,Chhattisgarh Council of Science and Technology,False
 I4210130859,Chilika Development Authority,https://ror.org/02srgbx34,government,Other research institute,Chilika Development Authority,False
 I2801105518,Confederation of Indian Industry,https://ror.org/04hrmb987,nonprofit,Other research institute,Confederation of Indian Industry,False
-I4210111415,"Council on Energy, Environment and Water",https://ror.org/01w56ba43,nonprofit,Other research institute,"Council on Energy, Environment and Water",False
 I4210160166,DBT/Wellcome Trust India Alliance,https://ror.org/04reqzt68,nonprofit,Other research institute,DBT/Wellcome Trust India Alliance,False
 I4405261704,DNA Labs-CRIS (Centre for Research and Innovative Studies),https://ror.org/05qfsg079,facility,Other research institute,DNA Labs-CRIS (Centre for Research and Innovative Studies),False
 I4405258310,Dakshin Foundation,https://ror.org/00esssx91,nonprofit,Other research institute,Dakshin Foundation,False
 I2802608988,Defence Food Research Laboratory,https://ror.org/03prr0814,facility,Other research institute,Defence Food Research Laboratory,False
-I4210120816,Defence Institute of Bio-Energy Research,https://ror.org/02ydkfh68,facility,Other research institute,Defence Institute of Bio-Energy Research,False
 I4210090935,Defence Institute of High Altitude Research,https://ror.org/00b0mey76,facility,Other research institute,Defence Institute of High Altitude Research,False
 I51313444,Defence Institute of Physiology and Allied Sciences,https://ror.org/04fzbxp95,facility,Other research institute,Defence Institute of Physiology and Allied Sciences,False
 I4210099439,Defence Laboratory Jodhpur,https://ror.org/012dywt31,facility,Other research institute,Defence Laboratory Jodhpur,False
@@ -666,7 +665,6 @@ I4210151780,Indian Plywood Industries Research and Training Institute,https://ro
 I1289461252,Indian Space Research Organisation,https://ror.org/00cwrns71,government,Other research institute,Indian Space Research Organisation,False
 I185790649,Indian Veterinary Research Institute,https://ror.org/02jcfzc36,facility,Other research institute,Indian Veterinary Research Institute,False
 I4210152052,Indo Korea Science and Technology,https://ror.org/03ynzzx94,facility,Other research institute,Indo Korea Science and Technology,False
-I4210086295,Institute for Human Development,https://ror.org/00142p479,facility,Other research institute,Institute for Human Development,False
 I4210098363,Institute for Seri-Biotechnological Research,https://ror.org/00z1f6y87,facility,Other research institute,Institute for Seri-Biotechnological Research,False
 I4210092443,Institute for Social and Economic Change,https://ror.org/00g7qtt96,facility,Other research institute,Institute for Social and Economic Change,False
 I4210087873,Institute for Stem Cell Biology and Regenerative Medicine,https://ror.org/007wpch15,facility,Other research institute,Institute for Stem Cell Biology and Regenerative Medicine,False
@@ -704,7 +702,6 @@ I4405261651,KIRND Institute of Research and Development Pvt Ltd,https://ror.org/
 I4405255016,KSCSTE - Institute for Climate Change Studies,https://ror.org/02grjkp95,government,Other research institute,KSCSTE - Institute for Climate Change Studies,False
 I4405262857,KSCSTE-Srinivasa Ramanujan Institute for Basic Sciences,https://ror.org/05kp6mq50,government,Other research institute,KSCSTE-Srinivasa Ramanujan Institute for Basic Sciences,False
 I4210130604,Kalam Institute of Health Technology,https://ror.org/03780jn86,facility,Other research institute,Kalam Institute of Health Technology,False
-I4210148176,Kalpavriksh,https://ror.org/04c5nsm37,nonprofit,Other research institute,Kalpavriksh,False
 I4405281010,Kerala Forest Department,https://ror.org/03r4wzc15,government,Other research institute,Kerala Forest Department,False
 I98944809,Kerala Forest Research Institute,https://ror.org/02gg6pa94,facility,Other research institute,Kerala Forest Research Institute,False
 I1284637955,"Kerala State Council for Science, Technology and Environment",https://ror.org/030fy4q75,government,Other research institute,"Kerala State Council for Science, Technology and Environment",False
@@ -714,7 +711,6 @@ I4210164723,Keystone Foundation,https://ror.org/05n2mzp75,nonprofit,Other resear
 I2802933311,Kidwai Memorial Institute of Oncology,https://ror.org/027h1w574,facility,Other research institute,Kidwai Memorial Institute of Oncology,False
 I323874257,King Institute of Preventive Medicine and Research,https://ror.org/01yennm80,facility,Other research institute,King Institute of Preventive Medicine and Research,False
 I4210088856,Laser Science & Technology Centre,https://ror.org/004tnhr10,facility,Other research institute,Laser Science & Technology Centre,False
-I4210090168,Lata Medical Research Foundation,https://ror.org/008rqvc37,nonprofit,Other research institute,Lata Medical Research Foundation,False
 I4405258260,"Loknete Vyankatrao Hiray Arts, Science and Commerce College",https://ror.org/00cf0s038,government,Other research institute,"Loknete Vyankatrao Hiray Arts, Science and Commerce College",False
 I2799627270,M S Swaminathan Research Foundation,https://ror.org/008sszm38,nonprofit,Other research institute,M S Swaminathan Research Foundation,False
 I4210092311,Madras Diabetes Research Foundation,https://ror.org/00czgcw56,nonprofit,Other research institute,Madras Diabetes Research Foundation,False
@@ -820,9 +816,9 @@ I89324447,Rajiv Gandhi Centre for Biotechnology,https://ror.org/05sdqd547,facili
 I119598438,Raman Research Institute,https://ror.org/01qdav448,facility,Other research institute,Raman Research Institute,False
 I4210094671,Regional Centre for Biotechnology,https://ror.org/00nc5f834,government,Other research institute,Regional Centre for Biotechnology,False
 I2802952153,Regional Medical Research Center,https://ror.org/00j0b8v53,facility,Other research institute,Regional Medical Research Center,False
-I2802376228,Regional Medical Research Centre,https://ror.org/01y720297,facility,Other research institute,Regional Medical Research Centre,False
-I4210109249,Regional Medical Research Centre,https://ror.org/01qr3vg91,facility,Other research institute,Regional Medical Research Centre,False
 I4210093644,Regional Medical Research Centre,https://ror.org/00600nd69,facility,Other research institute,Regional Medical Research Centre,False
+I4210109249,Regional Medical Research Centre,https://ror.org/01qr3vg91,facility,Other research institute,Regional Medical Research Centre,False
+I2802376228,Regional Medical Research Centre,https://ror.org/01y720297,facility,Other research institute,Regional Medical Research Centre,False
 I4210128503,Regional Plant Resource Centre,https://ror.org/048pwcs59,facility,Other research institute,Regional Plant Resource Centre,False
 I4405262547,"Remote Sensing Applications Centre, Uttar Pradesh",https://ror.org/03ys7ky12,government,Other research institute,"Remote Sensing Applications Centre, Uttar Pradesh",False
 I4210099971,Research & Development Establishment (Engrs.),https://ror.org/00wethk75,facility,Other research institute,Research & Development Establishment (Engrs.),False
@@ -1083,6 +1079,7 @@ I1320404931,C. U. Shah University,https://ror.org/04rt7n757,education,University
 I136053868,CMJ University,https://ror.org/02twyz205,education,University / College,CMJ University,False
 I4210104573,CMR University,https://ror.org/015waqy33,education,University / College,CMR University,False
 I4405273661,COEP Technological University,https://ror.org/008128n17,education,University / College,COEP Technological University,False
+I4405265151,COER University,https://ror.org/040m46366,education,University / College,COER University,False
 I4210155803,CPCL Polytechnic College,https://ror.org/05gebng48,education,University / College,CPCL Polytechnic College,False
 I4210094618,CT Group Of Institutions,https://ror.org/00m02ap37,education,University / College,CT Group Of Institutions,False
 I4405258160,CT University,https://ror.org/007czgh25,education,University / College,CT University,False
@@ -1272,17 +1269,18 @@ I4210130008,Government Dental College and Hospital,https://ror.org/039r0r789,edu
 I4405275378,Government Doon Medical College,https://ror.org/03gkjqv14,education,University / College,Government Doon Medical College,False
 I4405276907,Government Engineering College Thrissur,https://ror.org/00rtgqb20,education,University / College,Government Engineering College Thrissur,False
 I4405263743,Government Engineering College Wayanad,https://ror.org/05nx3qr05,education,University / College,Government Engineering College Wayanad,False
+I4405279661,"Government Institute of Forensic Science, Nagpur",https://ror.org/01tsxcr11,education,University / College,"Government Institute of Forensic Science, Nagpur",False
 I169078443,Government Kilpauk Medical College,https://ror.org/01mpngw81,education,University / College,Government Kilpauk Medical College,False
-I248710770,Government Medical College,https://ror.org/04aznd361,education,University / College,Government Medical College,False
 I168974072,Government Medical College,https://ror.org/026b7da27,education,University / College,Government Medical College,False
-I129862065,Government Medical College,https://ror.org/007fenw03,education,University / College,Government Medical College,False
-I133769559,Government Medical College,https://ror.org/016je1253,education,University / College,Government Medical College,False
+I248710770,Government Medical College,https://ror.org/04aznd361,education,University / College,Government Medical College,False
+I4210107852,Government Medical College,https://ror.org/01te4n153,education,University / College,Government Medical College,False
 I4210164371,Government Medical College,https://ror.org/04y908s98,education,University / College,Government Medical College,False
 I180771373,Government Medical College,https://ror.org/05w6g2m14,education,University / College,Government Medical College,False
-I150956004,Government Medical College,https://ror.org/00m4gxn44,education,University / College,Government Medical College,False
-I4210089425,Government Medical College,https://ror.org/005h6qd35,education,University / College,Government Medical College,False
 I4210154211,Government Medical College,https://ror.org/05kn6fr85,education,University / College,Government Medical College,False
-I4210107852,Government Medical College,https://ror.org/01te4n153,education,University / College,Government Medical College,False
+I4210089425,Government Medical College,https://ror.org/005h6qd35,education,University / College,Government Medical College,False
+I150956004,Government Medical College,https://ror.org/00m4gxn44,education,University / College,Government Medical College,False
+I129862065,Government Medical College,https://ror.org/007fenw03,education,University / College,Government Medical College,False
+I133769559,Government Medical College,https://ror.org/016je1253,education,University / College,Government Medical College,False
 I4210093352,Government Medical College and Hospital,https://ror.org/00hhrbd92,education,University / College,Government Medical College and Hospital,False
 I4405273430,Government Model Science College,https://ror.org/05t9dwe63,education,University / College,Government Model Science College,False
 I4210154858,Government Mohan Kumaramangalam Medical College,https://ror.org/050m92g92,education,University / College,Government Mohan Kumaramangalam Medical College,False
@@ -1326,7 +1324,6 @@ I43663321,Hindustan Institute of Technology and Science,https://ror.org/037tgdn1
 I4405276101,Hiralal Mazumdar Memorial College for Women,https://ror.org/04v0etk53,education,University / College,Hiralal Mazumdar Memorial College for Women,False
 I119204206,Hislop College,https://ror.org/03ys8dr56,education,University / College,Hislop College,False
 I4405274499,Hooghly Mohsin College,https://ror.org/01tva3e17,education,University / College,Hooghly Mohsin College,False
-I4210102611,ICFAI Business School,https://ror.org/015v04m58,education,University / College,ICFAI Business School,False
 I4210138731,ICFAI Foundation for Higher Education,https://ror.org/04p3pp808,education,University / College,ICFAI Foundation for Higher Education,False
 I55124834,"ICFAI University, Dehradun",https://ror.org/02ecg3h97,education,University / College,"ICFAI University, Dehradun",False
 I173462786,"ICFAI University, Tripura",https://ror.org/01c06s784,education,University / College,"ICFAI University, Tripura",False
@@ -1400,8 +1397,8 @@ I180801515,Institute of Rural Management Anand,https://ror.org/03e096643,educati
 I4405277029,"Institute of Science, Nagpur",https://ror.org/016b6fm58,education,University / College,"Institute of Science, Nagpur",False
 I189949046,Integral University,https://ror.org/039zd5s34,education,University / College,Integral University,False
 I197882922,International Institute for Population Sciences,https://ror.org/0178xk096,education,University / College,International Institute for Population Sciences,False
-I4210097016,International Institute of Information Technology,https://ror.org/00qryer39,education,University / College,International Institute of Information Technology,False
 I188963388,International Institute of Information Technology,https://ror.org/02dernx73,education,University / College,International Institute of Information Technology,False
+I4210097016,International Institute of Information Technology,https://ror.org/00qryer39,education,University / College,International Institute of Information Technology,False
 I158867519,International Management Institute,https://ror.org/00jatyx22,education,University / College,International Management Institute,False
 I4405278847,International School of Management Excellence,https://ror.org/00ms8qy16,education,University / College,International School of Management Excellence,False
 I19688894,Invertis University,https://ror.org/04zxaa490,education,University / College,Invertis University,False
@@ -1572,8 +1569,8 @@ I2802997415,Mahatma Gandhi Kashi Vidyapith,https://ror.org/006qz8583,education,U
 I1302623664,Mahatma Gandhi Medical College and Research Institute,https://ror.org/05v4pjq26,education,University / College,Mahatma Gandhi Medical College and Research Institute,False
 I2801183603,Mahatma Gandhi Memorial Medical College,https://ror.org/0223apb60,education,University / College,Mahatma Gandhi Memorial Medical College,False
 I4210113792,Mahatma Gandhi Mission Medical College and Hospital,https://ror.org/020t0j562,education,University / College,Mahatma Gandhi Mission Medical College and Hospital,False
-I4405260745,Mahatma Gandhi University,https://ror.org/04702m080,education,University / College,Mahatma Gandhi University,False
 I177436651,Mahatma Gandhi University,https://ror.org/00h4spn88,education,University / College,Mahatma Gandhi University,False
+I4405260745,Mahatma Gandhi University,https://ror.org/04702m080,education,University / College,Mahatma Gandhi University,False
 I167494164,Mahatma Phule Krishi Vidyapeeth,https://ror.org/00mmq5f59,education,University / College,Mahatma Phule Krishi Vidyapeeth,False
 I179760745,Mahaveer Academy of Technology and Science University,https://ror.org/0292bh813,education,University / College,Mahaveer Academy of Technology and Science University,False
 I4405260859,Mahaveer University,https://ror.org/04cv7dg98,education,University / College,Mahaveer University,False
@@ -1636,7 +1633,6 @@ I61198380,Nagaland University,https://ror.org/05n97pt16,education,University / C
 I4405278019,Nagaon University,https://ror.org/04nq4ym17,education,University / College,Nagaon University,False
 I4405271520,Nagarjuna College of Engineering and Technology,https://ror.org/02j81e070,education,University / College,Nagarjuna College of Engineering and Technology,False
 I206816349,Nagpur Institute of Technology,https://ror.org/04yw73836,education,University / College,Nagpur Institute of Technology,False
-I3130204378,Nalanda Medical College and Hospital,https://ror.org/03em5rb28,education,University / College,Nalanda Medical College and Hospital,False
 I4210140720,Nalanda University,https://ror.org/0403tv949,education,University / College,Nalanda University,False
 I4405277624,Nalbari College,https://ror.org/03cyth041,education,University / College,Nalbari College,False
 I2802231754,Nalsar University of Law,https://ror.org/0539zen48,education,University / College,Nalsar University of Law,False
@@ -1654,11 +1650,11 @@ I22956069,National Institute of Advanced Studies,https://ror.org/012wm5r19,educa
 I25621075,National Institute of Fashion Technology,https://ror.org/02qn6fq95,education,University / College,National Institute of Fashion Technology,False
 I342702707,National Institute of Food Technology Entrepreneurship and Management,https://ror.org/048byek34,education,University / College,National Institute of Food Technology Entrepreneurship and Management,False
 I25592554,National Institute of Ocean Technology,https://ror.org/03maknm89,education,University / College,National Institute of Ocean Technology,False
-I4210103783,National Institute of Pharmaceutical Education and Research,https://ror.org/025qtp564,education,University / College,National Institute of Pharmaceutical Education and Research,False
-I4210098333,National Institute of Pharmaceutical Education and Research,https://ror.org/011npsm46,education,University / College,National Institute of Pharmaceutical Education and Research,False
-I4210154014,National Institute of Pharmaceutical Education and Research,https://ror.org/04p9b6182,education,University / College,National Institute of Pharmaceutical Education and Research,False
 I4210146715,National Institute of Pharmaceutical Education and Research,https://ror.org/040dgqr26,education,University / College,National Institute of Pharmaceutical Education and Research,False
+I4210098333,National Institute of Pharmaceutical Education and Research,https://ror.org/011npsm46,education,University / College,National Institute of Pharmaceutical Education and Research,False
+I4210103783,National Institute of Pharmaceutical Education and Research,https://ror.org/025qtp564,education,University / College,National Institute of Pharmaceutical Education and Research,False
 I4210161501,National Institute of Pharmaceutical Education and Research,https://ror.org/04t67vr60,education,University / College,National Institute of Pharmaceutical Education and Research,False
+I4210154014,National Institute of Pharmaceutical Education and Research,https://ror.org/04p9b6182,education,University / College,National Institute of Pharmaceutical Education and Research,False
 I4210098947,National Institute of Science and Technology,https://ror.org/01150px97,education,University / College,National Institute of Science and Technology,False
 I4210094717,"National Institute of Technical Teachers Training and Research, Chandigarh",https://ror.org/00rpc7w94,education,University / College,"National Institute of Technical Teachers Training and Research, Chandigarh",False
 I4405270689,"National Institute of Technical Teachers' Training and Research, Kolkata",https://ror.org/01651sz36,education,University / College,"National Institute of Technical Teachers' Training and Research, Kolkata",False
@@ -1731,10 +1727,12 @@ I175691731,Pondicherry University,https://ror.org/01a3mef16,education,University
 I4405259281,Poornaprajna Institute of Management,https://ror.org/020rj4143,education,University / College,Poornaprajna Institute of Management,False
 I4210097624,Poornaprajna Institute of Scientific Research,https://ror.org/00wyj1j88,education,University / College,Poornaprajna Institute of Scientific Research,False
 I4405274437,Poornima Institute of Engineering and Technology,https://ror.org/01q4evf45,education,University / College,Poornima Institute of Engineering and Technology,False
+I4210126659,Poornima University,https://ror.org/03gnqp653,education,University / College,Poornima University,False
 I4405278138,"Post Graduate Government College, Sector 11, Chandigarh",https://ror.org/053e6vr07,education,University / College,"Post Graduate Government College, Sector 11, Chandigarh",False
 I45294948,Post Graduate Institute of Medical Education and Research,https://ror.org/009nfym65,education,University / College,Post Graduate Institute of Medical Education and Research,False
 I4405274032,Pragjyotish College,https://ror.org/00xs0en04,education,University / College,Pragjyotish College,False
 I3130684616,Pravara Institute of Medical Sciences,https://ror.org/02y0wc381,education,University / College,Pravara Institute of Medical Sciences,False
+I4405254716,Praxis Business School,https://ror.org/0259r0013,education,University / College,Praxis Business School,False
 I4405281587,Presidency College,https://ror.org/04kfbh280,education,University / College,Presidency College,False
 I157674215,Presidency University,https://ror.org/04xgbph11,education,University / College,Presidency University,False
 I4405278111,Priyadarshini College of Engineering,https://ror.org/050zc5n91,education,University / College,Priyadarshini College of Engineering,False
@@ -1970,9 +1968,9 @@ I4405259634,"St. Philomena College, Puttur",https://ror.org/02fx0ag10,education,
 I4405258839,"St. Philomena's College, Mysuru",https://ror.org/0199hy323,education,University / College,"St. Philomena's College, Mysuru",False
 I4405274875,St. Stephen's College,https://ror.org/02hvd9c02,education,University / College,St. Stephen's College,False
 I4405254056,St. Thomas College (Autonomous),https://ror.org/01by29f02,education,University / College,St. Thomas College (Autonomous),False
-I4405254408,St. Xavier's College,https://ror.org/01s96w554,education,University / College,St. Xavier's College,False
-I4405276825,St. Xavier's College,https://ror.org/00e61c408,education,University / College,St. Xavier's College,False
 I4405282102,St. Xavier's College,https://ror.org/05b3mjp05,education,University / College,St. Xavier's College,False
+I4405276825,St. Xavier's College,https://ror.org/00e61c408,education,University / College,St. Xavier's College,False
+I4405254408,St. Xavier's College,https://ror.org/01s96w554,education,University / College,St. Xavier's College,False
 I4405256019,"St. Xavier's College (Autonomous), Kolkata",https://ror.org/03p0rew30,education,University / College,"St. Xavier's College (Autonomous), Kolkata",False
 I4210145302,St.John's Medical College Hospital,https://ror.org/04z7fc725,education,University / College,St.John's Medical College Hospital,False
 I25051037,Stanley Medical College,https://ror.org/0567p6j84,education,University / College,Stanley Medical College,False

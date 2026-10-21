@@ -48,7 +48,22 @@ def main() -> None:
         "faculty": rows(con, """SELECT institution, count(*) AS n, count(*) FILTER (papers > 0) AS active,
                                        median(h_index) AS med_h, max(h_index) AS max_h, median(h_index_lifetime) AS med_h_life
                                 FROM f GROUP BY 1 ORDER BY 1 DESC"""),
-        "trend": rows(con, "SELECT institution, year, count(*) AS n FROM p GROUP BY ALL ORDER BY 1, 2"),
+         "coverage": rows(con, """SELECT count(*) AS faculty, count(*) FILTER (matched) AS matched,
+                            count(*) FILTER (papers > 0) AS publishing
+                        FROM f"""),
+                "trend": rows(con, """WITH faculty_first AS (
+                                                                    SELECT institution, fac_id, min(year) AS first_year FROM data_rows
+                                                                    WHERE NOT hyperauthored GROUP BY 1, 2
+                                                                ), yearly AS (
+                                                                    SELECT institution, year, count(*) AS n FROM p GROUP BY ALL
+                                                                ), active AS (
+                                                                    SELECT y.institution, y.year, y.n,
+                                                                                 count(f.fac_id) FILTER (f.first_year <= y.year) AS active
+                                                                    FROM yearly y LEFT JOIN faculty_first f USING (institution)
+                                                                    GROUP BY y.institution, y.year, y.n
+                                                                )
+                                                                SELECT *, n::DOUBLE / nullif(active, 0) AS per_faculty
+                                                                FROM active ORDER BY 1, 2"""),
         "quartiles": rows(con, """SELECT institution, coalesce(quartile, 'unranked') AS q, count(*) AS n FROM p
                                   WHERE type = 'journal' GROUP BY ALL ORDER BY 1, 2"""),
         "hist": rows(con, """SELECT institution, least(h_index, 40) // 4 * 4 AS bin, count(*) AS n FROM f
@@ -59,6 +74,14 @@ def main() -> None:
         "top_cited": rows(con, """SELECT any_value(title) AS title, any_value(journal_name) AS journal, any_value(year) AS year,
                                          max(citations) AS citations, string_agg(DISTINCT institution, ' & ') AS inst, any_value(doi) AS doi
                                   FROM p GROUP BY openalex_id ORDER BY citations DESC LIMIT 10"""),
+                "top_cited_age": rows(con, """WITH distinct_papers AS (
+                                                                                         SELECT openalex_id, any_value(year) AS year, max(citations) AS citations
+                                                                                         FROM p GROUP BY 1
+                                                                                     ), top30 AS (
+                                                                                         SELECT * FROM distinct_papers ORDER BY citations DESC LIMIT 30
+                                                                                     )
+                                                                                     SELECT count(*) FILTER (year <= 2019)::DOUBLE / count(*) AS share_2016_2019,
+                                                                                                    count(*) AS n FROM top30"""),
         "top_cited_hyper": rows(con, "SELECT max(citations) AS c FROM pall WHERE hyperauthored"),
         "fields": rows(con, """SELECT institution, coalesce(field, 'Unclassified') AS field, count(*) AS n,
                                       count(*) / sum(count(*)) OVER (PARTITION BY institution) AS share
@@ -69,6 +92,21 @@ def main() -> None:
         "partners": rows(con, """SELECT your_inst, partner_inst, partner_cluster, shared_papers, cites_in, cites_out, jaccard_topics
                                  FROM connections QUALIFY row_number() OVER (PARTITION BY your_inst ORDER BY shared_papers DESC) <= 6
                                  ORDER BY 1 DESC, 4 DESC"""),
+                "topic_collaboration": rows(con, """WITH partner_values AS (
+                                                                                                SELECT jaccard_topics, shared_papers FROM connections
+                                                                                                WHERE jaccard_topics IS NOT NULL AND shared_papers >= 3
+                                                                                            ), partner_ranks AS (
+                                                                                                SELECT rank() OVER (ORDER BY jaccard_topics)
+                                                                                                                 + (count(*) OVER (PARTITION BY jaccard_topics) - 1) / 2.0 AS topic_rank,
+                                                                                                             rank() OVER (ORDER BY shared_papers)
+                                                                                                                 + (count(*) OVER (PARTITION BY shared_papers) - 1) / 2.0 AS paper_rank
+                                                                                                FROM partner_values
+                                                                                            )
+                                SELECT count(*) AS n, corr(topic_rank, paper_rank) AS spearman
+                                FROM partner_ranks"""),
+         "partner_summary": rows(con, """SELECT sum(shared_papers) FILTER (cross_cluster)::DOUBLE
+                                / nullif(sum(shared_papers), 0) AS cross_cluster_share
+                            FROM connections WHERE shared_papers > 0"""),
         "net": {k: net[k] for k in ("citation", "coauthorship", "spearman_fac_vs_ind", "hyperauthorship", "snapshots")},
     }
     for k in ("degree_ccdf",):
