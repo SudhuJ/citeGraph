@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.13.4">
+<title>Knowledge flow | citeGraph · Group 19</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_import/style.95998b5b.css">
+<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_import/style.95998b5b.css">
+<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="modulepreload" href="./_observablehq/client.3004805e.js">
+<link rel="modulepreload" href="./_observablehq/runtime.fa9f71c0.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.c4209144.js">
+<link rel="modulepreload" href="./_import/components/graph.57fe5c4b.js">
+<link rel="modulepreload" href="./_import/components/defs.e1f193b7.js">
+<link rel="modulepreload" href="./_npm/d3@7.9.0/080cf928.js">
+<link rel="modulepreload" href="./_npm/htl@1.0.0/11521f02.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.0cc910eb.js">
+<link rel="modulepreload" href="./_npm/@observablehq/plot@0.6.17/93ce672e.js">
+<link rel="modulepreload" href="./_import/components/vendor/graph-libs.48181f08.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/097745a2.js">
+<link rel="modulepreload" href="./_npm/isoformat@0.2.1/604cb63b.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/b8e751b6.js">
+<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/c662ea05.js">
+<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/d162d8c6.js">
+<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/5cedd0be.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/65d51007.js">
+<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/c576a91a.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/8b43826d.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/3fb06f14.js">
+<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/20b76948.js">
+<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/8683b012.js">
+<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/5c319046.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/33924f3e.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.2/8d67a1ae.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/8037bd0b.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/a9ba0229.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/e0a47f97.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/f9e9e0ab.js">
+<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/2da8eb3b.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/09002e01.js">
+<link rel="modulepreload" href="./_npm/d3-random@3.0.1/5108797c.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/c9f2571b.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/f3c78e0d.js">
+<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/28717d05.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/7c6e2a50.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/3d1d57c6.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/643581a8.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/e99232db.js">
+<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/bd07fd9a.js">
+<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/d09f7cc9.js">
+<link rel="modulepreload" href="./_npm/interval-tree-1d@1.0.4/f53f17b2.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/af036d7e.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.1.0/7b06abe7.js">
+<link rel="modulepreload" href="./_npm/binary-search-bounds@2.0.5/5f640032.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.3/b42f30a7.js">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Ccircle%20cx=%2230%22%20cy=%2270%22%20r=%2216%22%20fill=%22%25232a78d6%22/%3E%3Ccircle%20cx=%2272%22%20cy=%2232%22%20r=%2216%22%20fill=%22%2523eb6834%22/%3E%3Cline%20x1=%2230%22%20y1=%2270%22%20x2=%2272%22%20y2=%2232%22%20stroke=%22%2523898781%22%20stroke-width=%226%22/%3E%3C/svg%3E">
+<script type="module">
+
+import {define} from "./_observablehq/client.3004805e.js";
+import {registerFile} from "./_observablehq/stdlib.c4209144.js";
+
+registerFile("./data/cit_graph.json", {"name":"./data/cit_graph.json","mimeType":"application/json","path":"./_file/data/cit_graph.aff5e311.json","lastModified":1792595872139,"size":1438193});
+registerFile("./data/fac_graph.json", {"name":"./data/fac_graph.json","mimeType":"application/json","path":"./_file/data/fac_graph.6fb7e990.json","lastModified":1792595872351,"size":50019});
+registerFile("./data/faccit_graph.json", {"name":"./data/faccit_graph.json","mimeType":"application/json","path":"./_file/data/faccit_graph.68d5afd2.json","lastModified":1792595876502,"size":37956});
+registerFile("./data/network_metrics.json", {"name":"./data/network_metrics.json","mimeType":"application/json","path":"./_file/data/network_metrics.ac3c5691.json","lastModified":1792595878344,"size":114507});
+registerFile("./data/origin.csv", {"name":"./data/origin.csv","mimeType":"text/csv","path":"./_file/data/origin.34a9b8cb.csv","lastModified":1792595878943,"size":18747});
+
+define({id: "84b7e878", inputs: ["FileAttachment"], outputs: ["graphView","legend","INST","instColor","shortInst","pct","num","answer","measure","citationTerms","M","G","FC","GF","origin"], body: async (FileAttachment) => {
+const [{graphView, legend}, {INST, instColor, shortInst, pct, num, answer, measure, citationTerms}] = await Promise.all([import("./_import/components/graph.57fe5c4b.js"), import("./_import/components/defs.e1f193b7.js")]);
+const M = FileAttachment("./data/network_metrics.json").json();
+const G = FileAttachment("./data/cit_graph.json").json();
+const FC = FileAttachment("./data/faccit_graph.json").json();
+const GF = FileAttachment("./data/fac_graph.json").json();
+const origin = FileAttachment("./data/origin.csv").csv({typed: true});
+return {graphView,legend,INST,instColor,shortInst,pct,num,answer,measure,citationTerms,M,G,FC,GF,origin};
+}});
+
+define({id: "ee95c2a3", inputs: ["M","FC","origin","d3"], outputs: ["C","S","SN","FS","selfN","IN","recv","fromOurs"], body: (M,FC,origin,d3) => {
+const C = M.citation, S = C.summary, SN = C.summary_excl_self, FS = FC.summary;
+const selfN = S.edges - SN.edges;
+const IN = origin.filter((d) => d.direction === "in");
+const recv = d3.sum(IN, (d) => d.n), fromOurs = d3.sum(IN.filter((d) => d.from_ours), (d) => d.n);
+return {C,S,SN,FS,selfN,IN,recv,fromOurs};
+}});
+
+define({id: "d997091e", mode: "inline", inputs: ["citationTerms","origin","display"], body: async (citationTerms,origin,display) => {
+display(await(
+citationTerms(origin)
+))
+}});
+
+define({id: "2fd3d6ca", mode: "inline", inputs: ["measure","html","display"], body: async (measure,html,display) => {
+display(await(
+measure(html`Every citation where both papers are ours, split by whether the two papers share an author.`)
+))
+}});
+
+define({id: "67729072", mode: "inline", inputs: ["answer","html","pct","fromOurs","recv","S","num","SN","display"], body: async (answer,html,pct,fromOurs,recv,S,num,SN,display) => {
+display(await(
+answer(html`Rarely. Citations from our own papers are a small part of what our papers receive: about ${pct(fromOurs / recv)} of all citations. Within that part, ${pct(S.self_share)} of the ${num(S.edges)} citations are self-citations, where the same person is on both papers. Only ${num(SN.edges)} go from one of our papers to a paper by different people. So when our faculty cite IISER work, it is almost always their own earlier work.`)
+))
+}});
+
+define({id: "37a940f1", mode: "inline", inputs: ["num","S","display"], body: async (num,S,display) => {
+display(await(
+num(S.edges)
+))
+}});
+
+define({id: "4d8b4d02", mode: "inline", inputs: ["num","S","display"], body: async (num,S,display) => {
+display(await(
+num(S.nodes)
+))
+}});
+
+define({id: "51ac59d4", mode: "inline", inputs: ["pct","fromOurs","recv","display"], body: async (pct,fromOurs,recv,display) => {
+display(await(
+pct(fromOurs / recv)
+))
+}});
+
+define({id: "9e41f687", mode: "inline", inputs: ["pct","S","display"], body: async (pct,S,display) => {
+display(await(
+pct(S.self_share)
+))
+}});
+
+define({id: "dfe13c9d", mode: "inline", inputs: ["num","selfN","display"], body: async (num,selfN,display) => {
+display(await(
+num(selfN)
+))
+}});
+
+define({id: "83e25138", mode: "inline", inputs: ["num","SN","display"], body: async (num,SN,display) => {
+display(await(
+num(SN.edges)
+))
+}});
+
+define({id: "d2f39d47", mode: "inline", inputs: ["num","SN","display"], body: async (num,SN,display) => {
+display(await(
+num(SN.nodes - SN.isolates)
+))
+}});
+
+define({id: "6998304c", inputs: ["view","Inputs"], outputs: ["onlyCross"], body: (view,Inputs) => {
+const onlyCross = view(Inputs.toggle({label: "Show only citations between different people", value: false}));
+return {onlyCross};
+}});
+
+define({id: "8efd93c8", inputs: ["onlyCross","G","graphView","invalidation","display","legend"], outputs: ["Gv","gv"], body: (onlyCross,G,graphView,invalidation,display,legend) => {
+// with the toggle on, keep only the non-self edges and the papers on them, sized by those citations
+const Gv = (() => {
+  if (!onlyCross) return G;
+  const edges = G.edges.filter((e) => !e[2]);
+  const keep = [...new Set(edges.flatMap(([s, t]) => [s, t]))].sort((a, b) => a - b);
+  const re = new Map(keep.map((i, j) => [i, j]));
+  return {nodes: keep.map((i) => G.nodes[i]), edges: edges.map(([s, t, x]) => [re.get(s), re.get(t), x])};
+})();
+const gv = graphView({
+  nodes: Gv.nodes, edges: Gv.edges, directed: true, height: 620,
+  color: (n) => (n.inst.includes(";") ? "context" : n.inst === "IISER Pune" ? "pune" : "kolkata"),
+  size: (n) => (onlyCross ? 2.5 + 2 * Math.sqrt(n.indeg_ns) : 1.5 + 1.6 * Math.sqrt(n.indeg)),
+  label: (n) => (n.title.length > 60 ? n.title.slice(0, 57) + "…" : n.title),
+  labelThreshold: onlyCross ? 6 : 12, emphasise: (e) => !e[2],
+  tooltip: (n) => `<b>${n.title}</b>${n.venue ?? ""} · ${n.year}<br>${n.inst}<br>cited by ${n.indeg} of our papers (${n.indeg_ns} by different people) · ${n.cites} citations in total`
+});
+invalidation.then(() => gv.kill());
+display(legend([["IISER Pune paper", "var(--pune)"], ["IISER Kolkata paper", "var(--kolkata)"], ["joint Pune–Kolkata paper", "var(--context)"]]));
+display(gv);
+return {Gv,gv};
+}});
+
+define({id: "6becf82e", mode: "inline", inputs: ["onlyCross","html","num","Gv","pct","C","display"], body: async (onlyCross,html,num,Gv,pct,C,display) => {
+display(await(
+onlyCross
+  ? html`Only the ${num(Gv.edges.length)} citations between different people in this part of the graph, and the ${num(Gv.nodes.length)} papers they touch. Node size: citations from other people's papers. Positions are kept from the full view, so the scattered pairs sit where their labs' clusters were.`
+  : html`The largest connected part of the graph (${pct(C.visual_component_share)} of papers). Each tight cluster is mostly one lab's papers citing each other. Faint edges are self-citations; dark edges link papers with no shared author. Node size: citations from our other papers.`
+))
+}});
+
+define({id: "26c8812b", inputs: ["GF","FC"], outputs: ["coPairs","citPairs","citNotCo"], body: (GF,FC) => {
+// faculty pairs linked by citation who have also co-authored at some point
+const coPairs = new Set(GF.edges.map(([s, t]) => [GF.nodes[s].id, GF.nodes[t].id].sort().join("|")));
+const citPairs = new Set(FC.edges.map(([s, t]) => [FC.nodes[s].id, FC.nodes[t].id].sort().join("|")));
+const citNotCo = [...citPairs].filter((p) => !coPairs.has(p)).length;
+return {coPairs,citPairs,citNotCo};
+}});
+
+define({id: "14bd4a04", mode: "inline", inputs: ["measure","html","display"], body: async (measure,html,display) => {
+display(await(
+measure(html`We merge papers into their faculty authors. Faculty A → B gets one link for every citation from a paper with A on it to a paper with B on it, where the two papers share no author. Then we count who cites and who is cited this way.`)
+))
+}});
+
+define({id: "0c6497c0", mode: "inline", inputs: ["answer","html","FS","num","citPairs","pct","citNotCo","display"], body: async (answer,html,FS,num,citPairs,pct,citNotCo,display) => {
+display(await(
+answer(html`About half. ${FS.faculty_citing_colleagues} of ${FS.faculty} publishing faculty cite a colleague's paper that they are not an author of, and ${FS.faculty_cited_by_colleagues} are cited that way. These ${num(FS.citation_links)} citations connect ${citPairs.size} pairs of faculty, and ${pct(citNotCo / citPairs.size)} of those pairs have never written a paper together. So citation links mostly join faculty who do not write together.`)
+))
+}});
+
+define({id: "44d4c94f", inputs: ["graphView","FC","invalidation","display","legend"], outputs: ["gf"], body: (graphView,FC,invalidation,display,legend) => {
+const gf = graphView({
+  nodes: FC.nodes, edges: FC.edges, directed: true, height: 620,
+  color: (n) => (n.inst === "IISER Pune" ? "pune" : "kolkata"),
+  size: (n) => 3 + 1.4 * Math.sqrt(n.cited_by_colleagues), label: (n) => n.label, labelThreshold: 5,
+  edgeSize: (e) => 0.5 + Math.log2(1 + e[2]) * 0.6,
+  tooltip: (n) => `<b>${n.label}</b>${n.dept} · ${n.inst}<br>cited ${n.cited_by_colleagues}× by colleagues · cites colleagues ${n.cites_colleagues}×`
+});
+invalidation.then(() => gf.kill());
+display(legend([["IISER Pune faculty", "var(--pune)"], ["IISER Kolkata faculty", "var(--kolkata)"]]));
+display(gf);
+return {gf};
+}});
+
+define({id: "ff92aaea", inputs: ["display","Inputs","FC","shortInst"], body: (display,Inputs,FC,shortInst) => {
+display(Inputs.table(FC.nodes, {
+  columns: ["label", "inst", "dept", "cited_by_colleagues", "cites_colleagues"],
+  header: {label: "Faculty", inst: "Institute", dept: "Department", cited_by_colleagues: "Cited by colleagues", cites_colleagues: "Cites colleagues"},
+  format: {inst: shortInst}, sort: "cited_by_colleagues", reverse: true, rows: 10, layout: "auto", select: false
+}));
+}});
+
+define({id: "ffd33d82", inputs: ["GF","FS","FC","shortInst"], outputs: ["kinds","coKind","cmp","share","flows"], body: (GF,FS,FC,shortInst) => {
+const kinds = ["same department", "same institute, other department", "Pune–Kolkata"];
+const coKind = ([s, t]) => {
+  const a = GF.nodes[s], b = GF.nodes[t];
+  return a.inst !== b.inst ? kinds[2] : a.dept !== b.dept ? kinds[1] : kinds[0];
+};
+const cmp = [
+  ...kinds.map((k) => ({graph: "Citing a colleague", kind: k,
+    share: [FS.same_department_share, FS.same_institute_share - FS.same_department_share, 1 - FS.same_institute_share][kinds.indexOf(k)]})),
+  ...kinds.map((k) => ({graph: "Co-authoring", kind: k, share: GF.edges.filter((e) => coKind(e) === k).length / GF.edges.length}))
+];
+const share = (g, k) => cmp.find((d) => d.graph === g && d.kind === k).share;
+const flows = FC.dept_flow.map((d) => ({...d, from: `${shortInst(d.from_inst)} · ${d.from_dept}`, to: `${shortInst(d.to_inst)} · ${d.to_dept}`,
+  kind: d.from_inst !== d.to_inst ? "between institutes" : d.from_dept !== d.to_dept ? "between departments" : "within department"}));
+return {kinds,coKind,cmp,share,flows};
+}});
+
+define({id: "fbbf1912", mode: "inline", inputs: ["measure","html","display"], body: async (measure,html,display) => {
+display(await(
+measure(html`For the faculty-to-faculty citations above, and for faculty co-author links, the share that stays in one department, crosses departments within an institute, or crosses between Pune and Kolkata.`)
+))
+}});
+
+define({id: "d680e861", mode: "inline", inputs: ["answer","html","pct","share","display"], body: async (answer,html,pct,share,display) => {
+display(await(
+answer(html`Citation crosses institutes far more than co-authorship does. ${pct(share("Citing a colleague", "Pune–Kolkata"))} of colleague citations go between Pune and Kolkata, against ${pct(share("Co-authoring", "Pune–Kolkata"))} of co-author links. That is close to the roughly 50% we would expect if faculty cited colleagues at random, so for reading each other's work, the institute boundary hardly matters. For writing together, it almost always does.`)
+))
+}});
+
+define({id: "9f9b92c4", inputs: ["display","resize","Plot","kinds","cmp","d3"], body: (display,resize,Plot,kinds,cmp,d3) => {
+display(resize((width) => Plot.plot({
+  width, height: 130, marginLeft: 130, x: {percent: true, label: "share of links (%)"}, y: {label: null},
+  color: {domain: kinds, range: ["var(--q1)", "var(--q2)", "var(--q3)"], legend: true},
+  marks: [Plot.barX(cmp, Plot.stackX({x: "share", y: "graph", fill: "kind", order: kinds, inset: 1, tip: true,
+    title: (d) => `${d.graph}\n${d.kind}: ${d3.format(".0%")(d.share)}`}))]
+})));
+}});
+
+define({id: "3f6a2ff3", inputs: ["display","Inputs","flows"], body: (display,Inputs,flows) => {
+display(Inputs.table(flows, {
+  columns: ["from", "to", "kind", "links"],
+  header: {from: "Citing department", to: "Cited department", kind: "Type", links: "Citation links"},
+  sort: "links", reverse: true, rows: 10, layout: "auto", select: false
+}));
+}});
+
+define({id: "bccd3921", inputs: ["C"], outputs: ["R","T","h3"], body: (C) => {
+const R = C.pagerank_vs_indegree, T = C.top_indegree;
+const h3 = C.indegree_hist_excl_self.filter((d) => ["3–5", "6–10", "11+"].includes(d.bin));
+return {R,T,h3};
+}});
+
+define({id: "43d3641f", mode: "inline", inputs: ["measure","html","display"], body: async (measure,html,display) => {
+display(await(
+measure(html`<i>In-degree</i>: for each paper, how many of our other papers by different people cite it. Self-citations are left out, so a lab citing its own work does not count.`)
+))
+}});
+
+define({id: "a29eda63", mode: "inline", inputs: ["answer","html","T","shortInst","num","d3","h3","R","display"], body: async (answer,html,T,shortInst,num,d3,h3,R,display) => {
+display(await(
+answer(html`No paper stands out by much. The most-used one, "${T[0].title}" (${shortInst(T[0].inst)}, ${T[0].year}), is cited by ${T[0].indeg} papers from other groups, and only ${num(d3.sum(h3, (d) => d.papers))} papers are cited by three or more. PageRank, which also weighs how well cited the citing papers are, agrees only partly: ${R.top10_overlap} of its top 10 are in this top 10. With so few links, one extra citation reorders the list, so these rankings are weak evidence.`)
+))
+}});
+
+define({id: "b6f23f1e", inputs: ["display","Inputs","T","shortInst","html"], body: (display,Inputs,T,shortInst,html) => {
+display(Inputs.table(T, {
+  columns: ["title", "inst", "year", "indeg", "pr_rank", "cites_total", "doi"],
+  header: {title: "Title", inst: "Institute", year: "Year", indeg: "Cited by other groups' papers", pr_rank: "PageRank rank", cites_total: "Citations (all)", doi: "DOI"},
+  format: {inst: shortInst, year: (x) => x, doi: (x) => (x ? html`<a href="https://doi.org/${x}" target="_blank">${x}</a>` : "—")},
+  width: {title: 380}, layout: "auto", sort: "indeg", reverse: true, select: false
+}));
+}});
+
+define({id: "22ffe628", mode: "inline", inputs: ["R","display"], body: async (R,display) => {
+display(await(
+R.cited_papers
+))
+}});
+
+define({id: "5772696f", mode: "inline", inputs: ["R","display"], body: async (R,display) => {
+display(await(
+R.spearman
+))
+}});
+
+define({id: "b0c842a1", inputs: ["C","d3"], outputs: ["binOrder","HH","zero"], body: (C,d3) => {
+const binOrder = C.indegree_hist.map((d) => d.bin);
+const HH = [...C.indegree_hist.map((d) => ({...d, kind: "any of our papers"})),
+            ...C.indegree_hist_excl_self.map((d) => ({...d, kind: "papers by different people"}))];
+const zero = (h) => h.find((d) => d.bin === "0").papers / d3.sum(h, (d) => d.papers);
+return {binOrder,HH,zero};
+}});
+
+define({id: "ef8d31e5", mode: "inline", inputs: ["measure","html","display"], body: async (measure,html,display) => {
+display(await(
+measure(html`For each paper, the number of our other papers that cite it, counted once with self-citations and once without.`)
+))
+}});
+
+define({id: "f88a4dc0", mode: "inline", inputs: ["answer","html","pct","zero","C","display"], body: async (answer,html,pct,zero,C,display) => {
+display(await(
+answer(html`Counting self-citations, ${pct(1 - zero(C.indegree_hist))} of our papers are cited by at least one of our other papers, mostly by the same lab's later work. Leaving self-citations out, ${pct(zero(C.indegree_hist_excl_self))} are never cited by anyone else at the two institutes.`)
+))
+}});
+
+define({id: "7bcb8712", inputs: ["display","resize","Plot","binOrder","HH"], body: (display,resize,Plot,binOrder,HH) => {
+display(resize((width) => Plot.plot({
+  width, height: 260, x: {label: "times cited by our other papers", domain: binOrder}, y: {grid: true, label: "papers"},
+  fx: {label: null}, color: {domain: ["any of our papers", "papers by different people"], range: ["var(--pune)", "var(--context)"], legend: true},
+  marks: [Plot.barY(HH, {fx: "kind", x: "bin", y: "papers", fill: "kind", inset: 2, tip: true}), Plot.ruleY([0])]
+})));
+}});
+
+</script>
+</head>
+<body>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link"><a href="./">citeGraph · Group 19</a></li>
+  </ol>
+  <div id="observablehq-search"><input type="search" placeholder="Search"></div>
+  <div id="observablehq-search-results"></div>
+  <script>{const o=document.querySelector("#observablehq-search");o.setAttribute("data-shortcut",`${/Mac|iPhone/.test(navigator.platform)?"\u2318":"Alt-"}K`);const t=o.querySelector("input"),r=()=>import("./_observablehq/search.30af828b.js");t.addEventListener("focus",r,{once:!0}),t.addEventListener("keydown",r,{once:!0});const c=document.querySelector("#observablehq-sidebar-toggle");addEventListener("keydown",e=>{(e.code==="KeyK"&&e.metaKey&&!e.altKey&&!e.ctrlKey||e.key==="/"&&!e.metaKey&&!e.altKey&&!e.ctrlKey&&e.target===document.body)&&(c.checked?t.focus():(c.click(),t.focus(),c.click()),t.select(),e.preventDefault())});}</script>
+  <ol>
+    <li class="observablehq-link"><a href="./">Overview</a></li>
+    <li class="observablehq-link"><a href="./output">Output &amp; venues</a></li>
+    <li class="observablehq-link"><a href="./faculty">Faculty &amp; departments</a></li>
+    <li class="observablehq-link"><a href="./authorship-network">Collaboration</a></li>
+    <li class="observablehq-link observablehq-link-active"><a href="./citation-network">Knowledge flow</a></li>
+    <li class="observablehq-link"><a href="./connectivity">India &amp; the world</a></li>
+    <li class="observablehq-link"><a href="./collaborations">Big collaborations</a></li>
+    <li class="observablehq-link"><a href="./methods">Methods &amp; data</a></li>
+  </ol>
+</nav>
+<script>{const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<div id="observablehq-center">
+<aside id="observablehq-toc" data-selector="h1:not(:first-of-type)[id], h2:first-child[id], :not(h1) + h2[id]">
+<nav>
+<div>Contents</div>
+<ol>
+<li class="observablehq-secondary-link"><a href="#do-our-faculty-build-on-each-others-work">Do our faculty build on each other&#x27;s work?</a></li>
+<li class="observablehq-secondary-link"><a href="#which-faculty-draw-on-colleagues-work">Which faculty draw on colleagues&#x27; work?</a></li>
+<li class="observablehq-secondary-link"><a href="#does-knowledge-cross-departments-and-the-two-institutes">Does knowledge cross departments and the two institutes?</a></li>
+<li class="observablehq-secondary-link"><a href="#which-papers-do-other-groups-here-build-on-most">Which papers do other groups here build on most?</a></li>
+<li class="observablehq-secondary-link"><a href="#how-many-of-our-papers-are-cited-by-our-other-papers">How many of our papers are cited by our other papers?</a></li>
+</ol>
+</nav>
+</aside>
+<main id="observablehq-main" class="observablehq">
+<h1 id="knowledge-flow-inside-the-two-institutes" tabindex="-1"><a class="observablehq-header-anchor" href="#knowledge-flow-inside-the-two-institutes">Knowledge flow inside the two institutes</a></h1>
+<p class="muted">The citation network: one node per paper by our faculty, and an arrow A → B when paper A cites paper B. Only citations between two of our own papers are used here; citations with the rest of India and the world are on <a href="./connectivity">India &amp; the world</a>. Papers with 100 or more authors are left out.</p>
+<div class="observablehq observablehq--block"><!--:84b7e878:--></div>
+<div class="observablehq observablehq--block"><!--:ee95c2a3:--></div>
+<p><observablehq-loading></observablehq-loading><!--:d997091e:--></p>
+<h2 id="do-our-faculty-build-on-each-others-work" tabindex="-1"><a class="observablehq-header-anchor" href="#do-our-faculty-build-on-each-others-work">Do our faculty build on each other's work?</a></h2>
+<p><observablehq-loading></observablehq-loading><!--:2fd3d6ca:--></p>
+<p><observablehq-loading></observablehq-loading><!--:67729072:--></p>
+<div class="grid grid-cols-4">
+  <div class="card"><h2>Citations between our papers</h2><div class="big"><observablehq-loading></observablehq-loading><!--:37a940f1:--></div><div class="muted">among <observablehq-loading></observablehq-loading><!--:4d8b4d02:--> papers · <observablehq-loading></observablehq-loading><!--:51ac59d4:--> of all citations we receive</div></div>
+  <div class="card"><h2>…of which self-citations</h2><div class="big"><observablehq-loading></observablehq-loading><!--:9e41f687:--></div><div class="muted"><observablehq-loading></observablehq-loading><!--:dfe13c9d:--> links share an author</div></div>
+  <div class="card"><h2>Between different people</h2><div class="big"><observablehq-loading></observablehq-loading><!--:83e25138:--></div><div class="muted">citations with no shared author</div></div>
+  <div class="card"><h2>Papers on such a link</h2><div class="big"><observablehq-loading></observablehq-loading><!--:d2f39d47:--></div><div class="muted">citing or cited across groups</div></div>
+</div>
+<div class="observablehq observablehq--block"><!--:6998304c:--></div>
+<div class="observablehq observablehq--block"><!--:8efd93c8:--></div>
+<p class="muted"><observablehq-loading></observablehq-loading><!--:6becf82e:--></p>
+<details class="how"><summary>How self-citations are identified</summary>
+<p>A citation is a self-citation when the two papers share at least one author. That covers our faculty and also their students and postdocs. All OpenAlex profiles of a faculty member count as the same person, since OpenAlex sometimes splits one person into several profiles.</p>
+</details>
+<h2 id="which-faculty-draw-on-colleagues-work" tabindex="-1"><a class="observablehq-header-anchor" href="#which-faculty-draw-on-colleagues-work">Which faculty draw on colleagues' work?</a></h2>
+<div class="observablehq observablehq--block"><!--:26c8812b:--></div>
+<p><observablehq-loading></observablehq-loading><!--:14bd4a04:--></p>
+<p><observablehq-loading></observablehq-loading><!--:0c6497c0:--></p>
+<div class="observablehq observablehq--block"><!--:44d4c94f:--></div>
+<p class="muted">Arrow A → B: A's papers cite B's papers, with no shared author. Node size: citations received from colleagues. Faculty without such links are hidden. Unlike the co-authorship graph, the two colours mix.</p>
+<div class="observablehq observablehq--block"><!--:ff92aaea:--></div>
+<h2 id="does-knowledge-cross-departments-and-the-two-institutes" tabindex="-1"><a class="observablehq-header-anchor" href="#does-knowledge-cross-departments-and-the-two-institutes">Does knowledge cross departments and the two institutes?</a></h2>
+<div class="observablehq observablehq--block"><!--:ffd33d82:--></div>
+<p><observablehq-loading></observablehq-loading><!--:fbbf1912:--></p>
+<p><observablehq-loading></observablehq-loading><!--:d680e861:--></p>
+<div class="observablehq observablehq--block"><!--:9f9b92c4:--></div>
+<div class="observablehq observablehq--block"><!--:3f6a2ff3:--></div>
+<h2 id="which-papers-do-other-groups-here-build-on-most" tabindex="-1"><a class="observablehq-header-anchor" href="#which-papers-do-other-groups-here-build-on-most">Which papers do other groups here build on most?</a></h2>
+<div class="observablehq observablehq--block"><!--:bccd3921:--></div>
+<p><observablehq-loading></observablehq-loading><!--:43d3641f:--></p>
+<p><observablehq-loading></observablehq-loading><!--:a29eda63:--></p>
+<div class="observablehq observablehq--block"><!--:b6f23f1e:--></div>
+<details class="how"><summary>What PageRank is, and why not the clustering coefficient</summary>
+<ul>
+<li><b>PageRank</b> imagines a reader who starts at a random paper and keeps following a random reference, jumping to a new random paper 15% of the time. A paper's PageRank is the share of time the reader spends on it. A citation from a well-cited paper therefore counts for more than one from an uncited paper. The assignment asks for it, so we report its rank beside the plain count.</li>
+<li>Across the <observablehq-loading></observablehq-loading><!--:22ffe628:--> papers cited at least once by another group, the two rankings have a rank correlation of <observablehq-loading></observablehq-loading><!--:5772696f:--> (1 would be the same order).</li>
+<li>The <b>clustering coefficient</b> answers a different question: whether a paper's neighbours also cite each other, that is, how tightly knit its neighbourhood is. It does not measure how much a paper is used, so it cannot rank importance.</li>
+<li>For overall influence, the total citation counts on <a href="./output">Output &amp; venues</a> are the better measure; this section is only about use inside the two institutes.</li>
+</ul>
+</details>
+<h2 id="how-many-of-our-papers-are-cited-by-our-other-papers" tabindex="-1"><a class="observablehq-header-anchor" href="#how-many-of-our-papers-are-cited-by-our-other-papers">How many of our papers are cited by our other papers?</a></h2>
+<div class="observablehq observablehq--block"><!--:b0c842a1:--></div>
+<p><observablehq-loading></observablehq-loading><!--:ef8d31e5:--></p>
+<p><observablehq-loading></observablehq-loading><!--:f88a4dc0:--></p>
+<div class="observablehq observablehq--block"><!--:7bcb8712:--></div>
+</main>
+<footer id="observablehq-footer">
+<nav><a rel="prev" href="./authorship-network"><span>Collaboration</span></a><a rel="next" href="./connectivity"><span>India &amp; the world</span></a></nav>
+<div>DPCN 2026 · Group 19 · IISER Pune &amp; IISER Kolkata · data: OpenAlex (CC0), SCImago</div>
+</footer>
+</div>
+</body>
+</html>

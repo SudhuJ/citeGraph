@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.13.4">
+<title>Methods &amp; data | citeGraph · Group 19</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_import/style.95998b5b.css">
+<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_import/style.95998b5b.css">
+<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="modulepreload" href="./_observablehq/client.3004805e.js">
+<link rel="modulepreload" href="./_observablehq/runtime.fa9f71c0.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.c4209144.js">
+<link rel="modulepreload" href="./_npm/htl@1.0.0/11521f02.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.0cc910eb.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/097745a2.js">
+<link rel="modulepreload" href="./_npm/isoformat@0.2.1/604cb63b.js">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Ccircle%20cx=%2230%22%20cy=%2270%22%20r=%2216%22%20fill=%22%25232a78d6%22/%3E%3Ccircle%20cx=%2272%22%20cy=%2232%22%20r=%2216%22%20fill=%22%2523eb6834%22/%3E%3Cline%20x1=%2230%22%20y1=%2270%22%20x2=%2272%22%20y2=%2232%22%20stroke=%22%2523898781%22%20stroke-width=%226%22/%3E%3C/svg%3E">
+<script type="module">
+
+import {define} from "./_observablehq/client.3004805e.js";
+import {registerFile} from "./_observablehq/stdlib.c4209144.js";
+
+registerFile("./data/faculty.csv", {"name":"./data/faculty.csv","mimeType":"text/csv","path":"./_file/data/faculty.937e1e3a.csv","lastModified":1792595878910,"size":62080});
+registerFile("./data/network_metrics.json", {"name":"./data/network_metrics.json","mimeType":"application/json","path":"./_file/data/network_metrics.ac3c5691.json","lastModified":1792595878344,"size":114507});
+registerFile("./downloads/authorship_network.csv", {"name":"./downloads/authorship_network.csv","mimeType":"text/csv","path":"./_file/downloads/authorship_network.a4199eeb.csv","lastModified":1792595878977,"size":4005050});
+registerFile("./downloads/citation_network.csv", {"name":"./downloads/citation_network.csv","mimeType":"text/csv","path":"./_file/downloads/citation_network.6dacfa19.csv","lastModified":1792595878971,"size":15869255});
+registerFile("./downloads/citation_origin.csv", {"name":"./downloads/citation_origin.csv","mimeType":"text/csv","path":"./_file/downloads/citation_origin.56f23109.csv","lastModified":1792595878986,"size":2241369});
+registerFile("./downloads/group19_data.csv", {"name":"./downloads/group19_data.csv","mimeType":"text/csv","path":"./_file/downloads/group19_data.a01a8ed8.csv","lastModified":1792595878951,"size":3439166});
+registerFile("./downloads/indian_connections.csv", {"name":"./downloads/indian_connections.csv","mimeType":"text/csv","path":"./_file/downloads/indian_connections.1d952647.csv","lastModified":1792595878979,"size":397451});
+
+define({id: "2798c750", inputs: ["FileAttachment"], outputs: ["faculty","M"], body: (FileAttachment) => {
+const faculty = FileAttachment("./data/faculty.csv").csv({typed: true});
+const M = FileAttachment("./data/network_metrics.json").json();
+return {faculty,M};
+}});
+
+define({id: "b1a98fc5", inputs: ["FileAttachment","display","html"], outputs: ["files"], body: (FileAttachment,display,html) => {
+const files = [
+  [FileAttachment("./downloads/group19_data.csv"), "faculty × paper rows, all §5 columns plus extras"],
+  [FileAttachment("./downloads/citation_network.csv"), "directed edges (edge_kind: internal / in / out)"],
+  [FileAttachment("./downloads/authorship_network.csv"), "co-author pairs (faculty + Indian co-authors)"],
+  [FileAttachment("./downloads/indian_connections.csv"), "your_inst × partner_inst aggregates"],
+  [FileAttachment("./downloads/citation_origin.csv"), "per paper: citations in and references out, by origin category"]
+];
+display(html`<ul>${files.map(([f, d]) => html`<li><a href=${f.href} download=${f.name}>${f.name}</a>: ${d}</li>`)}</ul>`);
+return {files};
+}});
+
+define({id: "9c638d48", mode: "inline", inputs: ["M","display"], body: async (M,display) => {
+display(await(
+M.hyperauthorship.hyper_papers
+))
+}});
+
+define({id: "3a20512d", inputs: ["faculty"], outputs: ["matched","withPapers"], body: (faculty) => {
+const matched = faculty.filter((d) => d.matched).length, withPapers = faculty.filter((d) => d.papers > 0).length;
+return {matched,withPapers};
+}});
+
+define({id: "eadc688c", mode: "inline", inputs: ["matched","display"], body: async (matched,display) => {
+display(await(
+matched
+))
+}});
+
+define({id: "a53fac8d", mode: "inline", inputs: ["faculty","display"], body: async (faculty,display) => {
+display(await(
+faculty.length
+))
+}});
+
+define({id: "bb2f86cc", mode: "inline", inputs: ["withPapers","display"], body: async (withPapers,display) => {
+display(await(
+withPapers
+))
+}});
+
+define({id: "d6a17209", inputs: ["display","Inputs","faculty"], body: (display,Inputs,faculty) => {
+display(Inputs.table(faculty.filter((d) => d.papers === 0), {columns: ["name", "institution", "department", "designation", "matched"], layout: "auto", rows: 10}));
+}});
+
+</script>
+</head>
+<body>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link"><a href="./">citeGraph · Group 19</a></li>
+  </ol>
+  <div id="observablehq-search"><input type="search" placeholder="Search"></div>
+  <div id="observablehq-search-results"></div>
+  <script>{const o=document.querySelector("#observablehq-search");o.setAttribute("data-shortcut",`${/Mac|iPhone/.test(navigator.platform)?"\u2318":"Alt-"}K`);const t=o.querySelector("input"),r=()=>import("./_observablehq/search.30af828b.js");t.addEventListener("focus",r,{once:!0}),t.addEventListener("keydown",r,{once:!0});const c=document.querySelector("#observablehq-sidebar-toggle");addEventListener("keydown",e=>{(e.code==="KeyK"&&e.metaKey&&!e.altKey&&!e.ctrlKey||e.key==="/"&&!e.metaKey&&!e.altKey&&!e.ctrlKey&&e.target===document.body)&&(c.checked?t.focus():(c.click(),t.focus(),c.click()),t.select(),e.preventDefault())});}</script>
+  <ol>
+    <li class="observablehq-link"><a href="./">Overview</a></li>
+    <li class="observablehq-link"><a href="./output">Output &amp; venues</a></li>
+    <li class="observablehq-link"><a href="./faculty">Faculty &amp; departments</a></li>
+    <li class="observablehq-link"><a href="./authorship-network">Collaboration</a></li>
+    <li class="observablehq-link"><a href="./citation-network">Knowledge flow</a></li>
+    <li class="observablehq-link"><a href="./connectivity">India &amp; the world</a></li>
+    <li class="observablehq-link"><a href="./collaborations">Big collaborations</a></li>
+    <li class="observablehq-link observablehq-link-active"><a href="./methods">Methods &amp; data</a></li>
+  </ol>
+</nav>
+<script>{const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<div id="observablehq-center">
+<aside id="observablehq-toc" data-selector="h1:not(:first-of-type)[id], h2:first-child[id], :not(h1) + h2[id]">
+<nav>
+<div>Contents</div>
+<ol>
+<li class="observablehq-secondary-link"><a href="#downloads-week-2-deliverables">Downloads (Week-2 deliverables)</a></li>
+<li class="observablehq-secondary-link"><a href="#pipeline">Pipeline</a></li>
+<li class="observablehq-secondary-link"><a href="#key-decisions">Key decisions</a></li>
+<li class="observablehq-secondary-link"><a href="#coverage">Coverage</a></li>
+</ol>
+</nav>
+</aside>
+<main id="observablehq-main" class="observablehq">
+<h1 id="methods-and-data" tabindex="-1"><a class="observablehq-header-anchor" href="#methods-and-data">Methods &amp; data</a></h1>
+<div class="observablehq observablehq--block"><!--:2798c750:--></div>
+<h2 id="downloads-week-2-deliverables" tabindex="-1"><a class="observablehq-header-anchor" href="#downloads-week-2-deliverables">Downloads (Week-2 deliverables)</a></h2>
+<div class="observablehq observablehq--block"><!--:b1a98fc5:--></div>
+<h2 id="pipeline" tabindex="-1"><a class="observablehq-header-anchor" href="#pipeline">Pipeline</a></h2>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Tool</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Roster</td>
+<td>httpx + selectolax</td>
+<td>Scrapes the <strong>regular-faculty</strong> pages of both institutes (visiting, adjunct and emeritus excluded).</td>
+</tr>
+<tr>
+<td>Author matching</td>
+<td>OpenAlex + Python</td>
+<td>Matches each name against every OpenAlex author ever affiliated with the institute. It keeps all compatible profiles (OpenAlex often splits one person into several) and drops namesakes with a different ORCID. Manual fixes live in <code>ref/author_overrides.csv</code>.</td>
+</tr>
+<tr>
+<td>Works</td>
+<td>OpenAlex API</td>
+<td>All works 2016–2026 of the matched profiles, batched OR-filters, every response cached.</td>
+</tr>
+<tr>
+<td>Citation links</td>
+<td>OpenAlex API</td>
+<td><code>cites:</code> / <code>cited_by:</code> filters combined with <code>institutions.country_code:IN</code> give the Indian in-flow and out-flow without fetching ~400k references.</td>
+</tr>
+<tr>
+<td>Build</td>
+<td>DuckDB</td>
+<td>Flattens the JSON to Parquet, dedupes papers, joins SCImago quartiles by ISSN + year, derives the Indian flags and writes the four CSVs.</td>
+</tr>
+<tr>
+<td>Networks</td>
+<td>python-igraph</td>
+<td>PageRank, centralities, Leiden/Louvain, power-law fits, layouts.</td>
+</tr>
+<tr>
+<td>Dashboard</td>
+<td>Observable Framework + sigma.js 4</td>
+<td>Static site; WebGL graphs.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key-decisions" tabindex="-1"><a class="observablehq-header-anchor" href="#key-decisions">Key decisions</a></h2>
+<ol>
+<li><strong>Faculty only, affiliated at the time.</strong> A faculty × paper row is kept only if the paper lists the faculty member with their IISER affiliation. Papers from before they joined are dropped. The exceptions are rows where the author list was truncated or had no parsed affiliation; those are kept and labelled in <code>affiliation_check</code>.</li>
+<li><strong>Row grain</strong> of <code>group19_data.csv</code> is faculty × paper. Paper-level statistics deduplicate first. Duplicate records (same DOI, or same normalised title + year) collapse onto the most-cited one.</li>
+<li><strong>Kept types:</strong> article, review, letter and conference-paper in journals, conferences or book series. Preprints, datasets, errata and peer reviews are dropped, and so are meeting-abstract venues that OpenAlex files as journals (APS/AGU/EGU/Goldschmidt/JpGU abstracts, ChemInform).</li>
+<li><strong>Quartile</strong> = SCImago "best quartile" for the closest SCImago year not after publication. SCImago ranks journals, conference proceedings and book series, and all three are used; trade journals are excluded. CORE ranks are used for conference papers when <code>ref/core.csv</code> is present.</li>
+<li><strong>h-index:</strong> the dataset (2016–2026) window is the primary measure; the OpenAlex lifetime value is shown for reference.</li>
+<li><strong>Papers with 100+ authors:</strong> OpenAlex truncates author lists at 100. Those <observablehq-loading></observablehq-loading><!--:9c638d48:--> papers stay in the CSVs (<code>hyperauthored = true</code>) and are left out of every statistic and graph. They are described on the Big collaborations page. Papers with 11–99 authors stay in and are flagged <code>large_team</code>.</li>
+<li><strong>Two authorship graphs</strong> (G_fac, G_ind), because the brief says both "faculty members" and "authors". Students and postdocs at our own institutes are in neither graph.</li>
+<li><strong>Indian flags</strong> (<code>cites_indian_inst</code>, <code>cited_by_indian_inst</code>, <code>coauthor_institutes</code>) refer to Indian institutions <em>other than the row's own institute</em>. IISER Pune ↔ IISER Kolkata counts as cross-institute.</li>
+<li><strong><code>total_citations</code></strong> in <code>indian_connections.csv</code> = citation links in both directions between the two institutions (<code>cites_in</code> + <code>cites_out</code> are given separately). Author self-citations and 100+ author papers are left out; <code>shared_papers_incl_hyper</code> gives the joint-paper count with them.</li>
+<li><strong>Self-citation</strong> = the citing and cited papers share at least one author (any author, not only faculty). Every edge in <code>citation_network.csv</code> carries a <code>self_citation</code> flag. This is a different question from whether the citing paper is one of ours (has one of our faculty on it): a citation can be either, both or neither. The 96% on Knowledge flow is the self-citation share among citations between our own papers; the 13–18% on India &amp; the world is the share among all citations our papers receive.</li>
+<li><strong>Citation origin:</strong> each citation link goes into the first category that fits: self-citation, same IISER, Indian and foreign authors, other Indian institutes only, and finally no Indian author or unknown. The last one is a remainder (OpenAlex total minus the Indian links we fetched).</li>
+<li><strong>Impact factor:</strong> Clarivate's impact factor is not open data. The <code>if_proxy</code> column is SCImago's citations per document over two years, matched to the publication year like the quartile.</li>
+</ol>
+<h2 id="coverage" tabindex="-1"><a class="observablehq-header-anchor" href="#coverage">Coverage</a></h2>
+<div class="observablehq observablehq--block"><!--:3a20512d:--></div>
+<p><observablehq-loading></observablehq-loading><!--:eadc688c:--> of <observablehq-loading></observablehq-loading><!--:a53fac8d:--> roster faculty were matched to OpenAlex profiles; <observablehq-loading></observablehq-loading><!--:bb2f86cc:--> have at least one paper in the window. The unmatched ones are recent hires whose earlier papers carry other affiliations. Faculty listed on the website but publishing under an unexpected name can be added in <code>ref/author_overrides.csv</code>.</p>
+<div class="observablehq observablehq--block"><!--:d6a17209:--></div>
+</main>
+<footer id="observablehq-footer">
+<nav><a rel="prev" href="./collaborations"><span>Big collaborations</span></a></nav>
+<div>DPCN 2026 · Group 19 · IISER Pune &amp; IISER Kolkata · data: OpenAlex (CC0), SCImago</div>
+</footer>
+</div>
+</body>
+</html>

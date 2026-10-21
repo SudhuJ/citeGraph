@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.13.4">
+<title>Faculty &amp; departments | citeGraph · Group 19</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_import/style.95998b5b.css">
+<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_import/style.95998b5b.css">
+<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="modulepreload" href="./_observablehq/client.3004805e.js">
+<link rel="modulepreload" href="./_observablehq/runtime.fa9f71c0.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.c4209144.js">
+<link rel="modulepreload" href="./_import/components/defs.e1f193b7.js">
+<link rel="modulepreload" href="./_npm/d3@7.9.0/080cf928.js">
+<link rel="modulepreload" href="./_npm/htl@1.0.0/11521f02.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.0cc910eb.js">
+<link rel="modulepreload" href="./_npm/@observablehq/plot@0.6.17/93ce672e.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/097745a2.js">
+<link rel="modulepreload" href="./_npm/isoformat@0.2.1/604cb63b.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/b8e751b6.js">
+<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/c662ea05.js">
+<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/d162d8c6.js">
+<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/5cedd0be.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/65d51007.js">
+<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/c576a91a.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/8b43826d.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/3fb06f14.js">
+<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/20b76948.js">
+<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/8683b012.js">
+<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/5c319046.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/33924f3e.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.2/8d67a1ae.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/8037bd0b.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/a9ba0229.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/e0a47f97.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/f9e9e0ab.js">
+<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/2da8eb3b.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/09002e01.js">
+<link rel="modulepreload" href="./_npm/d3-random@3.0.1/5108797c.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/c9f2571b.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/f3c78e0d.js">
+<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/28717d05.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/7c6e2a50.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/3d1d57c6.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/643581a8.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/e99232db.js">
+<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/bd07fd9a.js">
+<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/d09f7cc9.js">
+<link rel="modulepreload" href="./_npm/interval-tree-1d@1.0.4/f53f17b2.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/af036d7e.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.1.0/7b06abe7.js">
+<link rel="modulepreload" href="./_npm/binary-search-bounds@2.0.5/5f640032.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.3/b42f30a7.js">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Ccircle%20cx=%2230%22%20cy=%2270%22%20r=%2216%22%20fill=%22%25232a78d6%22/%3E%3Ccircle%20cx=%2272%22%20cy=%2232%22%20r=%2216%22%20fill=%22%2523eb6834%22/%3E%3Cline%20x1=%2230%22%20y1=%2270%22%20x2=%2272%22%20y2=%2232%22%20stroke=%22%2523898781%22%20stroke-width=%226%22/%3E%3C/svg%3E">
+<script type="module">
+
+import {define} from "./_observablehq/client.3004805e.js";
+import {registerFile} from "./_observablehq/stdlib.c4209144.js";
+
+registerFile("./data/departments.csv", {"name":"./data/departments.csv","mimeType":"text/csv","path":"./_file/data/departments.75b560a7.csv","lastModified":1792595878937,"size":1178});
+registerFile("./data/faculty.csv", {"name":"./data/faculty.csv","mimeType":"text/csv","path":"./_file/data/faculty.937e1e3a.csv","lastModified":1792595878910,"size":62080});
+
+define({id: "506ce87e", inputs: ["FileAttachment"], outputs: ["INST","instColor","shortInst","pct","num","answer","measure","shareBar","faculty","depts"], body: async (FileAttachment) => {
+const {INST, instColor, shortInst, pct, num, answer, measure, shareBar} = await import("./_import/components/defs.e1f193b7.js");
+const faculty = FileAttachment("./data/faculty.csv").csv({typed: true});
+const depts = FileAttachment("./data/departments.csv").csv({typed: true});
+return {INST,instColor,shortInst,pct,num,answer,measure,shareBar,faculty,depts};
+}});
+
+define({id: "691b6321", inputs: ["view","Inputs","INST"], outputs: ["pick"], body: (view,Inputs,INST) => {
+const pick = view(Inputs.radio(["Both", ...INST], {value: "Both", label: "Institute"}));
+return {pick};
+}});
+
+define({id: "f998ba21", inputs: ["faculty","pick","depts","shortInst"], outputs: ["F","D","qLoaded","ranked50","best","worst","dn"], body: (faculty,pick,depts,shortInst) => {
+const F = faculty.filter((d) => pick === "Both" || d.institution === pick);
+const D = depts.filter((d) => (pick === "Both" || d.institution === pick) && d.papers > 0)
+  .map((d) => ({...d, papers_per_faculty: d.papers / d.faculty_with_papers}));
+const qLoaded = depts.some((d) => d.q1_share != null);
+const ranked50 = (key) => D.filter((d) => d.journal_papers >= 50 && d[key] != null).toSorted((a, b) => b[key] - a[key]);
+const best = (key) => ranked50(key)[0];
+const worst = (key) => ranked50(key).at(-1);
+const dn = (d) => `${shortInst(d.institution)} ${d.department}`;
+return {F,D,qLoaded,ranked50,best,worst,dn};
+}});
+
+define({id: "299ad30b", mode: "inline", inputs: ["measure","html","display"], body: async (measure,html,display) => {
+display(await(
+measure(html`For each department: papers, citations, the median h-index of its faculty, and the two bars the course asked for: the share of ranked journal papers in Q1 venues, and the share in Q1 venues whose impact-factor proxy is above 5.`)
+))
+}});
+
+define({id: "f81a7c53", mode: "inline", inputs: ["qLoaded","answer","html","pct","worst","dn","best","shortInst","D","display"], body: async (qLoaded,answer,html,pct,worst,dn,best,shortInst,D,display) => {
+display(await(
+qLoaded
+  ? answer(html`On Q1 alone, departments are fairly close: among those with at least 50 journal papers, the Q1 share runs from ${pct(worst("q1_share").q1_share)} (${dn(worst("q1_share"))}) to ${pct(best("q1_share").q1_share)} (${dn(best("q1_share"))}). The stricter Q1 & IF>5 bar spreads them out, from ${pct(worst("q1_if5_share").q1_if5_share)} (${dn(worst("q1_if5_share"))}) to ${pct(best("q1_if5_share").q1_if5_share)} (${dn(best("q1_if5_share"))}). Much of that spread follows how often each field cites: even the leading mathematics journals have an impact-factor proxy below 5.`)
+  : answer(html`Quartile shares need the SCImago files, which are not loaded yet. Output per faculty member is highest in ${shortInst(D.toSorted((a, b) => b.papers_per_faculty - a.papers_per_faculty)[0].institution)} ${D.toSorted((a, b) => b.papers_per_faculty - a.papers_per_faculty)[0].department}.`)
+))
+}});
+
+define({id: "beccff87", inputs: ["display","Inputs","D","shortInst","d3","shareBar","pct"], body: (display,Inputs,D,shortInst,d3,shareBar,pct) => {
+display(Inputs.table(D, {
+  columns: ["institution", "department", "faculty", "papers", "papers_per_faculty", "citations", "median_h", "q1_share", "q1_if5_share", "large_team_share"],
+  header: {institution: "Institute", department: "Department", faculty: "Faculty", papers: "Papers", papers_per_faculty: "Papers / faculty",
+           citations: "Citations", median_h: "Median h", q1_share: "Q1 share", q1_if5_share: "Q1 & IF>5 share", large_team_share: ">10 authors"},
+  format: {institution: shortInst, papers_per_faculty: d3.format(".1f"), q1_share: (x) => shareBar(x), q1_if5_share: (x) => shareBar(x),
+           large_team_share: (x) => pct(x)},
+  sort: "papers", reverse: true, layout: "auto", select: false, rows: 16
+}));
+}});
+
+define({id: "56f8573f", inputs: ["view","Inputs","F"], outputs: ["q"], body: (view,Inputs,F) => {
+const q = view(Inputs.search(F, {placeholder: "Search faculty…", columns: ["name", "department", "institution"]}));
+return {q};
+}});
+
+define({id: "37c9e7be", inputs: ["display","Inputs","q","shortInst","pct","html"], body: (display,Inputs,q,shortInst,pct,html) => {
+display(Inputs.table(q, {
+  columns: ["name", "institution", "department", "designation", "papers", "citations", "h_index", "h_index_lifetime", "q1_share", "top_journal", "large_team_papers", "hyper_papers"],
+  header: {name: "Name", institution: "Institute", department: "Department", designation: "Designation", papers: "Papers",
+           citations: "Citations", h_index: "h-index (2016–26)", h_index_lifetime: "h-index (career)", q1_share: "Q1 share",
+           top_journal: "Most frequent journal", large_team_papers: ">10 authors", hyper_papers: "100+ authors (excluded)"},
+  format: {institution: shortInst, q1_share: (x) => pct(x),
+           name: (x, i, data) => html`<a href=${data[i].profile_url} target="_blank">${x}</a>`},
+  width: {name: 190, department: 170, designation: 170, top_journal: 220},
+  sort: "h_index", reverse: true, rows: 15, layout: "auto"
+}));
+}});
+
+define({id: "85b5a7c7", inputs: ["F","d3"], outputs: ["hs","top10share"], body: (F,d3) => {
+const hs = F.filter((d) => d.papers > 0);
+const top10share = (inst) => {
+  const c = hs.filter((d) => d.institution === inst).map((d) => d.citations).sort(d3.descending);
+  return d3.sum(c.slice(0, Math.ceil(c.length / 10))) / d3.sum(c);
+};
+return {hs,top10share};
+}});
+
+define({id: "a6735194", mode: "inline", inputs: ["measure","html","display"], body: async (measure,html,display) => {
+display(await(
+measure(html`The share of each institute's citations held by its top 10% of faculty, and each faculty member's h-index: the largest h such that h of their 2016–26 papers have at least h citations each.`)
+))
+}});
+
+define({id: "e2a5a75e", mode: "inline", inputs: ["answer","html","pick","INST","pct","top10share","shortInst","d3","hs","display"], body: async (answer,html,pick,INST,pct,top10share,shortInst,d3,hs,display) => {
+display(await(
+answer(html`Impact is concentrated. The top 10% of faculty by citations account for ${(pick === "Both" ? INST : [pick]).map((i) => `${pct(top10share(i))} of ${shortInst(i)}'s citations`).join(" and ")}. The median 2016–26 h-index is ${d3.median(hs, (d) => d.h_index)}.`)
+))
+}});
+
+define({id: "578dcfcc", inputs: ["display","resize","Plot","instColor","hs"], body: (display,resize,Plot,instColor,hs) => {
+display(resize((width) => Plot.plot({
+  width, height: 300, x: {label: "h-index (2016–2026 papers)"}, y: {grid: true, label: "faculty"},
+  color: instColor, fy: {label: null},
+  marks: [
+    Plot.rectY(hs, Plot.binX({y: "count"}, {x: "h_index", fill: "institution", fy: "institution", interval: 2, inset: 1, tip: true})),
+    Plot.ruleY([0])
+  ]
+})));
+}});
+
+define({id: "dd001cd9", inputs: ["display","resize","Plot","instColor","hs"], body: (display,resize,Plot,instColor,hs) => {
+display(resize((width) => Plot.plot({
+  width, height: 300, x: {type: "log", label: "papers (log)", grid: true}, y: {type: "log", label: "citations (log)", grid: true},
+  color: instColor,
+  marks: [
+    Plot.dot(hs.filter((d) => d.citations > 0), {x: "papers", y: "citations", fill: "institution", r: 4,
+      stroke: "var(--theme-background)", tip: true, title: (d) => `${d.name}\n${d.department}\n${d.papers} papers · ${d.citations} citations · h=${d.h_index}`})
+  ]
+})));
+}});
+
+</script>
+</head>
+<body>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link"><a href="./">citeGraph · Group 19</a></li>
+  </ol>
+  <div id="observablehq-search"><input type="search" placeholder="Search"></div>
+  <div id="observablehq-search-results"></div>
+  <script>{const o=document.querySelector("#observablehq-search");o.setAttribute("data-shortcut",`${/Mac|iPhone/.test(navigator.platform)?"\u2318":"Alt-"}K`);const t=o.querySelector("input"),r=()=>import("./_observablehq/search.30af828b.js");t.addEventListener("focus",r,{once:!0}),t.addEventListener("keydown",r,{once:!0});const c=document.querySelector("#observablehq-sidebar-toggle");addEventListener("keydown",e=>{(e.code==="KeyK"&&e.metaKey&&!e.altKey&&!e.ctrlKey||e.key==="/"&&!e.metaKey&&!e.altKey&&!e.ctrlKey&&e.target===document.body)&&(c.checked?t.focus():(c.click(),t.focus(),c.click()),t.select(),e.preventDefault())});}</script>
+  <ol>
+    <li class="observablehq-link"><a href="./">Overview</a></li>
+    <li class="observablehq-link"><a href="./output">Output &amp; venues</a></li>
+    <li class="observablehq-link observablehq-link-active"><a href="./faculty">Faculty &amp; departments</a></li>
+    <li class="observablehq-link"><a href="./authorship-network">Collaboration</a></li>
+    <li class="observablehq-link"><a href="./citation-network">Knowledge flow</a></li>
+    <li class="observablehq-link"><a href="./connectivity">India &amp; the world</a></li>
+    <li class="observablehq-link"><a href="./collaborations">Big collaborations</a></li>
+    <li class="observablehq-link"><a href="./methods">Methods &amp; data</a></li>
+  </ol>
+</nav>
+<script>{const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<div id="observablehq-center">
+<aside id="observablehq-toc" data-selector="h1:not(:first-of-type)[id], h2:first-child[id], :not(h1) + h2[id]">
+<nav>
+<div>Contents</div>
+<ol>
+<li class="observablehq-secondary-link"><a href="#how-do-departments-compare">How do departments compare?</a></li>
+<li class="observablehq-secondary-link"><a href="#who-are-the-most-productive-and-most-cited-faculty">Who are the most productive and most cited faculty?</a></li>
+<li class="observablehq-secondary-link"><a href="#how-is-impact-spread-across-faculty">How is impact spread across faculty?</a></li>
+</ol>
+</nav>
+</aside>
+<main id="observablehq-main" class="observablehq">
+<h1 id="faculty-and-departments" tabindex="-1"><a class="observablehq-header-anchor" href="#faculty-and-departments">Faculty &amp; departments</a></h1>
+<p class="muted">Every number here leaves out papers with 100 or more authors (see <a href="./collaborations">Big collaborations</a>). Papers with 11–99 authors stay in and are counted in the "&gt;10 authors" column.</p>
+<div class="observablehq observablehq--block"><!--:506ce87e:--></div>
+<div class="observablehq observablehq--block"><!--:691b6321:--></div>
+<div class="observablehq observablehq--block"><!--:f998ba21:--></div>
+<h2 id="how-do-departments-compare" tabindex="-1"><a class="observablehq-header-anchor" href="#how-do-departments-compare">How do departments compare?</a></h2>
+<p><observablehq-loading></observablehq-loading><!--:299ad30b:--></p>
+<p><observablehq-loading></observablehq-loading><!--:f81a7c53:--></p>
+<div class="observablehq observablehq--block"><!--:beccff87:--></div>
+<p class="caveat">Departments differ in how much and where their fields publish. Mathematics writes fewer, longer papers, and its journals have lower citation rates, so its impact-factor shares are lower by nature. Compare a department with itself across the two institutes, not with other fields.</p>
+<details class="how"><summary>How it's computed</summary>
+<ul>
+<li>A paper counts once in every department that has an author on it.</li>
+<li><b>Q1 share</b> = Q1 papers ÷ journal papers whose venue SCImago ranks.</li>
+<li><b>Q1 &amp; IF&gt;5</b> adds a second condition: the journal's SCImago citations per document over two years (our open stand-in for the impact factor) is above 5.</li>
+<li><b>Median h</b> is the median of the faculty members' h-index over 2016–2026 papers.</li>
+</ul>
+</details>
+<h2 id="who-are-the-most-productive-and-most-cited-faculty" tabindex="-1"><a class="observablehq-header-anchor" href="#who-are-the-most-productive-and-most-cited-faculty">Who are the most productive and most cited faculty?</a></h2>
+<div class="observablehq observablehq--block"><!--:56f8573f:--></div>
+<div class="observablehq observablehq--block"><!--:37c9e7be:--></div>
+<details class="how"><summary>How it's computed</summary>
+<p><b>h-index (2016–26)</b>: the largest h such that h of the person's papers in this dataset have at least h citations each. <b>Career h-index</b> is OpenAlex's value over the whole career, including papers before 2016, at other institutions and with 100+ authors, so the two are not comparable.</p>
+</details>
+<h2 id="how-is-impact-spread-across-faculty" tabindex="-1"><a class="observablehq-header-anchor" href="#how-is-impact-spread-across-faculty">How is impact spread across faculty?</a></h2>
+<div class="observablehq observablehq--block"><!--:85b5a7c7:--></div>
+<p><observablehq-loading></observablehq-loading><!--:a6735194:--></p>
+<p><observablehq-loading></observablehq-loading><!--:e2a5a75e:--></p>
+<div class="grid grid-cols-2">
+<div class="card">
+<h3 id="h-index-distribution" tabindex="-1"><a class="observablehq-header-anchor" href="#h-index-distribution">h-index distribution</a></h3>
+<div class="observablehq observablehq--block"><!--:578dcfcc:--></div>
+</div>
+<div class="card">
+<h3 id="papers-vs-citations" tabindex="-1"><a class="observablehq-header-anchor" href="#papers-vs-citations">Papers vs citations</a></h3>
+<div class="observablehq observablehq--block"><!--:dd001cd9:--></div>
+</div>
+</div>
+</main>
+<footer id="observablehq-footer">
+<nav><a rel="prev" href="./output"><span>Output &amp; venues</span></a><a rel="next" href="./authorship-network"><span>Collaboration</span></a></nav>
+<div>DPCN 2026 · Group 19 · IISER Pune &amp; IISER Kolkata · data: OpenAlex (CC0), SCImago</div>
+</footer>
+</div>
+</body>
+</html>

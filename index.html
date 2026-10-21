@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.13.4">
+<title>Overview | citeGraph · Group 19</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_import/style.95998b5b.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_import/style.95998b5b.css">
+<link rel="modulepreload" href="./_observablehq/client.3004805e.js">
+<link rel="modulepreload" href="./_observablehq/runtime.fa9f71c0.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.c4209144.js">
+<link rel="modulepreload" href="./_import/components/defs.e1f193b7.js">
+<link rel="modulepreload" href="./_npm/d3@7.9.0/080cf928.js">
+<link rel="modulepreload" href="./_npm/htl@1.0.0/11521f02.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/097745a2.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/b8e751b6.js">
+<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/c662ea05.js">
+<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/d162d8c6.js">
+<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/5cedd0be.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/65d51007.js">
+<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/c576a91a.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/8b43826d.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/3fb06f14.js">
+<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/20b76948.js">
+<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/8683b012.js">
+<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/5c319046.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/33924f3e.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.2/8d67a1ae.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/8037bd0b.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/a9ba0229.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/e0a47f97.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/f9e9e0ab.js">
+<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/2da8eb3b.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/09002e01.js">
+<link rel="modulepreload" href="./_npm/d3-random@3.0.1/5108797c.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/c9f2571b.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/f3c78e0d.js">
+<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/28717d05.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/7c6e2a50.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/3d1d57c6.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/643581a8.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/e99232db.js">
+<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/bd07fd9a.js">
+<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/d09f7cc9.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/af036d7e.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.1.0/7b06abe7.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.3/b42f30a7.js">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Ccircle%20cx=%2230%22%20cy=%2270%22%20r=%2216%22%20fill=%22%25232a78d6%22/%3E%3Ccircle%20cx=%2272%22%20cy=%2232%22%20r=%2216%22%20fill=%22%2523eb6834%22/%3E%3Cline%20x1=%2230%22%20y1=%2270%22%20x2=%2272%22%20y2=%2232%22%20stroke=%22%2523898781%22%20stroke-width=%226%22/%3E%3C/svg%3E">
+<script type="module">
+
+import {define} from "./_observablehq/client.3004805e.js";
+import {registerFile} from "./_observablehq/stdlib.c4209144.js";
+
+registerFile("./data/connections.csv", {"name":"./data/connections.csv","mimeType":"text/csv","path":"./_file/data/connections.168875a3.csv","lastModified":1792595878945,"size":364521});
+registerFile("./data/fac_graph.json", {"name":"./data/fac_graph.json","mimeType":"application/json","path":"./_file/data/fac_graph.6fb7e990.json","lastModified":1792595872351,"size":50019});
+registerFile("./data/faculty.csv", {"name":"./data/faculty.csv","mimeType":"text/csv","path":"./_file/data/faculty.937e1e3a.csv","lastModified":1792595878910,"size":62080});
+registerFile("./data/network_metrics.json", {"name":"./data/network_metrics.json","mimeType":"application/json","path":"./_file/data/network_metrics.ac3c5691.json","lastModified":1792595878344,"size":114507});
+registerFile("./data/origin.csv", {"name":"./data/origin.csv","mimeType":"text/csv","path":"./_file/data/origin.34a9b8cb.csv","lastModified":1792595878943,"size":18747});
+registerFile("./data/papers.csv", {"name":"./data/papers.csv","mimeType":"text/csv","path":"./_file/data/papers.07086ef6.csv","lastModified":1792595878929,"size":2389585});
+
+define({id: "d934e000", inputs: ["FileAttachment"], outputs: ["INST","instVar","pct","num","ORIGIN","papers","faculty","origin","conn","M","GFG"], body: async (FileAttachment) => {
+const {INST, instVar, pct, num, ORIGIN} = await import("./_import/components/defs.e1f193b7.js");
+const papers = FileAttachment("./data/papers.csv").csv({typed: true});
+const faculty = FileAttachment("./data/faculty.csv").csv({typed: true});
+const origin = FileAttachment("./data/origin.csv").csv({typed: true});
+const conn = FileAttachment("./data/connections.csv").csv({typed: true});
+const M = FileAttachment("./data/network_metrics.json").json();
+const GFG = FileAttachment("./data/fac_graph.json").json();
+return {INST,instVar,pct,num,ORIGIN,papers,faculty,origin,conn,M,GFG};
+}});
+
+define({id: "e86502ab", inputs: ["papers","origin","d3","M","GFG","conn"], outputs: ["P","byInst","growth","ranked","q1","originShare","GF","sameInst","sameDept","IN","recv","fromOurs","fromOursSelf","topPartners"], body: (papers,origin,d3,M,GFG,conn) => {
+const P = papers.filter((d) => !d.hyperauthored);
+const byInst = (inst) => P.filter((d) => d.institution === inst);
+const growth = (inst) => {
+  const n = (y) => byInst(inst).filter((d) => d.year === y).length;
+  return n(2025) / n(2016) - 1;
+};
+const ranked = P.filter((d) => /^Q[1-4]$/.test(d.quartile ?? ""));
+const q1 = ranked.length ? ranked.filter((d) => d.quartile === "Q1").length / ranked.length : null;
+const originShare = (inst, dir, cats) => {
+  const rows = origin.filter((d) => d.institution === inst && d.direction === dir);
+  return d3.sum(rows.filter((d) => cats.includes(d.category)), (d) => d.n) / d3.sum(rows, (d) => d.n);
+};
+const GF = M.coauthorship.G_fac.summary;
+// co-author links between faculty: same institute / same department
+const sameInst = d3.mean(GFG.edges, ([s, t]) => GFG.nodes[s].inst === GFG.nodes[t].inst);
+const sameDept = d3.mean(GFG.edges, ([s, t]) => GFG.nodes[s].inst === GFG.nodes[t].inst && GFG.nodes[s].dept === GFG.nodes[t].dept);
+// citations received, split by whether the citing paper is ours and whether it shares an author
+const IN = origin.filter((d) => d.direction === "in");
+const recv = d3.sum(IN, (d) => d.n);
+const fromOurs = d3.sum(IN.filter((d) => d.from_ours), (d) => d.n);
+const fromOursSelf = d3.sum(IN.filter((d) => d.from_ours && d.category === "self"), (d) => d.n);
+const topPartners = (inst) => conn.filter((d) => d.your_inst === inst).toSorted((a, b) => b.shared_papers - a.shared_papers)
+  .slice(0, 3).map((d) => d.partner_inst).join(", ");
+return {P,byInst,growth,ranked,q1,originShare,GF,sameInst,sameDept,IN,recv,fromOurs,fromOursSelf,topPartners};
+}});
+
+define({id: "3cd46636", inputs: ["display","html","INST","byInst","faculty","instVar","num","d3"], body: (display,html,INST,byInst,faculty,instVar,num,d3) => {
+display(html`<div class="grid grid-cols-4">${INST.map((inst) => {
+    const p = byInst(inst), f = faculty.filter((d) => d.institution === inst);
+    return html`<div class="card"><h2><span class="swatch" style="background:${instVar(inst)}"></span>${inst}</h2>
+      <div class="big">${num(p.length)}</div><div class="muted">papers · ${num(d3.sum(p, (d) => d.citations))} citations</div>
+      <div class="muted">${f.filter((d) => d.papers > 0).length} of ${f.length} faculty with papers · median h-index ${d3.median(f, (d) => d.h_index)}</div></div>`;
+  })}</div>`);
+}});
+
+define({id: "cd9089d6", mode: "inline", inputs: ["pct","growth","display"], body: async (pct,growth,display) => {
+display(await(
+pct(growth("IISER Kolkata"))
+))
+}});
+
+define({id: "a69a1512", mode: "inline", inputs: ["pct","growth","display"], body: async (pct,growth,display) => {
+display(await(
+pct(growth("IISER Pune"))
+))
+}});
+
+define({id: "4f4eeab4", mode: "inline", inputs: ["q1","html","pct","display"], body: async (q1,html,pct,display) => {
+display(await(
+q1 == null ? "Quartiles are not loaded yet." : html`${pct(q1)} of papers in ranked journals are in a Q1 venue. This uses SCImago's best quartile across subject categories, so it is an upper bound.`
+))
+}});
+
+define({id: "8ff9d8a7", mode: "inline", inputs: ["pct","originShare","display"], body: async (pct,originShare,display) => {
+display(await(
+pct(originShare("IISER Pune", "in", ["abroad or unknown"]))
+))
+}});
+
+define({id: "bac0f31b", mode: "inline", inputs: ["pct","originShare","display"], body: async (pct,originShare,display) => {
+display(await(
+pct(originShare("IISER Kolkata", "in", ["abroad or unknown"]))
+))
+}});
+
+define({id: "da72940a", mode: "inline", inputs: ["pct","originShare","display"], body: async (pct,originShare,display) => {
+display(await(
+pct(originShare("IISER Pune", "in", ["other Indian only", "India + abroad"]))
+))
+}});
+
+define({id: "4ec81bee", mode: "inline", inputs: ["pct","originShare","display"], body: async (pct,originShare,display) => {
+display(await(
+pct(originShare("IISER Kolkata", "in", ["other Indian only", "India + abroad"]))
+))
+}});
+
+define({id: "9c074ae5", mode: "inline", inputs: ["pct","P","byInst","display"], body: async (pct,P,byInst,display) => {
+display(await(
+pct(P.filter((d) => d.institution === "IISER Pune" && d.coauthor_institutes).length / byInst("IISER Pune").length)
+))
+}});
+
+define({id: "69000928", mode: "inline", inputs: ["pct","P","byInst","display"], body: async (pct,P,byInst,display) => {
+display(await(
+pct(P.filter((d) => d.institution === "IISER Kolkata" && d.coauthor_institutes).length / byInst("IISER Kolkata").length)
+))
+}});
+
+define({id: "0b2d9cf4", mode: "inline", inputs: ["topPartners","display"], body: async (topPartners,display) => {
+display(await(
+topPartners("IISER Pune")
+))
+}});
+
+define({id: "9c321093", mode: "inline", inputs: ["topPartners","display"], body: async (topPartners,display) => {
+display(await(
+topPartners("IISER Kolkata")
+))
+}});
+
+define({id: "58655504", mode: "inline", inputs: ["GF","display"], body: async (GF,display) => {
+display(await(
+GF.isolates
+))
+}});
+
+define({id: "4f5e4b5e", mode: "inline", inputs: ["GF","display"], body: async (GF,display) => {
+display(await(
+GF.nodes
+))
+}});
+
+define({id: "9f1a4c70", mode: "inline", inputs: ["pct","sameInst","display"], body: async (pct,sameInst,display) => {
+display(await(
+pct(sameInst)
+))
+}});
+
+define({id: "b5156322", mode: "inline", inputs: ["pct","sameInst","sameDept","display"], body: async (pct,sameInst,sameDept,display) => {
+display(await(
+pct(sameInst - sameDept)
+))
+}});
+
+define({id: "51ac59d4", mode: "inline", inputs: ["pct","fromOurs","recv","display"], body: async (pct,fromOurs,recv,display) => {
+display(await(
+pct(fromOurs / recv)
+))
+}});
+
+define({id: "b1fedd22", mode: "inline", inputs: ["pct","fromOursSelf","fromOurs","display"], body: async (pct,fromOursSelf,fromOurs,display) => {
+display(await(
+pct(fromOursSelf / fromOurs)
+))
+}});
+
+define({id: "5a99cae5", mode: "inline", inputs: ["pct","fromOurs","fromOursSelf","recv","display"], body: async (pct,fromOurs,fromOursSelf,recv,display) => {
+display(await(
+pct((fromOurs - fromOursSelf) / recv, 1)
+))
+}});
+
+</script>
+</head>
+<body>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link observablehq-link-active"><a href="./">citeGraph · Group 19</a></li>
+  </ol>
+  <div id="observablehq-search"><input type="search" placeholder="Search"></div>
+  <div id="observablehq-search-results"></div>
+  <script>{const o=document.querySelector("#observablehq-search");o.setAttribute("data-shortcut",`${/Mac|iPhone/.test(navigator.platform)?"\u2318":"Alt-"}K`);const t=o.querySelector("input"),r=()=>import("./_observablehq/search.30af828b.js");t.addEventListener("focus",r,{once:!0}),t.addEventListener("keydown",r,{once:!0});const c=document.querySelector("#observablehq-sidebar-toggle");addEventListener("keydown",e=>{(e.code==="KeyK"&&e.metaKey&&!e.altKey&&!e.ctrlKey||e.key==="/"&&!e.metaKey&&!e.altKey&&!e.ctrlKey&&e.target===document.body)&&(c.checked?t.focus():(c.click(),t.focus(),c.click()),t.select(),e.preventDefault())});}</script>
+  <ol>
+    <li class="observablehq-link observablehq-link-active"><a href="./">Overview</a></li>
+    <li class="observablehq-link"><a href="./output">Output &amp; venues</a></li>
+    <li class="observablehq-link"><a href="./faculty">Faculty &amp; departments</a></li>
+    <li class="observablehq-link"><a href="./authorship-network">Collaboration</a></li>
+    <li class="observablehq-link"><a href="./citation-network">Knowledge flow</a></li>
+    <li class="observablehq-link"><a href="./connectivity">India &amp; the world</a></li>
+    <li class="observablehq-link"><a href="./collaborations">Big collaborations</a></li>
+    <li class="observablehq-link"><a href="./methods">Methods &amp; data</a></li>
+  </ol>
+</nav>
+<script>{const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<h1 id="iiser-pune-and-iiser-kolkata-2016-2026" tabindex="-1"><a class="observablehq-header-anchor" href="#iiser-pune-and-iiser-kolkata-2016-2026">IISER Pune &amp; IISER Kolkata, 2016–2026</a></h1>
+<p class="muted">DPCN 2026 · Group 19. Every paper by a current regular faculty member, written while they were at the institute (source: OpenAlex). Papers with 100 or more authors, mostly from the CMS experiment, are counted separately on the <a href="./collaborations">Big collaborations</a> page and left out of everything else.</p>
+<div class="observablehq observablehq--block"><!--:d934e000:--></div>
+<div class="observablehq observablehq--block"><!--:e86502ab:--></div>
+<div class="observablehq observablehq--block"><!--:3cd46636:--></div>
+<h2 id="what-we-found" tabindex="-1"><a class="observablehq-header-anchor" href="#what-we-found">What we found</a></h2>
+<ol class="findings">
+  <li><b>Output has grown steadily.</b> Between 2016 and 2025, yearly output rose <observablehq-loading></observablehq-loading><!--:cd9089d6:--> at Kolkata and <observablehq-loading></observablehq-loading><!--:a69a1512:--> at Pune. Part of this growth is new faculty joining, so the per-faculty view matters. <a href="./output">Output &amp; venues →</a></li>
+  <li><b>Most papers appear in top-quartile journals.</b> <observablehq-loading></observablehq-loading><!--:4f4eeab4:--> <a href="./faculty">Faculty &amp; departments →</a></li>
+  <li><b>Our papers are cited mostly from abroad.</b> <observablehq-loading></observablehq-loading><!--:8ff9d8a7:--> (Pune) and <observablehq-loading></observablehq-loading><!--:bac0f31b:--> (Kolkata) of all the citations our papers receive come from papers with no Indian author, or whose affiliations are unknown. Other Indian institutes give <observablehq-loading></observablehq-loading><!--:da72940a:--> and <observablehq-loading></observablehq-loading><!--:4ec81bee:-->. <a href="./connectivity">India &amp; the world →</a></li>
+  <li><b>Neighbours are among the strongest Indian partners.</b> About <observablehq-loading></observablehq-loading><!--:9c074ae5:--> of Pune's papers and <observablehq-loading></observablehq-loading><!--:69000928:--> of Kolkata's have a co-author at another Indian institution. Pune's top partners are <observablehq-loading></observablehq-loading><!--:0b2d9cf4:-->. Kolkata's are <observablehq-loading></observablehq-loading><!--:9c321093:-->. <a href="./connectivity">India &amp; the world →</a></li>
+  <li><b>Faculty rarely co-author with each other, and almost never across the two institutes.</b> <observablehq-loading></observablehq-loading><!--:58655504:--> of <observablehq-loading></observablehq-loading><!--:4f5e4b5e:--> publishing faculty have no paper with another faculty member of either institute. Of the co-author links between faculty, <observablehq-loading></observablehq-loading><!--:9f1a4c70:--> join two people at the same institute, and <observablehq-loading></observablehq-loading><!--:b5156322:--> of all links cross departments within it. <a href="./authorship-network">Collaboration →</a></li>
+  <li><b>Colleagues rarely cite each other.</b> Only <observablehq-loading></observablehq-loading><!--:51ac59d4:--> of the citations our papers receive come from other papers by our own faculty. Nearly all of those (<observablehq-loading></observablehq-loading><!--:b1fedd22:-->) are self-citations, where the same person is an author on both papers, typically a faculty member citing their own earlier work. Citations from one faculty member's paper to a colleague's are <observablehq-loading></observablehq-loading><!--:5a99cae5:--> of the total. <a href="./citation-network">Knowledge flow →</a></li>
+</ol>
+</main>
+<footer id="observablehq-footer">
+<nav><a rel="next" href="./output"><span>Output &amp; venues</span></a></nav>
+<div>DPCN 2026 · Group 19 · IISER Pune &amp; IISER Kolkata · data: OpenAlex (CC0), SCImago</div>
+</footer>
+</div>
+</body>
+</html>

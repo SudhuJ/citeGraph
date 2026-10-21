@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.13.4">
+<title>Collaboration | citeGraph · Group 19</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_import/style.95998b5b.css">
+<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_import/style.95998b5b.css">
+<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="modulepreload" href="./_observablehq/client.3004805e.js">
+<link rel="modulepreload" href="./_observablehq/runtime.fa9f71c0.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.c4209144.js">
+<link rel="modulepreload" href="./_import/components/graph.57fe5c4b.js">
+<link rel="modulepreload" href="./_import/components/defs.e1f193b7.js">
+<link rel="modulepreload" href="./_npm/d3@7.9.0/080cf928.js">
+<link rel="modulepreload" href="./_npm/htl@1.0.0/11521f02.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.0cc910eb.js">
+<link rel="modulepreload" href="./_npm/@observablehq/plot@0.6.17/93ce672e.js">
+<link rel="modulepreload" href="./_import/components/vendor/graph-libs.48181f08.js">
+<link rel="modulepreload" href="./_npm/isoformat@0.2.1/604cb63b.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/b8e751b6.js">
+<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/c662ea05.js">
+<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/d162d8c6.js">
+<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/5cedd0be.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/65d51007.js">
+<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/c576a91a.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/8b43826d.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/3fb06f14.js">
+<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/20b76948.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/097745a2.js">
+<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/8683b012.js">
+<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/5c319046.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/33924f3e.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.2/8d67a1ae.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/8037bd0b.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/a9ba0229.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/e0a47f97.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/f9e9e0ab.js">
+<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/2da8eb3b.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/09002e01.js">
+<link rel="modulepreload" href="./_npm/d3-random@3.0.1/5108797c.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/c9f2571b.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/f3c78e0d.js">
+<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/28717d05.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/7c6e2a50.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/3d1d57c6.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/643581a8.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/e99232db.js">
+<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/bd07fd9a.js">
+<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/d09f7cc9.js">
+<link rel="modulepreload" href="./_npm/interval-tree-1d@1.0.4/f53f17b2.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/af036d7e.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.1.0/7b06abe7.js">
+<link rel="modulepreload" href="./_npm/binary-search-bounds@2.0.5/5f640032.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.3/b42f30a7.js">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Ccircle%20cx=%2230%22%20cy=%2270%22%20r=%2216%22%20fill=%22%25232a78d6%22/%3E%3Ccircle%20cx=%2272%22%20cy=%2232%22%20r=%2216%22%20fill=%22%2523eb6834%22/%3E%3Cline%20x1=%2230%22%20y1=%2270%22%20x2=%2272%22%20y2=%2232%22%20stroke=%22%2523898781%22%20stroke-width=%226%22/%3E%3C/svg%3E">
+<script type="module">
+
+import {define} from "./_observablehq/client.3004805e.js";
+import {registerFile} from "./_observablehq/stdlib.c4209144.js";
+
+registerFile("./data/fac_graph.json", {"name":"./data/fac_graph.json","mimeType":"application/json","path":"./_file/data/fac_graph.6fb7e990.json","lastModified":1792595872351,"size":50019});
+registerFile("./data/ind_graph.json", {"name":"./data/ind_graph.json","mimeType":"application/json","path":"./_file/data/ind_graph.2f02939e.json","lastModified":1792595876501,"size":989838});
+registerFile("./data/network_metrics.json", {"name":"./data/network_metrics.json","mimeType":"application/json","path":"./_file/data/network_metrics.ac3c5691.json","lastModified":1792595878344,"size":114507});
+
+define({id: "db8ab784", inputs: ["FileAttachment"], outputs: ["graphView","legend","INST","instColor","shortInst","pct","num","answer","measure","M","GF","GI"], body: async (FileAttachment) => {
+const [{graphView, legend}, {INST, instColor, shortInst, pct, num, answer, measure}] = await Promise.all([import("./_import/components/graph.57fe5c4b.js"), import("./_import/components/defs.e1f193b7.js")]);
+const M = FileAttachment("./data/network_metrics.json").json();
+const GF = FileAttachment("./data/fac_graph.json").json();
+const GI = FileAttachment("./data/ind_graph.json").json();
+return {graphView,legend,INST,instColor,shortInst,pct,num,answer,measure,M,GF,GI};
+}});
+
+define({id: "ac5d9873", inputs: ["M","shortInst","GF","d3"], outputs: ["SF","SI","fc","deptOf","nbF","linkKind","kinds","kindN","linked","mix"], body: (M,shortInst,GF,d3) => {
+const SF = M.coauthorship.G_fac.summary, SI = M.coauthorship.G_ind.summary;
+const fc = M.faculty_comparison;
+const deptOf = (n) => `${shortInst(n.inst)} · ${n.dept}`;
+// neighbours in G_fac
+const nbF = GF.nodes.map(() => new Set());
+GF.edges.forEach(([s, t]) => { nbF[s].add(t); nbF[t].add(s); });
+// each faculty co-author link: same department, other department in the same institute, or the other institute
+const linkKind = ([s, t]) => {
+  const a = GF.nodes[s], b = GF.nodes[t];
+  return a.inst !== b.inst ? "Pune–Kolkata" : a.dept !== b.dept ? "same institute, other department" : "same department";
+};
+const kinds = ["same department", "same institute, other department", "Pune–Kolkata"];
+const kindN = Object.fromEntries(kinds.map((k) => [k, GF.edges.filter((e) => linkKind(e) === k).length]));
+const linked = GF.nodes.filter((n, i) => nbF[i].size > 0).length;
+// a readable "Pune Chemistry 9, Kolkata Chemical Sciences 3" summary of a set of faculty
+const mix = (people, key = deptOf, top = 3, unit = "") => d3.rollups(people, (v) => v.length, key)
+  .sort((a, b) => b[1] - a[1]).slice(0, top).map(([k, n]) => (unit ? `${k} (${n} ${unit})` : `${k} ${n}`)).join(", ");
+return {SF,SI,fc,deptOf,nbF,linkKind,kinds,kindN,linked,mix};
+}});
+
+define({id: "3ac2dd32", mode: "inline", inputs: ["SF","display"], body: async (SF,display) => {
+display(await(
+SF.nodes
+))
+}});
+
+define({id: "d82d07a2", mode: "inline", inputs: ["num","SI","SF","display"], body: async (num,SI,SF,display) => {
+display(await(
+num(SI.nodes - SF.nodes)
+))
+}});
+
+define({id: "7fd30f14", mode: "inline", inputs: ["measure","html","display"], body: async (measure,html,display) => {
+display(await(
+measure(html`In G_fac, how many faculty have at least one faculty co-author, and, for every co-author link, whether the two people are in the same department, in different departments of the same institute, or at different institutes.`)
+))
+}});
+
+define({id: "5b3e5c4e", mode: "inline", inputs: ["answer","html","num","linked","SF","pct","GF","kindN","display"], body: async (answer,html,num,linked,SF,pct,GF,kindN,display) => {
+display(await(
+answer(html`Within their own institute, yes; across the two institutes, almost never. ${num(linked)} of ${SF.nodes} faculty (${pct(linked / SF.nodes)}) have at least one faculty co-author. Of the ${GF.edges.length} links between them, ${pct(kindN["same department"] / GF.edges.length)} stay in one department and ${pct(kindN["same institute, other department"] / GF.edges.length)} cross departments within an institute. Only ${kindN["Pune–Kolkata"]} links (${pct(kindN["Pune–Kolkata"] / GF.edges.length)}) join Pune and Kolkata. Departments are not walls, but the two institutes are nearly separate.`)
+))
+}});
+
+define({id: "1e0b47a8", inputs: ["d3","GF","nbF","deptOf"], outputs: ["isoDept"], body: (d3,GF,nbF,deptOf) => {
+const isoDept = d3.rollups(GF.nodes.map((n, i) => ({...n, iso: nbF[i].size === 0})), (v) => ({n: v.length, iso: d3.sum(v, (d) => d.iso)}), deptOf)
+  .map(([dept, m]) => ({dept, ...m, share: m.iso / m.n, inst: dept.startsWith("Pune") ? "IISER Pune" : "IISER Kolkata"}))
+  .filter((d) => d.n >= 5).sort((a, b) => b.share - a.share);
+return {isoDept};
+}});
+
+define({id: "eb76291f", mode: "inline", inputs: ["answer","html","isoDept","pct","display"], body: async (answer,html,isoDept,pct,display) => {
+display(await(
+answer(html`How isolated faculty are depends on the field. In ${isoDept.slice(0, 2).map((d) => `${d.dept} ${pct(d.share)}`).join(" and ")} of faculty have no faculty co-author, against ${isoDept.slice(-2).map((d) => `${pct(d.share)} in ${d.dept}`).join(" and ")}. Part of this is how the fields work: mathematics and the humanities often publish alone or with students, and students are not in this graph.`)
+))
+}});
+
+define({id: "4f8f8313", inputs: ["display","resize","Plot","isoDept","instColor"], body: (display,resize,Plot,isoDept,instColor) => {
+display(resize((width) => Plot.plot({
+  width, height: 30 + 22 * isoDept.length, marginLeft: 260, x: {percent: true, label: "faculty with no faculty co-author (%)", grid: true, domain: [0, 100]},
+  y: {label: null, domain: isoDept.map((d) => d.dept)}, color: instColor,
+  marks: [Plot.barX(isoDept, {x: "share", y: "dept", fill: "inst", inset: 2, tip: true, title: (d) => `${d.dept}\n${d.iso} of ${d.n} faculty have no faculty co-author`}),
+          Plot.ruleX([0])]
+})));
+}});
+
+define({id: "510ea0c5", inputs: ["graphView","GF","invalidation","display","legend"], outputs: ["facColor","gvF"], body: (graphView,GF,invalidation,display,legend) => {
+const facColor = (n) => (n.inst === "IISER Pune" ? "pune" : "kolkata");
+const gvF = graphView({
+  nodes: GF.nodes, edges: GF.edges, height: 600,
+  color: facColor, size: (n) => 3 + 1.6 * Math.sqrt(n.degree), label: (n) => n.label, labelThreshold: 4,
+  edgeSize: (e) => 0.5 + Math.log2(1 + e[3]) * 0.45,
+  tooltip: (n, deg) => `<b>${n.label}</b>${n.dept} · ${n.inst}<br>${deg} faculty co-authors · group #${n.community}`
+});
+invalidation.then(() => gvF.kill());
+display(legend([["IISER Pune faculty", "var(--pune)"], ["IISER Kolkata faculty", "var(--kolkata)"]]));
+display(gvF);
+return {facColor,gvF};
+}});
+
+define({id: "6b597316", inputs: ["d3","GF","nbF","deptOf","mix"], outputs: ["groupsF","g3","mixed","range"], body: (d3,GF,nbF,deptOf,mix) => {
+const groupsF = d3.groups(GF.nodes.map((n, i) => ({...n, i})).filter((n) => nbF[n.i].size > 0), (n) => n.community)
+  .map(([id, v]) => ({id, size: v.length, insts: new Set(v.map((n) => n.inst)).size, depts: new Set(v.map(deptOf)).size,
+    pune: v.filter((n) => n.inst === "IISER Pune").length, kolkata: v.filter((n) => n.inst === "IISER Kolkata").length,
+    mix: mix(v), members: v.toSorted((a, b) => b.degree - a.degree).slice(0, 3).map((n) => n.label).join(", ")}))
+  .filter((g) => g.size >= 2).sort((a, b) => b.size - a.size);
+const g3 = groupsF.filter((g) => g.size >= 3);
+// "mixed": at least two members from each institute
+const mixed = g3.filter((g) => Math.min(g.pune, g.kolkata) >= 2);
+const range = (xs) => (d3.min(xs) === d3.max(xs) ? `${d3.min(xs)}` : `${d3.min(xs)}–${d3.max(xs)}`);
+return {groupsF,g3,mixed,range};
+}});
+
+define({id: "ceb4a3a0", mode: "inline", inputs: ["measure","html","display"], body: async (measure,html,display) => {
+display(await(
+measure(html`The groups Leiden finds in G_fac. For each group: its size, which institutes and departments its members come from, and its best-connected members.`)
+))
+}});
+
+define({id: "fb1579ed", mode: "inline", inputs: ["answer","html","groupsF","g3","mixed","display"], body: async (answer,html,groupsF,g3,mixed,display) => {
+display(await(
+answer(html`There are ${groupsF.length} groups of two or more faculty, ${g3.length} of them with three or more. Of those ${g3.length}, ${g3.length - mixed.length} have at most one member from the other institute, while ${g3.filter((g) => g.depts > 1).length} mix departments. The largest are interdisciplinary: ${groupsF.slice(0, 2).map((g) => `${g.size} people (${g.mix})`).join(" and ")}. ${mixed.length ? `Only ${mixed.length} ${mixed.length === 1 ? "group has" : "groups have"} at least two members at each IISER: ${mixed.map((g) => `${g.size} people (${g.pune} Pune, ${g.kolkata} Kolkata)`).join(", ")}.` : "No group has two or more members at each IISER."} So the real research units are cross-department clusters inside one institute.`)
+))
+}});
+
+define({id: "e5134506", inputs: ["display","Inputs","groupsF"], body: (display,Inputs,groupsF) => {
+display(Inputs.table(groupsF, {
+  columns: ["id", "size", "pune", "kolkata", "mix", "members"],
+  header: {id: "Group", size: "Faculty", pune: "Pune", kolkata: "Kolkata", mix: "Main departments (faculty in each)", members: "Best-connected members"},
+  format: {id: (x) => `#${x}`}, width: {mix: 360, members: 300}, rows: 12, layout: "auto", select: false
+}));
+}});
+
+define({id: "6343d891", mode: "inline", inputs: ["SF","display"], body: async (SF,display) => {
+display(await(
+SF.modularity_leiden
+))
+}});
+
+define({id: "37777863", mode: "inline", inputs: ["SF","display"], body: async (SF,display) => {
+display(await(
+SF.nmi_leiden_louvain
+))
+}});
+
+define({id: "33c3b344", inputs: ["GF","nbF","deptOf"], outputs: ["brokers","top5"], body: (GF,nbF,deptOf) => {
+const brokers = GF.nodes.map((n, i) => ({...n, i,
+    groups: new Set([n.community, ...[...nbF[i]].map((j) => GF.nodes[j].community)]).size,
+    depts: new Set([...nbF[i]].map((j) => deptOf(GF.nodes[j]))).size,
+    otherInst: [...nbF[i]].some((j) => GF.nodes[j].inst !== n.inst)}))
+  .sort((a, b) => b.betweenness - a.betweenness).slice(0, 10);
+const top5 = brokers.slice(0, 5);
+return {brokers,top5};
+}});
+
+define({id: "1255600e", mode: "inline", inputs: ["measure","html","display"], body: async (measure,html,display) => {
+display(await(
+measure(html`<i>Betweenness</i>. Take every pair of faculty and find the shortest chain of co-authors between them. A person's betweenness is the share of these chains that pass through them. Someone with high betweenness is a bridge: without them, many pairs would be further apart or not connected at all.`)
+))
+}});
+
+define({id: "9849a4b1", mode: "inline", inputs: ["answer","html","top5","shortInst","range","display"], body: async (answer,html,top5,shortInst,range,display) => {
+display(await(
+answer(html`A handful of people hold the network together, and they are the ones whose co-authors span departments. Each of the top five, ${top5.map((d) => `${d.label} (${shortInst(d.inst)}, ${d.dept})`).join(", ")}, has faculty co-authors in ${range(top5.map((d) => d.depts))} departments and touches ${range(top5.map((d) => d.groups))} groups. ${top5.filter((d) => d.otherInst).length} of the five also have a co-author at the other IISER, which makes them the few links between Pune and Kolkata.`)
+))
+}});
+
+define({id: "aff9b75a", inputs: ["display","Inputs","brokers","shortInst","d3"], body: (display,Inputs,brokers,shortInst,d3) => {
+display(Inputs.table(brokers, {
+  columns: ["label", "inst", "dept", "degree", "depts", "groups", "betweenness"],
+  header: {label: "Faculty", inst: "Institute", dept: "Department", degree: "Faculty co-authors", depts: "Their departments", groups: "Groups touched", betweenness: "Betweenness"},
+  format: {inst: shortInst, betweenness: d3.format(".3f")}, sort: "betweenness", reverse: true, layout: "auto", select: false
+}));
+}});
+
+define({id: "2dd80617", inputs: ["fc"], outputs: ["brokersI"], body: (fc) => {
+const brokersI = fc.toSorted((a, b) => b.btw_ind - a.btw_ind).slice(0, 5);
+return {brokersI};
+}});
+
+define({id: "8a5124c9", mode: "inline", inputs: ["answer","html","brokersI","shortInst","M","display"], body: async (answer,html,brokersI,shortInst,M,display) => {
+display(await(
+answer(html`In the wider Indian network (G_ind), the top bridges are ${brokersI.slice(0, 3).map((d) => `${d.name} (${shortInst(d.inst)}, co-authors at ${d.partner_insts_ind} institutes)`).join(", ")}. Bridging among colleagues and bridging in India go together but are not the same: the two rankings agree only partly (rank correlation ${M.spearman_fac_vs_ind.betweenness}, where 1 would be the same order).`)
+))
+}});
+
+define({id: "2d9b0451", inputs: ["d3","GI","mix"], outputs: ["groupsI","oneLab","both"], body: (d3,GI,mix) => {
+const groupsI = d3.groups(GI.nodes, (n) => n.community).map(([id, v]) => {
+  const f = v.filter((n) => n.faculty), e = v.filter((n) => !n.faculty);
+  return {id, size: v.length, faculty: f.length, insts: new Set(f.map((n) => n.inst)).size,
+    mix: mix(f), partners: mix(e, (n) => n.inst, 3, "people")};
+}).filter((g) => g.size >= 2).sort((a, b) => b.faculty - a.faculty || b.size - a.size);
+const oneLab = groupsI.filter((g) => g.faculty === 1).length;
+const both = groupsI.filter((g) => g.insts > 1);
+return {groupsI,oneLab,both};
+}});
+
+define({id: "24cf6bf7", mode: "inline", inputs: ["measure","html","display"], body: async (measure,html,display) => {
+display(await(
+measure(html`In G_ind: how much of the graph is one connected piece, how many of our faculty each Leiden group contains, and which institutes the outside members come from.`)
+))
+}});
+
+define({id: "637f710f", mode: "inline", inputs: ["answer","html","pct","SI","SF","groupsI","oneLab","both","display"], body: async (answer,html,pct,SI,SF,groupsI,oneLab,both,display) => {
+display(await(
+answer(html`Outside co-authors join the network up. ${pct(SI.giant_share)} of G_ind is one connected piece, against ${pct(SF.giant_share)} of G_fac, because many faculty who never write together share a collaborator elsewhere. Leiden finds ${groupsI.length} groups, and ${oneLab} of them contain exactly one of our faculty: each is one lab and its outside collaborators. The groups with several faculty are where labs meet, and ${both.length} groups contain faculty from both IISERs. The largest has ${both[0]?.faculty} of our faculty (${both[0]?.mix}), and its main outside members are from ${both[0]?.partners}. Pune and Kolkata faculty who rarely co-author directly end up in the same groups through shared outside partners.`)
+))
+}});
+
+define({id: "01bcc22f", inputs: ["display","Inputs","groupsI"], body: (display,Inputs,groupsI) => {
+display(Inputs.table(groupsI.filter((g) => g.faculty >= 3), {
+  columns: ["id", "size", "faculty", "mix", "partners"],
+  header: {id: "Group", size: "People", faculty: "Our faculty", mix: "Our faculty by department", partners: "Main outside institutes"},
+  format: {id: (x) => `#${x}`}, width: {mix: 320, partners: 360}, rows: 10, layout: "auto", select: false
+}));
+}});
+
+define({id: "bf645c0e", inputs: ["graphView","GI","facColor","invalidation","display","legend"], outputs: ["gvI"], body: (graphView,GI,facColor,invalidation,display,legend) => {
+const gvI = graphView({
+  nodes: GI.nodes, edges: GI.edges, height: 720,
+  color: (n) => (n.faculty ? facColor(n) : "context"),
+  size: (n) => (n.faculty ? 3.5 + 0.55 * Math.sqrt(n.degree) : 2.8 + 0.35 * Math.sqrt(n.degree)),
+  label: (n) => (n.faculty ? n.label : ""), labelThreshold: 7,
+  edgeSize: (e) => 0.5 + Math.log2(1 + e[3]) * 0.45,
+  tooltip: (n, deg) => `<b>${n.label}</b>${n.faculty ? `${n.dept} · ${n.inst}` : `co-author · ${n.inst}`}<br>${deg} co-authors · group #${n.community}`
+});
+invalidation.then(() => gvI.kill());
+display(legend([["IISER Pune faculty", "var(--pune)"], ["IISER Kolkata faculty", "var(--kolkata)"], ["Indian co-author (other institute)", "var(--context)"]]));
+display(gvI);
+return {gvI};
+}});
+
+define({id: "202d1294", inputs: ["M"], outputs: ["f0","f1"], body: (M) => {
+const [f0, f1] = (() => { const s = M.snapshots.filter((d) => d.graph === "G_fac"); return [s[0], s.at(-1)]; })();
+return {f0,f1};
+}});
+
+define({id: "4e273c63", mode: "inline", inputs: ["measure","html","display"], body: async (measure,html,display) => {
+display(await(
+measure(html`G_fac and G_ind rebuilt with all papers up to each year, and the share of linked people who sit in the largest connected piece.`)
+))
+}});
+
+define({id: "b8e8f040", mode: "inline", inputs: ["answer","html","f0","f1","pct","display"], body: async (answer,html,f0,f1,pct,display) => {
+display(await(
+answer(html`Yes, the faculty network has knitted together. Faculty-to-faculty links grew from ${f0.edges} (up to ${f0.year}) to ${f1.edges} (up to ${f1.year}), and the largest connected piece went from ${pct(f0.giant_share)} to ${pct(f1.giant_share)} of linked faculty. The counts are cumulative, so they can only rise; the growing share is the informative part: new links increasingly join existing clusters rather than forming separate ones.`)
+))
+}});
+
+define({id: "ac5acc4b", inputs: ["display","resize","Plot","M","d3"], body: (display,resize,Plot,M,d3) => {
+display(resize((width) => Plot.plot({
+  width, height: 260, x: {tickFormat: "d", label: null}, y: {grid: true, label: "share in largest connected piece (%)", percent: true, domain: [0, 100]},
+  color: {domain: ["G_fac", "G_ind"], range: ["var(--pune)", "var(--context)"], legend: true},
+  marks: [Plot.line(M.snapshots, {x: "year", y: "giant_share", stroke: "graph", strokeWidth: 2}),
+          Plot.dot(M.snapshots, {x: "year", y: "giant_share", fill: "graph", r: 4, tip: true,
+            title: (d) => `${d.graph} up to ${d.year}\n${d.nodes} people · ${d.edges} links\nlargest piece ${d3.format(".0%")(d.giant_share)}`})]
+})));
+}});
+
+define({id: "0d6383bd", inputs: ["GF","GI"], outputs: ["bins","hist","H","degI","degF"], body: (GF,GI) => {
+const bins = [[0, 0, "0"], [1, 1, "1"], [2, 2, "2"], [3, 5, "3–5"], [6, 10, "6–10"], [11, 20, "11–20"], [21, 1e9, "21+"]];
+const hist = (g, name) => bins.map(([lo, hi, bin]) => ({graph: name, bin, share: g.nodes.filter((n) => n.degree >= lo && n.degree <= hi).length / g.nodes.length}));
+const H = [...hist(GF, "G_fac (faculty co-authors)"), ...hist(GI, "G_ind (all Indian co-authors)")];
+const degI = GI.nodes.map((n) => n.degree), degF = GF.nodes.map((n) => n.degree);
+return {bins,hist,H,degI,degF};
+}});
+
+define({id: "1e990f1e", mode: "inline", inputs: ["measure","html","display"], body: async (measure,html,display) => {
+display(await(
+measure(html`Each person's number of co-authors in the graph (their <i>degree</i>).`)
+))
+}});
+
+define({id: "4d6698b1", mode: "inline", inputs: ["answer","html","d3","degF","degI","display"], body: async (answer,html,d3,degF,degI,display) => {
+display(await(
+answer(html`Few, with a long tail. In G_fac the median faculty member has ${d3.median(degF)} faculty co-author${d3.median(degF) === 1 ? "" : "s"} and the most connected have ${d3.sort(degF, d3.descending).slice(0, 3).join(", ")}. In G_ind the median person has ${d3.median(degI)} co-authors and the most connected have ${d3.sort(degI, d3.descending).slice(0, 3).join(", ")}. A few large labs account for a big share of all links.`)
+))
+}});
+
+define({id: "f3e390ea", inputs: ["display","resize","Plot","bins","H"], body: (display,resize,Plot,bins,H) => {
+display(resize((width) => Plot.plot({
+  width, height: 240, x: {label: "number of co-authors", domain: bins.map((b) => b[2])}, y: {percent: true, grid: true, label: "share of people (%)"},
+  fx: {label: null}, color: {domain: ["G_fac (faculty co-authors)", "G_ind (all Indian co-authors)"], range: ["var(--pune)", "var(--context)"], legend: true},
+  marks: [Plot.barY(H, {fx: "graph", x: "bin", y: "share", fill: "graph", inset: 2, tip: true}), Plot.ruleY([0])]
+})));
+}});
+
+define({id: "25a24e05", inputs: ["display","Inputs","SF","SI"], outputs: ["keys"], body: (display,Inputs,SF,SI) => {
+const keys = [["nodes", "People"], ["edges", "Co-author links"], ["isolates", "With no co-author"], ["giant_share", "Share in largest connected piece"],
+  ["mean_degree", "Mean co-authors"], ["transitivity", "Transitivity (share of co-author pairs whose co-authors also co-author)"], ["avg_path_gcc", "Average shortest chain (largest piece)"],
+  ["communities_leiden", "Groups (2+ people)"], ["modularity_leiden", "Modularity"]];
+display(Inputs.table(keys.map(([k, metric]) => ({metric, G_fac: SF[k], G_ind: SI[k]})), {rows: 12, sort: null, layout: "auto", select: false}));
+return {keys};
+}});
+
+</script>
+</head>
+<body>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link"><a href="./">citeGraph · Group 19</a></li>
+  </ol>
+  <div id="observablehq-search"><input type="search" placeholder="Search"></div>
+  <div id="observablehq-search-results"></div>
+  <script>{const o=document.querySelector("#observablehq-search");o.setAttribute("data-shortcut",`${/Mac|iPhone/.test(navigator.platform)?"\u2318":"Alt-"}K`);const t=o.querySelector("input"),r=()=>import("./_observablehq/search.30af828b.js");t.addEventListener("focus",r,{once:!0}),t.addEventListener("keydown",r,{once:!0});const c=document.querySelector("#observablehq-sidebar-toggle");addEventListener("keydown",e=>{(e.code==="KeyK"&&e.metaKey&&!e.altKey&&!e.ctrlKey||e.key==="/"&&!e.metaKey&&!e.altKey&&!e.ctrlKey&&e.target===document.body)&&(c.checked?t.focus():(c.click(),t.focus(),c.click()),t.select(),e.preventDefault())});}</script>
+  <ol>
+    <li class="observablehq-link"><a href="./">Overview</a></li>
+    <li class="observablehq-link"><a href="./output">Output &amp; venues</a></li>
+    <li class="observablehq-link"><a href="./faculty">Faculty &amp; departments</a></li>
+    <li class="observablehq-link observablehq-link-active"><a href="./authorship-network">Collaboration</a></li>
+    <li class="observablehq-link"><a href="./citation-network">Knowledge flow</a></li>
+    <li class="observablehq-link"><a href="./connectivity">India &amp; the world</a></li>
+    <li class="observablehq-link"><a href="./collaborations">Big collaborations</a></li>
+    <li class="observablehq-link"><a href="./methods">Methods &amp; data</a></li>
+  </ol>
+</nav>
+<script>{const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<div id="observablehq-center">
+<aside id="observablehq-toc" data-selector="h1:not(:first-of-type)[id], h2:first-child[id], :not(h1) + h2[id]">
+<nav>
+<div>Contents</div>
+<ol>
+<li class="observablehq-secondary-link"><a href="#do-faculty-co-author-with-each-other">Do faculty co-author with each other?</a></li>
+<li class="observablehq-secondary-link"><a href="#what-are-the-co-author-groups-made-of">What are the co-author groups made of?</a></li>
+<li class="observablehq-secondary-link"><a href="#who-connects-the-groups">Who connects the groups?</a></li>
+<li class="observablehq-secondary-link"><a href="#what-changes-when-we-add-indian-co-authors">What changes when we add Indian co-authors?</a></li>
+<li class="observablehq-secondary-link"><a href="#has-collaboration-grown-over-time">Has collaboration grown over time?</a></li>
+<li class="observablehq-secondary-link"><a href="#how-many-co-authors-does-a-typical-person-have">How many co-authors does a typical person have?</a></li>
+</ol>
+</nav>
+</aside>
+<main id="observablehq-main" class="observablehq">
+<h1 id="collaboration" tabindex="-1"><a class="observablehq-header-anchor" href="#collaboration">Collaboration</a></h1>
+<div class="observablehq observablehq--block"><!--:db8ab784:--></div>
+<div class="observablehq observablehq--block"><!--:ac5d9873:--></div>
+<div class="terms">
+<h3>The two graphs on this page</h3>
+<dl>
+<dt>G_fac, the faculty graph</dt>
+<dd>One node for each of our <observablehq-loading></observablehq-loading><!--:3ac2dd32:--> publishing faculty at IISER Pune and IISER Kolkata. Two faculty are linked if they wrote at least one paper together in 2016–26.</dd>
+<dt>G_ind, the Indian graph</dt>
+<dd>G_fac plus every co-author on our papers whose affiliation is an Indian institution other than the two IISERs, for example CSIR-NCL, TIFR or Savitribai Phule Pune University. That adds <observablehq-loading></observablehq-loading><!--:d82d07a2:--> people. Our own students and postdocs are not in it, and neither are foreign co-authors.</dd>
+<dt>Groups</dt>
+<dd>Found with the Leiden algorithm. It splits a graph into groups whose members have many more links among themselves than the same number of links placed at random would give. Groups are not the same as connected pieces of the graph: one connected cluster can split into several groups if it has dense cores joined by a few links.</dd>
+</dl>
+<p class="muted">Papers with 100 or more authors are left out of both graphs (see <a href="./collaborations">Big collaborations</a>). A link is stronger when two people share more papers and when those papers have fewer authors.</p>
+</div>
+<h2 id="do-faculty-co-author-with-each-other" tabindex="-1"><a class="observablehq-header-anchor" href="#do-faculty-co-author-with-each-other">Do faculty co-author with each other?</a></h2>
+<p><observablehq-loading></observablehq-loading><!--:7fd30f14:--></p>
+<p><observablehq-loading></observablehq-loading><!--:5b3e5c4e:--></p>
+<div class="observablehq observablehq--block"><!--:1e0b47a8:--></div>
+<p><observablehq-loading></observablehq-loading><!--:eb76291f:--></p>
+<div class="observablehq observablehq--block"><!--:4f8f8313:--></div>
+<p class="muted">Departments with at least 5 publishing faculty.</p>
+<div class="observablehq observablehq--block"><!--:510ea0c5:--></div>
+<p class="muted">G_fac. Node size: number of faculty co-authors. Edge width: number of shared papers. The two colours barely mix: the few Pune–Kolkata links are the only bridges. Faculty with no faculty co-author sit around the edge.</p>
+<h2 id="what-are-the-co-author-groups-made-of" tabindex="-1"><a class="observablehq-header-anchor" href="#what-are-the-co-author-groups-made-of">What are the co-author groups made of?</a></h2>
+<div class="observablehq observablehq--block"><!--:6b597316:--></div>
+<p><observablehq-loading></observablehq-loading><!--:ceb4a3a0:--></p>
+<p><observablehq-loading></observablehq-loading><!--:fb1579ed:--></p>
+<div class="observablehq observablehq--block"><!--:e5134506:--></div>
+<details class="how"><summary>How groups are found</summary>
+<ul>
+<li>Leiden maximises <i>modularity</i>: the share of link strength that falls inside groups, minus the share expected if the same links were placed at random. G_fac's best split scores <observablehq-loading></observablehq-loading><!--:6343d891:--> on a scale up to 1, which means the groups are clear-cut.</li>
+<li>Faculty with no faculty co-author are left out; Leiden would make each of them a group of one.</li>
+<li>Louvain, an older algorithm with the same goal, gives almost the same groups (agreement score <observablehq-loading></observablehq-loading><!--:37777863:-->, where 1 means identical).</li>
+</ul>
+</details>
+<h2 id="who-connects-the-groups" tabindex="-1"><a class="observablehq-header-anchor" href="#who-connects-the-groups">Who connects the groups?</a></h2>
+<div class="observablehq observablehq--block"><!--:33c3b344:--></div>
+<p><observablehq-loading></observablehq-loading><!--:1255600e:--></p>
+<p><observablehq-loading></observablehq-loading><!--:9849a4b1:--></p>
+<div class="observablehq observablehq--block"><!--:aff9b75a:--></div>
+<div class="observablehq observablehq--block"><!--:2dd80617:--></div>
+<p><observablehq-loading></observablehq-loading><!--:8a5124c9:--></p>
+<details class="how"><summary>How betweenness is computed</summary>
+<p>Shortest chains use distance 1/strength, so two people who share many small-team papers are "close". Values are normalised by the number of pairs, so they lie between 0 and 1. In G_ind, the outside co-authors also count as possible bridges.</p>
+</details>
+<h2 id="what-changes-when-we-add-indian-co-authors" tabindex="-1"><a class="observablehq-header-anchor" href="#what-changes-when-we-add-indian-co-authors">What changes when we add Indian co-authors?</a></h2>
+<div class="observablehq observablehq--block"><!--:2d9b0451:--></div>
+<p><observablehq-loading></observablehq-loading><!--:24cf6bf7:--></p>
+<p><observablehq-loading></observablehq-loading><!--:637f710f:--></p>
+<div class="observablehq observablehq--block"><!--:01bcc22f:--></div>
+<p class="muted">Groups with three or more of our faculty.</p>
+<div class="observablehq observablehq--block"><!--:bf645c0e:--></div>
+<p class="caveat">G_ind is built outward from our faculty. An outside co-author appears only through one of our papers, so every link between two outside people comes from a paper with one of our faculty on it. The graph therefore shows our faculty's Indian neighbourhood, not Indian science as a whole.</p>
+<h2 id="has-collaboration-grown-over-time" tabindex="-1"><a class="observablehq-header-anchor" href="#has-collaboration-grown-over-time">Has collaboration grown over time?</a></h2>
+<div class="observablehq observablehq--block"><!--:202d1294:--></div>
+<p><observablehq-loading></observablehq-loading><!--:4e273c63:--></p>
+<p><observablehq-loading></observablehq-loading><!--:b8e8f040:--></p>
+<div class="observablehq observablehq--block"><!--:ac5acc4b:--></div>
+<h2 id="how-many-co-authors-does-a-typical-person-have" tabindex="-1"><a class="observablehq-header-anchor" href="#how-many-co-authors-does-a-typical-person-have">How many co-authors does a typical person have?</a></h2>
+<div class="observablehq observablehq--block"><!--:0d6383bd:--></div>
+<p><observablehq-loading></observablehq-loading><!--:1e990f1e:--></p>
+<p><observablehq-loading></observablehq-loading><!--:4d6698b1:--></p>
+<div class="observablehq observablehq--block"><!--:f3e390ea:--></div>
+<details class="how"><summary>All graph statistics</summary>
+<div class="observablehq observablehq--block"><!--:25a24e05:--></div>
+</details>
+</main>
+<footer id="observablehq-footer">
+<nav><a rel="prev" href="./faculty"><span>Faculty &amp; departments</span></a><a rel="next" href="./citation-network"><span>Knowledge flow</span></a></nav>
+<div>DPCN 2026 · Group 19 · IISER Pune &amp; IISER Kolkata · data: OpenAlex (CC0), SCImago</div>
+</footer>
+</div>
+</body>
+</html>
