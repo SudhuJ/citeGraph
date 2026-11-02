@@ -5,7 +5,7 @@
   authorship_network.csv    undirected co-author pairs, faculty + Indian co-authors (§6b, §7c)
   indian_connections.csv    your_inst × partner_inst aggregates (§7b, §7c)
 
-  citation_origin           who cites our papers / whom we cite, in five categories (analysis)
+  citation_origin           who cites corpus papers / whom they cite, in five categories (analysis)
 
 Optional reference data, picked up when present:
   ref/scimago/*<year>*.csv         SCImago rankings (All types) -> quartile Q1–Q4, SJR, cites/doc (2y)
@@ -84,7 +84,7 @@ def main() -> None:
                       if re.search(r"(19|20)\d{2}", f.rsplit("/", 1)[-1]))
     if sc_files:
         sql(f"CREATE OR REPLACE TABLE scimago_raw AS SELECT * FROM read_csv('{scimago_clean(sc_files)}', all_varchar=true)")
-        # files downloaded with "All types": keep the venue types our corpus contains
+        # files downloaded with "All types": keep the venue types the corpus contains
         # (journal / conference / book series sources); trade journals are not scholarly venues
         sql(f"""CREATE OR REPLACE TABLE scimago AS
                 SELECT DISTINCT sc_year::INT AS sc_year, upper(issn) AS issn, quartile,
@@ -149,7 +149,7 @@ def main() -> None:
     SELECT DISTINCT fac_id, work_id, institution, inst_id, affiliation_check FROM fac_work_raw
     WHERE affiliation_check <> 'elsewhere' AND work_id IN (SELECT work_id FROM corpus);
 
-    -- which of our institutes each corpus paper belongs to
+    -- which of the two IISERs each corpus paper belongs to
     CREATE OR REPLACE TABLE work_inst AS
     SELECT work_id, string_agg(DISTINCT institution, ';' ORDER BY institution) AS our_insts
     FROM fac_work GROUP BY 1;
@@ -285,7 +285,7 @@ def main() -> None:
            -- author self-citation: the two papers share at least one author
            EXISTS (SELECT 1 FROM node_authors a JOIN node_authors b USING (author_id)
                    WHERE a.id = e.source_id AND b.id = e.target_id) AS self_citation,
-           -- an endpoint is one of our >=100-author papers (excluded from the analysis)
+           -- an endpoint is a corpus paper with >=100 authors (excluded from the analysis)
            e.source_id IN (SELECT work_id FROM corpus WHERE n_authors >= {HYPER})
              OR e.target_id IN (SELECT work_id FROM corpus WHERE n_authors >= {HYPER}) AS involves_hyper
     FROM e JOIN node_meta s ON s.id = e.source_id JOIN node_meta t ON t.id = e.target_id;
@@ -294,7 +294,7 @@ def main() -> None:
 
     # ---- deliverable 3: authorship_network.csv ----------------------------------------------
     sql(f"""
-    CREATE OR REPLACE TABLE paper_people AS   -- nodes per paper: our faculty + Indian co-authors
+    CREATE OR REPLACE TABLE paper_people AS   -- nodes per paper: IISER faculty + Indian co-authors
     WITH a AS (
       SELECT a.work_id, a.author_id, a.author_name, a.inst_id, i.short_name, a.country
       FROM 'data/stage/authorships.parquet' a LEFT JOIN insts i USING (inst_id)
@@ -311,7 +311,7 @@ def main() -> None:
       FROM a
       WHERE a.author_id NOT IN (SELECT author_id FROM fac_profiles) AND a.country = 'IN'
       GROUP BY a.work_id, a.author_id
-      -- students/postdocs of our own institutes are excluded (not faculty, not external)
+      -- students/postdocs of the two IISERs are excluded (not faculty, not external)
       HAVING bool_or(a.inst_id NOT IN (SELECT inst_id FROM ours))
     )
     SELECT * FROM fac UNION ALL SELECT * FROM ext;
@@ -362,7 +362,7 @@ def main() -> None:
            sum(least(coalesce(so,0), coalesce(sp,0))) / sum(greatest(coalesce(so,0), coalesce(sp,0))) AS weighted_jaccard
     FROM u GROUP BY ALL;
     """)
-    # >=100-author papers are left out (they would make CMS institutes our top partners), and
+    # >=100-author papers are left out (they would make CMS institutes the top partners), and
     # citation counts leave out author self-citations
     sql(f"""
     CREATE OR REPLACE TABLE connections AS
@@ -412,13 +412,13 @@ def main() -> None:
     COPY connections TO 'data/out/indian_connections.csv';
     """)
 
-    # ---- citation origin: who cites our papers, whom do our papers cite ---------------------
+    # ---- citation origin: who cites corpus papers, whom do corpus papers cite------------------
     # Every citation link is put in the first category that fits:
     #   self               the two papers share an author
     #   own institute      the other paper has an author at the same IISER
     #   India + abroad     Indian and foreign authors (or a truncated >=100-author list)
     #   other Indian only  only Indian authors, none of the above
-    #   abroad or unknown  no Indian affiliation; we only know their number:
+    #   abroad or unknown  no Indian affiliation; only their number is known:
     #                      cited_by_count (in) or the reference count (out) minus the Indian links
     # india_frac = share of the other paper's authors with an Indian address (fractional counting).
     sql(f"""
@@ -430,7 +430,7 @@ def main() -> None:
     FROM 'data/stage/link_authors.parquet' GROUP BY 1;
 
     CREATE OR REPLACE TABLE citation_origin AS
-    WITH t AS (   -- our papers, per institute, without >=100-author papers
+    WITH t AS (   -- corpus papers, per institute, without >=100-author papers
       SELECT DISTINCT fw.work_id, fw.institution, fw.inst_id, w.year, w.cited_by_count, w.n_refs
       FROM fac_work fw JOIN corpus w USING (work_id) WHERE w.n_authors < {HYPER}
     ), links AS (
@@ -440,7 +440,7 @@ def main() -> None:
       SELECT 'out', r.work_id, r.ref_id FROM 'data/stage/work_refs.parquet' r
       WHERE r.ref_id IN (SELECT link_id FROM 'data/stage/link_works.parquet' WHERE kind = 'cited')
         AND r.ref_id <> r.work_id
-      UNION   -- citations between two of our papers, from either side's lists (as in cit_edges)
+      UNION   -- citations between two corpus papers, from either side's lists (as in cit_edges)
       SELECT 'in', target_id, source_id FROM cit_edges WHERE edge_kind = 'internal'
       UNION
       SELECT 'out', source_id, target_id FROM cit_edges WHERE edge_kind = 'internal'
@@ -453,7 +453,7 @@ def main() -> None:
                   WHEN p.has_abroad OR p.n_auth >= {HYPER} THEN 'India + abroad'
                   ELSE 'other Indian only' END AS category,
              coalesce(p.n_in / nullif(p.n_known, 0), 1.0) AS india_frac,
-             -- the other paper is itself one of ours (any of our faculty on it)
+             -- the other paper is itself a corpus paper (any IISER faculty on it)
              l.other_id IN (SELECT work_id FROM corpus) AS from_ours
       FROM links l JOIN t USING (work_id) LEFT JOIN link_profile p ON p.link_id = l.other_id
     ), indian AS (

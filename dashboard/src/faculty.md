@@ -51,7 +51,7 @@ display(Inputs.table(D, {
 <ul>
 <li>A paper counts once in every department that has an author on it.</li>
 <li><b>Q1 share</b> = Q1 papers ÷ journal papers whose venue SCImago ranks.</li>
-<li><b>Q1 & IF>5</b> adds a second condition: the journal's SCImago citations per document over two years (our open stand-in for the impact factor) is above 5.</li>
+<li><b>Q1 & IF>5</b> adds a second condition: the journal's SCImago citations per document over two years (an open stand-in for the impact factor) is above 5.</li>
 <li><b>Median h</b> is the median of the faculty members' h-index over 2016–2026 papers.</li>
 </ul>
 </details>

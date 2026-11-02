@@ -36,9 +36,9 @@ const mix = (people, key = deptOf, top = 3, unit = "") => d3.rollups(people, (v)
 <h3>The two graphs on this page</h3>
 <dl>
 <dt>G_fac, the faculty graph</dt>
-<dd>One node for each of our ${SF.nodes} publishing faculty at IISER Pune and IISER Kolkata. Two faculty are linked if they wrote at least one paper together in 2016–26.</dd>
+<dd>One node for each of the ${SF.nodes} publishing faculty at IISER Pune and IISER Kolkata. Two faculty are linked if they wrote at least one paper together in 2016–26.</dd>
 <dt>G_ind, the Indian graph</dt>
-<dd>G_fac plus every co-author on our papers whose affiliation is an Indian institution other than the two IISERs, for example CSIR-NCL, TIFR or Savitribai Phule Pune University. That adds ${num(SI.nodes - SF.nodes)} people. Our own students and postdocs are not in it, and neither are foreign co-authors.</dd>
+<dd>G_fac plus every co-author on IISER papers whose affiliation is an Indian institution other than the two IISERs, for example CSIR-NCL, TIFR or Savitribai Phule Pune University. That adds ${num(SI.nodes - SF.nodes)} people. Students and postdocs at the two IISERs are not in it, and neither are foreign co-authors.</dd>
 <dt>Groups</dt>
 <dd>Found with the Leiden algorithm. It splits a graph into groups whose members have many more links among themselves than the same number of links placed at random would give. Groups are not the same as connected pieces of the graph: one connected cluster can split into several groups if it has dense cores joined by a few links.</dd>
 </dl>
@@ -150,7 +150,7 @@ ${answer(html`In the wider Indian network (G_ind), the top bridges are ${brokers
 <p>Shortest chains use distance 1/strength, so two people who share many small-team papers are "close". Values are normalised by the number of pairs, so they lie between 0 and 1. In G_ind, the outside co-authors also count as possible bridges.</p>
 </details>
 
-## What changes when we add Indian co-authors?
+## What changes when Indian co-authors are added?
 
 ```js
 const groupsI = d3.groups(GI.nodes, (n) => n.community).map(([id, v]) => {
@@ -162,18 +162,18 @@ const oneLab = groupsI.filter((g) => g.faculty === 1).length;
 const both = groupsI.filter((g) => g.insts > 1);
 ```
 
-${measure(html`In G_ind: how much of the graph is one connected piece, how many of our faculty each Leiden group contains, and which institutes the outside members come from.`)}
+${measure(html`In G_ind: how much of the graph is one connected piece, how many IISER faculty each Leiden group contains, and which institutes the outside members come from.`)}
 
-${answer(html`Outside co-authors join the network up. ${pct(SI.giant_share)} of G_ind is one connected piece, against ${pct(SF.giant_share)} of G_fac, because many faculty who never write together share a collaborator elsewhere. Leiden finds ${groupsI.length} groups, and ${oneLab} of them contain exactly one of our faculty: each is one lab and its outside collaborators. The groups with several faculty are where labs meet, and ${both.length} groups contain faculty from both IISERs. The largest has ${both[0]?.faculty} of our faculty (${both[0]?.mix}), and its main outside members are from ${both[0]?.partners}. Pune and Kolkata faculty who rarely co-author directly end up in the same groups through shared outside partners.`)}
+${answer(html`Outside co-authors join the network up. ${pct(SI.giant_share)} of G_ind is one connected piece, against ${pct(SF.giant_share)} of G_fac, because many faculty who never write together share a collaborator elsewhere. Leiden finds ${groupsI.length} groups, and ${oneLab} of them contain exactly one IISER faculty member: each is one lab and its outside collaborators. The groups with several faculty are where labs meet, and ${both.length} groups contain faculty from both IISERs. The largest has ${both[0]?.faculty} IISER faculty (${both[0]?.mix}), and its main outside members are from ${both[0]?.partners}. Pune and Kolkata faculty who rarely co-author directly end up in the same groups through shared outside partners.`)}
 
 ```js
 display(Inputs.table(groupsI.filter((g) => g.faculty >= 3), {
   columns: ["id", "size", "faculty", "mix", "partners"],
-  header: {id: "Group", size: "People", faculty: "Our faculty", mix: "Our faculty by department", partners: "Main outside institutes"},
+  header: {id: "Group", size: "People", faculty: "IISER faculty", mix: "IISER faculty by department", partners: "Main outside institutes"},
   format: {id: (x) => `#${x}`}, width: {mix: 320, partners: 360}, rows: 10, layout: "auto", select: false
 }));
 ```
-<p class="muted">Groups with three or more of our faculty.</p>
+<p class="muted">Groups with three or more IISER faculty.</p>
 
 ```js
 const gvI = graphView({
@@ -189,7 +189,7 @@ display(legend([["IISER Pune faculty", "var(--pune)"], ["IISER Kolkata faculty",
 display(gvI);
 ```
 
-<p class="caveat">G_ind is built outward from our faculty. An outside co-author appears only through one of our papers, so every link between two outside people comes from a paper with one of our faculty on it. The graph therefore shows our faculty's Indian neighbourhood, not Indian science as a whole.</p>
+<p class="caveat">G_ind is built outward from the IISER faculty. An outside co-author appears only through an IISER paper, so every link between two outside people comes from a paper with an IISER faculty member on it. The graph therefore shows the IISER faculty's Indian neighbourhood, not Indian science as a whole.</p>
 
 ## Has collaboration grown over time?
 

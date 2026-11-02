@@ -86,7 +86,7 @@ h1 + p, h2 + p { margin-top: 0.4rem; }
 .answer { border-left: 3px solid var(--theme-foreground-focus); padding: 0.5rem 0.9rem; margin: 0.5rem 0 0.8rem;
   background: var(--theme-background-alt); border-radius: 0 6px 6px 0; max-width: 960px; line-height: 1.5; }
 .measure { max-width: 960px; margin: 0.3rem 0 0.4rem; line-height: 1.5; }
-.measure::before { content: "What we measure. "; font-weight: 600; }
+.measure::before { content: "What is measured. "; font-weight: 600; }
 .caveat { font-size: 13px; color: var(--theme-foreground-muted); max-width: 960px; }
 .caveat::before { content: "Caveat. "; font-weight: 600; }
 details.how { font-size: 13px; color: var(--theme-foreground-muted); max-width: 960px; margin: 0.3rem 0 1.2rem; }

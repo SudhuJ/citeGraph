@@ -55,7 +55,7 @@ def main() -> None:
     write("works.jsonl", works)
 
     # list responses truncate authorships at 100, so big-collaboration papers may not show
-    # our faculty in `authorships`; keep an authoritative profile -> works map instead
+    # IISER faculty in `authorships`; keep an authoritative profile -> works map instead
     with (RAW / "author_works.jsonl").open("w") as f:
         for i, a in enumerate(author_ids, 1):
             ids = [short(w["id"]) for w in paginate(

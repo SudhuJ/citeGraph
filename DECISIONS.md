@@ -1,6 +1,6 @@
 # DECISIONS — Group 19 (IISER Pune & IISER Kolkata, 2016–2026)
 
-How we went from the institute websites to the four deliverable CSVs, and the choices we made on the way.
+This document traces the path from the institute websites to the four deliverable CSVs, and the choices made along the way.
 The code for each step is in `pipeline/`. `make data` runs the whole thing, and every OpenAlex response is
 cached so the run can be repeated exactly. Sources are listed in `SOURCES.md`.
 
@@ -32,22 +32,22 @@ cached so the run can be repeated exactly. Sources are listed in `SOURCES.md`.
 
 ### Step by step
 
-1. **Roster (`faculty.py`).** We scraped the regular-faculty pages of both institutes: 146 at IISER Pune and 130
+1. **Roster (`faculty.py`).** The regular-faculty pages of both institutes were scraped: 146 at IISER Pune and 130
    at IISER Kolkata. Visiting, adjunct, emeritus and honorary faculty are not on these pages, so they are not in
    the data. A person listed under more than one department on the Kolkata site appears once, with the extra
    departments recorded as joint.
 2. **Author matching (`match_authors.py`).** Each roster name was matched to one or more OpenAlex author profiles
    (Section 2). 270 of the 276 faculty were matched.
-3. **Fetching (`fetch.py`).** For the matched profiles we downloaded all works from 2016–2026 (author IDs sent in
-   batches of 100). We also downloaded a separate list of works for each profile, because OpenAlex cuts author
-   lists off at 100 names, so on big-collaboration papers our faculty can be missing from the author list. For
-   every journal or conference paper, we then fetched the papers with an Indian affiliation that cite it
-   (`cites:` filter) and that it cites (`cited_by:` filter). This gives the Indian in-flow and out-flow without
+3. **Fetching (`fetch.py`).** For the matched profiles, all works from 2016–2026 were downloaded (author IDs sent in
+   batches of 100). A separate list of works was also downloaded for each profile, because OpenAlex cuts author
+   lists off at 100 names, so on big-collaboration papers IISER faculty can be missing from the author list. For
+   every journal or conference paper, the papers with an Indian affiliation that cite it (`cites:` filter) and
+   that it cites (`cited_by:` filter) were then fetched. This gives the Indian in-flow and out-flow without
    downloading about 400k reference records.
 4. **Staging (`stage.sql`).** The JSON was flattened into Parquet tables: works, one row per
    (work, author, institution), references, and the citing/cited link works with their institutions.
-5. **Institutions (`institutions.py`).** We fetched the OpenAlex record (with its parent organisations) for each of
-   the 2,121 Indian institutions in the data, and sorted them into the course clusters (IIT, IIIT, NIT, Central
+5. **Institutions (`institutions.py`).** The OpenAlex record (with its parent organisations) was fetched for each of
+   the 2,121 Indian institutions in the data, and the institutions were sorted into the course clusters (IIT, IIIT, NIT, Central
    University, IISc · TIFR · IISER, Premier Science, CSIR, DAE) using the course slides. Anything else became
    University/College, Other research institute, Healthcare or Industry.
 6. **Filtering and deduplication (`build.py`):**
@@ -67,11 +67,11 @@ cached so the run can be repeated exactly. Sources are listed in `SOURCES.md`.
 8. **Outputs (`build.py`):**
    - `group19_data.csv`: 8,574 faculty × paper rows (7,538 distinct papers), with all required columns plus extras
      (`fac_id`, `department`, `openalex_id`, `n_authors`, `hyperauthored`, `large_team`, `affiliation_check`, `sjr`, `if_proxy`).
-   - `citation_network.csv`: 91,974 directed paper → paper edges. `edge_kind` says whether both papers are ours
-     (internal), an Indian paper cites ours (in), or ours cites an Indian paper (out). Each edge has a `self_citation` flag.
-   - `authorship_network.csv`: 21,900 undirected co-author pairs. The nodes are our faculty plus their co-authors at
+   - `citation_network.csv`: 91,974 directed paper → paper edges. `edge_kind` says whether both papers are corpus
+     papers (internal), an Indian paper cites a corpus paper (in), or a corpus paper cites an Indian paper (out). Each edge has a `self_citation` flag.
+   - `authorship_network.csv`: 21,900 undirected co-author pairs. The nodes are the IISER faculty plus their co-authors at
      other Indian institutions.
-   - `indian_connections.csv`: 2,883 rows, one per (our institute, Indian partner institute), with `shared_papers`,
+   - `indian_connections.csv`: 2,883 rows, one per (IISER, Indian partner institute), with `shared_papers`,
      `total_citations` (= `cites_in` + `cites_out`) and topic Jaccard.
 9. **Validation (`check.py`).** Checks that every column the instruction note requires is present, the years are 2016–2026,
    both institutes appear, `type` is only journal or conference, the flag columns are booleans, and no
@@ -80,7 +80,7 @@ cached so the run can be repeated exactly. Sources are listed in `SOURCES.md`.
 ### Other choices
 
 - **Papers with 100+ authors** (1,121 papers, almost all from the CMS collaboration): OpenAlex lists at most 100
-  authors, so we cannot see who all the co-authors are. These papers stay in `group19_data.csv` with
+  authors, so the full set of co-authors cannot be seen. These papers stay in `group19_data.csv` with
   `hyperauthored = true`, but are left out of the networks and all statistics. Papers with 11–99 authors stay in
   and are flagged `large_team`.
 - **Self-citation** means the citing and cited papers share at least one author. All OpenAlex profiles of one faculty
@@ -90,18 +90,18 @@ cached so the run can be repeated exactly. Sources are listed in `SOURCES.md`.
 
 ---
 
-## 2. How we verified the authors on each paper
+## 2. How the authors on each paper were verified
 
 Three checks run one after another. A faculty member is attached to a paper only if the paper passes all three.
 
 ### 2.1 Roster → OpenAlex profile (are these the right people?)
 
-- **Candidate pool:** we did not search OpenAlex for names across the whole world. Instead we took every OpenAlex author
+- **Candidate pool:** OpenAlex was not searched for names across the whole world. Instead, the pool is every OpenAlex author
   profile that has *ever* been affiliated with the institute (`affiliations.institution.id` = IISER Pune or IISER
-  Kolkata), and only kept profiles that were active there in 2016–2026.
+  Kolkata), keeping only profiles that were active there in 2016–2026.
 - **Name matching, token by token.** Names are normalised first: accents removed, lower case, punctuation removed,
   titles such as Dr/Prof dropped. Then:
-  - one full token is treated as the surname and must match a full token in the candidate's name. We try every token,
+  - one full token is treated as the surname and must match a full token in the candidate's name. Every token is tried,
     because Indian names put the family name or initials in different places;
   - the first given name must appear in the candidate's name, either in full or as its initial;
   - full tokens may differ slightly (similarity ≥ 0.86 when both are at least 5 letters), so spelling variants still match;
@@ -114,9 +114,9 @@ Three checks run one after another. A faculty member is attached to a paper only
 - **Flagged for review.** 18 faculty were written to `data/faculty_review.csv` for a manual look: 6 with no match,
   8 with a weak name match (mostly people listed by initials, e.g. "T. S. Mahesh"), and 4 with many profiles. Manual
   fixes are kept in `ref/author_overrides.csv`, for example:
-  - *R. Boomi Shankar*: OpenAlex spells the name "Boomishankar", so the automatic match picked namesakes. We swapped
-    in the correct profiles by hand.
-  - *Bheemalingam Chittari*: OpenAlex splits the name as "Bheema Lingam". We added that profile by hand.
+  - *R. Boomi Shankar*: OpenAlex spells the name "Boomishankar", so the automatic match picked namesakes. The correct
+    profiles were swapped in by hand.
+  - *Bheemalingam Chittari*: OpenAlex splits the name as "Bheema Lingam". That profile was added by hand.
 
 ### 2.2 Profile → papers
 
@@ -125,7 +125,7 @@ list of works per author, not from the author list printed on each work, which i
 
 ### 2.3 Paper → affiliation check (was the person at the IISER when the paper was written?)
 
-For each faculty × paper pair we look up that author's institutions **on that paper**. The result is in the
+For each faculty × paper pair, that author's institutions are looked up **on that paper**. The result is in the
 `affiliation_check` column:
 
 | Value | Meaning | Rows | Decision |
@@ -140,10 +140,10 @@ assigned to a namesake at another institute.
 
 ---
 
-## 3. How we handled authors with identical names
+## 3. How authors with identical names were handled
 
-We identify people by **ID, never by name**. Every join in the pipeline uses an OpenAlex author ID (`A…`) or our
-own faculty ID (`PUN###` / `KOL###`). The display names in the CSVs are labels only.
+People are identified by **ID, never by name**. Every join in the pipeline uses an OpenAlex author ID (`A…`) or the
+project's own faculty ID (`PUN###` / `KOL###`). The display names in the CSVs are labels only.
 
 1. **Namesakes in OpenAlex.** Common names such as Sachin Jain, Surjeet Singh, Ayan Banerjee and Dwaipayan Roy each
    have many OpenAlex profiles. These are separated by:
@@ -155,9 +155,9 @@ own faculty ID (`PUN###` / `KOL###`). The display names in the CSVs are labels o
    faculty have more than one. All profiles that pass the checks above are merged under one faculty ID, so the
    person is one node in the networks and one author in the self-citation test.
 3. **Same name, different co-authors.** In `authorship_network.csv` the external Indian co-authors are nodes keyed by
-   their OpenAlex author ID (`node_a`, `node_b`). 70 display names belong to more than one ID, and we keep those as
+   their OpenAlex author ID (`node_a`, `node_b`). 70 display names belong to more than one ID, and those are kept as
    separate people instead of merging them by name. The cost is that a real person split over two OpenAlex
-   profiles may show up as two co-author nodes. We think that is safer than merging two different people with the
+   profiles may show up as two co-author nodes. This is judged safer than merging two different people with the
    same name.
 4. **Same paper, two records.** Duplicate records of one paper are merged (same DOI, or same title and year after
    normalising), so a paper is not counted twice.

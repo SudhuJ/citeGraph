@@ -4,7 +4,7 @@ title: Big collaborations
 
 # Big collaborations (100+ authors)
 
-<p class="muted">Particle-physics and gravitational-wave experiments publish papers with hundreds or thousands of authors. OpenAlex cuts author lists at 100, so we cannot check who on these papers was at an IISER, and one person's paper count can run into the hundreds. We keep these papers in the deliverable CSVs, flagged <code>hyperauthored</code>, and leave them out of every other page. This page shows what they are and what they would change.</p>
+<p class="muted">Particle-physics and gravitational-wave experiments publish papers with hundreds or thousands of authors. OpenAlex cuts author lists at 100, so it is not possible to check who on these papers was at an IISER, and one person's paper count can run into the hundreds. These papers are kept in the deliverable CSVs, flagged <code>hyperauthored</code>, and left out of every other page. This page shows what they are and what they would change.</p>
 
 ```js
 import {INST, instColor, shortInst, pct, num, answer} from "./components/defs.js";
@@ -67,7 +67,7 @@ display(Inputs.table(gain, {columns: ["your_inst", "partner_inst", "shared_paper
 const S = M.hyperauthorship;
 ```
 
-${answer(html`Little to the structure and a lot to the rankings. They connect only ${S.hyper_faculty_pairs} pairs of our faculty (${num(S.hyper_papers_multi_faculty)} papers have two or more of our faculty on them), so the network's shape barely moves: mean degree ${S.without.mean_degree} → ${S.with.mean_degree}. But each of those pairs shares hundreds of papers, so any ranking by number of joint papers would put the CMS members at the top.`)}
+${answer(html`Little to the structure and a lot to the rankings. They connect only ${S.hyper_faculty_pairs} pairs of IISER faculty (${num(S.hyper_papers_multi_faculty)} papers have two or more IISER faculty on them), so the network's shape barely moves: mean degree ${S.without.mean_degree} → ${S.with.mean_degree}. But each of those pairs shares hundreds of papers, so any ranking by number of joint papers would put the CMS members at the top.`)}
 
 ```js
 display(Inputs.table(S.top_strength_with, {header: {name: "Faculty", papers: "Joint papers with other faculty, 100+ author papers counted"}, select: false}));

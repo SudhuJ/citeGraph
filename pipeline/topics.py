@@ -1,6 +1,6 @@
 """Research-topic profiles for the Jaccard similarity of §7b.
 
-For our two institutes and every Indian partner that shares at least MIN_SHARED corpus
+For the two IISERs and every Indian partner that shares at least MIN_SHARED corpus
 papers with them, fetch the institution-wide 2016–2026 paper counts per OpenAlex subfield
 (one group_by call each). Output: data/stage/inst_subfields.parquet (inst_id, subfield, n).
 """

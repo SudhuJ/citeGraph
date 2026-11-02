@@ -19,7 +19,7 @@ Only **regular faculty** were scraped. Visiting, adjunct, emeritus and honorary 
 | | https://www.iiserkol.ac.in/web/faculty/mathematics-and-statistics | |
 | | https://www.iiserkol.ac.in/web/faculty/physical-sciences | |
 
-From each page we took the name, designation, department(s) and profile URL, saved in `data/faculty_seed.csv`.
+From each page, the name, designation, department(s) and profile URL were taken and saved in `data/faculty_seed.csv`.
 Every faculty member's own profile page link is kept in the `profile_url` column of `data/faculty.csv`.
 
 ## 2. OpenAlex — papers, authors, citations, institutions
@@ -33,12 +33,12 @@ Every faculty member's own profile page link is kept in the `profile_url` column
 | Candidate author profiles | `/authors?filter=affiliations.institution.id:I181996519` (IISER Pune), `…:I127439422` (IISER Kolkata) | Matching roster names to OpenAlex author IDs |
 | Matched faculty profiles | `/authors?filter=openalex_id:…` | ORCID, lifetime h-index, works count |
 | Faculty papers | `/works?filter=author.id:…,publication_year:2016-2026` | Title, year, venue, ISSN, DOI, citation count, authors and their affiliations, references, topics |
-| Indian papers citing ours | `/works?filter=cites:…,institutions.country_code:IN` | In-flow edges, `cited_by_indian_inst` |
-| Indian papers we cite | `/works?filter=cited_by:…,institutions.country_code:IN` | Out-flow edges, `cites_indian_inst` |
+| Indian papers citing corpus papers | `/works?filter=cites:…,institutions.country_code:IN` | In-flow edges, `cited_by_indian_inst` |
+| Indian papers cited by the corpus | `/works?filter=cited_by:…,institutions.country_code:IN` | Out-flow edges, `cites_indian_inst` |
 | Institution records | `/institutions?filter=openalex_id:…` (with parent lineage) | Names, ROR IDs and types of the 2,121 Indian institutions in the data |
 | Topic profiles | `/works?filter=institutions.id:…,publication_year:2016-2026&group_by=primary_topic.subfield.id` | `jaccard_topics` in `indian_connections.csv` |
 
-Through OpenAlex we also used:
+The following were also used through OpenAlex:
 - **ORCID** (https://orcid.org) iDs on author profiles, to tell namesakes apart.
 - **ROR** (https://ror.org) IDs on institution records.
 - **Crossref / DOI** (https://doi.org) DOIs, which identify papers in the network files.

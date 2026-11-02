@@ -78,7 +78,7 @@ display(resize((width) => Plot.plot({width,
 </div>
 </div>
 
-<p class="caveat">We only track faculty on today's rosters, so the early years miss people who have since left. 2026 is a partial year (data collected October 2026).</p>
+<p class="caveat">Only faculty on today's rosters are tracked, so the early years miss people who have since left. 2026 is a partial year (data collected October 2026).</p>
 <details class="how"><summary>How it's computed</summary>
 <p>Papers are counted once per institute per year. A faculty member counts as active from the year of their first paper in this dataset, which approximates their joining year.</p>
 </details>
@@ -114,7 +114,7 @@ display(!quartilesLoaded ? html`` : resize((width) => Plot.plot({width,
 })));
 ```
 
-<p class="caveat">SCImago's "best quartile" is the best rank a journal holds in any of its subject categories. A journal that is Q1 in one category and Q3 in another counts as Q1, so these shares are an upper bound. The impact factor itself is not open data, so we use SCImago's citations per document over two years, which is computed the same way but from Scopus. Citation rates differ by field, so the IF&gt;5 bar is far easier to clear in chemistry and materials than in mathematics, where even the leading journals sit below 5.</p>
+<p class="caveat">SCImago's "best quartile" is the best rank a journal holds in any of its subject categories. A journal that is Q1 in one category and Q3 in another counts as Q1, so these shares are an upper bound. The impact factor itself is not open data, so SCImago's citations per document over two years are used instead, which is computed the same way but from Scopus. Citation rates differ by field, so the IF&gt;5 bar is far easier to clear in chemistry and materials than in mathematics, where even the leading journals sit below 5.</p>
 <details class="how"><summary>How it's computed</summary>
 <p>Each paper takes its journal's quartile for the SCImago year closest to, and not after, its publication year, matched by ISSN. "Unranked" means the venue is not in SCImago. Conference papers use the CORE rank instead; ${all.filter((d) => d.type === "conference").length} papers are conference papers, ${all.filter((d) => ["A*", "A", "B", "C"].includes(d.quartile)).length} of them in CORE-ranked venues.</p>
 </details>
